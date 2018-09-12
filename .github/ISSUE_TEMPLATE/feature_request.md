@@ -10,4 +10,4 @@ A clear and concise description of the feature.
 ## Files to change
 Lists all files which will be modified by the new feature, if you don't know which file will be modified, remove this section.
 Ex : 
-- [quartz.json](noxius_datapack/data/noxius_pack/recipes/quartz.json)
+- [file.java](https://github.com/NicolasJourdan/brefngames/myFile)
