@@ -14,3 +14,6 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 - Statistics
 
 ## Screens
+
+## Developers 👨‍💻
+- Florian Merle
