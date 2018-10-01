@@ -20,3 +20,4 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 - Bastien Plaza
 - Elias Boulharts
 - Rayane Hajam
+- Nicolas Jourdan
