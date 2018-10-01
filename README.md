@@ -11,3 +11,6 @@ This Java application is an application to play and to customize mini games with
 - Statistics
 
 ## Screens
+
+## Developers 👨‍💻
+- Florian Merle
