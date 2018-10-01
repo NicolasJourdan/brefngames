@@ -17,3 +17,4 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 
 ## Developers 👨‍💻
 - Florian Merle
+- Elias Boulharts
