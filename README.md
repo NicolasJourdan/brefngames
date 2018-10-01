@@ -19,3 +19,4 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 - Florian Merle
 - Bastien Plaza
 - Elias Boulharts
+- Rayane Hajam
