@@ -7,6 +7,8 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 ## Mini Games
 - Tic Tac Toe
 - Cookie Clicker
+- Runner
+- Connect Four
 
 ## Functionnalities
 - Customize games
