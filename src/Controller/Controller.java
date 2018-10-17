@@ -1,15 +1,17 @@
 package Controller;
 
-import Model.Model;
-import View.View;
+import Model.*;
+import View.*;
 
-public abstract class Controller {
+import java.awt.event.ActionListener;
 
-    private Model model;
+public abstract class Controller implements ActionListener {
 
-    private View view;
+    protected TicTacToeModel model;
 
-    public Controller(Model model, View view) {
+    protected TicTacToeView view;
+
+    public Controller(TicTacToeModel model, TicTacToeView view) {
         this.model = model;
         this.view = view;
     }
