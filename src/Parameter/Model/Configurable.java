@@ -1,10 +1,5 @@
 package Parameter.Model;
 
-import java.util.*;
-
-/**
- * 
- */
 public interface Configurable {
 
     /**

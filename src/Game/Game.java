@@ -1,37 +1,19 @@
 package Game;
 
+import Parameter.Model.ParametersEnum;
+import Player.Player;
+import Statistic.Model.Statistic;
+
 import java.util.*;
 
-/**
- * @author BrefNGames
- */
 public abstract class Game {
 
-    /**
-     * Default constructor
-     */
-    public Game() {
-    }
+    private Player[] listPlayers;
 
-    /**
-     * 
-     */
-    private Player[] ListPlayers;
-
-    /**
-     * 
-     */
-    private Set<Statistic> ListStatistics;
-
-
-
-
-
-
+    private List<Statistic> listStatistics;
 
     /**
      * Returns an array of string of all needed param keys
      */
-    public static abstract void getNeededParams();
-
+    public abstract List<ParametersEnum> getNeededParams();
 }

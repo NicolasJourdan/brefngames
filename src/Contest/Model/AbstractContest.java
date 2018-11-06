@@ -8,17 +8,7 @@ import Player.Player;
 
 import java.util.*;
 
-/**
- * @author BrefNGames
- */
 public abstract class AbstractContest {
-
-    /**
-     * Default constructor
-     */
-    public AbstractContest() {
-    }
-
     /**
      * List of games
      */
@@ -39,10 +29,4 @@ public abstract class AbstractContest {
     private GameFactory gameFactory;
 
     private Map<ParametersEnum, Configurable> contestParameters;
-
-
-
-
-
-
 }

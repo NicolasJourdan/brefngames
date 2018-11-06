@@ -3,9 +3,6 @@ package Statistic.Model.PlayerStatistics;
 import Player.Player;
 import Statistic.Model.AbstractStatistic;
 
-/**
- * @author BrefNGames
- */
 public abstract class AbstractPlayerStatistic extends AbstractStatistic {
 
     private Player player;

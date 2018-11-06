@@ -12,8 +12,7 @@ public interface Entityable {
     public void delete();
 
     /**
-     * @return Entity Id
+     * @return int
      */
     public int getId();
-
 }

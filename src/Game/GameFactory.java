@@ -2,26 +2,12 @@ package Game;
 
 import java.util.*;
 
-/**
- * @author BrefNGames
- */
 public class GameFactory {
 
     /**
-     * Default constructor
+     * Create a game associated to an EnumGame
      */
-    public GameFactory() {
-    }
-
-
-
-
-
-    /**
-     * Return the game pa
-     */
-    public void getGame(EnumGames)() {
+    public Game getGame(EnumGames enumGames) {
         // TODO implement here
     }
-
 }
