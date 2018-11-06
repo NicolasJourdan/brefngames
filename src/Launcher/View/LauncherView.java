@@ -1,4 +1,6 @@
 package Launcher.View;
 
-public class LauncherView {
+import Structure.AbstractView;
+
+public class LauncherView extends AbstractView {
 }

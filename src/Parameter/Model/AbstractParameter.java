@@ -1,6 +1,8 @@
 package Parameter.Model;
 
-public abstract class AbstractParameter implements Configurable {
+import Structure.AbstractModel;
+
+public abstract class AbstractParameter extends AbstractModel implements Configurable {
 
     /**
      * The current value

@@ -5,10 +5,11 @@ import Game.GameFactory;
 import Parameter.Model.Configurable;
 import Parameter.Model.ParametersEnum;
 import Player.Player;
+import Structure.AbstractModel;
 
 import java.util.*;
 
-public abstract class AbstractContest {
+public abstract class AbstractContest extends AbstractModel {
     /**
      * List of games
      */

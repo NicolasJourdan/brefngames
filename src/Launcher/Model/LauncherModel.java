@@ -1,4 +1,6 @@
 package Launcher.Model;
 
-public class LauncherModel {
+import Structure.AbstractModel;
+
+public class LauncherModel extends AbstractModel {
 }
