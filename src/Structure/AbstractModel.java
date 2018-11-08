@@ -1,4 +1,6 @@
 package Structure;
 
-public abstract class AbstractModel {
+import java.util.Observable;
+
+public abstract class AbstractModel extends Observable {
 }

@@ -1,10 +1,10 @@
 package Launcher.Controller;
 
-import Launcher.Model.LauncherModel;
-import Launcher.View.LauncherView;
 import Parameter.Model.Configurable;
-import Parameter.Model.ParametersEnum;
+import Parameter.Model.ParameterEnum;
 import Scene.Controller.AbstractSceneManagerController;
+import Menu.MenuScene;
+import Scene.Model.Scene;
 import Structure.AbstractModel;
 import Structure.AbstractView;
 
@@ -15,14 +15,24 @@ import java.util.*;
  */
 public class LauncherController extends AbstractSceneManagerController {
 
-    private LauncherModel launcherModel;
 
-    private LauncherView launcherView;
-
-    private Map<ParametersEnum, Configurable> configurations;
+    protected Scene currentScene;
+    private Map<ParameterEnum, Configurable> configurations;
 
     public LauncherController(AbstractModel model, AbstractView view) {
         super(model, view);
+
+        // create scene menu
+        this.currentScene = new MenuScene();
+        this.currentScene.addObserver(this);
+        this.view.add(this.currentScene.getView());
+        this.view.repaint();
+        this.view.validate();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        // Scene.end()
     }
 
     // TODO switchScenes or something like that
