@@ -13,14 +13,7 @@ public class Launcher {
         LauncherModel launcherModel = new LauncherModel();
         LauncherController launcherController = new LauncherController(launcherModel, launcherView);
 
-        JFrame window = new JFrame();
-        window.setTitle("BREF'N'Games");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setAlwaysOnTop(true);
-        window.setLocationRelativeTo(null);
-        window.setFocusable(true);
-
+        LauncherWindow window = new LauncherWindow();
         window.add(launcherView);
-        window.setVisible(true);
     }
 }

@@ -19,9 +19,9 @@ public class LauncherFactory implements SceneFactoryInterface {
             case STATISTICS:
             case PARAMETERS:
             case QUIT:
+                System.exit(0);
             default:
-                // TODO
-                return new MenuScene();
+                throw new RuntimeException("Unexpected scene : " + sceneEnum);
         }
     }
 }
