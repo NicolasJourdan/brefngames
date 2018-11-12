@@ -2,7 +2,14 @@ package Scene.Model;
 
 public enum SceneEnum {
 
-    MENU("MENU");
+    MENU("MENU"),
+    TRAINING("TRAINING"),
+    CONTEST("CONTEST"),
+    STATISTICS("STATISTICS"),
+    PARAMETERS("PARAMETERS"),
+    QUIT("QUIT"),
+    ERROR("ERROR"),
+    ;
 
     private String name = "";
 

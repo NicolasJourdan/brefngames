@@ -15,8 +15,6 @@ import java.util.*;
  */
 public class LauncherController extends AbstractSceneManagerController {
 
-
-    protected Scene currentScene;
     private Map<ParameterEnum, Configurable> configurations;
 
     public LauncherController(AbstractModel model, AbstractView view) {

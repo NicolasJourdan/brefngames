@@ -1,6 +1,11 @@
 package Scene.Model;
 
 public enum ActionEnum {
+    TRAINING("TRAINING"),
+    END_TRAINING("END_TRAINING"),
+    CONTEST("CONTEST"),
+    STATISTICS("STATISTICS"),
+    PARAMETERS("PARAMETERS"),
     QUIT("QUIT");
 
     private String name = "";
