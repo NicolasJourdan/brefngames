@@ -1,14 +1,17 @@
 package Structure;
 
 import javax.swing.*;
+import java.util.Observer;
 
 public abstract class AbstractView extends JPanel {
-    protected JPanel currentPanel;
 
-    public void changeCurrentPanel(JPanel jPanel) {
-        this.currentPanel.removeAll();
-        this.currentPanel.add(jPanel);
-        this.repaint();
-        this.revalidate();
+    protected ProxyObservable observable;
+
+    public AbstractView() {
+        this.observable = new ProxyObservable();
+    }
+
+    public void addObserver(Observer observer) {
+        this.observable.addObserver(observer);
     }
 }
