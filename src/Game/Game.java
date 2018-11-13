@@ -1,6 +1,6 @@
 package Game;
 
-import Parameter.Model.ParametersEnum;
+import Parameter.Model.ParameterEnum;
 import Player.Player;
 import Statistic.Model.Statistic;
 
@@ -15,5 +15,5 @@ public abstract class Game {
     /**
      * Returns an array of string of all needed param keys
      */
-    public abstract List<ParametersEnum> getNeededParams();
+    public abstract List<ParameterEnum> getNeededParams();
 }

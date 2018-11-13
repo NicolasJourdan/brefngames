@@ -3,7 +3,7 @@ package Contest.Model;
 import Game.Game;
 import Game.GameFactory;
 import Parameter.Model.Configurable;
-import Parameter.Model.ParametersEnum;
+import Parameter.Model.ParameterEnum;
 import Player.Player;
 import Structure.AbstractModel;
 
@@ -29,5 +29,5 @@ public abstract class AbstractContest extends AbstractModel {
 
     private GameFactory gameFactory;
 
-    private Map<ParametersEnum, Configurable> contestParameters;
+    private Map<ParameterEnum, Configurable> contestParameters;
 }

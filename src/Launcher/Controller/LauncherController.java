@@ -1,12 +1,14 @@
 package Launcher.Controller;
 
-import Launcher.Model.LauncherModel;
-import Launcher.View.LauncherView;
+import Launcher.LauncherFactory;
 import Parameter.Model.Configurable;
-import Parameter.Model.ParametersEnum;
+import Parameter.Model.ParameterEnum;
 import Scene.Controller.AbstractSceneManagerController;
-import Structure.AbstractModel;
-import Structure.AbstractView;
+import Menu.MenuScene;
+import Scene.Model.AbstractSceneManagerModel;
+import Scene.Model.ActionEnum;
+import Scene.Model.SceneEnum;
+import Scene.View.AbstractSceneManagerView;
 
 import java.util.*;
 
@@ -15,15 +17,31 @@ import java.util.*;
  */
 public class LauncherController extends AbstractSceneManagerController {
 
-    private LauncherModel launcherModel;
+    private Map<ParameterEnum, Configurable> configurations;
 
-    private LauncherView launcherView;
+    public LauncherController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
+        super(model, view, new LauncherFactory());
 
-    private Map<ParametersEnum, Configurable> configurations;
-
-    public LauncherController(AbstractModel model, AbstractView view) {
-        super(model, view);
+        this.switchScene(SceneEnum.MENU);
     }
 
-    // TODO switchScenes or something like that
+    @Override
+    protected SceneEnum getNextScene(ActionEnum actionEnum) {
+        switch (actionEnum) {
+            case TRAINING:
+                return SceneEnum.TRAINING;
+            case CONTEST:
+                return SceneEnum.CONTEST;
+            case STATISTICS:
+                return SceneEnum.STATISTICS;
+            case PARAMETERS:
+                return SceneEnum.PARAMETERS;
+            case END_TRAINING:
+                return SceneEnum.MENU;
+            case QUIT:
+                return SceneEnum.QUIT;
+            default:
+                return SceneEnum.ERROR;
+        }
+    }
 }

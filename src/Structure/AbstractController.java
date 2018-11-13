@@ -1,13 +1,16 @@
 package Structure;
 
-public abstract class AbstractController {
+import java.util.Observer;
 
-    private AbstractModel model;
+public abstract class AbstractController implements Observer {
 
-    private AbstractView view;
+    protected AbstractModel model;
+
+    protected AbstractView view;
 
     public AbstractController(AbstractModel model, AbstractView view) {
         this.model = model;
         this.view = view;
+        this.view.addObserver(this);
     }
 }

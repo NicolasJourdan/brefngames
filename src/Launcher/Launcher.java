@@ -1,8 +1,19 @@
 package Launcher;
 
+import Launcher.Controller.LauncherController;
+import Launcher.Model.LauncherModel;
+import Launcher.View.LauncherView;
+
+import javax.swing.*;
+
 public class Launcher {
 
     public static void main(String arg[]) {
-        //TODO create view/model/controller
+        LauncherView launcherView = new LauncherView();
+        LauncherModel launcherModel = new LauncherModel();
+        LauncherController launcherController = new LauncherController(launcherModel, launcherView);
+
+        LauncherWindow window = new LauncherWindow();
+        window.add(launcherView);
     }
 }

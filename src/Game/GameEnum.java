@@ -3,5 +3,5 @@ package Game;
 /**
  * List of all games
  */
-public enum EnumGames {
+public enum GameEnum {
 }

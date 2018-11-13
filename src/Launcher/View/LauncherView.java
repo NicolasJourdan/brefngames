@@ -1,6 +1,6 @@
 package Launcher.View;
 
-import Structure.AbstractView;
+import Scene.View.AbstractSceneManagerView;
 
-public class LauncherView extends AbstractView {
+public class LauncherView extends AbstractSceneManagerView {
 }

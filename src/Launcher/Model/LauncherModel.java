@@ -1,6 +1,6 @@
 package Launcher.Model;
 
-import Structure.AbstractModel;
+import Scene.Model.AbstractSceneManagerModel;
 
-public class LauncherModel extends AbstractModel {
+public class LauncherModel extends AbstractSceneManagerModel {
 }
