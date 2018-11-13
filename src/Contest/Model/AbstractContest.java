@@ -1,7 +1,7 @@
 package Contest.Model;
 
 import Game.GameScene;
-import Game.GameFactory;
+import Game.GameSceneFactory;
 import Parameter.Model.Configurable;
 import Parameter.Model.ParameterEnum;
 import Player.Player;
@@ -27,7 +27,7 @@ public abstract class AbstractContest extends AbstractModel {
      */
     private boolean isTraining = false;
 
-    private GameFactory gameFactory;
+    private GameSceneFactory gameSceneFactory;
 
     private Map<ParameterEnum, Configurable> contestParameters;
 }
