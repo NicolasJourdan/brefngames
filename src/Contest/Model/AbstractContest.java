@@ -1,6 +1,6 @@
 package Contest.Model;
 
-import Game.Game;
+import Game.GameScene;
 import Game.GameFactory;
 import Parameter.Model.Configurable;
 import Parameter.Model.ParameterEnum;
@@ -13,14 +13,14 @@ public abstract class AbstractContest extends AbstractModel {
     /**
      * List of games
      */
-    private List<Game> gameList;
+    private List<GameScene> gameSceneList;
 
     private Player[] playerList;
 
     /**
      * The current game
      */
-    private Game currentGame;
+    private GameScene currentGameScene;
 
     /**
      * Defines if the contest is a training

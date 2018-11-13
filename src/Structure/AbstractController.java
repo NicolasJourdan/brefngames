@@ -10,6 +10,7 @@ public abstract class AbstractController implements Observer {
 
     public AbstractController(AbstractModel model, AbstractView view) {
         this.model = model;
+        this.model.addObserver(this);
         this.view = view;
         this.view.addObserver(this);
     }
