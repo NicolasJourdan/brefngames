@@ -1,12 +1,23 @@
 package Scene.Model;
 
 public enum ActionEnum {
+
+    /*
+     * GameScene
+     */
+    PLAYER_1_WON("PLAYER_1_WON"),
+    PLAYER_2_WON("PLAYER_2_WON"),
+
+    /*
+     * Menu
+     */
     TRAINING("TRAINING"),
     END_TRAINING("END_TRAINING"),
     CONTEST("CONTEST"),
     STATISTICS("STATISTICS"),
     PARAMETERS("PARAMETERS"),
-    QUIT("QUIT");
+    QUIT("QUIT"),
+    ;
 
     private String name = "";
 
