@@ -13,10 +13,26 @@ public abstract class AbstractSceneManagerController extends AbstractController 
 
     protected SceneFactoryInterface sceneFactory;
     protected Scene currentScene;
+    protected Scene parentScene;
 
+    /**
+     *
+     * The constructor for the root scene manager controller (LauncherController)
+     */
     public AbstractSceneManagerController(AbstractSceneManagerModel model, AbstractSceneManagerView view, SceneFactoryInterface sceneFactory) {
         super(model, view);
         this.sceneFactory = sceneFactory;
+        this.parentScene = null;
+    }
+
+    /**
+     *
+     * The constructor for the non-root scene manager controller (TrainingController, ContestController)
+     */
+    public AbstractSceneManagerController(AbstractSceneManagerModel model, AbstractSceneManagerView view, SceneFactoryInterface sceneFactory, Scene parentScene) {
+        super(model, view);
+        this.sceneFactory = sceneFactory;
+        this.parentScene = parentScene;
     }
 
     @Override
