@@ -2,12 +2,25 @@ package Scene.Model;
 
 public enum SceneEnum {
 
+    /*
+     * Games
+     */
+    TIC_TAC_TOE("TIC_TAC_TOE"),
+    CONNECT_FOUR("CONNECT_FOUR"),
+    RUNNER("RUNNER"),
+    COOKIE_CLICKER("COOKIE_CLICKER"),
+    TRAINING_MENU("TRAINING_MENU"),
+
+    /*
+     * Screens
+     */
     MENU("MENU"),
     TRAINING("TRAINING"),
     CONTEST("CONTEST"),
     STATISTICS("STATISTICS"),
     PARAMETERS("PARAMETERS"),
     QUIT("QUIT"),
+
     ERROR("ERROR"),
     ;
 
