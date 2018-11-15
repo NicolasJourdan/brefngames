@@ -3,6 +3,7 @@ package Game;
 import Player.Player;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
+import Training.TrainingMenuScene;
 
 public class GameSceneFactory implements SceneFactoryInterface {
 
@@ -26,6 +27,8 @@ public class GameSceneFactory implements SceneFactoryInterface {
                 // return new ConnectFourScene(this.listPlayers);
             case COOKIE_CLICKER:
                 // return new CookieClickerScene(this.listPlayers);
+            case TRAINING_MENU:
+                return new TrainingMenuScene();
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }
