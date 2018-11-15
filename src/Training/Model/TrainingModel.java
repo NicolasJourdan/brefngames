@@ -1,6 +1,6 @@
 package Training.Model;
 
-import Structure.AbstractModel;
+import Scene.Model.AbstractSceneManagerModel;
 
-public class TrainingModel extends AbstractModel {
+public class TrainingModel extends AbstractSceneManagerModel {
 }
