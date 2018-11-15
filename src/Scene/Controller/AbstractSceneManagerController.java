@@ -43,6 +43,11 @@ public abstract class AbstractSceneManagerController extends AbstractController 
     protected abstract SceneEnum getNextScene(ActionEnum arg);
 
     protected void switchScene(SceneEnum sceneEnum) {
+        if (SceneEnum.END_SCENE == sceneEnum) {
+            // The scene has to be destroyed
+            return;
+        }
+
         this.currentScene = this.sceneFactory.createScene(sceneEnum);
         this.currentScene.addObserver(this);
         ((AbstractSceneManagerView) this.view).changeCurrentPanel(this.currentScene.getView());

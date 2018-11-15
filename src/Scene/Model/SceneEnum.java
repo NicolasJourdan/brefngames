@@ -21,7 +21,7 @@ public enum SceneEnum {
     PARAMETERS("PARAMETERS"),
     QUIT("QUIT"),
 
-    ERROR("ERROR"),
+    END_SCENE("END_SCENE"),
     ;
 
     private String name = "";
