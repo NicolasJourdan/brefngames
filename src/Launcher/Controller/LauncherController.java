@@ -4,7 +4,6 @@ import Launcher.LauncherFactory;
 import Parameter.Model.Configurable;
 import Parameter.Model.ParameterEnum;
 import Scene.Controller.AbstractSceneManagerController;
-import Menu.MenuScene;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;
 import Scene.Model.SceneEnum;
@@ -41,7 +40,7 @@ public class LauncherController extends AbstractSceneManagerController {
             case QUIT:
                 return SceneEnum.QUIT;
             default:
-                return SceneEnum.ERROR;
+                throw new RuntimeException("Unable to find : " + actionEnum);
         }
     }
 }
