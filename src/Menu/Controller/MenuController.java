@@ -7,7 +7,7 @@ import Structure.AbstractView;
 
 public class MenuController extends AbstractSceneController {
 
-    public MenuController(AbstractModel model, AbstractView view, Scene scene) {
-        super(model, view, scene);
+    public MenuController(AbstractModel model, AbstractView view) {
+        super(model, view);
     }
 }

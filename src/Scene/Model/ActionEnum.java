@@ -8,6 +8,12 @@ public enum ActionEnum {
     PLAYER_1_WON("PLAYER_1_WON"),
     PLAYER_2_WON("PLAYER_2_WON"),
 
+    TIC_TAC_TOE("TIC_TAC_TOE"),
+    CONNECT_FOUR("CONNECT_FOUR"),
+    RUNNER("RUNNER"),
+    COOKIE_CLICKER("COOKIE_CLICKER"),
+    TRAINING_MENU("TRAINING_MENU"),
+
     /*
      * Menu
      */

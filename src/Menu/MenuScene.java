@@ -10,6 +10,7 @@ public class MenuScene extends Scene {
     public MenuScene() {
         this.model = new MenuModel();
         this.view = new MenuView();
-        this.controller = new MenuController(this.model, this.view, this);
+        this.controller = new MenuController(this.model, this.view);
+        this.controller.addObserver(this);
     }
 }

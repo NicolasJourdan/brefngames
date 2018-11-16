@@ -5,8 +5,9 @@ import Structure.AbstractModel;
 import Structure.AbstractView;
 
 import java.util.Observable;
+import java.util.Observer;
 
-public abstract class Scene extends Observable {
+public abstract class Scene extends Observable implements Observer {
 
     protected AbstractController controller;
 
@@ -14,9 +15,10 @@ public abstract class Scene extends Observable {
 
     protected AbstractView view;
 
-    public void end(ActionEnum actionEnum) {
+    @Override
+    public void update(Observable o, Object arg) {
         this.setChanged();
-        this.notifyObservers(actionEnum);
+        this.notifyObservers((ActionEnum) arg);
     }
 
     public AbstractView getView() {

@@ -14,6 +14,10 @@ public abstract class AbstractSceneManagerController extends AbstractController 
     protected SceneFactoryInterface sceneFactory;
     protected Scene currentScene;
 
+    /**
+     *
+     * The constructor for the root scene manager controller (LauncherController)
+     */
     public AbstractSceneManagerController(AbstractSceneManagerModel model, AbstractSceneManagerView view, SceneFactoryInterface sceneFactory) {
         super(model, view);
         this.sceneFactory = sceneFactory;
@@ -27,6 +31,11 @@ public abstract class AbstractSceneManagerController extends AbstractController 
     protected abstract SceneEnum getNextScene(ActionEnum arg);
 
     protected void switchScene(SceneEnum sceneEnum) {
+        if (SceneEnum.END_SCENE == sceneEnum) {
+            // The scene has to be destroyed
+            return;
+        }
+
         this.currentScene = this.sceneFactory.createScene(sceneEnum);
         this.currentScene.addObserver(this);
         ((AbstractSceneManagerView) this.view).changeCurrentPanel(this.currentScene.getView());
