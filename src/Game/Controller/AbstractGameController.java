@@ -4,7 +4,6 @@ import Game.Model.AbstractGameModel;
 import Game.View.AbstractGameView;
 import Parameter.Model.ParameterEnum;
 import Scene.Controller.AbstractSceneController;
-import Scene.Model.Scene;
 
 import java.util.List;
 
@@ -13,8 +12,8 @@ import java.util.List;
  */
 public abstract class AbstractGameController extends AbstractSceneController {
 
-    public AbstractGameController(AbstractGameModel model, AbstractGameView view, Scene scene) {
-        super(model, view, scene);
+    public AbstractGameController(AbstractGameModel model, AbstractGameView view) {
+        super(model, view);
     }
 
     /**

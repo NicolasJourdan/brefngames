@@ -1,8 +1,9 @@
 package Structure;
 
+import java.util.Observable;
 import java.util.Observer;
 
-public abstract class AbstractController implements Observer {
+public abstract class AbstractController extends Observable implements Observer {
 
     protected AbstractModel model;
 

@@ -10,6 +10,7 @@ public class TrainingMenuScene extends GameScene {
     public TrainingMenuScene() {
         this.model = new TrainingMenuModel();
         this.view = new TrainingMenuView();
-        this.controller = new TrainingMenuController(this.model, this.view, this);
+        this.controller = new TrainingMenuController(this.model, this.view);
+        this.controller.addObserver(this);
     }
 }

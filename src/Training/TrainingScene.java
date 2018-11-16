@@ -12,6 +12,8 @@ public class TrainingScene extends Scene {
     public TrainingScene() {
         this.model = new TrainingModel();
         this.view = new TrainingView();
-        this.controller = new TrainingController((AbstractSceneManagerModel) this.model, (AbstractSceneManagerView) this.view, this);
+        this.controller = new TrainingController((AbstractSceneManagerModel) this.model, (AbstractSceneManagerView) this.view);
+        this.controller.addObserver(this);
+
     }
 }

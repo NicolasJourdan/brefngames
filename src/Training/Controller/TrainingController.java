@@ -5,14 +5,13 @@ import Player.*;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;
-import Scene.Model.Scene;
 import Scene.Model.SceneEnum;
 import Scene.View.AbstractSceneManagerView;
 
 public class TrainingController extends AbstractSceneManagerController {
 
-    public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view, Scene parentScene) {
-        super(model, view, new GameSceneFactory(new Player[]{new LocalPlayer(), new LocalPlayer()}), parentScene);
+    public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
+        super(model, view, new GameSceneFactory(new Player[]{new LocalPlayer(), new LocalPlayer()}));
 
         this.switchScene(SceneEnum.TRAINING_MENU);
     }
@@ -23,12 +22,9 @@ public class TrainingController extends AbstractSceneManagerController {
             case END_TRAINING:
                 // Call the parent (TrainingScene), this parent will call its own parent (LauncherController)
                 // to change the current scene and destroy this scene manager controller
-                if (null != this.parentScene) {
-                    this.parentScene.end(actionEnum);
-                    return SceneEnum.END_SCENE;
-                }
-
-                throw new RuntimeException("ParentScene must not be null in this situation !");
+                this.setChanged();
+                this.notifyObservers(actionEnum);
+                return SceneEnum.END_SCENE;
             case TIC_TAC_TOE:
                 return SceneEnum.TIC_TAC_TOE;
             case RUNNER:
