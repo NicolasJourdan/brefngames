@@ -1,6 +1,7 @@
 package Launcher;
 
 import Menu.MenuScene;
+import Parameter.Scenes.ParametersScene;
 import Scene.Model.Scene;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
@@ -18,6 +19,7 @@ public class LauncherFactory implements SceneFactoryInterface {
             case CONTEST:
             case STATISTICS:
             case PARAMETERS:
+                return new ParametersScene();
             case QUIT:
                 System.exit(0);
             default:
