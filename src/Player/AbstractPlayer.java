@@ -13,12 +13,19 @@ public abstract class AbstractPlayer extends PlayerEntity implements Player {
         this.color = color;
     }
 
-    public Color getColor(){
-        return this.color;
-    }
-
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Color getColor() {
+        return this.color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }
