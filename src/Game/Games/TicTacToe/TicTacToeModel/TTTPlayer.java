@@ -1,10 +1,11 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 
-public class Player {
+
+public class TTTPlayer implements Player.Player {
     String color;
     String name;
 
-    public Player(String name, String color) {
+    public TTTPlayer(String name, String color) {
         this.name = name;
         this.color = color;
     }

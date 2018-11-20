@@ -7,7 +7,7 @@ public class Circle extends Pawn {
         return ("o");
     }
 
-    public Circle(Player player, int x, int y) {
+    public Circle(TTTPlayer player, int x, int y) {
         super(player, x, y);
     }
 }

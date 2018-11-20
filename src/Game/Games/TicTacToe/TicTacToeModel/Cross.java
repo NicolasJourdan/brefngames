@@ -7,7 +7,7 @@ public class Cross extends Pawn {
         return ("x");
     }
 
-    public Cross(Player player, int x, int y) {
+    public Cross(TTTPlayer player, int x, int y) {
         super(player, x, y);
     }
 }
