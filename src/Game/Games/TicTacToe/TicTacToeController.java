@@ -1,19 +1,31 @@
 package Game.Games.TicTacToe;
 
+import Game.Controller.AbstractGameController;
 import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
+import Parameter.Model.ParameterEnum;
 
-public class TicTacToeController {
-    TicTacToeModel model;
-    TicTacToeView view;
-    Player players[] = new Player[2];
+
+import java.util.List;
+import java.util.Observable;
+
+public class TicTacToeController extends AbstractGameController {
+    private TicTacToeModel model;
+    private TicTacToeView view;
+
 
     public TicTacToeController(TicTacToeModel m, TicTacToeView v) {
-        this.model = m;
-        this.view = v;
-        players[0] = new Player("NicoLeBg", "Blue");
-        players[1] = new Player("RayaneLaMenace", "Red");
+        super(m, v);
+    }
 
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
+
+    @Override
+    public List<ParameterEnum> getNeededParams() {
+        return null;
     }
 
 //

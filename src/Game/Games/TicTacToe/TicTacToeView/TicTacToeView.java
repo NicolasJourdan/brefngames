@@ -1,14 +1,16 @@
 package Game.Games.TicTacToe.TicTacToeView;
 
+import Game.View.AbstractGameView;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class TicTacToeView extends JFrame{
-    Board board;
-    int size;
+public class TicTacToeView extends AbstractGameView {
+    private Board board;
+    private int size;
 
     public TicTacToeView() {
-        JFrame frame;
+        JFrame frame = new JFrame();
         Dimension dim;
         dim = new Dimension(1000, 800);
         this.board = new Board();

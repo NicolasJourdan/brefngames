@@ -1,12 +1,22 @@
 package Game.Games.TicTacToe.TicTacToeModel;
+import Game.Model.AbstractGameModel;
+import Statistic.Model.Statistic;
+import Player.Player;
+import java.util.List;
 
-public class TicTacToeModel {
-    Board board;
-    int size;
+public class TicTacToeModel extends AbstractGameModel {
+    private Board board;
+    private int size;
 
-    public TicTacToeModel() {
+    public TicTacToeModel(Player[] listPlayers) {
+        super(listPlayers);
         this.size = 3;
         this.board = new Board(this.size);
+    }
+
+    @Override
+    public List<Statistic> getListStatistics() {
+        return null;
     }
 
     public boolean isWinner(int x, int y) {
