@@ -3,33 +3,29 @@ package Game.Games.TicTacToe.TicTacToeView;
 import javax.swing.*;
 import java.awt.*;
 
-public class Box extends JPanel {
+public class Box extends JButton {
     private final Coord coord;
-    private Pawn pawn;
 
     public Box(Coord coord) {
         this.coord = coord;
+        this.setPreferredSize(new Dimension(150,150));
         this.setLayout(new BorderLayout());
 
-        setOpaque(false);
-        setBackground(Color.WHITE);
+        setOpaque(true);
+        setBackground(Color.LIGHT_GRAY);
         setForeground(Color.BLACK);
 
     }
 
-    public void setPawn(Pawn p){
-        this.pawn = p;
-    }
-
-    public Pawn getPawn(){
-        return this.pawn;
+    public void setPawn(String text){
+        this.setText(text);
     }
 
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
     }
 
     public Coord getCoord() {

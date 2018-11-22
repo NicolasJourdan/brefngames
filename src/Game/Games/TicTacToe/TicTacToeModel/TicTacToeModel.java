@@ -1,16 +1,15 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 import Game.Model.AbstractGameModel;
 import Statistic.Model.Statistic;
-import Game.Games.TicTacToe.TicTacToeModel.TTTPlayer;
 import java.util.List;
 
 public class TicTacToeModel extends AbstractGameModel {
     private Board board;
     private int size;
 
-    public TicTacToeModel(TTTPlayer[] listPlayers) {
+    public TicTacToeModel(TTTPlayer[] listPlayers, int size) {
         super(listPlayers);
-        this.size = 3;
+        this.size = size;
         this.board = new Board(this.size);
     }
 
