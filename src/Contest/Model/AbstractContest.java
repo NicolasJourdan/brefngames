@@ -5,11 +5,12 @@ import Game.GameSceneFactory;
 import Parameter.Parameters.Configurable;
 import Parameter.Model.ParameterEnum;
 import Player.Player;
+import Scene.Model.AbstractSceneManagerModel;
 import Structure.AbstractModel;
 
 import java.util.*;
 
-public abstract class AbstractContest extends AbstractModel {
+public abstract class AbstractContest extends AbstractSceneManagerModel {
     /**
      * List of games
      */
@@ -30,4 +31,8 @@ public abstract class AbstractContest extends AbstractModel {
     private GameSceneFactory gameSceneFactory;
 
     private Map<ParameterEnum, Configurable> contestParameters;
+
+    public Player[] getPlayerList() {
+        return playerList;
+    }
 }
