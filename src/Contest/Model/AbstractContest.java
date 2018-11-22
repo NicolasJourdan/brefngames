@@ -2,7 +2,7 @@ package Contest.Model;
 
 import Game.GameScene;
 import Game.GameSceneFactory;
-import Parameter.Model.Configurable;
+import Parameter.Parameters.Configurable;
 import Parameter.Model.ParameterEnum;
 import Player.Player;
 import Structure.AbstractModel;

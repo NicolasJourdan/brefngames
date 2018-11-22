@@ -1,7 +1,8 @@
 package Launcher.Controller;
 
 import Launcher.LauncherFactory;
-import Parameter.Model.Configurable;
+import Parameter.Model.Parameters;
+import Parameter.Parameters.Configurable;
 import Parameter.Model.ParameterEnum;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
@@ -16,7 +17,7 @@ import java.util.*;
  */
 public class LauncherController extends AbstractSceneManagerController {
 
-    private Map<ParameterEnum, Configurable> configurations;
+    private static Map<ParameterEnum, Configurable> configurations = Parameters.getConfiguration();;
 
     public LauncherController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
         super(model, view, new LauncherFactory());
@@ -43,5 +44,9 @@ public class LauncherController extends AbstractSceneManagerController {
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
         }
+    }
+
+    public static Map<ParameterEnum, Configurable> getConfiguration() {
+        return configurations;
     }
 }

@@ -1,4 +1,4 @@
-package Parameter.Model;
+package Parameter.Parameters;
 
 import Structure.AbstractModel;
 
