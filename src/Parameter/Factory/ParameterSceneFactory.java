@@ -1,4 +1,4 @@
-package Parameter;
+package Parameter.Factory;
 
 import Parameter.Scenes.ParametersDefaultPlayerScene;
 import Parameter.Scenes.ParametersMenuScene;

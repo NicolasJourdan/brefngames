@@ -1,6 +1,6 @@
 package Parameter.Controller;
 
-import Parameter.ParameterSceneFactory;
+import Parameter.Factory.ParameterSceneFactory;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;

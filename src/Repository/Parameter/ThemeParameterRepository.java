@@ -1,5 +1,6 @@
 package Repository.Parameter;
 
+import Parameter.Factory.ColorFactory;
 import Parameter.Model.ThemeEnum;
 import Parameter.Parameters.ColorParameter;
 import Repository.ModifyFiles;
@@ -15,7 +16,7 @@ public class ThemeParameterRepository extends AbstractParameterRepository {
 
     public static ColorParameter getColor(ThemeEnum themeColor) {
         String color = getThemeColor(themeColor);
-        return new ColorParameter(ColorParameter.getColorFromString(color), color);
+        return new ColorParameter(ColorFactory.getColor(color), color);
     }
 
     private static JSONObject getTheme() {

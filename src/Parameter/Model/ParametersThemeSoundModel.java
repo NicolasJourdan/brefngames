@@ -1,6 +1,7 @@
 package Parameter.Model;
 
 import Launcher.Controller.LauncherController;
+import Parameter.Factory.ColorFactory;
 import Parameter.Parameters.ColorParameter;
 import Parameter.Parameters.Configurable;
 import Structure.AbstractModel;
@@ -23,13 +24,13 @@ public class ParametersThemeSoundModel extends AbstractModel {
 
     // Set first color in the configuration
     public void setFirstColor(String color) {
-        ColorParameter colorParameter = new ColorParameter(ColorParameter.getColorFromString(color), color);
+        ColorParameter colorParameter = new ColorParameter(ColorFactory.getColor(color), color);
         this.configurations.replace(ParameterEnum.THEME_FIRST_COLOR, colorParameter);
     }
 
     // Set first color in the configuration
     public void setSecondColor(String color) {
-        ColorParameter colorParameter = new ColorParameter(ColorParameter.getColorFromString(color), color);
+        ColorParameter colorParameter = new ColorParameter(ColorFactory.getColor(color), color);
         this.configurations.replace(ParameterEnum.THEME_SECOND_COLOR, colorParameter);
     }
 

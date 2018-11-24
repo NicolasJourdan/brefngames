@@ -1,5 +1,7 @@
 package Repository.Parameter;
 
+import Parameter.Factory.ColorFactory;
+import Parameter.Factory.IconFactory;
 import Parameter.Parameters.ColorParameter;
 import Parameter.Model.DefaultPlayerParameterEnum;
 import Parameter.Parameters.IconParameter;
@@ -17,13 +19,13 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
     public static ColorParameter getColorFromPlayer(DefaultPlayerParameterEnum playerEnum) {
         JSONObject player = getPlayer(playerEnum);
         String color = (String) player.get(DEFAULT_COLOR_FIELD);
-        return new ColorParameter(ColorParameter.getColorFromString(color), color);
+        return new ColorParameter(ColorFactory.getColor(color), color);
     }
 
     public static IconParameter getIconFromPlayer(DefaultPlayerParameterEnum playerEnum) {
         JSONObject player = getPlayer(playerEnum);
         String iconName = (String) player.get(DEFAULT_ICON_FIELD);
-        return new IconParameter(IconParameter.getImageFromString(iconName), iconName);
+        return new IconParameter(IconFactory.getIcon(iconName), iconName);
     }
 
     public static void save(DefaultPlayerParameterEnum player, String field, String value) {
