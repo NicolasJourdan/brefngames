@@ -220,6 +220,5 @@ public class ParametersThemeSoundView extends AbstractView {
         this.add(this.soundOn);
 
         this.add(this.backButton);
-
     }
 }

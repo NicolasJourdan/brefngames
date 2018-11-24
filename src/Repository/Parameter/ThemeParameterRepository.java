@@ -4,17 +4,14 @@ import Parameter.Model.ThemeEnum;
 import Parameter.Parameters.ColorParameter;
 import Repository.ModifyFiles;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class ThemeParameterRepository extends AbstractParameterRepository {
 
     public static final String DEFAULT_SECOND_COLOR_FIELD = "secondColor";
     public static final String DEFAULT_FIRST_COLOR_FIELD = "firstColor";
+    public static final String DEFAULT_FIRST_THEME_COLOR_FIELD = "firstColor";
+    public static final String DEFAULT_SECOND_THEME_COLOR_FIELD = "secondColor";
+    public static final String DEFAULT_NODE = "theme";
 
     public static ColorParameter getColor(ThemeEnum themeColor) {
         String color = getThemeColor(themeColor);
@@ -22,7 +19,7 @@ public class ThemeParameterRepository extends AbstractParameterRepository {
     }
 
     private static JSONObject getTheme() {
-        return (JSONObject) getParametersFile().get("theme");
+        return (JSONObject) getParametersFile().get(DEFAULT_NODE);
     }
 
     private static String getThemeColor(ThemeEnum themeEnum) {
@@ -33,9 +30,9 @@ public class ThemeParameterRepository extends AbstractParameterRepository {
 
         switch (themeEnum) {
             case FIRST_COLOR:
-                return (String) theme.get("firstColor");
+                return (String) theme.get(DEFAULT_FIRST_THEME_COLOR_FIELD);
             case SECOND_COLOR:
-                return (String) theme.get("secondColor");
+                return (String) theme.get(DEFAULT_SECOND_THEME_COLOR_FIELD);
             default:
                 throw new RuntimeException("The theme enum : " + themeEnum + " is not acceptable here");
         }
@@ -53,7 +50,7 @@ public class ThemeParameterRepository extends AbstractParameterRepository {
         themeJSON.put(field, value);
 
         JSONObject parametersFilesJSON = getParametersFile();
-        parametersFilesJSON.put("theme", themeJSON);
+        parametersFilesJSON.put(DEFAULT_NODE, themeJSON);
 
         ModifyFiles.write(PARAMETERS_JSON_FILE, parametersFilesJSON);
     }

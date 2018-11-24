@@ -10,6 +10,9 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
 
     public static final String DEFAULT_COLOR_FIELD = "color";
     public static final String DEFAULT_ICON_FIELD = "icon";
+    public static final String DEFAULT_NODE = "defaultPlayers";
+    public static final String DEFAULT_FIRST_FIELD = "player1";
+    public static final String DEFAULT_SECOND_FIELD = "player2";
 
     public static ColorParameter getColorFromPlayer(DefaultPlayerParameterEnum playerEnum) {
         JSONObject player = getPlayer(playerEnum);
@@ -37,21 +40,21 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
         JSONObject defaultPlayersJSON = getDefaultPlayers();
         switch (player) {
             case PLAYER_1:
-                defaultPlayersJSON.put("player1", playerJSON);
+                defaultPlayersJSON.put(DEFAULT_FIRST_FIELD, playerJSON);
                 break;
             case PLAYER_2:
-                defaultPlayersJSON.put("player2", playerJSON);
+                defaultPlayersJSON.put(DEFAULT_SECOND_FIELD, playerJSON);
                 break;
         }
 
         JSONObject parametersFilesJSON = getParametersFile();
-        parametersFilesJSON.put("defaultPlayers", defaultPlayersJSON);
+        parametersFilesJSON.put(DEFAULT_NODE, defaultPlayersJSON);
 
         ModifyFiles.write(PARAMETERS_JSON_FILE, parametersFilesJSON);
     }
 
     private static JSONObject getDefaultPlayers() {
-        return (JSONObject) getParametersFile().get("defaultPlayers");
+        return (JSONObject) getParametersFile().get(DEFAULT_NODE);
     }
 
     private static JSONObject getPlayer(DefaultPlayerParameterEnum defaultPlayerParameterEnum) {
@@ -62,9 +65,9 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
 
         switch (defaultPlayerParameterEnum) {
             case PLAYER_1:
-                return (JSONObject) defaultPlayers.get("player1");
+                return (JSONObject) defaultPlayers.get(DEFAULT_FIRST_FIELD);
             case PLAYER_2:
-                return (JSONObject) defaultPlayers.get("player2");
+                return (JSONObject) defaultPlayers.get(DEFAULT_SECOND_FIELD);
             default:
                 throw new RuntimeException("The theme enum : " + defaultPlayerParameterEnum + " is not acceptable here");
         }

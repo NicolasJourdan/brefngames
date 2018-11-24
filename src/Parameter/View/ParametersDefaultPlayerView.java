@@ -36,7 +36,6 @@ public class ParametersDefaultPlayerView extends AbstractView {
     private JRadioButton secondColorPlayerGreen;
     private JRadioButton secondColorPlayerYellow;
 
-
     public ParametersDefaultPlayerView() {
         super();
         this.setLayout(new GridLayout(5, 4));
@@ -91,7 +90,6 @@ public class ParametersDefaultPlayerView extends AbstractView {
         secondColorGroup.add(this.secondColorPlayerYellow);
 
         this.initButtonsActionListeners();
-
 
         this.add(this.firstIconSuperman);
         this.add(this.firstIconBatman);

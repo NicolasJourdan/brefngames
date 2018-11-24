@@ -6,8 +6,10 @@ import org.json.simple.JSONObject;
 
 public class SoundParameterRepository extends AbstractParameterRepository {
 
+    public static final String DEFAULT_NODE = "sound";
+
     public static SoundParameter getSound() {
-        return new SoundParameter((boolean) getParametersFile().get("sound"));
+        return new SoundParameter((boolean) getParametersFile().get(DEFAULT_NODE));
     }
 
     public static void save(boolean value) {
@@ -15,7 +17,7 @@ public class SoundParameterRepository extends AbstractParameterRepository {
         ModifyFiles.saveJSONFile(PARAMETERS_JSON_FILE);
 
         JSONObject parametersFilesJSON = getParametersFile();
-        parametersFilesJSON.put("sound", value);
+        parametersFilesJSON.put(DEFAULT_NODE, value);
 
         ModifyFiles.write(PARAMETERS_JSON_FILE, parametersFilesJSON);
     }
