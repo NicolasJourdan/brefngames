@@ -19,7 +19,7 @@ public class ParametersController extends AbstractSceneManagerController {
     protected SceneEnum getNextScene(ActionEnum actionEnum) {
         switch (actionEnum) {
             case END_PARAMETERS:
-                // Call the parent (TrainingScene), this parent will call its own parent (LauncherController)
+                // Call the parent (ParametersScene), this parent will call its own parent (LauncherController)
                 // to change the current scene and destroy this scene manager controller
                 this.setChanged();
                 this.notifyObservers(actionEnum);

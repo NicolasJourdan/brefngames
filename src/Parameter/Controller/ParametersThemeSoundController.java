@@ -18,7 +18,15 @@ public class ParametersThemeSoundController extends AbstractSceneController {
 
     public ParametersThemeSoundController(AbstractModel model, AbstractView view) {
         super(model, view);
-        this.initView();
+        Map<ParameterEnum, Configurable> conf = ((ParametersThemeSoundModel) this.model).getConfigurations();
+        boolean isOn = (boolean) conf.get(ParameterEnum.SOUND).getValue();
+        ((ParametersThemeSoundView) this.view).initSoundButtons(isOn ? ActionEnum.SOUND_ON : ActionEnum.SOUND_OFF);
+
+        String firstColor = ((ColorParameter) conf.get(ParameterEnum.THEME_FIRST_COLOR)).getStringColor();
+        ((ParametersThemeSoundView) this.view).initFirstColorButtons(ActionEnum.valueOf(firstColor));
+
+        String secondColor = ((ColorParameter) conf.get(ParameterEnum.THEME_SECOND_COLOR)).getStringColor();
+        ((ParametersThemeSoundView) this.view).initSecondColorButtons(ActionEnum.valueOf(secondColor));
     }
 
     @Override
@@ -68,32 +76,4 @@ public class ParametersThemeSoundController extends AbstractSceneController {
                 throw new RuntimeException("The action : " + arg + " is not acceptable here");
         }
     }
-
-    private void initView() {
-        Map<ParameterEnum, Configurable> conf = ((ParametersThemeSoundModel) this.model).getConfigurations();
-        this.initSoundView(conf);
-        this.initFirstColorView(conf);
-        this.initSecondColorView(conf);
-    }
-
-    private void initSoundView(Map<ParameterEnum, Configurable> conf) {
-        boolean isOn = (boolean) conf.get(ParameterEnum.SOUND).getValue();
-
-        if (isOn) {
-            ((ParametersThemeSoundView) this.view).initSoundButtons(ActionEnum.SOUND_ON);
-        } else {
-            ((ParametersThemeSoundView) this.view).initSoundButtons(ActionEnum.SOUND_OFF);
-        }
-    }
-
-    private void initFirstColorView(Map<ParameterEnum, Configurable> conf) {
-        String firstColor = ((ColorParameter) conf.get(ParameterEnum.THEME_FIRST_COLOR)).getStringColor();
-        ((ParametersThemeSoundView) this.view).initFirstColorButtons(ActionEnum.valueOf(firstColor));
-    }
-
-    private void initSecondColorView(Map<ParameterEnum, Configurable> conf) {
-        String secondColor = ((ColorParameter) conf.get(ParameterEnum.THEME_SECOND_COLOR)).getStringColor();
-        ((ParametersThemeSoundView) this.view).initSecondColorButtons(ActionEnum.valueOf(secondColor));
-    }
-
 }

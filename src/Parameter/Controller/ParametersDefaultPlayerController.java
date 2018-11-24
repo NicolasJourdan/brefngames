@@ -19,35 +19,19 @@ public class ParametersDefaultPlayerController extends AbstractSceneController {
 
     public ParametersDefaultPlayerController(AbstractModel model, AbstractView view) {
         super(model, view);
-        this.initView();
-    }
-
-    private void initView() {
         Map<ParameterEnum, Configurable> conf = ((ParametersDefaultPlayerModel) this.model).getConfigurations();
-        this.initColorFirstPlayerView(conf);
-        this.initColorSecondPlayerView(conf);
-        this.initIconFirstPlayerView(conf);
-        this.initIconSecondPlayerView(conf);
-    }
 
-    private void initColorFirstPlayerView(Map<ParameterEnum, Configurable> conf) {
-        String color = ((ColorParameter) conf.get(ParameterEnum.PLAYER_1_COLOR)).getStringColor();
-        ((ParametersDefaultPlayerView) this.view).initColorFirstPlayer(ActionEnum.valueOf(color));
-    }
+        String colorFirstPlayer = ((ColorParameter) conf.get(ParameterEnum.PLAYER_1_COLOR)).getStringColor();
+        ((ParametersDefaultPlayerView) this.view).initColorFirstPlayer(ActionEnum.valueOf(colorFirstPlayer));
 
-    private void initColorSecondPlayerView(Map<ParameterEnum, Configurable> conf) {
-        String color = ((ColorParameter) conf.get(ParameterEnum.PLAYER_2_COLOR)).getStringColor();
-        ((ParametersDefaultPlayerView) this.view).initColorSecondPlayer(ActionEnum.valueOf(color));
-    }
+        String colorSecondPlayer = ((ColorParameter) conf.get(ParameterEnum.PLAYER_2_COLOR)).getStringColor();
+        ((ParametersDefaultPlayerView) this.view).initColorSecondPlayer(ActionEnum.valueOf(colorSecondPlayer));
 
-    private void initIconFirstPlayerView(Map<ParameterEnum, Configurable> conf) {
-        String iconName = ((IconParameter) conf.get(ParameterEnum.PLAYER_1_ICON)).getName();
-        ((ParametersDefaultPlayerView) this.view).initIconFirstPlayer(ActionEnum.valueOf(iconName));
-    }
+        String iconNameFirstPlayer = ((IconParameter) conf.get(ParameterEnum.PLAYER_1_ICON)).getName();
+        ((ParametersDefaultPlayerView) this.view).initIconFirstPlayer(ActionEnum.valueOf(iconNameFirstPlayer));
 
-    private void initIconSecondPlayerView(Map<ParameterEnum, Configurable> conf) {
-        String iconName = ((IconParameter) conf.get(ParameterEnum.PLAYER_2_ICON)).getName();
-        ((ParametersDefaultPlayerView) this.view).initIconSecondPlayer(ActionEnum.valueOf(iconName));
+        String iconNameSecondPlayer = ((IconParameter) conf.get(ParameterEnum.PLAYER_2_ICON)).getName();
+        ((ParametersDefaultPlayerView) this.view).initIconSecondPlayer(ActionEnum.valueOf(iconNameSecondPlayer));
     }
 
     @Override

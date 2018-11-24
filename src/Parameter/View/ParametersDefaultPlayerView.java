@@ -39,10 +39,7 @@ public class ParametersDefaultPlayerView extends AbstractView {
     public ParametersDefaultPlayerView() {
         super();
         this.setLayout(new GridLayout(5, 4));
-        this.initButtons();
-    }
 
-    private void initButtons() {
         this.backButton = new JButton("Back");
 
         this.firstIconSuperman = new JRadioButton("Superman_1");

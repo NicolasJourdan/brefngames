@@ -31,8 +31,54 @@ public class ParametersThemeSoundView extends AbstractView {
     public ParametersThemeSoundView() {
         super();
         this.setLayout(new GridLayout(3, 4));
-        this.initButtons();
 
+        this.backButton = new JButton("Back");
+
+        this.soundOff = new JRadioButton("Off");
+        this.soundOn = new JRadioButton("On");
+
+        this.firstColorRed = new JRadioButton("Red");
+        this.firstColorBlue = new JRadioButton("Blue");
+        this.firstColorGreen = new JRadioButton("Green");
+        this.firstColorYellow = new JRadioButton("Yellow");
+
+        this.secondColorWhite = new JRadioButton("White");
+        this.secondColorLightGray = new JRadioButton("Light Gray");
+        this.secondColorDarkGray = new JRadioButton("Dark Gray");
+        this.secondColorBlack = new JRadioButton("Black");
+
+        ButtonGroup soundGroup = new ButtonGroup();
+        soundGroup.add(this.soundOff);
+        soundGroup.add(this.soundOn);
+
+        ButtonGroup firstColorGroup = new ButtonGroup();
+        firstColorGroup.add(this.firstColorRed);
+        firstColorGroup.add(this.firstColorBlue);
+        firstColorGroup.add(this.firstColorGreen);
+        firstColorGroup.add(this.firstColorYellow);
+
+        ButtonGroup secondColorGroup = new ButtonGroup();
+        secondColorGroup.add(this.secondColorWhite);
+        secondColorGroup.add(this.secondColorLightGray);
+        secondColorGroup.add(this.secondColorDarkGray);
+        secondColorGroup.add(this.secondColorBlack);
+
+        this.initButtonsActionListeners();
+
+        this.add(this.firstColorRed);
+        this.add(this.firstColorBlue);
+        this.add(this.firstColorGreen);
+        this.add(this.firstColorYellow);
+
+        this.add(this.secondColorWhite);
+        this.add(this.secondColorLightGray);
+        this.add(this.secondColorDarkGray);
+        this.add(this.secondColorBlack);
+
+        this.add(this.soundOff);
+        this.add(this.soundOn);
+
+        this.add(this.backButton);
     }
 
     private void initButtonsActionListeners() {
@@ -170,55 +216,5 @@ public class ParametersThemeSoundView extends AbstractView {
             default:
                 throw new RuntimeException("The action : " + actionEnum + "is not acceptable here");
         }
-    }
-
-    public void initButtons() {
-        this.backButton = new JButton("Back");
-
-        this.soundOff = new JRadioButton("Off");
-        this.soundOn = new JRadioButton("On");
-
-        this.firstColorRed = new JRadioButton("Red");
-        this.firstColorBlue = new JRadioButton("Blue");
-        this.firstColorGreen = new JRadioButton("Green");
-        this.firstColorYellow = new JRadioButton("Yellow");
-
-        this.secondColorWhite = new JRadioButton("White");
-        this.secondColorLightGray = new JRadioButton("Light Gray");
-        this.secondColorDarkGray = new JRadioButton("Dark Gray");
-        this.secondColorBlack = new JRadioButton("Black");
-
-        ButtonGroup soundGroup = new ButtonGroup();
-        soundGroup.add(this.soundOff);
-        soundGroup.add(this.soundOn);
-
-        ButtonGroup firstColorGroup = new ButtonGroup();
-        firstColorGroup.add(this.firstColorRed);
-        firstColorGroup.add(this.firstColorBlue);
-        firstColorGroup.add(this.firstColorGreen);
-        firstColorGroup.add(this.firstColorYellow);
-
-        ButtonGroup secondColorGroup = new ButtonGroup();
-        secondColorGroup.add(this.secondColorWhite);
-        secondColorGroup.add(this.secondColorLightGray);
-        secondColorGroup.add(this.secondColorDarkGray);
-        secondColorGroup.add(this.secondColorBlack);
-
-        this.initButtonsActionListeners();
-
-        this.add(this.firstColorRed);
-        this.add(this.firstColorBlue);
-        this.add(this.firstColorGreen);
-        this.add(this.firstColorYellow);
-
-        this.add(this.secondColorWhite);
-        this.add(this.secondColorLightGray);
-        this.add(this.secondColorDarkGray);
-        this.add(this.secondColorBlack);
-
-        this.add(this.soundOff);
-        this.add(this.soundOn);
-
-        this.add(this.backButton);
     }
 }
