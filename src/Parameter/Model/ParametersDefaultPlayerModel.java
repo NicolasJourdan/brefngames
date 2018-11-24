@@ -17,24 +17,14 @@ public class ParametersDefaultPlayerModel extends AbstractModel {
         this.configurations = LauncherController.getConfiguration();
     }
 
-    public void setColorFirstPlayer(String color) {
+    public void setPlayerColor(ParameterEnum player, String color) {
         ColorParameter colorParameter = new ColorParameter(ColorParameter.getColorFromString(color), color);
-        this.configurations.replace(ParameterEnum.PLAYER_1_COLOR, colorParameter);
+        this.configurations.replace(player, colorParameter);
     }
 
-    public void setColorSecondPlayer(String color) {
-        ColorParameter colorParameter = new ColorParameter(ColorParameter.getColorFromString(color), color);
-        this.configurations.replace(ParameterEnum.PLAYER_2_COLOR, colorParameter);
-    }
-
-    public void setIconFirstPlayer(String iconName) {
+    public void setPlayerIcon(ParameterEnum player, String iconName) {
         IconParameter iconParameter = new IconParameter(IconParameter.getImageFromString(iconName), iconName);
-        this.configurations.replace(ParameterEnum.PLAYER_1_ICON, iconParameter);
-    }
-
-    public void setIconSecondPlayer(String iconName) {
-        IconParameter iconParameter = new IconParameter(IconParameter.getImageFromString(iconName), iconName);
-        this.configurations.replace(ParameterEnum.PLAYER_2_ICON, iconParameter);
+        this.configurations.replace(player, iconParameter);
     }
 
     public Map<ParameterEnum, Configurable> getConfigurations() {

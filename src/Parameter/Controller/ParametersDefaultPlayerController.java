@@ -39,58 +39,58 @@ public class ParametersDefaultPlayerController extends AbstractSceneController {
         switch ((ActionEnum) arg) {
             // Color first player
             case COLOR_FIRST_PLAYER_RED:
-                ((ParametersDefaultPlayerModel) this.model).setColorFirstPlayer(ActionEnum.COLOR_FIRST_PLAYER_RED.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_1_COLOR, ActionEnum.COLOR_FIRST_PLAYER_RED.toString());
                 break;
             case COLOR_FIRST_PLAYER_BLUE:
-                ((ParametersDefaultPlayerModel) this.model).setColorFirstPlayer(ActionEnum.COLOR_FIRST_PLAYER_BLUE.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_1_COLOR, ActionEnum.COLOR_FIRST_PLAYER_BLUE.toString());
                 break;
             case COLOR_FIRST_PLAYER_GREEN:
-                ((ParametersDefaultPlayerModel) this.model).setColorFirstPlayer(ActionEnum.COLOR_FIRST_PLAYER_GREEN.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_1_COLOR, ActionEnum.COLOR_FIRST_PLAYER_GREEN.toString());
                 break;
             case COLOR_FIRST_PLAYER_YELLOW:
-                ((ParametersDefaultPlayerModel) this.model).setColorFirstPlayer(ActionEnum.COLOR_FIRST_PLAYER_YELLOW.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_1_COLOR, ActionEnum.COLOR_FIRST_PLAYER_YELLOW.toString());
                 break;
 
             // Color second player
             case COLOR_SECOND_PLAYER_RED:
-                ((ParametersDefaultPlayerModel) this.model).setColorSecondPlayer(ActionEnum.COLOR_SECOND_PLAYER_RED.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_2_COLOR, ActionEnum.COLOR_SECOND_PLAYER_RED.toString());
                 break;
             case COLOR_SECOND_PLAYER_BLUE:
-                ((ParametersDefaultPlayerModel) this.model).setColorSecondPlayer(ActionEnum.COLOR_SECOND_PLAYER_BLUE.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_2_COLOR, ActionEnum.COLOR_SECOND_PLAYER_BLUE.toString());
                 break;
             case COLOR_SECOND_PLAYER_GREEN:
-                ((ParametersDefaultPlayerModel) this.model).setColorSecondPlayer(ActionEnum.COLOR_SECOND_PLAYER_GREEN.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_2_COLOR, ActionEnum.COLOR_SECOND_PLAYER_GREEN.toString());
                 break;
             case COLOR_SECOND_PLAYER_YELLOW:
-                ((ParametersDefaultPlayerModel) this.model).setColorSecondPlayer(ActionEnum.COLOR_SECOND_PLAYER_YELLOW.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerColor(ParameterEnum.PLAYER_2_COLOR, ActionEnum.COLOR_SECOND_PLAYER_YELLOW.toString());
                 break;
 
             // Icon first player
             case SUPERMAN_1:
-                ((ParametersDefaultPlayerModel) this.model).setIconFirstPlayer(ActionEnum.SUPERMAN_1.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_1_ICON, ActionEnum.SUPERMAN_1.toString());
                 break;
             case BATMAN_1:
-                ((ParametersDefaultPlayerModel) this.model).setIconFirstPlayer(ActionEnum.BATMAN_1.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_1_ICON, ActionEnum.BATMAN_1.toString());
                 break;
             case FLASH_1:
-                ((ParametersDefaultPlayerModel) this.model).setIconFirstPlayer(ActionEnum.FLASH_1.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_1_ICON, ActionEnum.FLASH_1.toString());
                 break;
             case AQUAMAN_1:
-                ((ParametersDefaultPlayerModel) this.model).setIconFirstPlayer(ActionEnum.AQUAMAN_1.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_1_ICON, ActionEnum.AQUAMAN_1.toString());
                 break;
 
             // Icon first player
             case SUPERMAN_2:
-                ((ParametersDefaultPlayerModel) this.model).setIconSecondPlayer(ActionEnum.SUPERMAN_2.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_2_ICON, ActionEnum.SUPERMAN_2.toString());
                 break;
             case BATMAN_2:
-                ((ParametersDefaultPlayerModel) this.model).setIconSecondPlayer(ActionEnum.BATMAN_2.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_2_ICON, ActionEnum.BATMAN_2.toString());
                 break;
             case FLASH_2:
-                ((ParametersDefaultPlayerModel) this.model).setIconSecondPlayer(ActionEnum.FLASH_2.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_2_ICON, ActionEnum.FLASH_2.toString());
                 break;
             case AQUAMAN_2:
-                ((ParametersDefaultPlayerModel) this.model).setIconSecondPlayer(ActionEnum.AQUAMAN_2.toString());
+                ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_2_ICON, ActionEnum.AQUAMAN_2.toString());
                 break;
             case PARAMETERS_MENU:
                 Parameters.save(((ParametersDefaultPlayerModel) this.model).getConfigurations());
