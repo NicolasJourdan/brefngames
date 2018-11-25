@@ -12,6 +12,13 @@ public enum SceneEnum {
     TRAINING_MENU("TRAINING_MENU"),
 
     /*
+     * Parameters
+     */
+    PARAMETERS_MENU("PARAMETERS_MENU"),
+    THEME_SOUND_PARAMETERS("THEME_SOUND_PARAMETERS"),
+    PLAYER_PARAMETERS("PLAYER_PARAMETERS"),
+
+    /*
      * Screens
      */
     MENU("MENU"),
