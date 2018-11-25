@@ -15,5 +15,9 @@ public class Launcher {
 
         LauncherWindow window = new LauncherWindow();
         window.add(launcherView);
+
+        // manually repaint the window because we just added a panel
+        launcherView.revalidate();
+        launcherView.repaint();
     }
 }
