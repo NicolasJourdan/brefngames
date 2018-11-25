@@ -3,6 +3,7 @@ package Game;
 import Game.Games.TicTacToe.TicTacToeScene;
 import Map.MapScene;
 import Map.Model.History;
+import ContestSettings.ContestSettingsScene;
 import Player.Player;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
@@ -36,6 +37,8 @@ public class GameSceneFactory implements SceneFactoryInterface {
                 // return new CookieClickerScene(this.listPlayers);
             case TRAINING_MENU:
                 return new TrainingMenuScene();
+            case CONTEST_MENU:
+                return new ContestSettingsScene();
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }
