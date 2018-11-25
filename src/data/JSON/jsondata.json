@@ -42,5 +42,31 @@
             "name": "TIC_TAC_TOE_BEST_PLAYER",
             "value": "Nico"
         }
+    ],
+    "runner": [
+        {
+            "name": "RUNNER_NB_GAMES",
+            "value": "1"
+        },
+        {
+            "name": "RUNNER_NB_CLICS",
+            "value": "2"
+        },
+        {
+            "name": "RUNNER_AVERAGE_TIME",
+            "value": "3"
+        },
+        {
+            "name": "RUNNER_AVERAGE_SPEED",
+            "value": "4"
+        },
+        {
+            "name": "RUNNER_TOTAL_TIME",
+            "value": "5"
+        },
+        {
+            "name": "RUNNER_BEST_PLAYER",
+            "value": "Floflax"
+        }
     ]
 }
