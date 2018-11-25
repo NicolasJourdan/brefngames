@@ -1,0 +1,46 @@
+{
+    "players": [
+        {
+            "color": "BLUE",
+            "name": "j2"
+        }
+    ],
+    "ticTacToe": [
+        {
+            "name": "TIC_TAC_TOE_NB_GAMES",
+            "value": "12"
+        },
+        {
+            "name": "TIC_TAC_TOE_NB_DRAW",
+            "value": "6"
+        },
+        {
+            "name": "TIC_TAC_TOE_NB_PERFECT",
+            "value": "12"
+        },
+        {
+            "name": "TIC_TAC_TOE_NB_CROSS",
+            "value": "2"
+        },
+        {
+            "name": "TIC_TAC_TOE_NB_CIRCLE",
+            "value": "9"
+        },
+        {
+            "name": "TIC_TAC_TOE_NB_ALL_SIGNS",
+            "value": "11"
+        },
+        {
+            "name": "TIC_TAC_TOE_AVERAGE_TIME",
+            "value": "12:11"
+        },
+        {
+            "name": "TIC_TAC_TOE_TOTAL_TIME",
+            "value": "12:11"
+        },
+        {
+            "name": "TIC_TAC_TOE_BEST_PLAYER",
+            "value": "Nico"
+        }
+    ]
+}
