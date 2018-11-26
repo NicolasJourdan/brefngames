@@ -114,5 +114,35 @@
             "name": "CONNECT_FOUR_TOTAL_TIME",
             "value": "00:00:00"
         }
+    ],
+    "cookieClicker": [
+        {
+            "name": "COOKIE_CLICKER_NB_GAMES",
+            "value": "0"
+        },
+        {
+            "name": "COOKIE_CLICKER_NB_CLICS",
+            "value": "0"
+        },
+        {
+            "name": "COOKIE_CLICKER_BEST_PLAYER",
+            "value": "EliasZER"
+        },
+        {
+            "name": "COOKIE_CLICKER_NB_PERFECT",
+            "value": "0"
+        },
+        {
+            "name": "COOKIE_CLICKER_NB_REQUIRED_CLIC",
+            "value": "0"
+        },
+        {
+            "name": "COOKIE_CLICKER_NB_FAULT",
+            "value": "0"
+        },
+        {
+            "name": "COOKIE_CLICKER_TOTAL_TIME",
+            "value": "00:00:00"
+        }
     ]
 }
