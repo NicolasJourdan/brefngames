@@ -1,8 +1,10 @@
 package Game.Games.TicTacToe.TicTacToeModel;
+
 import Game.Games.TicTacToe.TicTacToeView.Coord;
 import Game.Model.AbstractGameModel;
 import Player.Player;
 import Statistic.Model.Statistic;
+
 import java.util.List;
 
 public class TicTacToeModel extends AbstractGameModel {
@@ -31,12 +33,10 @@ public class TicTacToeModel extends AbstractGameModel {
     }
 
     public boolean isWinner() {
-        boolean status = false;
         int val, sumDiagonalLR, sumDiagonalRL, sumRows, sumColumns, toWin;
-        if (this.currentPlayer == listPlayers[0]){
+        if (this.currentPlayer == listPlayers[0]) {
             toWin = -this.size;
-        }
-        else {
+        } else {
             toWin = this.size;
         }
         sumColumns = 0;
@@ -51,59 +51,58 @@ public class TicTacToeModel extends AbstractGameModel {
                 sumRows += val;
 
             }
-            if(sumColumns == toWin || sumRows == toWin){
-                break;
+            if (sumColumns == toWin || sumRows == toWin) {
+                return true;
             }
         }
         sumDiagonalLR = 0;
         sumDiagonalRL = 0;
         for (int i = 0; i < this.size; i++) {
-            val = getVal(i,i);
+            val = getVal(i, i);
             sumDiagonalLR += val;
         }
         for (int i = 0; i < this.size; i++) {
-            val = getVal(i,this.size - 1 - i);
+            val = getVal(i, this.size - 1 - i);
             sumDiagonalRL += val;
         }
-        if (sumColumns == toWin || sumRows == toWin || sumDiagonalLR == toWin || sumDiagonalRL == toWin){
-            status = true;
+        if (sumColumns == toWin || sumRows == toWin || sumDiagonalLR == toWin || sumDiagonalRL == toWin) {
+            return true;
         }
-        return status;
+        return false;
     }
 
-    private int getVal(int i, int j){
+    private int getVal(int i, int j) {
         int val;
-        if(board.grid.get(i).get(j) instanceof Cross){
+        if (board.grid.get(i).get(j) instanceof Cross) {
             val = 1;
-        }
-        else if (board.grid.get(i).get(j) instanceof Circle){
+        } else if (board.grid.get(i).get(j) instanceof Circle) {
             val = -1;
-        }
-        else{
+        } else {
             val = 0;
         }
         return val;
     }
 
-    public String setPawnModel(Coord coord){
+    public String setPawnModel(Coord coord) {
         Pawn pawn;
-        if(this.currentPlayer.equals(this.listPlayers[0])){
+        if (this.currentPlayer.equals(this.listPlayers[0])) {
             pawn = new Circle(this.currentPlayer, coord);
-        }
-        else{
+        } else {
             pawn = new Cross(this.currentPlayer, coord);
         }
-        String status = board.setPawn(pawn);
-        return status;
+        return board.setPawn(pawn);
     }
 
-    public Player changePlayer(){
-        if(this.currentPlayer.equals(this.listPlayers[0])){
+    public Player changePlayer() {
+        if (this.currentPlayer.equals(this.listPlayers[0])) {
             this.currentPlayer = this.listPlayers[1];
-        }
-        else{
+        } else {
             this.currentPlayer = this.listPlayers[0];
         }
         return this.currentPlayer;
+    }
+
+    public Boolean isDraw(){
+        return this.board.isFill();
     }
 }

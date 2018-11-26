@@ -5,12 +5,12 @@ import Player.Player;
 
 public class Circle extends Pawn {
 
+    public Circle(Player player, Coord coord) {
+        super(player, coord);
+    }
+
     @Override
     public String toString() {
         return ("o");
-    }
-
-    public Circle(Player player, Coord coord) {
-        super(player, coord);
     }
 }

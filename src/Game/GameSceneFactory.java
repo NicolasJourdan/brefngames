@@ -22,7 +22,6 @@ public class GameSceneFactory implements SceneFactoryInterface {
         switch (gameEnum) {
             case TIC_TAC_TOE:
                 return new TicTacToeScene(this.listPLayers);
-                // return new TicTacToeScene(this.listPlayers);
             case RUNNER:
                 // return new RunnerScene(this.listPlayers);
             case CONNECT_FOUR:

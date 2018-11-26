@@ -9,13 +9,12 @@ public class Pawn {
     private Coord coord;
     private Color color;
 
-
     public Pawn(Player player, Coord coord) {
         this.color = player.getColor();
         this.coord = coord;
     }
 
-    public Coord getCoord(){
+    public Coord getCoord() {
         return this.coord;
     }
 

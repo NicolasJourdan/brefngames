@@ -16,17 +16,13 @@ public class TicTacToeView extends AbstractGameView {
         this.add(this.board);
     }
 
-    public void displayMessage(String text){
-        JOptionPane.showMessageDialog(this, text);
-    }
-
-    public void setPawnView(String text, Color color, Coord coord){
+    public void setPawnView(String text, Color color, Coord coord) {
         this.board.setPawnBoard(text, color, coord);
         this.revalidate();
         this.repaint();
     }
 
-    public ProxyObservable getObservable(){
+    public ProxyObservable getObservable() {
         return this.observable;
     }
 
