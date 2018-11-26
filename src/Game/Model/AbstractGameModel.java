@@ -12,9 +12,9 @@ import java.util.List;
  */
 public abstract class AbstractGameModel extends AbstractModel {
 
-    private Player[] listPlayers;
+    protected Player[] listPlayers;
 
-    private List<Statistic> listStatistics;
+    protected List<Statistic> listStatistics;
 
     public AbstractGameModel(Player[] listPlayers) {
         this.listPlayers = listPlayers;

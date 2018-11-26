@@ -1,5 +1,8 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 
+import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Player.Player;
+
 public class Cross extends Pawn {
 
     @Override
@@ -7,7 +10,7 @@ public class Cross extends Pawn {
         return ("x");
     }
 
-    public Cross(TTTPlayer player, int x, int y) {
-        super(player, x, y);
+    public Cross(Player player, Coord coord) {
+        super(player, coord);
     }
 }

@@ -1,14 +1,25 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 
+import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Player.Player;
+
+import java.awt.*;
+
 public class Pawn {
-    int x;
-    int y;
-    String color;
+    private Coord coord;
+    private Color color;
 
 
-    public Pawn(TTTPlayer player, int x, int y) {
-        this.color = player.color;
-        this.x = x;
-        this.y = y;
+    public Pawn(Player player, Coord coord) {
+        this.color = player.getColor();
+        this.coord = coord;
+    }
+
+    public Coord getCoord(){
+        return this.coord;
+    }
+
+    public Color getColor() {
+        return color;
     }
 }

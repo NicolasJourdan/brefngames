@@ -5,10 +5,12 @@ import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeView.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
 import Parameter.Model.ParameterEnum;
+import Structure.AbstractController;
 
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Observable;
 
@@ -20,12 +22,24 @@ public class TicTacToeController extends AbstractGameController {
 
     public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size) {
         super(m, v);
-        this.size=size;
+        this.model = m;
+        this.view = v;
+        this.size = size;
     }
 
     @Override
     public void update(Observable o, Object arg) {
-
+        Coord coord = (Coord) arg;
+        String status = this.model.setPawnModel(coord);
+        if(status!=null){
+            Color color = this.model.getCurrentPlayer().getColor();
+            this.view.setPawnView(status, color, coord);
+            if(this.model.isWinner()){
+                this.view.displayMessage("The player '" + this.model.getCurrentPlayer().getName() + "' win");
+                // TODO:changer de scene
+            }
+            this.model.changePlayer();
+        }
     }
 
     @Override

@@ -8,10 +8,12 @@ import Scene.Model.ActionEnum;
 import Scene.Model.SceneEnum;
 import Scene.View.AbstractSceneManagerView;
 
+import java.awt.*;
+
 public class TrainingController extends AbstractSceneManagerController {
 
     public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
-        super(model, view, new GameSceneFactory(new Player[]{new LocalPlayer(), new LocalPlayer()}));
+        super(model, view, new GameSceneFactory(new Player[]{new LocalPlayer("NicoLeBg", Color.BLUE), new LocalPlayer("RayaneLaMenace", Color.RED)}));
 
         this.switchScene(SceneEnum.TRAINING_MENU);
     }

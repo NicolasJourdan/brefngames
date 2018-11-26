@@ -17,16 +17,19 @@ public class Box extends JButton {
 
     }
 
-    public void setPawn(String text){
+    public void setPawn(String text, Color color){
         this.setText(text);
+        this.setBackground(color);
+        this.revalidate();
+        this.repaint();
     }
 
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
-    }
+//    @Override
+//    public void paintComponent(Graphics g){
+//        super.paintComponent(g);
+//        g.setColor(Color.LIGHT_GRAY);
+//        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+//    }
 
     public Coord getCoord() {
         // TODO Auto-generated method stub

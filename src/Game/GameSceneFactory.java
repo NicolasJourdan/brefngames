@@ -21,7 +21,7 @@ public class GameSceneFactory implements SceneFactoryInterface {
         // TODO fill the switch when scenes will be created
         switch (gameEnum) {
             case TIC_TAC_TOE:
-                return new TicTacToeScene();
+                return new TicTacToeScene(this.listPLayers);
                 // return new TicTacToeScene(this.listPlayers);
             case RUNNER:
                 // return new RunnerScene(this.listPlayers);

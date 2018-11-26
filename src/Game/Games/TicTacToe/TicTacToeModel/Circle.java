@@ -1,5 +1,8 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 
+import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Player.Player;
+
 public class Circle extends Pawn {
 
     @Override
@@ -7,7 +10,7 @@ public class Circle extends Pawn {
         return ("o");
     }
 
-    public Circle(TTTPlayer player, int x, int y) {
-        super(player, x, y);
+    public Circle(Player player, Coord coord) {
+        super(player, coord);
     }
 }

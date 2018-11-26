@@ -14,11 +14,11 @@ import java.util.Observer;
 public class Board extends JLayeredPane {
     private Map<Coord, Box> map = new HashMap<Coord, Box>();
     private int size;
-    protected Container parent;
+    protected TicTacToeView parent;
 
-    public Board(int size) {
+    public Board(int size, TicTacToeView parent) {
         super();
-        this.parent = (TicTacToeView) this.getParent();
+        this.parent = parent;
         this.size = size;
         this.setLayout(new GridLayout(this.size, this.size, 5, 5));
         Box box = null;
@@ -30,11 +30,17 @@ public class Board extends JLayeredPane {
                 box.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Board.parent.getObservable().notifyObservers(this);
+                        Board.this.parent.getObservable().notifyObservers(((Box) e.getSource()).getCoord());
                     }
                 });
             }
         }
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void setPawnBoard(String text, Color color, Coord coord){
+        map.get(coord).setPawn(text,color);
         this.revalidate();
         this.repaint();
     }
