@@ -1,5 +1,6 @@
 package Game;
 
+import Game.Games.TicTacToe.TicTacToeScene;
 import Player.Player;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
@@ -20,7 +21,7 @@ public class GameSceneFactory implements SceneFactoryInterface {
         // TODO fill the switch when scenes will be created
         switch (gameEnum) {
             case TIC_TAC_TOE:
-                // return new TicTacToeScene(this.listPlayers);
+                return new TicTacToeScene(this.listPLayers);
             case RUNNER:
                 // return new RunnerScene(this.listPlayers);
             case CONNECT_FOUR:
