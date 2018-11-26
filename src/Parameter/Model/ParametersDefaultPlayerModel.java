@@ -21,12 +21,12 @@ public class ParametersDefaultPlayerModel extends AbstractModel {
 
     public void setPlayerColor(ParameterEnum player, String color) {
         ColorParameter colorParameter = new ColorParameter(ColorFactory.getColor(color), color);
-        this.configurations.replace(player, colorParameter);
+        this.configurations.put(player, colorParameter);
     }
 
     public void setPlayerIcon(ParameterEnum player, String iconName) {
         IconParameter iconParameter = new IconParameter(IconFactory.getIcon(iconName), iconName);
-        this.configurations.replace(player, iconParameter);
+        this.configurations.put(player, iconParameter);
     }
 
     public Map<ParameterEnum, Configurable> getConfigurations() {
