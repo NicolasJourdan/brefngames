@@ -72,15 +72,13 @@ public class TicTacToeModel extends AbstractGameModel {
     }
 
     private int getVal(int i, int j) {
-        int val;
         if (board.grid.get(i).get(j) instanceof Cross) {
-            val = 1;
+            return 1;
         } else if (board.grid.get(i).get(j) instanceof Circle) {
-            val = -1;
+            return -1;
         } else {
-            val = 0;
+            return 0;
         }
-        return val;
     }
 
     public String setPawnModel(Coord coord) {
@@ -93,13 +91,12 @@ public class TicTacToeModel extends AbstractGameModel {
         return board.setPawn(pawn);
     }
 
-    public Player changePlayer() {
+    public void changePlayer() {
         if (this.currentPlayer.equals(this.listPlayers[0])) {
             this.currentPlayer = this.listPlayers[1];
         } else {
             this.currentPlayer = this.listPlayers[0];
         }
-        return this.currentPlayer;
     }
 
     public Boolean isDraw(){
