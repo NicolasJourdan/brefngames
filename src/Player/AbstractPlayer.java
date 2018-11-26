@@ -8,7 +8,7 @@ public abstract class AbstractPlayer extends PlayerEntity implements Player {
     protected String name;
     protected Color color;
 
-    public AbstractPlayer(String name, Color color){
+    public AbstractPlayer(String name, Color color) {
         this.name = name;
         this.color = color;
     }

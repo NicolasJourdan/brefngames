@@ -12,16 +12,14 @@ import java.awt.*;
 
 public class TrainingController extends AbstractSceneManagerController {
 
-    public static final String DEFAULT_PLAYER_1_NAME = "Player1";
-    public static final String DEFAULT_PLAYER_2_NAME = "Player2";
+    private static final String DEFAULT_PLAYER_1_NAME = "Player1";
+    private static final String DEFAULT_PLAYER_2_NAME = "Player2";
+    private static final Color DEFAULT_PLAYER_1_COLOR = Color.BLUE;
+    private static final Color DEFAULT_PLAYER_2_COLOR = Color.RED;
 
     public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
-        super(model, view, new GameSceneFactory(
-                new Player[]{
-                        new LocalPlayer(DEFAULT_PLAYER_1_NAME, Color.BLUE),
-                        new LocalPlayer(DEFAULT_PLAYER_2_NAME, Color.RED)
-                })
-        );
+        super(model, view, new GameSceneFactory(new Player[]{new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR),
+                                                             new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR)}));
         this.switchScene(SceneEnum.TRAINING_MENU);
     }
 

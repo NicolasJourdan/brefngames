@@ -1,6 +1,7 @@
 package Repository.Game;
 
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
+import Repository.AbstractDataRepository;
 import Repository.ModifyFiles;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class CookieClickerRepository extends AbstractGameRepository {
+public class CookieClickerRepository extends AbstractDataRepository {
     private static final String DEFAULT_NODE = "cookieClicker";
     private static final String NAME = "name";
     private static final String VALUE = "value";
