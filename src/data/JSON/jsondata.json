@@ -8,65 +8,111 @@
     "ticTacToe": [
         {
             "name": "TIC_TAC_TOE_NB_GAMES",
-            "value": "12"
+            "value": "0"
         },
         {
             "name": "TIC_TAC_TOE_NB_DRAW",
-            "value": "6"
+            "value": "0"
         },
         {
             "name": "TIC_TAC_TOE_NB_PERFECT",
-            "value": "12"
+            "value": "0"
         },
         {
             "name": "TIC_TAC_TOE_NB_CROSS",
-            "value": "2"
+            "value": "0"
         },
         {
             "name": "TIC_TAC_TOE_NB_CIRCLE",
-            "value": "9"
+            "value": "0"
         },
         {
             "name": "TIC_TAC_TOE_NB_ALL_SIGNS",
-            "value": "11"
+            "value": "0"
         },
         {
             "name": "TIC_TAC_TOE_AVERAGE_TIME",
-            "value": "12:11"
+            "value": "00:00:00"
         },
         {
             "name": "TIC_TAC_TOE_TOTAL_TIME",
-            "value": "12:11"
+            "value": "00:00:00"
         },
         {
             "name": "TIC_TAC_TOE_BEST_PLAYER",
-            "value": "Nico"
+            "value": "Bastos"
         }
     ],
     "runner": [
         {
             "name": "RUNNER_NB_GAMES",
-            "value": "1"
+            "value": "0"
         },
         {
             "name": "RUNNER_NB_CLICS",
-            "value": "2"
+            "value": "0"
         },
         {
             "name": "RUNNER_AVERAGE_TIME",
-            "value": "3"
+            "value": "00:00:00"
         },
         {
             "name": "RUNNER_AVERAGE_SPEED",
-            "value": "4"
+            "value": "0"
         },
         {
             "name": "RUNNER_TOTAL_TIME",
-            "value": "5"
+            "value": "00:00:00"
         },
         {
             "name": "RUNNER_BEST_PLAYER",
             "value": "Floflax"
+        }
+    ],
+    "connectFour": [
+        {
+            "name": "CONNECT_FOUR_NB_GAMES",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_DRAW",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_BEST_PLAYER",
+            "value": "RayaneLeMarco1"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_YELLOW_PAWNS",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_RED_PAWNS",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_ALL_PAWNS",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_WIN_VERTICAL",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_WIN_LANDSCAPE",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_NB_WIN_DIAG",
+            "value": "0"
+        },
+        {
+            "name": "CONNECT_FOUR_AVERAGE_TIME",
+            "value": "00:00:00"
+        },
+        {
+            "name": "CONNECT_FOUR_TOTAL_TIME",
+            "value": "00:00:00"
         }
     ]
 }
