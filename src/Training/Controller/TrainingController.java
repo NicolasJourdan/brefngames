@@ -1,6 +1,7 @@
 package Training.Controller;
 
 import Game.GameSceneFactory;
+import Parameter.Factory.IconFactory;
 import Player.*;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
@@ -8,19 +9,28 @@ import Scene.Model.ActionEnum;
 import Scene.Model.SceneEnum;
 import Scene.View.AbstractSceneManagerView;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class TrainingController extends AbstractSceneManagerController {
 
-    public static final String DEFAULT_PLAYER_1_NAME = "Player1";
-    public static final String DEFAULT_PLAYER_2_NAME = "Player2";
+    private static final String DEFAULT_PLAYER_1_NAME = "Player1";
+    private static final String DEFAULT_PLAYER_2_NAME = "Player2";
+    private static final Color DEFAULT_PLAYER_1_COLOR = Color.BLUE;
+    private static final Color DEFAULT_PLAYER_2_COLOR = Color.RED;
+    private static final ImageIcon DEFAULT_PLAYER_1_ICON = IconFactory.getIcon("SUPERMAN");
+    private static final ImageIcon DEFAULT_PLAYER_2_ICON = IconFactory.getIcon("BATMAN");
 
     public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
-        super(model, view, new GameSceneFactory(
+        super(
+            model,
+            view,
+            new GameSceneFactory(
                 new Player[]{
-                        new LocalPlayer(DEFAULT_PLAYER_1_NAME, Color.BLUE),
-                        new LocalPlayer(DEFAULT_PLAYER_2_NAME, Color.RED)
-                })
+                    new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR, DEFAULT_PLAYER_1_ICON),
+                    new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR, DEFAULT_PLAYER_2_ICON)
+                }
+            )
         );
         this.switchScene(SceneEnum.TRAINING_MENU);
     }

@@ -38,4 +38,18 @@ public class ColorFactory {
                 throw new RuntimeException("The color : " + color + " is unknown");
         }
     }
+    public static String getStringColor(Color color) {
+
+        if (color.equals(Color.BLUE)) {
+            return "BLUE";
+        } else if (color.equals(Color.RED)) {
+            return "RED";
+        } else if (color.equals(Color.YELLOW)) {
+            return "YELLOW";
+        } else if (color.equals(Color.GREEN)) {
+            return "GREEN";
+        } else {
+            throw new RuntimeException("The string : " + color + " corresponding with no color");
+        }
+    }
 }

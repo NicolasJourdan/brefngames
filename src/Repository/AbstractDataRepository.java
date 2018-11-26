@@ -1,9 +1,9 @@
-package Repository.Game;
+package Repository;
 
 import Repository.AbstractRepository;
 import org.json.simple.JSONObject;
 
-public abstract class AbstractGameRepository extends AbstractRepository {
+public abstract class AbstractDataRepository extends AbstractRepository {
     // Change the path here if you have an error
     protected static final String DATA_JSON_FILE = "src/data/JSON/jsondata.json";
 

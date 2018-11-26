@@ -4,8 +4,6 @@ import Launcher.Controller.LauncherController;
 import Launcher.Model.LauncherModel;
 import Launcher.View.LauncherView;
 
-import javax.swing.*;
-
 public class Launcher {
 
     public static void main(String arg[]) {
@@ -19,5 +17,6 @@ public class Launcher {
         // manually repaint the window because we just added a panel
         launcherView.revalidate();
         launcherView.repaint();
+
     }
 }

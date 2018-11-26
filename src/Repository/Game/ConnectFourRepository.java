@@ -1,6 +1,7 @@
 package Repository.Game;
 
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
+import Repository.AbstractDataRepository;
 import Repository.ModifyFiles;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ConnectFourRepository extends AbstractGameRepository {
+public class ConnectFourRepository extends AbstractDataRepository {
 
     private static final String DEFAULT_NODE = "connectFour";
     private static final String NAME = "name";
