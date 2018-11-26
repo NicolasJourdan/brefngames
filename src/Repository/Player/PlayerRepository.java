@@ -56,20 +56,14 @@ public class PlayerRepository extends AbstractDataRepository {
 
     /**
      * Function to create player
-     *
-     * @return 1 if player created  / 2 if the players is already existing / 3 if error
      */
-    public static int createPlayer(LocalPlayer p) {
+    public static void createPlayer(LocalPlayer p) {
 
         // Copy JSON file
         ModifyFiles.saveJSONFile(DATA_JSON_FILE);
 
-        // Var that will be return
-        int ret = 1;
-
         // Test if the player already exist
         if (getById(p.getName()) != null){
-            ret = 2;
             ModifyFiles.removeCopyJSONFile(DATA_JSON_FILE);
         } else {
             JSONArray players = (JSONArray) getDataFile().get(DEFAULT_NODE);
@@ -87,15 +81,5 @@ public class PlayerRepository extends AbstractDataRepository {
 
             ModifyFiles.write(DATA_JSON_FILE, dataJSON);
         }
-
-        // Si L'ajout c'est bien passé on supprime la copie du fichier
-        if (ret == 3) { // On remet l'ancien fichier
-            // Delete the origial path
-            ModifyFiles.removeFile(DATA_JSON_FILE);
-            // Put the copie on the default file
-            ModifyFiles.reputOriginalJsonFile(DATA_JSON_FILE);
-        }
-        return ret;
     }
-
 }
