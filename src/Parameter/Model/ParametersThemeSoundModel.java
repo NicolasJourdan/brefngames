@@ -25,13 +25,13 @@ public class ParametersThemeSoundModel extends AbstractModel {
     // Set first color in the configuration
     public void setFirstColor(String color) {
         ColorParameter colorParameter = new ColorParameter(ColorFactory.getColor(color), color);
-        this.configurations.replace(ParameterEnum.THEME_FIRST_COLOR, colorParameter);
+        this.configurations.put(ParameterEnum.THEME_FIRST_COLOR, colorParameter);
     }
 
     // Set first color in the configuration
     public void setSecondColor(String color) {
         ColorParameter colorParameter = new ColorParameter(ColorFactory.getColor(color), color);
-        this.configurations.replace(ParameterEnum.THEME_SECOND_COLOR, colorParameter);
+        this.configurations.put(ParameterEnum.THEME_SECOND_COLOR, colorParameter);
     }
 
     public Map<ParameterEnum, Configurable> getConfigurations() {
