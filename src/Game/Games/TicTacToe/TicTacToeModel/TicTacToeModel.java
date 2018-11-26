@@ -17,6 +17,10 @@ public class TicTacToeModel extends AbstractGameModel {
         this.board = new Board(this.size);
     }
 
+    public Player[] getPlayers() {
+        return this.listPlayers;
+    }
+
     public Player getCurrentPlayer() {
         return currentPlayer;
     }

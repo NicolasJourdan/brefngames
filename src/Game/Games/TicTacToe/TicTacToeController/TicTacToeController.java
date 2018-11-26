@@ -5,6 +5,7 @@ import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeView.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
 import Parameter.Model.ParameterEnum;
+import Scene.Model.ActionEnum;
 import Structure.AbstractController;
 
 
@@ -36,7 +37,13 @@ public class TicTacToeController extends AbstractGameController {
             this.view.setPawnView(status, color, coord);
             if(this.model.isWinner()){
                 this.view.displayMessage("The player '" + this.model.getCurrentPlayer().getName() + "' win");
-                // TODO:changer de scene
+                this.setChanged();
+
+                if (this.model.getCurrentPlayer().getName().equals(this.model.getPlayers()[0])) {
+                    this.notifyObservers(ActionEnum.PLAYER_1_WON);
+                } else {
+                    this.notifyObservers(ActionEnum.PLAYER_2_WON);
+                }
             }
             this.model.changePlayer();
         }
