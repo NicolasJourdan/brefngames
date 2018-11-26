@@ -65,6 +65,7 @@ public class PlayerRepository extends AbstractDataRepository {
         // Test if the player already exist
         if (getById(p.getName()) != null){
             ret = 2;
+            ModifyFiles.removeCopyJSONFile(DATA_JSON_FILE);
         } else {
             JSONArray players = (JSONArray) getDataFile().get(DEFAULT_NODE);
             JSONObject newPlayer = new JSONObject();// new player
@@ -82,9 +83,7 @@ public class PlayerRepository extends AbstractDataRepository {
         }
 
         // Si L'ajout c'est bien passé on supprime la copie du fichier
-        if (ret == 1 || ret == 2) {
-            ModifyFiles.removeCopyJSONFile(DATA_JSON_FILE);
-        } else if (ret == 3) { // On remet l'ancien fichier
+        if (ret == 3) { // On remet l'ancien fichier
             // Delete the origial path
             ModifyFiles.removeFile(DATA_JSON_FILE);
             // Put the copie on the default file
@@ -93,16 +92,4 @@ public class PlayerRepository extends AbstractDataRepository {
         return ret;
     }
 
-    public static int flushData (JSONObject o) {
-        int ret = -1;
-        try (FileWriter file = new FileWriter(DATA_JSON_FILE)) {
-
-            file.write((o).toJSONString());
-            file.flush();
-
-        } catch (IOException io) {
-            ret = 3;
-        }
-        return ret;
-    }
 }
