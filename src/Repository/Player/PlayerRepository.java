@@ -1,6 +1,7 @@
 package Repository.Player;
 
 import Parameter.Factory.ColorFactory;
+import Parameter.Factory.IconFactory;
 import Player.*;
 import Repository.AbstractDataRepository;
 import Repository.ModifyFiles;
@@ -23,6 +24,7 @@ public class PlayerRepository extends AbstractDataRepository {
     // node
     private static final String NAME = "name";
     private static final String COLOR = "color";
+    private static final String ICON = "icon";
 
     // Get all players in a list of local player
     public static ArrayList<LocalPlayer> getAll() {
@@ -33,7 +35,10 @@ public class PlayerRepository extends AbstractDataRepository {
 
         while (statsIterator.hasNext()) {
             JSONObject current = statsIterator.next();
-            listPlayers.add(new LocalPlayer((String) current.get(NAME), ColorFactory.getColor((String)current.get(COLOR))));
+            listPlayers.add(new LocalPlayer(
+                                (String) current.get(NAME),
+                                ColorFactory.getColor((String)current.get(COLOR)),
+                                IconFactory.getIcon((String) current.get(ICON))));
         }
 
         return listPlayers;
@@ -71,6 +76,7 @@ public class PlayerRepository extends AbstractDataRepository {
             JSONObject newPlayer = new JSONObject();// new player
             newPlayer.put(NAME, p.getName());
             newPlayer.put(COLOR, ColorFactory.getStringColor(p.getColor()));
+            newPlayer.put(ICON, IconFactory.getStringIcon(p.getIcon()));
             players.add(newPlayer);
 
             // Create a copy
