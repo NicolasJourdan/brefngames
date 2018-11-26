@@ -33,8 +33,6 @@ public class PlayerRepository extends AbstractDataRepository {
 
         while (statsIterator.hasNext()) {
             JSONObject current = statsIterator.next();
-            System.out.println(current.get(NAME));
-            System.out.println((String)current.get(COLOR));
             listPlayers.add(new LocalPlayer((String) current.get(NAME), ColorFactory.getColor((String)current.get(COLOR))));
         }
 
@@ -107,6 +105,4 @@ public class PlayerRepository extends AbstractDataRepository {
         }
         return ret;
     }
-
-
 }

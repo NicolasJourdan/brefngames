@@ -18,8 +18,16 @@ public class TrainingController extends AbstractSceneManagerController {
     private static final Color DEFAULT_PLAYER_2_COLOR = Color.RED;
 
     public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
-        super(model, view, new GameSceneFactory(new Player[]{new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR),
-                                                             new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR)}));
+        super(
+            model,
+            view,
+            new GameSceneFactory(
+                new Player[]{
+                    new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR),
+                    new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR)
+                }
+            )
+        );
         this.switchScene(SceneEnum.TRAINING_MENU);
     }
 
