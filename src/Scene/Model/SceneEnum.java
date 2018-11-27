@@ -12,6 +12,11 @@ public enum SceneEnum {
     TRAINING_MENU("TRAINING_MENU"),
 
     /*
+     * Map
+     */
+    MAP("MAP"),
+
+    /*
      * Parameters
      */
     PARAMETERS_MENU("PARAMETERS_MENU"),
