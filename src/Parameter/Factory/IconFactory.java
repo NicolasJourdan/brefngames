@@ -9,19 +9,19 @@ public class IconFactory {
             case "BATMAN":
             case "BATMAN_1":
             case "BATMAN_2":
-                return new ImageIcon("data/Images/batman.png", "BATMAN");
+                return new ImageIcon(ImageIcon.class.getResource("/data/Images/batman.png"), "BATMAN");
             case "SUPERMAN":
             case "SUPERMAN_1":
             case "SUPERMAN_2":
-                return new ImageIcon("data/Images/superman.png", "SUPERMAN");
+                return new ImageIcon(ImageIcon.class.getResource("/data/Images/superman.png"), "SUPERMAN");
             case "FLASH":
             case "FLASH_1":
             case "FLASH_2":
-                return new ImageIcon("data/Images/flash.png", "FLASH");
+                return new ImageIcon(ImageIcon.class.getResource("/data/Images/flash.png"), "FLASH");
             case "AQUAMAN":
             case "AQUAMAN_1":
             case "AQUAMAN_2":
-                return new ImageIcon("data/Images/aquaman.png", "AQUAMAN");
+                return new ImageIcon(ImageIcon.class.getResource("/data/Images/aquaman.png"), "AQUAMAN");
             default:
                 throw new RuntimeException("The image : " + name + " is unknown");
         }
