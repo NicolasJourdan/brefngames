@@ -13,7 +13,7 @@ public class GameHistory {
     /**
      * @param gameName The game name
      * @param players The player list
-     * @param result The result of the match (PLAYER_1_WON, PLAYER_2_WON, DRAW)
+     * @param result The result of the match (PLAYER_1_WON, PLAYER_2_WON, DRAW, UNDEFINED)
      */
     public GameHistory(SceneEnum gameName, Player[] players, ActionEnum result) {
         this.gameName = gameName;
@@ -25,6 +25,7 @@ public class GameHistory {
                 this.winner = players[1];
                 break;
             case DRAW:
+            case UNDEFINED:
                 this.winner = null;
                 break;
             default:
@@ -38,5 +39,9 @@ public class GameHistory {
 
     public Player getWinner() {
         return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 }
