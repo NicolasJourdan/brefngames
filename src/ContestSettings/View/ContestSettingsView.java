@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class ContestSettingsView extends AbstractView {
 
-    public final static int NB_MAX_GAMES = 10;
+    public final static int NB_MAX_GAMES = 7;
     public final static int NB_MIN_GAMES = 1;
     public final static int NB_DEFAULT_GAMES = 4;
     public final static int NB_STEP_GAMES = 1;
