@@ -4,6 +4,7 @@ import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
+import Repository.Game.ConnectFourRepository;
 import Repository.Game.CookieClickerRepository;
 import Repository.Game.RunnerRepository;
 import Repository.Game.TicTacToeRepository;
@@ -119,6 +120,36 @@ public class ContestDataPersistor {
     }
 
     public static void updateConnectFour(Map<ConnectFourStatsEnum, String> gameMap) {
-        // TODO update repo
+        Map<ConnectFourStatsEnum, String> dataEntries = ConnectFourRepository.getAll();
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_DIAG);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_LANDSCAPE);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_VERTICAL);
+        updateIntValueConnectFour(dataEntries, gameMap, ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME);
+        // Average time per game
+        dataEntries.put(
+                ConnectFourStatsEnum.CONNECT_FOUR_AVERAGE_TIME,
+                String.valueOf(
+                        Integer.parseInt(dataEntries.get(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME))
+                                / Integer.parseInt(dataEntries.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES))
+                )
+        );
+        //TODO Add best player in playerStatsRepository
+        ConnectFourRepository.saveAll(dataEntries);
     }
+
+    private static void updateIntValueConnectFour(Map<ConnectFourStatsEnum, String> dataEntries, Map<ConnectFourStatsEnum, String> gamesEntries, ConnectFourStatsEnum stats) {
+        dataEntries.put(
+                stats,
+                String.valueOf(
+                        Integer.parseInt(gamesEntries.get(stats))
+                                + Integer.parseInt(dataEntries.get(stats))
+                )
+        );
+    }
+
 }
