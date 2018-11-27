@@ -1,12 +1,19 @@
 package ContestSettings.View;
 
+import Parameter.Parameters.ColorParameter;
+import Parameter.View.ParametersDefaultPlayerView;
 import Scene.Model.ActionEnum;
+
+import Parameter.Model.ParameterEnum;
+import Parameter.Parameters.Configurable;
+import Parameter.Parameters.IconParameter;
 import Structure.AbstractView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 public class ContestSettingsView extends AbstractView {
 
@@ -237,5 +244,88 @@ public class ContestSettingsView extends AbstractView {
                 ContestSettingsView.this.observable.notifyObservers(ActionEnum.START_CONTEST);
             }
         });
+    }
+
+    public void setDefaultConfiguration(Map<ParameterEnum, Configurable> defaultConfiguration) {
+        String iconNameFirstPlayer = ((IconParameter) defaultConfiguration.get(ParameterEnum.PLAYER_1_ICON)).getName();
+        ActionEnum iconFirstPlayer = ActionEnum.valueOf(iconNameFirstPlayer);
+
+        switch (iconFirstPlayer) {
+            case SUPERMAN_1:
+                this.firstIconSuperman.setSelected(true);
+                break;
+            case BATMAN_1:
+                this.firstIconBatman.setSelected(true);
+                break;
+            case FLASH_1:
+                this.firstIconFlash.setSelected(true);
+                break;
+            case AQUAMAN_1:
+                this.firstIconAquaman.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("The action : " + iconFirstPlayer + " is not acceptable here");
+        }
+
+        String iconNameSecondPlayer = ((IconParameter) defaultConfiguration.get(ParameterEnum.PLAYER_2_ICON)).getName();
+        ActionEnum iconSecondPlayer = ActionEnum.valueOf(iconNameSecondPlayer);
+
+        switch (iconSecondPlayer) {
+            case SUPERMAN_2:
+                this.secondIconSuperman.setSelected(true);
+                break;
+            case BATMAN_2:
+                this.secondIconBatman.setSelected(true);
+                break;
+            case FLASH_2:
+                this.secondIconFlash.setSelected(true);
+                break;
+            case AQUAMAN_2:
+                this.secondIconAquaman.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("The action : " + iconSecondPlayer + " is not acceptable here");
+        }
+
+
+        String colorNameFirstPlayer = ((ColorParameter) defaultConfiguration.get(ParameterEnum.PLAYER_1_COLOR)).getStringColor();
+        ActionEnum colorFirstPlayer = ActionEnum.valueOf(colorNameFirstPlayer);
+
+        switch (colorFirstPlayer) {
+            case COLOR_FIRST_PLAYER_RED:
+                this.firstColorPlayerRed.setSelected(true);
+                break;
+            case COLOR_FIRST_PLAYER_BLUE:
+                this.firstColorPlayerBlue.setSelected(true);
+                break;
+            case COLOR_FIRST_PLAYER_GREEN:
+                this.firstColorPlayerGreen.setSelected(true);
+                break;
+            case COLOR_FIRST_PLAYER_YELLOW:
+                this.firstColorPlayerYellow.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("The action : " + colorFirstPlayer + " is not acceptable here");
+        }
+
+        String colorNameSecondPlayer = ((ColorParameter) defaultConfiguration.get(ParameterEnum.PLAYER_2_COLOR)).getStringColor();
+        ActionEnum colorSecondPlayer = ActionEnum.valueOf(colorNameSecondPlayer);
+
+        switch (colorSecondPlayer) {
+            case COLOR_SECOND_PLAYER_RED:
+                this.secondColorPlayerRed.setSelected(true);
+                break;
+            case COLOR_SECOND_PLAYER_BLUE:
+                this.secondColorPlayerBlue.setSelected(true);
+                break;
+            case COLOR_SECOND_PLAYER_GREEN:
+                this.secondColorPlayerGreen.setSelected(true);
+                break;
+            case COLOR_SECOND_PLAYER_YELLOW:
+                this.secondColorPlayerYellow.setSelected(true);
+                break;
+            default:
+                throw new RuntimeException("The action : " + colorSecondPlayer + " is not acceptable here");
+        }
     }
 }
