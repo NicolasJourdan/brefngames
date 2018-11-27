@@ -1,15 +1,15 @@
 package Map.View;
 
+import Game.View.AbstractGameView;
 import Player.Player;
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MapView extends AbstractView {
+public class MapView extends AbstractGameView {
 
     private JPanel gameListView;
     private JPanel score;

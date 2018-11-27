@@ -1,9 +1,16 @@
 package Map.Model;
 
-import Player.Player;
-import Structure.AbstractModel;
+import Game.Model.AbstractGameModel;
+import Player.*;
+import Statistic.Model.Statistic;
 
-public class MapModel extends AbstractModel {
+import java.util.List;
+
+public class MapModel extends AbstractGameModel {
+
+    public MapModel(Player[] listPlayers) {
+        super(listPlayers);
+    }
 
     public int[] getCurrentScore(History history) {
         Player[] players = history.getPlayers();
@@ -25,5 +32,10 @@ public class MapModel extends AbstractModel {
 
     public boolean isFinish(History history) {
         return 0 == history.getNbRemainingGames();
+    }
+
+    @Override
+    public List<Statistic> getListStatistics() {
+        return null;
     }
 }

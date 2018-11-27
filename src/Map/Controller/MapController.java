@@ -1,18 +1,18 @@
 package Map.Controller;
 
+import Game.Controller.AbstractGameController;
+import Game.Model.AbstractGameModel;
+import Game.View.AbstractGameView;
 import Map.Model.GameHistory;
 import Map.Model.History;
 import Map.Model.MapModel;
 import Map.View.MapView;
-import Scene.Controller.AbstractSceneController;
-import Structure.AbstractModel;
-import Structure.AbstractView;
 
-public class MapController extends AbstractSceneController {
+public class MapController extends AbstractGameController {
 
     private History history;
 
-    public MapController(AbstractModel model, AbstractView view, History history) {
+    public MapController(AbstractGameModel model, AbstractGameView view, History history) {
         super(model, view);
 
         this.history = history;
