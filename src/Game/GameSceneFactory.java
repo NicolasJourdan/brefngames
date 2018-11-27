@@ -41,7 +41,7 @@ public class GameSceneFactory implements SceneFactoryInterface {
         }
     }
 
-    public void setHistory(History history) {
+    public void updateHistory(History history) {
         this.history = history;
     }
 }

@@ -35,7 +35,7 @@ public class MapView extends AbstractGameView {
             }
         });
 
-        this.add(button);
+        this.add(this.button);
 
         revalidate();
         repaint();

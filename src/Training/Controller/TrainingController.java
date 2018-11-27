@@ -41,23 +41,19 @@ public class TrainingController extends AbstractSceneManagerController {
     @Override
     protected SceneEnum getNextScene(ActionEnum actionEnum) {
         switch (actionEnum) {
-
             case PLAYER_1_WON:
-                this.history.getGameHistories().get(0).setWinner(DEFAULT_PLAYERS[0]);
-                DEFAULT_GAME_FACTORY.setHistory(this.history);
+                this.updateWinnerInHistory(DEFAULT_PLAYERS[0]);
                 return SceneEnum.MAP;
             case PLAYER_2_WON:
-                this.history.getGameHistories().get(0).setWinner(DEFAULT_PLAYERS[1]);
-                DEFAULT_GAME_FACTORY.setHistory(this.history);
+                this.updateWinnerInHistory(DEFAULT_PLAYERS[1]);
                 return SceneEnum.MAP;
             case DRAW:
-                this.history.getGameHistories().get(0).setWinner(null);
-                DEFAULT_GAME_FACTORY.setHistory(this.history);
+                this.updateWinnerInHistory(null);
                 return SceneEnum.MAP;
             case END_MAP:
                 // Reset history
                 this.history = null;
-                DEFAULT_GAME_FACTORY.setHistory(this.history);
+                DEFAULT_GAME_FACTORY.updateHistory(this.history);
                 return SceneEnum.TRAINING_MENU;
             case END_TRAINING:
                 // Call the parent (TrainingScene), this parent will call its own parent (LauncherController)
@@ -91,6 +87,11 @@ public class TrainingController extends AbstractSceneManagerController {
                 1,
                 true
         );
-        DEFAULT_GAME_FACTORY.setHistory(this.history);
+        DEFAULT_GAME_FACTORY.updateHistory(this.history);
+    }
+
+    private void updateWinnerInHistory(Player player) {
+        this.history.getGameHistories().get(0).setWinner(player);
+        DEFAULT_GAME_FACTORY.updateHistory(this.history);
     }
 }
