@@ -67,6 +67,11 @@ public enum ActionEnum {
     STATISTICS("STATISTICS"),
     PARAMETERS("PARAMETERS"),
     QUIT("QUIT"),
+
+    /*
+     * Map
+     */
+    END_MAP("END_MAP"),
     ;
 
     private String name = "";
