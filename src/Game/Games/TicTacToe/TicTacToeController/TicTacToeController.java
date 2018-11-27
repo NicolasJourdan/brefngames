@@ -27,7 +27,7 @@ public class TicTacToeController extends AbstractGameController {
             ((TicTacToeView) this.view).setPawnView(status, color, coord);
             if (((TicTacToeModel) this.model).isWinner()) {
                 this.setChanged();
-                if (((TicTacToeModel) this.model).getCurrentPlayer().getName().equals(((TicTacToeModel) this.model).getPlayers()[0])) {
+                if (((TicTacToeModel) this.model).getCurrentPlayer().getName().equals(((TicTacToeModel) this.model).getPlayers()[0].getName())) {
                     this.notifyObservers(ActionEnum.PLAYER_1_WON);
                 } else {
                     this.notifyObservers(ActionEnum.PLAYER_2_WON);
