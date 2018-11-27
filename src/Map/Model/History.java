@@ -1,32 +1,42 @@
 package Map.Model;
 
-import Scene.Model.SceneEnum;
+import Player.*;
 
 import java.util.List;
 
 public class History {
 
+    private Player[] players;
+
     private List<GameHistory> gameHistories;
 
-    private SceneEnum currentGame;
+    private boolean isTraining;
+
+    private int nbRemainingGames;
 
     private int nbTotalGames;
 
-    public History(List<GameHistory> gameHistories, SceneEnum currentGame, int nbTotalGames) {
+    public History(Player[] players, List<GameHistory> gameHistories, int nbTotalGames, boolean isTraining) {
+        this.isTraining = isTraining;
+        this.players = players;
         this.gameHistories = gameHistories;
-        this.currentGame = currentGame;
         this.nbTotalGames = nbTotalGames;
+        this.nbRemainingGames = this.nbTotalGames - this.gameHistories.size();
     }
 
     public List<GameHistory> getGameHistories() {
-        return gameHistories;
+        return this.gameHistories;
     }
 
-    public SceneEnum getCurrentGame() {
-        return currentGame;
+    public Player[] getPlayers() {
+        return this.players;
     }
 
-    public int getNbTotalGames() {
-        return nbTotalGames;
+    public boolean isTraining() {
+        return this.isTraining;
+    }
+
+    public int getNbRemainingGames() {
+        return this.nbRemainingGames;
     }
 }
