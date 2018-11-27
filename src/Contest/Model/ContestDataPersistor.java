@@ -4,6 +4,7 @@ import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
+import Repository.Game.CookieClickerRepository;
 import Repository.Game.RunnerRepository;
 import Repository.Game.TicTacToeRepository;
 
@@ -78,9 +79,43 @@ public class ContestDataPersistor {
         );
     }
 
-
     public static void updateCookieCliker(Map<CookieClickerStatsEnum, String> gameMap) {
-        // TODO update repo
+        Map<CookieClickerStatsEnum, String> dataEntries = CookieClickerRepository.getAll();
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_CLICS);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_PERFECT);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_FAULT);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_TIME);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLIC);
+        // Average required clicks per game
+        dataEntries.put(
+                CookieClickerStatsEnum.COOKIE_CLICKER_AVERAGE_REQUIRED_CLIC,
+                String.valueOf(
+                        Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLIC))
+                                / Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES))
+                )
+        );
+
+        // Average faults per game
+        dataEntries.put(
+                CookieClickerStatsEnum.COOKIE_CLICKER_AVERAGE_FAULT,
+                String.valueOf(
+                        Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_FAULT))
+                                / Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES))
+                )
+        );
+        //TODO Add best player in playerStatsRepository
+        CookieClickerRepository.saveAll(dataEntries);
+    }
+
+    private static void updateIntValueCookieClicker(Map<CookieClickerStatsEnum, String> dataEntries, Map<CookieClickerStatsEnum, String> gamesEntries, CookieClickerStatsEnum stats) {
+        dataEntries.put(
+                stats,
+                String.valueOf(
+                        Integer.parseInt(gamesEntries.get(stats))
+                                + Integer.parseInt(dataEntries.get(stats))
+                )
+        );
     }
 
     public static void updateConnectFour(Map<ConnectFourStatsEnum, String> gameMap) {
