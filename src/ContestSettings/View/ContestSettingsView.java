@@ -1,5 +1,6 @@
 package ContestSettings.View;
 
+import ContestSettings.DataObject.ContestSettingsDataObject;
 import Parameter.Parameters.ColorParameter;
 import Parameter.View.ParametersDefaultPlayerView;
 import Scene.Model.ActionEnum;
@@ -327,5 +328,9 @@ public class ContestSettingsView extends AbstractView {
             default:
                 throw new RuntimeException("The action : " + colorSecondPlayer + " is not acceptable here");
         }
+    }
+
+    public ContestSettingsDataObject getSettingsDataObject() {
+        return new ContestSettingsDataObject();
     }
 }

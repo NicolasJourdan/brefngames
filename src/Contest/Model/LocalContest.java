@@ -1,6 +1,7 @@
 package Contest.Model;
 
 import Game.Model.GameEnum;
+import Player.LocalPlayer;
 
 /**
  * @author BrefNGames
@@ -28,10 +29,11 @@ public class LocalContest extends AbstractContest {
      * @param matchesAmount
      * @param gameTypes
      */
-    public void setUpContest(int matchesAmount, GameEnum[] gameTypes)
+    public void setUpContest(int matchesAmount, GameEnum[] gameTypes, LocalPlayer[] playerList)
     {
         this.matchesAmount = matchesAmount;
         this.matchesPlayed = 0;
         this.gameTypes = gameTypes;
+        this.playerList = playerList;
     }
 }

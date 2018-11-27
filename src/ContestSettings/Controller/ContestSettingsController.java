@@ -1,5 +1,6 @@
 package ContestSettings.Controller;
 
+import ContestSettings.DataObject.ContestSettingsDataObject;
 import ContestSettings.Model.ContestSettingsModel;
 import ContestSettings.View.ContestSettingsView;
 import Parameter.Model.ParameterEnum;
@@ -22,6 +23,13 @@ public class ContestSettingsController extends AbstractController {
 
     @Override
     public void update(Observable o, Object arg) {
+        switch ((ActionEnum) arg) {
+            case START_CONTEST:
+                ContestSettingsDataObject settingsDataObject = ((ContestSettingsView) this.view).getSettingsDataObject();
 
+                // TODO: how to pass the settingsDataObject that holds the config of the contest to the "parent" controller ?
+                this.setChanged();
+                this.notifyObservers();
+        }
     }
 }

@@ -16,7 +16,7 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
      */
     private List<GameScene> gameSceneList;
 
-    private Player[] playerList;
+    protected Player[] playerList;
 
     /**
      * The current game
