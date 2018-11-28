@@ -2,16 +2,30 @@ package Contest.Model;
 
 import ContestSettings.DataObject.ContestSettingsDataObject;
 import Game.GameScene;
-import Game.GameSceneFactory;
-import Parameter.Parameters.Configurable;
-import Parameter.Model.ParameterEnum;
+import Game.Model.GameEnum;
 import Player.Player;
+import Player.LocalPlayer;
 import Scene.Model.AbstractSceneManagerModel;
-import Structure.AbstractModel;
 
 import java.util.*;
 
 public abstract class AbstractContest extends AbstractSceneManagerModel {
+
+    /**
+     * Total amount of matches
+     */
+    private int matchesAmount;
+
+    /**
+     * Number of matches played, keeps track of the current game
+     */
+    private int matchesPlayed;
+
+    /**
+     * Types of game tha will be played
+     */
+    private List<GameEnum> gameTypes;
+
     /**
      * List of games
      */
@@ -24,22 +38,30 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
      */
     private GameScene currentGameScene;
 
-    /**
-     * Defines if the contest is a training
-     */
-    private boolean isTraining = false;
-
-    private GameSceneFactory gameSceneFactory;
-
-    private Map<ParameterEnum, Configurable> contestParameters;
-
-    private ContestSettingsDataObject settingsDataObject;
-
     public Player[] getPlayerList() {
         return playerList;
     }
 
-    public void setSettingsDataObject(ContestSettingsDataObject settingsDataObject) {
-        this.settingsDataObject = settingsDataObject;
+    /**
+     * Set up the settings of a contests
+     *
+     * @param settingsDataObject
+     */
+    public void setUpContest(ContestSettingsDataObject settingsDataObject) {
+        this.matchesAmount = settingsDataObject.getNumberOfMatches();
+
+        this.gameTypes = settingsDataObject.getSelectedGameTypes();
+
+        this.playerList = new  Player[2];
+        this.playerList[0] = new LocalPlayer(
+            settingsDataObject.getFirstPlayerName(),
+            settingsDataObject.getFirstPlayerColor(),
+            settingsDataObject.getFirstPlayerIcon()
+        );
+        this.playerList[1] = new LocalPlayer(
+            settingsDataObject.getSecondPlayerName(),
+            settingsDataObject.getSecondPlayerColor(),
+            settingsDataObject.getSecondPlayerIcon()
+        );
     }
 }

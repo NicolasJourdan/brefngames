@@ -24,7 +24,7 @@ public class ContestController extends AbstractSceneManagerController {
     protected SceneEnum getNextScene(ActionEnum actionEnum) {
         switch (actionEnum) {
             case START_CONTEST:
-                ((AbstractContest) this.model).setSettingsDataObject(
+                ((AbstractContest) this.model).setUpContest(
                     ((ContestSettingsScene) this.currentScene).getSettingsDataObject()
                 );
                 // TODO: switch scene here
