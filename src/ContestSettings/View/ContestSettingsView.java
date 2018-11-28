@@ -1,6 +1,9 @@
 package ContestSettings.View;
 
 import ContestSettings.DataObject.ContestSettingsDataObject;
+import Game.Model.GameEnum;
+import Parameter.Factory.ColorFactory;
+import Parameter.Factory.IconFactory;
 import Parameter.Parameters.ColorParameter;
 import Parameter.View.ParametersDefaultPlayerView;
 import Scene.Model.ActionEnum;
@@ -14,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class ContestSettingsView extends AbstractView {
@@ -331,6 +335,106 @@ public class ContestSettingsView extends AbstractView {
     }
 
     public ContestSettingsDataObject getSettingsDataObject() {
-        return new ContestSettingsDataObject();
+        return new ContestSettingsDataObject(
+                (Integer) this.spinnerNbGames.getValue(),
+                this.gameSelectedGameTypes(),
+                this.player1Name.getText(),
+                this.getPlayer1Icon(),
+                this.getPlayer1Color(),
+                this.player2Name.getText(),
+                this.getPlayer2Icon(),
+                this.getPlayer2Color()
+        );
+    }
+
+    private ImageIcon getPlayer1Icon() {
+        if (this.firstIconAquaman.isSelected()) {
+            return IconFactory.getIcon("AQUAMAN");
+        }
+        if (this.firstIconBatman.isSelected()) {
+            return IconFactory.getIcon("BATMAN");
+        }
+        if (this.firstIconFlash.isSelected()) {
+            return IconFactory.getIcon("FLASH");
+        }
+        if (this.firstIconSuperman.isSelected()) {
+            return IconFactory.getIcon("SUPERMAN");
+        }
+
+        return null;
+    }
+
+    private ImageIcon getPlayer2Icon() {
+        if (this.secondIconAquaman.isSelected()) {
+            return IconFactory.getIcon("AQUAMAN");
+        }
+        if (this.secondIconBatman.isSelected()) {
+            return IconFactory.getIcon("BATMAN");
+        }
+        if (this.secondIconFlash.isSelected()) {
+            return IconFactory.getIcon("FLASH");
+        }
+        if (this.secondIconSuperman.isSelected()) {
+            return IconFactory.getIcon("SUPERMAN");
+        }
+
+        return null;
+    }
+
+    private Color getPlayer1Color() {
+        if (this.firstColorPlayerBlue.isSelected()) {
+            return ColorFactory.getColor("BLUE");
+        }
+        if (this.firstColorPlayerGreen.isSelected()) {
+            return ColorFactory.getColor("GREEN");
+        }
+        if (this.firstColorPlayerRed.isSelected()) {
+            return ColorFactory.getColor("RED");
+        }
+        if (this.firstColorPlayerYellow.isSelected()) {
+            return ColorFactory.getColor("YELLOW");
+        }
+
+        return null;
+    }
+
+    private Color getPlayer2Color() {
+        if (this.secondColorPlayerBlue.isSelected()) {
+            return ColorFactory.getColor("BLUE");
+        }
+        if (this.secondColorPlayerGreen.isSelected()) {
+            return ColorFactory.getColor("GREEN");
+        }
+        if (this.secondColorPlayerRed.isSelected()) {
+            return ColorFactory.getColor("RED");
+        }
+        if (this.secondColorPlayerYellow.isSelected()) {
+            return ColorFactory.getColor("YELLOW");
+        }
+
+        return null;
+    }
+
+
+    private ArrayList<GameEnum> gameSelectedGameTypes() {
+        ArrayList<GameEnum> gameTypes = new ArrayList<>();
+
+        if (this.ticTacToeCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.TIC_TAC_TOE);
+        }
+
+        if (this.connectFourCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.CONNECT_FOUR);
+        }
+
+        if (this.cookieClickerCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.COOKIE_CLICKER);
+        }
+        if (this.runnerCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.RUNNER);
+        }
+
+
+        return gameTypes;
     }
 }
