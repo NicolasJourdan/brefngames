@@ -1,5 +1,6 @@
 package Contest.Model;
 
+import ContestSettings.DataObject.ContestSettingsDataObject;
 import Game.GameScene;
 import Game.GameSceneFactory;
 import Parameter.Parameters.Configurable;
@@ -32,7 +33,13 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
 
     private Map<ParameterEnum, Configurable> contestParameters;
 
+    private ContestSettingsDataObject settingsDataObject;
+
     public Player[] getPlayerList() {
         return playerList;
+    }
+
+    public void setSettingsDataObject(ContestSettingsDataObject settingsDataObject) {
+        this.settingsDataObject = settingsDataObject;
     }
 }
