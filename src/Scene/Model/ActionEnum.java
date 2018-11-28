@@ -17,6 +17,11 @@ public enum ActionEnum {
     TRAINING_MENU("TRAINING_MENU"),
 
     /*
+     * Contest
+     */
+    START_CONTEST("START_CONTEST"),
+
+    /*
      * Parameters
      */
     PARAMETERS_MENU("PARAMETERS_MENU"),

@@ -24,6 +24,11 @@ public enum SceneEnum {
     PLAYER_PARAMETERS("PLAYER_PARAMETERS"),
 
     /*
+     * Contest
+     */
+    CONTEST_MENU("CONTEST_MENU"),
+
+    /*
      * Screens
      */
     MENU("MENU"),

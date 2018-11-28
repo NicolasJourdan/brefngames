@@ -1,21 +1,23 @@
 package Contest.Model;
 
+import ContestSettings.DataObject.ContestSettingsDataObject;
 import Game.GameScene;
 import Game.GameSceneFactory;
 import Parameter.Parameters.Configurable;
 import Parameter.Model.ParameterEnum;
 import Player.Player;
+import Scene.Model.AbstractSceneManagerModel;
 import Structure.AbstractModel;
 
 import java.util.*;
 
-public abstract class AbstractContest extends AbstractModel {
+public abstract class AbstractContest extends AbstractSceneManagerModel {
     /**
      * List of games
      */
     private List<GameScene> gameSceneList;
 
-    private Player[] playerList;
+    protected Player[] playerList;
 
     /**
      * The current game
@@ -30,4 +32,14 @@ public abstract class AbstractContest extends AbstractModel {
     private GameSceneFactory gameSceneFactory;
 
     private Map<ParameterEnum, Configurable> contestParameters;
+
+    private ContestSettingsDataObject settingsDataObject;
+
+    public Player[] getPlayerList() {
+        return playerList;
+    }
+
+    public void setSettingsDataObject(ContestSettingsDataObject settingsDataObject) {
+        this.settingsDataObject = settingsDataObject;
+    }
 }
