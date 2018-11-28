@@ -3,8 +3,9 @@ package Game.Games.TicTacToe.TicTacToeView;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class Box extends JButton {
-    private static Color backgroundColor = Color.LIGHT_GRAY;
+    private static final Color DEFAULT_BACKGROUND_COLOR = Color.LIGHT_GRAY;
     private final Coord coord;
     private Color color;
 
@@ -12,14 +13,14 @@ public class Box extends JButton {
         this.coord = coord;
         this.setPreferredSize(new Dimension(150, 150));
         this.setLayout(new BorderLayout());
-        this.setFont(new Font("myFont", Font.TRUETYPE_FONT, 250));
+        this.setFont(new Font("myFont", Font.PLAIN, 250));
         setOpaque(true);
         color = Color.LIGHT_GRAY;
     }
 
     @Override
     public void paint(Graphics g){
-        g.setColor(this.backgroundColor);
+        g.setColor(DEFAULT_BACKGROUND_COLOR);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
