@@ -97,7 +97,7 @@ public class ContestSettingsView extends AbstractView {
         this.add(this.connectFourCheckbox, constraint);
 
         constraint.gridy = 3;
-        this.cookieClickerCheckbox = new JCheckBox("Cookie Clicker");
+        this.cookieClickerCheckbox = new JCheckBox("CookieView Clicker");
         this.cookieClickerCheckbox.setSelected(true);
         this.add(this.cookieClickerCheckbox, constraint);
 
