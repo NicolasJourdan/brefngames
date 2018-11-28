@@ -88,7 +88,13 @@ public enum ActionEnum {
     KEY_PRESS_R("KEY_PRESS_R"),
     KEY_PRESS_T("KEY_PRESS_T"),
 
-    ;
+    /*
+     * CookieView Clicker
+     */
+    ADD_COOKIE_P1("ADD_COOKIE_P1"),
+    ADD_COOKIE_P2("ADD_COOKIE_P2"),
+    GET_GOAL("GET_GOAL"),
+    CHECK("CHECK");
 
     private String name = "";
 
