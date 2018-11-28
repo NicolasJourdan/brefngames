@@ -13,10 +13,11 @@ public class MapController extends AbstractGameController {
     private History history;
 
     public MapController(AbstractGameModel model, AbstractGameView view, History history) {
-        super(model, view);
+        super(model, view, history.isTraining());
 
         this.history = history;
-        if (!history.isTraining()) {
+
+        if (!this.isTraining) {
             ((MapView) this.view).addCurrentScore(this.history.getPlayers(), ((MapModel) this.model).getCurrentScore(this.history));
         } else {
             ((MapView) this.view).addTrainingTitle();
@@ -30,7 +31,7 @@ public class MapController extends AbstractGameController {
             ((MapView) this.view).addNextGame();
         }
 
-        if (history.isTraining() || ((MapModel) this.model).isFinish(this.history)) {
+        if (this.isTraining || ((MapModel) this.model).isFinish(this.history)) {
             ((MapView) this.view).setBackButton();
         }
     }
