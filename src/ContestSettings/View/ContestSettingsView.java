@@ -5,7 +5,6 @@ import Game.Model.GameEnum;
 import Parameter.Factory.ColorFactory;
 import Parameter.Factory.IconFactory;
 import Parameter.Parameters.ColorParameter;
-import Parameter.View.ParametersDefaultPlayerView;
 import Scene.Model.ActionEnum;
 
 import Parameter.Model.ParameterEnum;
@@ -18,6 +17,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ContestSettingsView extends AbstractView {
@@ -27,8 +27,8 @@ public class ContestSettingsView extends AbstractView {
     public final static int NB_DEFAULT_GAMES = 4;
     public final static int NB_STEP_GAMES = 1;
 
-    public final static String DEFAULT_PLAYER1_NAME = "Player 1";
-    public final static String DEFAULT_PLAYER2_NAME = "Player 2";
+    public final static String DEFAULT_FIRST_PLAYER_NAME = "Player 1";
+    public final static String DEFAULT_SECOND_PLAYER_NAME = "Player 2";
 
     private final JCheckBox ticTacToeCheckbox;
     private final JCheckBox connectFourCheckbox;
@@ -36,8 +36,8 @@ public class ContestSettingsView extends AbstractView {
     private final JCheckBox runnerCheckbox;
     private final JSpinner spinnerNbGames;
 
-    private final JTextField player1Name;
-    private final JTextField player2Name;
+    private final JTextField firstPlayerName;
+    private final JTextField secondPlayerName;
 
     // First icon player
     private JRadioButton firstIconSuperman;
@@ -129,15 +129,15 @@ public class ContestSettingsView extends AbstractView {
         GridBagConstraints constraintPlayerPanel = new GridBagConstraints();
 
         // Player 1
-        JPanel player1Panel = new JPanel();
-        player1Panel.setLayout(new GridBagLayout());
-        player1Panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JPanel firstPlayerPanel = new JPanel();
+        firstPlayerPanel.setLayout(new GridBagLayout());
+        firstPlayerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        player1Panel.add(new JLabel("Player 1"), constraintPlayerPanel);
+        firstPlayerPanel.add(new JLabel("Player 1"), constraintPlayerPanel);
 
         constraintPlayerPanel.gridx = 1;
-        this.player1Name = new JTextField(ContestSettingsView.DEFAULT_PLAYER1_NAME);
-        player1Panel.add(this.player1Name, constraintPlayerPanel);
+        this.firstPlayerName = new JTextField(ContestSettingsView.DEFAULT_FIRST_PLAYER_NAME);
+        firstPlayerPanel.add(this.firstPlayerName, constraintPlayerPanel);
 
         this.firstIconSuperman = new JRadioButton("Superman_1");
         this.firstIconBatman = new JRadioButton("Batman_1");
@@ -162,7 +162,7 @@ public class ContestSettingsView extends AbstractView {
         firstIconGroupPanel.add(this.firstIconAquaman);
 
         constraintPlayerPanel.gridy = 2;
-        player1Panel.add(firstIconGroupPanel, constraintPlayerPanel);
+        firstPlayerPanel.add(firstIconGroupPanel, constraintPlayerPanel);
 
         ButtonGroup firstColorGroup = new ButtonGroup();
         firstColorGroup.add(this.firstColorPlayerRed);
@@ -177,22 +177,22 @@ public class ContestSettingsView extends AbstractView {
         firstColorGroupPanel.add(this.firstColorPlayerYellow);
 
         constraintPlayerPanel.gridy = 3;
-        player1Panel.add(firstColorGroupPanel, constraintPlayerPanel);
+        firstPlayerPanel.add(firstColorGroupPanel, constraintPlayerPanel);
 
-        this.add(player1Panel, constraint);
+        this.add(firstPlayerPanel, constraint);
 
         // Player 2
-        JPanel player2Panel = new JPanel();
-        player2Panel.setLayout(new GridBagLayout());
-        player2Panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        JPanel secondPlayerPanel = new JPanel();
+        secondPlayerPanel.setLayout(new GridBagLayout());
+        secondPlayerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         constraintPlayerPanel.gridx = 0;
         constraintPlayerPanel.gridy = 0;
-        player2Panel.add(new JLabel("Player 2"), constraintPlayerPanel);
+        secondPlayerPanel.add(new JLabel("Player 2"), constraintPlayerPanel);
 
         constraintPlayerPanel.gridx = 1;
-        this.player2Name = new JTextField(ContestSettingsView.DEFAULT_PLAYER2_NAME);
-        player2Panel.add(this.player2Name, constraintPlayerPanel);
+        this.secondPlayerName = new JTextField(ContestSettingsView.DEFAULT_SECOND_PLAYER_NAME);
+        secondPlayerPanel.add(this.secondPlayerName, constraintPlayerPanel);
 
         this.secondColorPlayerRed = new JRadioButton("Red_2");
         this.secondColorPlayerBlue = new JRadioButton("Blue_2");
@@ -217,7 +217,7 @@ public class ContestSettingsView extends AbstractView {
         secondIconGroupPanel.add(this.secondIconAquaman);
 
         constraintPlayerPanel.gridy = 2;
-        player2Panel.add(secondIconGroupPanel, constraintPlayerPanel);
+        secondPlayerPanel.add(secondIconGroupPanel, constraintPlayerPanel);
 
         ButtonGroup secondColorGroup = new ButtonGroup();
         secondColorGroup.add(this.secondColorPlayerRed);
@@ -232,10 +232,10 @@ public class ContestSettingsView extends AbstractView {
         secondColorGroupPanel.add(this.secondColorPlayerYellow);
 
         constraintPlayerPanel.gridy = 3;
-        player2Panel.add(secondColorGroupPanel, constraintPlayerPanel);
+        secondPlayerPanel.add(secondColorGroupPanel, constraintPlayerPanel);
 
         constraint.gridy = 3;
-        this.add(player2Panel, constraint);
+        this.add(secondPlayerPanel, constraint);
 
         // Start button
         constraint.gridy = 5;
@@ -338,16 +338,16 @@ public class ContestSettingsView extends AbstractView {
         return new ContestSettingsDataObject(
                 (Integer) this.spinnerNbGames.getValue(),
                 this.gameSelectedGameTypes(),
-                this.player1Name.getText(),
-                this.getPlayer1Icon(),
-                this.getPlayer1Color(),
-                this.player2Name.getText(),
-                this.getPlayer2Icon(),
-                this.getPlayer2Color()
+                this.firstPlayerName.getText(),
+                this.getFirstPlayerIcon(),
+                this.getFirstPlayerColor(),
+                this.secondPlayerName.getText(),
+                this.getSecondPlayerIcon(),
+                this.getSecondPlayerColor()
         );
     }
 
-    private ImageIcon getPlayer1Icon() {
+    private ImageIcon getFirstPlayerIcon() {
         if (this.firstIconAquaman.isSelected()) {
             return IconFactory.getIcon("AQUAMAN");
         }
@@ -364,7 +364,7 @@ public class ContestSettingsView extends AbstractView {
         return null;
     }
 
-    private ImageIcon getPlayer2Icon() {
+    private ImageIcon getSecondPlayerIcon() {
         if (this.secondIconAquaman.isSelected()) {
             return IconFactory.getIcon("AQUAMAN");
         }
@@ -381,7 +381,7 @@ public class ContestSettingsView extends AbstractView {
         return null;
     }
 
-    private Color getPlayer1Color() {
+    private Color getFirstPlayerColor() {
         if (this.firstColorPlayerBlue.isSelected()) {
             return ColorFactory.getColor("BLUE");
         }
@@ -398,7 +398,7 @@ public class ContestSettingsView extends AbstractView {
         return null;
     }
 
-    private Color getPlayer2Color() {
+    private Color getSecondPlayerColor() {
         if (this.secondColorPlayerBlue.isSelected()) {
             return ColorFactory.getColor("BLUE");
         }
@@ -416,8 +416,8 @@ public class ContestSettingsView extends AbstractView {
     }
 
 
-    private ArrayList<GameEnum> gameSelectedGameTypes() {
-        ArrayList<GameEnum> gameTypes = new ArrayList<>();
+    private List<GameEnum> gameSelectedGameTypes() {
+        List<GameEnum> gameTypes = new ArrayList<>();
 
         if (this.ticTacToeCheckbox.isSelected()) {
             gameTypes.add(GameEnum.TIC_TAC_TOE);
@@ -433,7 +433,6 @@ public class ContestSettingsView extends AbstractView {
         if (this.runnerCheckbox.isSelected()) {
             gameTypes.add(GameEnum.RUNNER);
         }
-
 
         return gameTypes;
     }

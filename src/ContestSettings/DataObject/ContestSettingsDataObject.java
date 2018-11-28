@@ -1,74 +1,72 @@
 package ContestSettings.DataObject;
 
 import Game.Model.GameEnum;
-import Parameter.Parameters.ColorParameter;
-import Parameter.Parameters.IconParameter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ContestSettingsDataObject {
 
     private final int numberOfMatches;
-    private final ArrayList<GameEnum> selectedGameTypes;
-    private final String player1Name;
-    private final ImageIcon player1Icon;
-    private final Color player1Color;
-    private final String player2Name;
-    private final ImageIcon player2Icon;
-    private final Color player2Color;
+    private final List<GameEnum> selectedGameTypes;
+    private final String firstPlayerName;
+    private final ImageIcon firstPlayerIcon;
+    private final Color firstPlayerColor;
+    private final String secondPlayerName;
+    private final ImageIcon secondPlayerIcon;
+    private final Color secondPlayerColor;
 
     public ContestSettingsDataObject(
             int numberOfMatches,
-            ArrayList<GameEnum> selectedGameTypes,
-            String player1Name,
-            ImageIcon player1Icon,
-            Color player1Color,
-            String player2Name,
-            ImageIcon player2Icon,
-            Color player2Color
+            List<GameEnum> selectedGameTypes,
+            String firstPlayerName,
+            ImageIcon firstPlayerIcon,
+            Color firstPlayerColor,
+            String secondPlayerName,
+            ImageIcon secondPlayerIcon,
+            Color secondPlayerColor
     ) {
         this.numberOfMatches = numberOfMatches;
         this.selectedGameTypes = selectedGameTypes;
-        this.player1Name = player1Name;
-        this.player1Icon = player1Icon;
-        this.player1Color = player1Color;
-        this.player2Name = player2Name;
-        this.player2Icon = player2Icon;
-        this.player2Color = player2Color;
+        this.firstPlayerName = firstPlayerName;
+        this.firstPlayerIcon = firstPlayerIcon;
+        this.firstPlayerColor = firstPlayerColor;
+        this.secondPlayerName = secondPlayerName;
+        this.secondPlayerIcon = secondPlayerIcon;
+        this.secondPlayerColor = secondPlayerColor;
     }
 
     public int getNumberOfMatches() {
         return numberOfMatches;
     }
 
-    public ArrayList<GameEnum> getSelectedGameTypes() {
+    public List<GameEnum> getSelectedGameTypes() {
         return selectedGameTypes;
     }
 
-    public String getPlayer1Name() {
-        return player1Name;
+    public String getFirstPlayerName() {
+        return firstPlayerName;
     }
 
-    public ImageIcon getPlayer1Icon() {
-        return player1Icon;
+    public ImageIcon getFirstPlayerIcon() {
+        return firstPlayerIcon;
     }
 
-    public Color getPlayer1Color() {
-        return player1Color;
+    public Color getFirstPlayerColor() {
+        return firstPlayerColor;
     }
 
-    public String getPlayer2Name() {
-        return player2Name;
+    public String getSecondPlayerName() {
+        return secondPlayerName;
     }
 
-    public ImageIcon getPlayer2Icon() {
-        return player2Icon;
+    public ImageIcon getSecondPlayerIcon() {
+        return secondPlayerIcon;
     }
 
-    public Color getPlayer2Color() {
-        return player2Color;
+    public Color getSecondPlayerColor() {
+        return secondPlayerColor;
     }
 
     @Override
@@ -76,12 +74,12 @@ public class ContestSettingsDataObject {
         return "ContestSettingsDataObject{" +
                 "numberOfMatches=" + numberOfMatches +
                 ", selectedGameTypes=" + selectedGameTypes +
-                ", player1Name='" + player1Name + '\'' +
-                ", player1Icon=" + player1Icon +
-                ", player1Color=" + player1Color +
-                ", player2Name='" + player2Name + '\'' +
-                ", player2Icon=" + player2Icon +
-                ", player2Color=" + player2Color +
+                ", firstPlayerName='" + firstPlayerName + '\'' +
+                ", firstPlayerIcon=" + firstPlayerIcon +
+                ", firstPlayerColor=" + firstPlayerColor +
+                ", secondPlayerName='" + secondPlayerName + '\'' +
+                ", secondPlayerIcon=" + secondPlayerIcon +
+                ", secondPlayerColor=" + secondPlayerColor +
                 '}';
     }
 }
