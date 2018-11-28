@@ -5,7 +5,9 @@ import Game.GameScene;
 import Game.Model.GameEnum;
 import Player.Player;
 import Player.LocalPlayer;
+import Scene.Factory.GameSceneEnumFactory;
 import Scene.Model.AbstractSceneManagerModel;
+import Scene.Model.SceneEnum;
 
 import java.util.*;
 
@@ -49,6 +51,7 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
      */
     public void setUpContest(ContestSettingsDataObject settingsDataObject) {
         this.matchesAmount = settingsDataObject.getNumberOfMatches();
+        this.matchesPlayed = 0;
 
         this.gameTypes = settingsDataObject.getSelectedGameTypes();
 
@@ -62,6 +65,36 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
             settingsDataObject.getSecondPlayerName(),
             settingsDataObject.getSecondPlayerColor(),
             settingsDataObject.getSecondPlayerIcon()
+        );
+    }
+
+    /**
+     * Randomize the next game type to be played
+     *
+     * @return GameEnum
+     */
+    private GameEnum getNextGameType() {
+        Random random = new Random();
+        return this.gameTypes.get(
+            random.nextInt(this.gameTypes.size())
+        );
+    }
+
+    /**
+     * Randomize next game type and return corresponding SceneEnum
+     *
+     * @return SceneEnum
+     */
+    public SceneEnum getNextGameScene() {
+        if (this.matchesPlayed >= this.matchesAmount) { // no more games to be played
+            return SceneEnum.CONTEST_FINISHED;
+        }
+
+        this.matchesPlayed++;
+
+        // randomize next game type and return corresponding SceneEnum
+        return GameSceneEnumFactory.createSceneEnum(
+            this.getNextGameType()
         );
     }
 }
