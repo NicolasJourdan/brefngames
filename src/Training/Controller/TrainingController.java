@@ -27,8 +27,8 @@ public class TrainingController extends AbstractSceneManagerController {
 
     private History history;
     private static final Player[] DEFAULT_PLAYERS = {
-            new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR, DEFAULT_PLAYER_1_ICON),
-            new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR, DEFAULT_PLAYER_2_ICON)
+            new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR, DEFAULT_PLAYER_1_ICON, null),
+            new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR, DEFAULT_PLAYER_2_ICON, null)
     };
     private static final GameSceneFactory DEFAULT_GAME_FACTORY = new GameSceneFactory(DEFAULT_PLAYERS, true);
 
