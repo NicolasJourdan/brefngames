@@ -48,4 +48,8 @@ public class GameSceneFactory implements SceneFactoryInterface {
     public void updateHistory(History history) {
         this.history = history;
     }
+
+    public void updateListPlayers(Player[] playerList) {
+        this.listPLayers = playerList;
+    }
 }

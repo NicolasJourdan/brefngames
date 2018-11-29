@@ -3,10 +3,14 @@ package Contest.Model;
 import ContestSettings.DataObject.ContestSettingsDataObject;
 import Game.GameScene;
 import Game.Model.GameEnum;
+import Map.Model.GameHistory;
+import Map.Model.History;
 import Player.Player;
 import Player.LocalPlayer;
 import Scene.Factory.GameSceneEnumFactory;
 import Scene.Model.AbstractSceneManagerModel;
+import Scene.Model.ActionEnum;
+import Scene.Model.Scene;
 import Scene.Model.SceneEnum;
 
 import java.util.*;
@@ -36,10 +40,28 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
     protected Player[] playerList;
 
     /**
+     * Type of the current game
+     */
+    private GameEnum currentGameType;
+
+    /**
      * The current game
      */
     private GameScene currentGameScene;
 
+    /**
+     * History for the map
+     */
+    private History history;
+
+    /**
+     * Stores if the next is the map
+     */
+    private Boolean nextSceneIsMap;
+
+    /**
+     * @return Player[]
+     */
     public Player[] getPlayerList() {
         return playerList;
     }
@@ -66,6 +88,15 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
             settingsDataObject.getSecondPlayerColor(),
             settingsDataObject.getSecondPlayerIcon()
         );
+
+        this.history = new History(
+            this.playerList,
+            new ArrayList<GameHistory>(),
+            this.matchesAmount,
+            false
+        );
+
+        this.nextSceneIsMap = true;
     }
 
     /**
@@ -86,15 +117,56 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
      * @return SceneEnum
      */
     public SceneEnum getNextGameScene() {
+        // if next scene is a map
+        if (this.nextSceneIsMap) {
+            this.nextSceneIsMap = false;
+            return SceneEnum.MAP;
+        }
+        this.nextSceneIsMap = true;
+
         if (this.matchesPlayed >= this.matchesAmount) { // no more games to be played
             return SceneEnum.CONTEST_FINISHED;
         }
 
-        this.matchesPlayed++;
-
         // randomize next game type and return corresponding SceneEnum
+        this.currentGameType = this.getNextGameType();
         return GameSceneEnumFactory.createSceneEnum(
-            this.getNextGameType()
+            this.currentGameType
         );
+    }
+
+    /**
+     * save the winner of the current game
+     * null for a draw
+     *
+     * @param action
+     */
+    public void setWinner(ActionEnum action) {
+        Player winner = null;
+        switch (action) {
+            case PLAYER_1_WON:
+                winner = this.playerList[0];
+            case PLAYER_2_WON:
+                winner = this.playerList[1];
+            case DRAW:
+                break;
+            default:
+                throw new RuntimeException("Illegal ActionEnum " + action + " used");
+        }
+
+        // update history for the map
+        this.history.addGameHistory(
+            new GameHistory(
+                GameSceneEnumFactory.createSceneEnum(this.currentGameType),
+                this.playerList,
+                action
+            )
+        );
+
+        this.matchesPlayed++;
+    }
+
+    public History getHistory() {
+        return history;
     }
 }

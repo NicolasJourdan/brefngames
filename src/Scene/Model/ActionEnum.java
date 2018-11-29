@@ -67,6 +67,7 @@ public enum ActionEnum {
      * Menu
      */
     TRAINING("TRAINING"),
+    END_CONTEST("END_CONTEST"),
     END_TRAINING("END_TRAINING"),
     END_PARAMETERS("END_PARAMETERS"),
     CONTEST("CONTEST"),
