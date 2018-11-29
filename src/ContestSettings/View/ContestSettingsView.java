@@ -64,6 +64,7 @@ public class ContestSettingsView extends AbstractView {
     private JRadioButton secondColorPlayerYellow;
 
     private final JButton startButton;
+    private final JButton backButton;
 
     public ContestSettingsView() {
         this.setLayout(
@@ -247,6 +248,19 @@ public class ContestSettingsView extends AbstractView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ContestSettingsView.this.observable.notifyObservers(ActionEnum.START_CONTEST);
+            }
+        });
+
+        // Back button
+        constraint.gridy = 6;
+        constraint.gridheight = 1;
+        this.backButton = new JButton("Back");
+        this.add(this.backButton, constraint);
+
+        this.backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ContestSettingsView.this.observable.notifyObservers(ActionEnum.END_CONTEST);
             }
         });
     }

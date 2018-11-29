@@ -52,6 +52,14 @@ public class ContestController extends AbstractSceneManagerController {
 
                 return nextScene;
 
+            /**
+             * Back button
+             */
+            case END_CONTEST:
+                this.setChanged();
+                this.notifyObservers(actionEnum.END_CONTEST);
+                return SceneEnum.END_SCENE;
+
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
         }
