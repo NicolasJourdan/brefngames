@@ -30,7 +30,7 @@ public class TrainingController extends AbstractSceneManagerController {
             new LocalPlayer(DEFAULT_PLAYER_1_NAME, DEFAULT_PLAYER_1_COLOR, DEFAULT_PLAYER_1_ICON),
             new LocalPlayer(DEFAULT_PLAYER_2_NAME, DEFAULT_PLAYER_2_COLOR, DEFAULT_PLAYER_2_ICON)
     };
-    private static final GameSceneFactory DEFAULT_GAME_FACTORY = new GameSceneFactory(DEFAULT_PLAYERS);
+    private static final GameSceneFactory DEFAULT_GAME_FACTORY = new GameSceneFactory(DEFAULT_PLAYERS, true);
 
     public TrainingController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
         super(model, view, DEFAULT_GAME_FACTORY );

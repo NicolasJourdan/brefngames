@@ -12,11 +12,12 @@ import Training.TrainingMenuScene;
 public class GameSceneFactory implements SceneFactoryInterface {
 
     private Player[] listPLayers;
-
+    private boolean isTraining;
     private History history;
 
-    public GameSceneFactory(Player[] listPlayers) {
+    public GameSceneFactory(Player[] listPlayers, boolean isTraining) {
         this.listPLayers = listPlayers;
+        this.isTraining = isTraining;
     }
 
     /**
@@ -28,7 +29,7 @@ public class GameSceneFactory implements SceneFactoryInterface {
             case MAP:
                 return new MapScene(this.history);
             case TIC_TAC_TOE:
-                return new TicTacToeScene(this.listPLayers);
+                return new TicTacToeScene(this.listPLayers, this.isTraining);
             case RUNNER:
                 // return new RunnerScene(this.listPlayers);
             case CONNECT_FOUR:
