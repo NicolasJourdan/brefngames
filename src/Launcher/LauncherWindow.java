@@ -12,7 +12,6 @@ public class LauncherWindow extends JFrame {
     public LauncherWindow() {
         this.setTitle(LauncherWindow.TITLE);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setAlwaysOnTop(true);
         this.setFocusable(true);
 
         // dimensions and location
