@@ -27,6 +27,7 @@ public enum SceneEnum {
      * Contest
      */
     CONTEST_MENU("CONTEST_MENU"),
+    CONTEST_FINISHED("CONTEST_FINISHED"),
 
     /*
      * Screens

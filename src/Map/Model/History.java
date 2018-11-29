@@ -2,6 +2,7 @@ package Map.Model;
 
 import Player.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class History {
@@ -22,6 +23,11 @@ public class History {
         this.gameHistories = gameHistories;
         this.nbTotalGames = nbTotalGames;
         this.nbRemainingGames = this.nbTotalGames - this.gameHistories.size();
+    }
+
+    public void addGameHistory(GameHistory gameHistory) {
+        this.gameHistories.add(gameHistory);
+        this.nbRemainingGames--;
     }
 
     public List<GameHistory> getGameHistories() {
