@@ -10,7 +10,6 @@ import Player.LocalPlayer;
 import Scene.Factory.GameSceneEnumFactory;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;
-import Scene.Model.Scene;
 import Scene.Model.SceneEnum;
 
 import java.util.*;
@@ -37,7 +36,10 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
      */
     private List<GameScene> gameSceneList;
 
-    protected Player[] playerList;
+    /**
+     * Array containing the playing players
+     */
+    protected Player[] playersList;
 
     /**
      * Type of the current game
@@ -57,13 +59,13 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
     /**
      * Stores if the next is the map
      */
-    private Boolean nextSceneIsMap;
+    private boolean nextSceneIsMap;
 
     /**
      * @return Player[]
      */
-    public Player[] getPlayerList() {
-        return playerList;
+    public Player[] getPlayersList() {
+        return this.playersList;
     }
 
     /**
@@ -77,20 +79,20 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
 
         this.gameTypes = settingsDataObject.getSelectedGameTypes();
 
-        this.playerList = new  Player[2];
-        this.playerList[0] = new LocalPlayer(
+        this.playersList = new  Player[2];
+        this.playersList[0] = new LocalPlayer(
             settingsDataObject.getFirstPlayerName(),
             settingsDataObject.getFirstPlayerColor(),
             settingsDataObject.getFirstPlayerIcon()
         );
-        this.playerList[1] = new LocalPlayer(
+        this.playersList[1] = new LocalPlayer(
             settingsDataObject.getSecondPlayerName(),
             settingsDataObject.getSecondPlayerColor(),
             settingsDataObject.getSecondPlayerIcon()
         );
 
         this.history = new History(
-            this.playerList,
+            this.playersList,
             new ArrayList<GameHistory>(),
             this.matchesAmount,
             false
@@ -145,9 +147,9 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
         Player winner = null;
         switch (action) {
             case PLAYER_1_WON:
-                winner = this.playerList[0];
+                winner = this.playersList[0];
             case PLAYER_2_WON:
-                winner = this.playerList[1];
+                winner = this.playersList[1];
             case DRAW:
                 break;
             default:
@@ -158,7 +160,7 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
         this.history.addGameHistory(
             new GameHistory(
                 GameSceneEnumFactory.createSceneEnum(this.currentGameType),
-                this.playerList,
+                this.playersList,
                 action
             )
         );

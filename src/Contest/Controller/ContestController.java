@@ -12,7 +12,7 @@ import Scene.View.AbstractSceneManagerView;
 public class ContestController extends AbstractSceneManagerController {
 
     public ContestController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
-        super(model, view, new GameSceneFactory(((AbstractContest) model).getPlayerList(), false));
+        super(model, view, new GameSceneFactory(((AbstractContest) model).getPlayersList(), false));
 
         this.switchScene(SceneEnum.CONTEST_MENU);
     }
@@ -29,7 +29,7 @@ public class ContestController extends AbstractSceneManagerController {
                 );
 
                 // update gameSceneFactory values
-                ((GameSceneFactory) this.sceneFactory).updateListPlayers(((AbstractContest) this.model).getPlayerList());
+                ((GameSceneFactory) this.sceneFactory).updatePlayersList(((AbstractContest) this.model).getPlayersList());
                 ((GameSceneFactory) this.sceneFactory).updateHistory(((AbstractContest) this.model).getHistory());
 
                 return ((AbstractContest) this.model).getNextGameScene();
@@ -45,8 +45,6 @@ public class ContestController extends AbstractSceneManagerController {
             case END_MAP:
                 SceneEnum nextScene = ((AbstractContest) this.model).getNextGameScene();
                 if (SceneEnum.CONTEST_FINISHED == nextScene) {
-                    // Call the parent (ParametersScene), this parent will call its own parent (LauncherController)
-                    // to change the current scene and destroy this scene manager controller
                     this.setChanged();
                     this.notifyObservers(actionEnum.END_CONTEST);
                     return SceneEnum.END_SCENE;
