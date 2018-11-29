@@ -9,10 +9,10 @@ import Player.Player;
 
 public class CookieClickerScene extends GameScene {
 
-    public CookieClickerScene(Player[] players) {
+    public CookieClickerScene(Player[] players, boolean isTraining) {
         this.model = new CookieModel(players);
         this.view = new CookieView();
-        this.controller = new CookieController((CookieModel) this.model, (CookieView) this.view);
+        this.controller = new CookieController((CookieModel) this.model, (CookieView) this.view, isTraining);
         this.controller.addObserver(this);
 
     }
