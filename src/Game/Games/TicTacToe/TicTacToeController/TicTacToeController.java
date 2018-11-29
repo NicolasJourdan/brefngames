@@ -53,8 +53,10 @@ public class TicTacToeController extends AbstractGameController {
                 sendStats();
                 if (((TicTacToeModel) this.model).getCurrentPlayer().getName().equals(((TicTacToeModel) this.model).getPlayers()[0].getName())) {
                     this.notifyObservers(ActionEnum.PLAYER_1_WON);
+                    return;
                 } else {
                     this.notifyObservers(ActionEnum.PLAYER_2_WON);
+                    return;
                 }
             }
             if (((TicTacToeModel) this.model).isDraw()) {
@@ -62,6 +64,7 @@ public class TicTacToeController extends AbstractGameController {
                 sendStats();
                 this.setChanged();
                 this.notifyObservers(ActionEnum.DRAW);
+                return;
             }
             ((TicTacToeModel) this.model).changePlayer();
         }
