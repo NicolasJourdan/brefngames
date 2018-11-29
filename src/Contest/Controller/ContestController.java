@@ -15,7 +15,7 @@ public class ContestController extends AbstractSceneManagerController {
     private ContestSettingsDataObject contestSettingsDataObject;
 
     public ContestController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
-        super(model, view, new GameSceneFactory(((AbstractContest) model).getPlayerList()));
+        super(model, view, new GameSceneFactory(((AbstractContest) model).getPlayerList(), false));
 
         this.switchScene(SceneEnum.CONTEST_MENU);
     }
