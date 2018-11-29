@@ -45,8 +45,8 @@ public class MapView extends AbstractGameView {
         JPanel current = new JPanel();
         current.setLayout(new GridLayout(3, 1));
         if (null == winner) {
-            current.add(new JLabel("Match null"));
-            current.add(new JLabel("Match null"));
+            current.add(new JLabel("Draw"));
+            current.add(new JLabel("Draw"));
         } else {
             current.add(new JLabel(resizeImage(winner.getIcon())));
             current.add(new JLabel(winner.getName()));
