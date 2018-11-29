@@ -105,9 +105,9 @@ public class TicTacToeController extends AbstractGameController {
     }
 
     private void sendStats(){
-        if (this.isTraining) {
-            return;
-        }
+//        if (this.isTraining) {
+//            return;
+//        }
 
         finalTime = System.currentTimeMillis();
         totalTime = Long.toString((finalTime - initTime)/1000);
