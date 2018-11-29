@@ -8,8 +8,8 @@ import java.util.Observable;
 
 public class CookieController extends AbstractGameController {
 
-    public CookieController(CookieModel model, CookieView view){
-        super(model,view);
+    public CookieController(CookieModel model, CookieView view, boolean isTraining){
+        super(model,view, isTraining);
     }
 
     @Override

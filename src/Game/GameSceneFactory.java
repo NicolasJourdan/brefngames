@@ -36,7 +36,7 @@ public class GameSceneFactory implements SceneFactoryInterface {
             case CONNECT_FOUR:
                 // return new ConnectFourScene(this.listPlayers);
             case COOKIE_CLICKER:
-                return new CookieClickerScene(this.playersList);
+                return new CookieClickerScene(this.playersList, isTraining);
             case TRAINING_MENU:
                 return new TrainingMenuScene();
             case CONTEST_MENU:
