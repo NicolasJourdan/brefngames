@@ -5,10 +5,18 @@ import Scene.Model.ActionEnum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class CookieView extends AbstractGameView implements KeyListener {
+
+    private static String ACTION_PRESS_Q = "ACTION_PRESS_Q";
+    private static String ACTION_RELEASE_Q = "ACTION_RELEASE_Q";
+    private static String ACTION_PRESS_M = "ACTION_PRESS_M";
+    private static String ACTION_RELEASE_M = "ACTION_RELEASE_M";
+    private static String ACTION_PRESS_S = "ACTION_PRESS_S";
+    private static String ACTION_PRESS_L = "ACTION_PRESS_L";
 
     private static Icon DEFAULT_SMALL_COOKIE = new ImageIcon(CookieView.class.getResource("/data/Images/cookieSmall.png"));
     private static Icon DEFAULT_BIG_COOKIE = new ImageIcon(CookieView.class.getResource("/data/Images/cookieBig.png"));
@@ -26,10 +34,89 @@ public class CookieView extends AbstractGameView implements KeyListener {
         this.addKeyListener(this);
         this.setFocusable(true);
         this.requestFocus();
-        initComposant();
+        this.initComposant();
         this.setVisible(true);
-        revalidate();
-        repaint();
+        this.revalidate();
+        this.repaint();
+
+        // press Q
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, false),
+                ACTION_PRESS_Q
+        );
+
+        // release Q
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, true),
+                ACTION_RELEASE_Q
+        );
+
+        // press M
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, false),
+                ACTION_PRESS_M
+        );
+
+        // release M
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, true),
+                ACTION_RELEASE_M
+        );
+
+        // press S
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false),
+                ACTION_PRESS_S
+        );
+
+        // press L
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_L, 0, false),
+                ACTION_PRESS_L
+        );
+
+
+        this.getActionMap().put(ACTION_PRESS_Q, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:
+            }
+        });
+
+        this.getActionMap().put(ACTION_RELEASE_Q, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:
+            }
+        });
+
+        this.getActionMap().put(ACTION_PRESS_M, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:
+            }
+        });
+
+        this.getActionMap().put(ACTION_RELEASE_M, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:
+            }
+        });
+
+        this.getActionMap().put(ACTION_PRESS_S, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:
+            }
+        });
+
+        this.getActionMap().put(ACTION_PRESS_L, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO:
+            }
+        });
     }
 
     private void initComposant(){
