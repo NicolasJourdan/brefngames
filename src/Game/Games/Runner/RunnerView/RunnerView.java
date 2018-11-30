@@ -3,9 +3,17 @@ package Game.Games.Runner.RunnerView;
 import Game.View.AbstractGameView;
 import Player.Player;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class RunnerView extends AbstractGameView {
+
+    private static String ACTION_PRESS_A = "ACTION_PRESS_A";
+    private static String ACTION_PRESS_Z = "ACTION_PRESS_Z";
+    private static String ACTION_PRESS_R = "ACTION_PRESS_R";
+    private static String ACTION_PRESS_T = "ACTION_PRESS_T";
 
     private final Track track;
     private final PlayerControls firstPlayerControls;
@@ -41,5 +49,59 @@ public class RunnerView extends AbstractGameView {
 
         this.revalidate();
         this.repaint();
+
+        // key binding
+
+        // press A
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false),
+                RunnerView.ACTION_PRESS_A
+        );
+
+        this.getActionMap().put(ACTION_PRESS_A, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO:
+            }
+        });
+
+        // press Z
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_Z, 0, false),
+                RunnerView.ACTION_PRESS_Z
+        );
+
+        this.getActionMap().put(ACTION_PRESS_Z, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO:
+            }
+        });
+
+        // press R
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_R, 0, false),
+                RunnerView.ACTION_PRESS_R
+        );
+
+        this.getActionMap().put(ACTION_PRESS_R, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO:
+            }
+        });
+
+        // press T
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_T, 0, false),
+                RunnerView.ACTION_PRESS_T
+        );
+
+        this.getActionMap().put(ACTION_PRESS_T, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO:
+            }
+        });
     }
 }
