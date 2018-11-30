@@ -67,6 +67,8 @@ public class ContestSettingsView extends AbstractView {
     private final JButton startButton;
     private final JButton backButton;
 
+    private final JLabel warningLabel;
+
     public ContestSettingsView() {
         this.setLayout(
             new GridBagLayout()
@@ -264,6 +266,14 @@ public class ContestSettingsView extends AbstractView {
                 ContestSettingsView.this.observable.notifyObservers(ActionEnum.END_CONTEST);
             }
         });
+
+        // Warning label
+        constraint.gridx = 0;
+        constraint.gridy = 7;
+        constraint.gridwidth = 2;
+        this.warningLabel = new JLabel("");
+        this.warningLabel.setForeground(Color.RED);
+        this.add(this.warningLabel, constraint);
     }
 
     public void setDefaultConfiguration(Map<ParameterEnum, Configurable> defaultConfiguration) {
@@ -450,5 +460,16 @@ public class ContestSettingsView extends AbstractView {
         }
 
         return gameTypes;
+    }
+
+    /**
+     * Set a warning label
+     *
+     * @param invalidDataObjectText
+     */
+    public void updateWarningMessage(String invalidDataObjectText) {
+        this.warningLabel.setText(invalidDataObjectText);
+        this.revalidate();
+        this.repaint();
     }
 }

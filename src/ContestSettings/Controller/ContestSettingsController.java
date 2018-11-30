@@ -34,6 +34,12 @@ public class ContestSettingsController extends AbstractController {
             case START_CONTEST:
                 this.settingsDataObject = ((ContestSettingsView) this.view).getSettingsDataObject();
 
+                // check the validity of the settings dto
+                if (false == ((ContestSettingsModel) this.model).validateSettingsDataObject(this.settingsDataObject)) {
+                    ((ContestSettingsView) this.view).updateWarningMessage(((ContestSettingsModel) this.model).getInvalidDataObjectText());
+                    break;
+                }
+
                 this.setChanged();
                 this.notifyObservers(ActionEnum.START_CONTEST);
                 break;
