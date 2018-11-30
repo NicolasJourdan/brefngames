@@ -81,6 +81,26 @@ public class GlobalStatisticsRepository {
     }
 
     /**
+     * Get the best player on the game passed in parameter
+     */
+    public static String getBestPlayerOnGame(GameEnum gameEnum) {
+        List<Player> players = PlayerRepository.getAll();
+
+        switch (gameEnum) {
+            case TIC_TAC_TOE:
+                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.TIC_TAC_TOE_NB_WIN);
+            case RUNNER:
+                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.RUNNER_NB_WIN);
+            case COOKIE_CLICKER:
+                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.COOKIE_CLICKER_NB_WIN);
+            case CONNECT_FOUR:
+                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.CONNECT_FOUR_NB_WIN);
+            default:
+                throw new RuntimeException("GameEnum : " + gameEnum + " is unknown");
+        }
+    }
+
+    /**
      * Get the best player on a statistic
      *
      * @return The name of the best player

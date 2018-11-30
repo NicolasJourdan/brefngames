@@ -4,10 +4,8 @@ import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
-import Repository.Game.ConnectFourRepository;
-import Repository.Game.CookieClickerRepository;
-import Repository.Game.RunnerRepository;
-import Repository.Game.TicTacToeRepository;
+import Game.Model.GameEnum;
+import Repository.Game.*;
 
 import java.util.Map;
 
@@ -30,7 +28,13 @@ public class ContestDataPersistor {
                                 / Integer.parseInt(dataEntries.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS))
                 )
         );
-        //TODO Add best player in playerStatsRepository
+
+        // The best player on tic tac toe
+        dataEntries.put(
+                TicTacToeStatsEnum.TIC_TAC_TOE_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.TIC_TAC_TOE)
+        );
+
         TicTacToeRepository.saveAll(dataEntries);
     }
 
@@ -66,7 +70,13 @@ public class ContestDataPersistor {
                                 / Integer.parseInt(dataEntries.get(RunnerStatsEnum.RUNNER_TOTAL_TIME))
                 )
         );
-        //TODO Add best player in playerStatsRepository
+
+        // The best player on tic tac toe
+        dataEntries.put(
+                RunnerStatsEnum.RUNNER_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.RUNNER)
+        );
+
         RunnerRepository.saveAll(dataEntries);
     }
 
@@ -105,7 +115,13 @@ public class ContestDataPersistor {
                                 / Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES))
                 )
         );
-        //TODO Add best player in playerStatsRepository
+
+        // The best player on cookie clicker
+        dataEntries.put(
+                CookieClickerStatsEnum.COOKIE_CLICKER_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.COOKIE_CLICKER)
+        );
+
         CookieClickerRepository.saveAll(dataEntries);
     }
 
@@ -138,7 +154,13 @@ public class ContestDataPersistor {
                                 / Integer.parseInt(dataEntries.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES))
                 )
         );
-        //TODO Add best player in playerStatsRepository
+
+        // The best player on connect four
+        dataEntries.put(
+                ConnectFourStatsEnum.CONNECT_FOUR_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.CONNECT_FOUR)
+        );
+
         ConnectFourRepository.saveAll(dataEntries);
     }
 
