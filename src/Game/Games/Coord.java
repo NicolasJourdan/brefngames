@@ -1,4 +1,4 @@
-package Game.Games.TicTacToe.TicTacToeView;
+package Game.Games;
 
 import java.io.Serializable;
 

@@ -4,7 +4,7 @@ import Contest.Model.ContestDataPersistor;
 import Game.Controller.AbstractGameController;
 import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
-import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Game.Games.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
@@ -105,9 +105,9 @@ public class TicTacToeController extends AbstractGameController {
     }
 
     private void sendStats(){
-//        if (this.isTraining) {
-//            return;
-//        }
+        if (this.isTraining) {
+            return;
+        }
 
         finalTime = System.currentTimeMillis();
         totalTime = Long.toString((finalTime - initTime)/1000);

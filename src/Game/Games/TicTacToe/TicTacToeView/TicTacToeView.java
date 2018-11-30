@@ -1,9 +1,9 @@
 package Game.Games.TicTacToe.TicTacToeView;
 
+import Game.Games.Coord;
 import Game.View.AbstractGameView;
 import Structure.ProxyObservable;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class TicTacToeView extends AbstractGameView {
