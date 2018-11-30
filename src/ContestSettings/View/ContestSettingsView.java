@@ -26,6 +26,7 @@ public class ContestSettingsView extends AbstractView {
     public final static int NB_MIN_GAMES = 1;
     public final static int NB_DEFAULT_GAMES = 4;
     public final static int NB_STEP_GAMES = 1;
+    public final static int COLUMNS_PLAYER_NAME_TEXTFIELD = 15;
 
     public final static String DEFAULT_FIRST_PLAYER_NAME = "Player 1";
     public final static String DEFAULT_SECOND_PLAYER_NAME = "Player 2";
@@ -64,6 +65,7 @@ public class ContestSettingsView extends AbstractView {
     private JRadioButton secondColorPlayerYellow;
 
     private final JButton startButton;
+    private final JButton backButton;
 
     public ContestSettingsView() {
         this.setLayout(
@@ -136,7 +138,7 @@ public class ContestSettingsView extends AbstractView {
         firstPlayerPanel.add(new JLabel("Player 1"), constraintPlayerPanel);
 
         constraintPlayerPanel.gridx = 1;
-        this.firstPlayerName = new JTextField(ContestSettingsView.DEFAULT_FIRST_PLAYER_NAME);
+        this.firstPlayerName = new JTextField(ContestSettingsView.DEFAULT_FIRST_PLAYER_NAME, COLUMNS_PLAYER_NAME_TEXTFIELD);
         firstPlayerPanel.add(this.firstPlayerName, constraintPlayerPanel);
 
         this.firstIconSuperman = new JRadioButton("Superman_1");
@@ -191,7 +193,7 @@ public class ContestSettingsView extends AbstractView {
         secondPlayerPanel.add(new JLabel("Player 2"), constraintPlayerPanel);
 
         constraintPlayerPanel.gridx = 1;
-        this.secondPlayerName = new JTextField(ContestSettingsView.DEFAULT_SECOND_PLAYER_NAME);
+        this.secondPlayerName = new JTextField(ContestSettingsView.DEFAULT_SECOND_PLAYER_NAME, COLUMNS_PLAYER_NAME_TEXTFIELD);
         secondPlayerPanel.add(this.secondPlayerName, constraintPlayerPanel);
 
         this.secondColorPlayerRed = new JRadioButton("Red_2");
@@ -247,6 +249,19 @@ public class ContestSettingsView extends AbstractView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ContestSettingsView.this.observable.notifyObservers(ActionEnum.START_CONTEST);
+            }
+        });
+
+        // Back button
+        constraint.gridy = 6;
+        constraint.gridheight = 1;
+        this.backButton = new JButton("Back");
+        this.add(this.backButton, constraint);
+
+        this.backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ContestSettingsView.this.observable.notifyObservers(ActionEnum.END_CONTEST);
             }
         });
     }
