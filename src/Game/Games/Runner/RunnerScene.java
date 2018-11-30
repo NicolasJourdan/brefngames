@@ -10,7 +10,7 @@ public class RunnerScene extends GameScene {
 
     public RunnerScene(Player[] listPlayers, boolean isTraining) {
         this.model = new RunnerModel(listPlayers);
-        this.view = new RunnerView();
+        this.view = new RunnerView(listPlayers);
         this.controller = new RunnerController((RunnerModel) this.model, (RunnerView) this.view, isTraining);
         this.controller.addObserver(this);
     }
