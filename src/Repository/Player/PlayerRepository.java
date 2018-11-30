@@ -24,11 +24,14 @@ public class PlayerRepository extends AbstractDataRepository {
     public static List<Player> getAll() {
         List<Player> listPlayers = new ArrayList<>();
 
-        JSONArray statsJSONArray = (JSONArray) getDataFile().get(DEFAULT_NODE);
-        Iterator<JSONObject> statsIterator = statsJSONArray.iterator();
+        Iterator<JSONObject> playersIterator = getAllJSONPlayers();
 
-        while (statsIterator.hasNext()) {
-            JSONObject current = statsIterator.next();
+        if (null == playersIterator) {
+            return listPlayers;
+        }
+
+        while (playersIterator.hasNext()) {
+            JSONObject current = playersIterator.next();
             listPlayers.add(
                     new LocalPlayer(
                             ((String) current.get(NAME)),
@@ -80,5 +83,56 @@ public class PlayerRepository extends AbstractDataRepository {
 
             ModifyFiles.write(DATA_JSON_FILE, dataJSON);
         }
+    }
+
+    public static Iterator<JSONObject> getAllJSONPlayers() {
+        JSONArray playersJSONArray = (JSONArray) getDataFile().get(DEFAULT_NODE);
+
+        if (null == playersJSONArray) {
+            return null;
+        }
+
+        return playersJSONArray.iterator();
+    }
+
+    public static JSONObject getJSONPlayerById(String playerId) {
+        Iterator<JSONObject> playersIterator = getAllJSONPlayers();
+
+        if (null != playersIterator) {
+            while (playersIterator.hasNext()) {
+                JSONObject current = playersIterator.next();
+                if (current.get(NAME).equals(playerId)) {
+                    return current;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static void updatePlayer(String playerId, JSONObject jsonPlayer) {
+        JSONObject player = getJSONPlayerById(playerId);
+        if (
+                null == (String) jsonPlayer.get(NAME)
+                || null == (String) jsonPlayer.get(COLOR)
+                || null == (String) jsonPlayer.get(ICON)
+                || null == (JSONObject) jsonPlayer.get(STATS)
+                || null == player
+        ) {
+            return;
+        }
+        // Get players
+        JSONArray playersJSONArray = (JSONArray) getDataFile().get(DEFAULT_NODE);
+        // Replace the player
+        playersJSONArray.remove(player);
+        playersJSONArray.add(jsonPlayer);
+
+        // Create a copy
+        ModifyFiles.saveJSONFile(DATA_JSON_FILE);
+
+        JSONObject dataJSON = getDataFile();
+        dataJSON.put(DEFAULT_NODE, playersJSONArray);
+
+        ModifyFiles.write(DATA_JSON_FILE, dataJSON);
     }
 }
