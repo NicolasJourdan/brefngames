@@ -10,25 +10,37 @@ import java.awt.*;
 public class Track extends JPanel
 {
 
-    public static int WIDTH = 50;
+    public static int WIDTH = 80;
     public static int HEIGHT = 250;
     public static int STROKE_WIDTH = 10;
+    public static int ICON_SIZE = 25;
 
-    private final Player[] players;
+    private final Image firstPlayerImage;
+    private final Image secondPlayerImage;
 
     private int stepsAmount;
-    private int firstPlayerRemaingSteps;
-    private int secondPlayerRemaingSteps;
+    private int firstPlayerRemainingSteps;
+    private int secondPlayerRemainingSteps;
 
     public Track(Player[] players) {
-        this.players = players;
+        this.firstPlayerImage = players[0].getIcon().getImage().getScaledInstance(
+            Track.ICON_SIZE,
+            Track.ICON_SIZE,
+            java.awt.Image.SCALE_SMOOTH
+        );
+
+        this.secondPlayerImage = players[1].getIcon().getImage().getScaledInstance(
+            Track.ICON_SIZE,
+            Track.ICON_SIZE,
+            java.awt.Image.SCALE_SMOOTH
+        );
 
         this.setPreferredSize(
             new Dimension(Track.WIDTH, Track.HEIGHT)
         );
 
-        this.firstPlayerRemaingSteps = 0;
-        this.secondPlayerRemaingSteps = 0;
+        this.firstPlayerRemainingSteps = 0;
+        this.secondPlayerRemainingSteps = 0;
     }
 
     public void setStepsAmount(int stepsAmount) {
@@ -36,13 +48,13 @@ public class Track extends JPanel
     }
 
     public void updateFirstPlayerPosition(int remainingSteps) {
-        this.firstPlayerRemaingSteps = remainingSteps;
+        this.firstPlayerRemainingSteps = remainingSteps;
         this.revalidate();
         this.repaint();
     }
 
     public void updateSecondPlayerPosition(int remainingSteps) {
-        this.secondPlayerRemaingSteps = remainingSteps;
+        this.secondPlayerRemainingSteps = remainingSteps;
         this.revalidate();
         this.repaint();
     }
@@ -90,6 +102,19 @@ public class Track extends JPanel
             STROKE_WIDTH / 2
         );
 
-        // TODO: paint player icon
+        // players
+        g2d.drawImage(
+                this.firstPlayerImage,
+                (Track.WIDTH - Track.STROKE_WIDTH) / 2 - Track.ICON_SIZE,
+                (int) (((float) this.firstPlayerRemainingSteps / this.stepsAmount) * (Track.HEIGHT - Track.ICON_SIZE)),
+                this
+        );
+
+        g2d.drawImage(
+                this.secondPlayerImage,
+                (Track.WIDTH + Track.STROKE_WIDTH) / 2,
+                (int) (((float) this.secondPlayerRemainingSteps / this.stepsAmount) * (Track.HEIGHT - Track.ICON_SIZE)),
+                this
+        );
     }
 }
