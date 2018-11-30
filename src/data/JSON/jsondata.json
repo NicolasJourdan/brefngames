@@ -45,7 +45,7 @@
       "statistics": {
         "TIC_TAC_TOE_NB_GAME":"0",
         "TIC_TAC_TOE_NB_WIN":"0",
-        "TIC_TAC_TOE_WIN_POURCENT":"0",
+        "TIC_TAC_TOE_WIN_RATE":"0",
         "RUNNER_NB_GAME":"0",
         "RUNNER_NB_WIN":"0",
         "RUNNER_WIN_RATE":"0",
