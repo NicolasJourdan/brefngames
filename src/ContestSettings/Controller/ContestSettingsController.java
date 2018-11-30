@@ -39,7 +39,7 @@ public class ContestSettingsController extends AbstractController {
                 break;
             case END_CONTEST:
                 this.setChanged();
-                this.notifyObservers(arg)
+                this.notifyObservers(arg);
                 break;
         }
     }

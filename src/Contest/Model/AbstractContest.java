@@ -5,8 +5,10 @@ import Game.GameScene;
 import Game.Model.GameEnum;
 import Map.Model.GameHistory;
 import Map.Model.History;
-import Player.Player;
-import Player.LocalPlayer;
+import Player.*;
+import Repository.Player.PlayerRepository;
+import Repository.Player.PlayerStatsEnum;
+import Repository.Player.PlayerStatsRepository;
 import Scene.Factory.GameSceneEnumFactory;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;
@@ -79,17 +81,26 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
 
         this.gameTypes = settingsDataObject.getSelectedGameTypes();
 
+        Map<PlayerStatsEnum, String> firstPlayerStats = PlayerStatsRepository.getByPlayerId(settingsDataObject.getFirstPlayerName());
+        Map<PlayerStatsEnum, String> secondPlayerStats = PlayerStatsRepository.getByPlayerId(settingsDataObject.getSecondPlayerName());
+
         this.playersList = new  Player[2];
         this.playersList[0] = new LocalPlayer(
             settingsDataObject.getFirstPlayerName(),
             settingsDataObject.getFirstPlayerColor(),
-            settingsDataObject.getFirstPlayerIcon()
+            settingsDataObject.getFirstPlayerIcon(),
+            (null == firstPlayerStats) ? AbstractPlayer.initialStatsMap() : firstPlayerStats
         );
+
         this.playersList[1] = new LocalPlayer(
             settingsDataObject.getSecondPlayerName(),
             settingsDataObject.getSecondPlayerColor(),
-            settingsDataObject.getSecondPlayerIcon()
+            settingsDataObject.getSecondPlayerIcon(),
+            (null == secondPlayerStats) ? AbstractPlayer.initialStatsMap() : secondPlayerStats
         );
+
+        PlayerRepository.save(this.playersList[0]);
+        PlayerRepository.save(this.playersList[1]);
 
         this.history = new History(
             this.playersList,
