@@ -2,6 +2,7 @@ package Game.Games.Runner.RunnerView;
 
 import Game.View.AbstractGameView;
 import Player.Player;
+import Scene.Model.ActionEnum;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,7 +62,7 @@ public class RunnerView extends AbstractGameView {
         this.getActionMap().put(ACTION_PRESS_A, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO:
+                RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_A);
             }
         });
 
@@ -74,7 +75,7 @@ public class RunnerView extends AbstractGameView {
         this.getActionMap().put(ACTION_PRESS_Z, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO:
+                RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_Z);
             }
         });
 
@@ -87,7 +88,7 @@ public class RunnerView extends AbstractGameView {
         this.getActionMap().put(ACTION_PRESS_R, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO:
+                RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_R);
             }
         });
 
@@ -100,7 +101,7 @@ public class RunnerView extends AbstractGameView {
         this.getActionMap().put(ACTION_PRESS_T, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO:
+                RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_T);
             }
         });
     }
