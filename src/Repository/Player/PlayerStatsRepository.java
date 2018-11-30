@@ -17,7 +17,7 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         JSONObject jsonPlayer = PlayerRepository.getJSONPlayerById(playerId);
 
         if (null != jsonPlayer) {
-            return getStatsMap((JSONObject) jsonPlayer.get(STATS));
+            return PlayerStatsRepository.getStatsMap((JSONObject) jsonPlayer.get(STATS));
         }
 
         return null;
@@ -69,7 +69,7 @@ public class PlayerStatsRepository extends AbstractDataRepository {
      */
     public static void saveAll(String playerId, Map<PlayerStatsEnum, String> statMap) {
         for (Map.Entry<PlayerStatsEnum, String> entry : statMap.entrySet()) {
-            saveStat(playerId, entry.getKey(), entry.getValue());
+            PlayerStatsRepository.saveStat(playerId, entry.getKey(), entry.getValue());
         }
     }
 

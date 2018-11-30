@@ -15,7 +15,7 @@ public class ThemeParameterRepository extends AbstractParameterRepository {
     public static final String DEFAULT_NODE = "theme";
 
     public static ColorParameter getColor(ThemeEnum themeColor) {
-        String color = getThemeColor(themeColor);
+        String color = ThemeParameterRepository.getThemeColor(themeColor);
         return new ColorParameter(ColorFactory.getColor(color), color);
     }
 

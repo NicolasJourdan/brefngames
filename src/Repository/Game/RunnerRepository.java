@@ -30,7 +30,7 @@ public class RunnerRepository extends AbstractDataRepository {
     }
 
     public static String getById(RunnerStatsEnum statName) {
-        return getAll().get(statName);
+        return RunnerRepository.getAll().get(statName);
     }
 
     /**
