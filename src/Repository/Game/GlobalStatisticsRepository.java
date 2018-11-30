@@ -20,10 +20,10 @@ public class GlobalStatisticsRepository {
     public static Map<GlobalStatisticsEnum, String> getAll() {
         Map<GlobalStatisticsEnum, String> globalStatsMap = new HashMap<>();
 
-        globalStatsMap.put(GlobalStatisticsEnum.BEST_PLAYER, getBestPlayer());
-        globalStatsMap.put(GlobalStatisticsEnum.MOST_PLAYED_GAME, getMostPlayedGame());
-        globalStatsMap.put(GlobalStatisticsEnum.MOST_ADDICT_PLAYER, getMostAddictPlayer());
-        globalStatsMap.put(GlobalStatisticsEnum.NB_TOTAL_GAMES, getTotalPlayedGames());
+        globalStatsMap.put(GlobalStatisticsEnum.BEST_PLAYER, GlobalStatisticsRepository.getBestPlayer());
+        globalStatsMap.put(GlobalStatisticsEnum.MOST_PLAYED_GAME, GlobalStatisticsRepository.getMostPlayedGame());
+        globalStatsMap.put(GlobalStatisticsEnum.MOST_ADDICT_PLAYER, GlobalStatisticsRepository.getMostAddictPlayer());
+        globalStatsMap.put(GlobalStatisticsEnum.NB_TOTAL_GAMES, GlobalStatisticsRepository.getTotalPlayedGames());
 
         return globalStatsMap;
     }
@@ -34,9 +34,7 @@ public class GlobalStatisticsRepository {
      * @return The name of the player
      */
     public static String getBestPlayer() {
-        List<Player> players = PlayerRepository.getAll();
-
-        return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.TOTAL_NB_WIN);
+        return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.TOTAL_NB_WIN);
     }
 
     /**
@@ -45,9 +43,7 @@ public class GlobalStatisticsRepository {
      * @return The name of the player
      */
     public static String getMostAddictPlayer() {
-        List<Player> players = PlayerRepository.getAll();
-
-        return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.TOTAL_NB_GAME);
+        return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.TOTAL_NB_GAME);
     }
 
     /**
@@ -83,18 +79,16 @@ public class GlobalStatisticsRepository {
     /**
      * Get the best player on the game passed in parameter
      */
-    public static String getBestPlayerOnGame(GameEnum gameEnum) {
-        List<Player> players = PlayerRepository.getAll();
-
+    public static String getBestPlayerByGame(GameEnum gameEnum) {
         switch (gameEnum) {
             case TIC_TAC_TOE:
-                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.TIC_TAC_TOE_NB_WIN);
+                return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN);
             case RUNNER:
-                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.RUNNER_NB_WIN);
+                return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.RUNNER_NB_WIN);
             case COOKIE_CLICKER:
-                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.COOKIE_CLICKER_NB_WIN);
+                return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN);
             case CONNECT_FOUR:
-                return GlobalStatisticsRepository.getBestByStat(players, PlayerStatsEnum.CONNECT_FOUR_NB_WIN);
+                return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.CONNECT_FOUR_NB_WIN);
             default:
                 throw new RuntimeException("GameEnum : " + gameEnum + " is unknown");
         }
@@ -105,7 +99,9 @@ public class GlobalStatisticsRepository {
      *
      * @return The name of the best player
      */
-    private static String getBestByStat(List<Player> players, PlayerStatsEnum stats) {
+    private static String getBestPlayerByStat(PlayerStatsEnum stats) {
+        List<Player> players = PlayerRepository.getAll();
+
         Player bestPlayer = players.get(0);
 
         for (Player player : players) {

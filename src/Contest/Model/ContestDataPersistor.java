@@ -32,7 +32,7 @@ public class ContestDataPersistor {
         // The best player on tic tac toe
         dataEntries.put(
                 TicTacToeStatsEnum.TIC_TAC_TOE_BEST_PLAYER,
-                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.TIC_TAC_TOE)
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.TIC_TAC_TOE)
         );
 
         TicTacToeRepository.saveAll(dataEntries);
@@ -71,10 +71,10 @@ public class ContestDataPersistor {
                 )
         );
 
-        // The best player on tic tac toe
+        // The best player on runner
         dataEntries.put(
                 RunnerStatsEnum.RUNNER_BEST_PLAYER,
-                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.RUNNER)
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.RUNNER)
         );
 
         RunnerRepository.saveAll(dataEntries);
@@ -119,7 +119,7 @@ public class ContestDataPersistor {
         // The best player on cookie clicker
         dataEntries.put(
                 CookieClickerStatsEnum.COOKIE_CLICKER_BEST_PLAYER,
-                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.COOKIE_CLICKER)
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.COOKIE_CLICKER)
         );
 
         CookieClickerRepository.saveAll(dataEntries);
@@ -158,7 +158,7 @@ public class ContestDataPersistor {
         // The best player on connect four
         dataEntries.put(
                 ConnectFourStatsEnum.CONNECT_FOUR_BEST_PLAYER,
-                GlobalStatisticsRepository.getBestPlayerOnGame(GameEnum.CONNECT_FOUR)
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.CONNECT_FOUR)
         );
 
         ConnectFourRepository.saveAll(dataEntries);
