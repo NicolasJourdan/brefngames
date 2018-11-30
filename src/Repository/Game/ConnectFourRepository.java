@@ -31,7 +31,7 @@ public class ConnectFourRepository extends AbstractDataRepository {
     }
 
     public static String getById(ConnectFourStatsEnum statName) {
-        return getAll().get(statName);
+        return ConnectFourRepository.getAll().get(statName);
     }
 
     /**

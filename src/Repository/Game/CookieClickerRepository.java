@@ -30,7 +30,7 @@ public class CookieClickerRepository extends AbstractDataRepository {
     }
 
     public static String getById(CookieClickerStatsEnum statName) {
-        return getAll().get(statName);
+        return CookieClickerRepository.getAll().get(statName);
     }
 
     /**

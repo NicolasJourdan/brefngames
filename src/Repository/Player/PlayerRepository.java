@@ -24,7 +24,7 @@ public class PlayerRepository extends AbstractDataRepository {
     public static List<Player> getAll() {
         List<Player> listPlayers = new ArrayList<>();
 
-        Iterator<JSONObject> playersIterator = getAllJSONPlayers();
+        Iterator<JSONObject> playersIterator = PlayerRepository.getAllJSONPlayers();
 
         if (null == playersIterator) {
             return listPlayers;
@@ -47,7 +47,7 @@ public class PlayerRepository extends AbstractDataRepository {
 
     // Get one local player with his name
     public static Player getById(String name) {
-        for (Player p : getAll()) {
+        for (Player p : PlayerRepository.getAll()) {
             if (p.getName().equals(name)) {
                 return p;
             }
@@ -64,7 +64,7 @@ public class PlayerRepository extends AbstractDataRepository {
         ModifyFiles.saveJSONFile(DATA_JSON_FILE);
 
         // Test if the player already exist
-        if (getById(p.getName()) != null){
+        if (PlayerRepository.getById(p.getName()) != null){
             ModifyFiles.removeCopyJSONFile(DATA_JSON_FILE);
         } else {
             JSONArray players = (JSONArray) getDataFile().get(DEFAULT_NODE);
@@ -96,7 +96,7 @@ public class PlayerRepository extends AbstractDataRepository {
     }
 
     public static JSONObject getJSONPlayerById(String playerId) {
-        Iterator<JSONObject> playersIterator = getAllJSONPlayers();
+        Iterator<JSONObject> playersIterator = PlayerRepository.getAllJSONPlayers();
 
         if (null != playersIterator) {
             while (playersIterator.hasNext()) {
@@ -111,7 +111,7 @@ public class PlayerRepository extends AbstractDataRepository {
     }
 
     public static void updatePlayerByJSON(String playerId, JSONObject jsonPlayer) {
-        JSONObject player = getJSONPlayerById(playerId);
+        JSONObject player = PlayerRepository.getJSONPlayerById(playerId);
         if (
                 null == (String) jsonPlayer.get(NAME)
                 || null == (String) jsonPlayer.get(COLOR)
@@ -143,14 +143,14 @@ public class PlayerRepository extends AbstractDataRepository {
         jsonPlayer.put(ICON, IconFactory.getStringIcon(player.getIcon()));
         jsonPlayer.put(STATS, PlayerStatsRepository.getJsonStats(player.getStats()));
 
-        updatePlayerByJSON(player.getName(), jsonPlayer);
+        PlayerRepository.updatePlayerByJSON(player.getName(), jsonPlayer);
     }
 
     public static void save(Player player) {
-        if (null == getById(player.getName())) {
-            createPlayer(player);
+        if (null == PlayerRepository.getById(player.getName())) {
+            PlayerRepository.createPlayer(player);
         } else {
-            updatePlayer(player);
+            PlayerRepository.updatePlayer(player);
         }
     }
 }

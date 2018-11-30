@@ -31,7 +31,7 @@ public class TicTacToeRepository extends AbstractDataRepository {
         }
 
     public static String getById(TicTacToeStatsEnum statName) {
-        return getAll().get(statName);
+        return TicTacToeRepository.getAll().get(statName);
     }
 
     /**

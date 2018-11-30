@@ -17,13 +17,13 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
     public static final String DEFAULT_SECOND_FIELD = "player2";
 
     public static ColorParameter getColorFromPlayer(DefaultPlayerParameterEnum playerEnum) {
-        JSONObject player = getPlayer(playerEnum);
+        JSONObject player = DefaultPlayerParameterRepository.getPlayer(playerEnum);
         String color = (String) player.get(DEFAULT_COLOR_FIELD);
         return new ColorParameter(ColorFactory.getColor(color), color);
     }
 
     public static IconParameter getIconFromPlayer(DefaultPlayerParameterEnum playerEnum) {
-        JSONObject player = getPlayer(playerEnum);
+        JSONObject player = DefaultPlayerParameterRepository.getPlayer(playerEnum);
         String iconName = (String) player.get(DEFAULT_ICON_FIELD);
         return new IconParameter(IconFactory.getIcon(iconName), iconName);
     }
@@ -36,10 +36,10 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
         // Create a copy
         ModifyFiles.saveJSONFile(PARAMETERS_JSON_FILE);
 
-        JSONObject playerJSON = getPlayer(player);
+        JSONObject playerJSON = DefaultPlayerParameterRepository.getPlayer(player);
         playerJSON.put(field, value);
 
-        JSONObject defaultPlayersJSON = getDefaultPlayers();
+        JSONObject defaultPlayersJSON = DefaultPlayerParameterRepository.getDefaultPlayers();
         switch (player) {
             case PLAYER_1:
                 defaultPlayersJSON.put(DEFAULT_FIRST_FIELD, playerJSON);
@@ -60,7 +60,7 @@ public class DefaultPlayerParameterRepository extends AbstractParameterRepositor
     }
 
     private static JSONObject getPlayer(DefaultPlayerParameterEnum defaultPlayerParameterEnum) {
-        JSONObject defaultPlayers = getDefaultPlayers();
+        JSONObject defaultPlayers = DefaultPlayerParameterRepository.getDefaultPlayers();
         if (null == defaultPlayers) {
             throw new RuntimeException("DefaultPlayer is null in parameters.json");
         }
