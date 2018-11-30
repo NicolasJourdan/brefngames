@@ -1,6 +1,7 @@
 package Game.Games.Runner.RunnerView;
 
 import Parameter.Model.ThemeEnum;
+import Player.Player;
 import Repository.Parameter.ThemeParameterRepository;
 
 import javax.swing.*;
@@ -13,10 +14,37 @@ public class Track extends JPanel
     public static int HEIGHT = 250;
     public static int STROKE_WIDTH = 10;
 
-    public Track() {
+    private final Player[] players;
+
+    private int stepsAmount;
+    private int firstPlayerRemaingSteps;
+    private int secondPlayerRemaingSteps;
+
+    public Track(Player[] players) {
+        this.players = players;
+
         this.setPreferredSize(
             new Dimension(Track.WIDTH, Track.HEIGHT)
         );
+
+        this.firstPlayerRemaingSteps = 0;
+        this.secondPlayerRemaingSteps = 0;
+    }
+
+    public void setStepsAmount(int stepsAmount) {
+        this.stepsAmount = stepsAmount;
+    }
+
+    public void updateFirstPlayerPosition(int remainingSteps) {
+        this.firstPlayerRemaingSteps = remainingSteps;
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void updateSecondPlayerPosition(int remainingSteps) {
+        this.secondPlayerRemaingSteps = remainingSteps;
+        this.revalidate();
+        this.repaint();
     }
 
     @Override

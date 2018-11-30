@@ -33,7 +33,7 @@ public class RunnerView extends AbstractGameView {
         constraint.gridx = 0;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
-        this.track = new Track();
+        this.track = new Track(players);
         this.add(track, constraint);
 
         // first player controls
@@ -104,5 +104,17 @@ public class RunnerView extends AbstractGameView {
                 RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_T);
             }
         });
+    }
+
+    public void setStepsAmount(int stepsAmount) {
+        this.track.setStepsAmount(stepsAmount);
+    }
+
+    public void updateFirstPlayerPosition(int stepsAmount) {
+        this.track.updateFirstPlayerPosition(stepsAmount);
+    }
+
+    public void updateSecondPlayerPosition(int stepsAmount) {
+        this.track.updateSecondPlayerPosition(stepsAmount);
     }
 }
