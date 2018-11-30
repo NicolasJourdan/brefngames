@@ -117,4 +117,12 @@ public class RunnerView extends AbstractGameView {
     public void updateSecondPlayerPosition(int stepsAmount) {
         this.track.updateSecondPlayerPosition(stepsAmount);
     }
+
+    public void updateFirstPlayerNextKey(boolean isNextKeyLeft) {
+        this.firstPlayerControls.updateNextKey(isNextKeyLeft);
+    }
+
+    public void updateSecondPlayerNextKey(boolean isNextKeyLeft) {
+        this.secondPlayerControls.updateNextKey(isNextKeyLeft);
+    }
 }

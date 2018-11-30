@@ -51,6 +51,13 @@ public class RunnerModel extends AbstractGameModel {
                 this.secondPlayerCounter.getRemainingSteps();
     }
 
+    public boolean isNextKeyLeft(PlayerEnum player) {
+
+        return PlayerEnum.FIRST_PLAYER == player ?
+                this.firstPlayerCounter.isNextKeyLeft() :
+                this.secondPlayerCounter.isNextKeyLeft();
+    }
+
     public boolean isGameFinished() {
         if (this.firstPlayerCounter.hasFinished()) {
             System.out.println("Player 1 won");

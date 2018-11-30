@@ -38,4 +38,8 @@ public class RunCounter {
     public boolean hasFinished() {
         return this.remainingSteps <= 0;
     }
+
+    public boolean isNextKeyLeft() {
+        return this.isLeftNextDirection;
+    }
 }

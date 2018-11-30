@@ -7,14 +7,9 @@ import java.awt.*;
 
 public class PlayerControls extends JPanel {
 
-    private static Color ACTIVE_CONTROL_BACKGROUND = Color.DARK_GRAY;
-    private static Color ACTIVE_CONTROL_TEXT_COLOR = Color.WHITE;
-    private static Color INACTIVE_CONTROL_BACKGROUND = Color.LIGHT_GRAY;
-    private static Color INACTIVE_CONTROL_TEXT_COLOR = Color.BLACK;
-
     private final JLabel playerIcon;
-    private final JLabel leftKey;
-    private final JLabel rightKey;
+    private final VirtualKey leftKey;
+    private final VirtualKey rightKey;
 
     public PlayerControls(ControlsTypeEnum controlsType, Player player) {
         this.setLayout(
@@ -39,17 +34,20 @@ public class PlayerControls extends JPanel {
         constraint.gridwidth = 1;
         this.leftKey = new VirtualKey(
             ControlsTypeEnum.A_Z == controlsType ? "A" : "R",
-            PlayerControls.ACTIVE_CONTROL_BACKGROUND,
-            PlayerControls.ACTIVE_CONTROL_TEXT_COLOR
+            true
         );
         this.add(this.leftKey, constraint);
 
         constraint.gridx = 2;
         this.rightKey = new VirtualKey(
             ControlsTypeEnum.A_Z == controlsType ? "Z" : "T",
-            PlayerControls.INACTIVE_CONTROL_BACKGROUND,
-            PlayerControls.INACTIVE_CONTROL_TEXT_COLOR
+            false
         );
         this.add(this.rightKey, constraint);
+    }
+
+    public void updateNextKey(boolean isNextKeyLeft) {
+        this.leftKey.highlight(isNextKeyLeft);
+        this.rightKey.highlight(!isNextKeyLeft);
     }
 }

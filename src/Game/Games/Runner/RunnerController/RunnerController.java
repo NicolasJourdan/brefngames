@@ -26,18 +26,22 @@ public class RunnerController extends AbstractGameController {
                 ((RunnerModel) this.model).keyPressed(ControlEnum.LEFT, PlayerEnum.FIRST_PLAYER);
                 // TODO: check if game has finished
                 ((RunnerView) this.view).updateFirstPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.FIRST_PLAYER));
+                ((RunnerView) this.view).updateFirstPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.FIRST_PLAYER));
                 break;
             case KEY_PRESS_Z:
                 ((RunnerModel) this.model).keyPressed(ControlEnum.RIGHT, PlayerEnum.FIRST_PLAYER);
                 ((RunnerView) this.view).updateFirstPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.FIRST_PLAYER));
+                ((RunnerView) this.view).updateFirstPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.FIRST_PLAYER));
                 break;
             case KEY_PRESS_R:
                 ((RunnerModel) this.model).keyPressed(ControlEnum.LEFT, PlayerEnum.SECOND_PLAYER);
                 ((RunnerView) this.view).updateSecondPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.SECOND_PLAYER));
+                ((RunnerView) this.view).updateSecondPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.SECOND_PLAYER));
                 break;
             case KEY_PRESS_T:
                 ((RunnerModel) this.model).keyPressed(ControlEnum.RIGHT, PlayerEnum.SECOND_PLAYER);
                 ((RunnerView) this.view).updateSecondPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.SECOND_PLAYER));
+                ((RunnerView) this.view).updateSecondPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.SECOND_PLAYER));
                 break;
             default:
                 throw new RuntimeException("Unable to find : " + action);
