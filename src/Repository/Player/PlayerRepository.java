@@ -58,7 +58,7 @@ public class PlayerRepository extends AbstractDataRepository {
     /**
      * Function to create player
      */
-    public static void createPlayer(Player p) {
+    private static void createPlayer(Player p) {
 
         // Copy JSON file
         ModifyFiles.saveJSONFile(DATA_JSON_FILE);
@@ -110,7 +110,7 @@ public class PlayerRepository extends AbstractDataRepository {
         return null;
     }
 
-    public static void updatePlayer(String playerId, JSONObject jsonPlayer) {
+    public static void updatePlayerByJSON(String playerId, JSONObject jsonPlayer) {
         JSONObject player = getJSONPlayerById(playerId);
         if (
                 null == (String) jsonPlayer.get(NAME)
@@ -134,5 +134,23 @@ public class PlayerRepository extends AbstractDataRepository {
         dataJSON.put(DEFAULT_NODE, playersJSONArray);
 
         ModifyFiles.write(DATA_JSON_FILE, dataJSON);
+    }
+
+    private static void updatePlayer(Player player) {
+        JSONObject jsonPlayer = new JSONObject();
+        jsonPlayer.put(NAME, player.getName());
+        jsonPlayer.put(COLOR, ColorFactory.getStringColor(player.getColor()));
+        jsonPlayer.put(ICON, IconFactory.getStringIcon(player.getIcon()));
+        jsonPlayer.put(STATS, PlayerStatsRepository.getJsonStats(player.getStats()));
+
+        updatePlayerByJSON(player.getName(), jsonPlayer);
+    }
+
+    public static void save(Player player) {
+        if (null == getById(player.getName())) {
+            createPlayer(player);
+        } else {
+            updatePlayer(player);
+        }
     }
 }

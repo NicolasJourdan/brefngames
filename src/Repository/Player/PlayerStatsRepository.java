@@ -58,7 +58,7 @@ public class PlayerStatsRepository extends AbstractDataRepository {
 
         jsonPlayer.put(STATS, jsonStats);
 
-        PlayerRepository.updatePlayer(playerId, jsonPlayer);
+        PlayerRepository.updatePlayerByJSON(playerId, jsonPlayer);
     }
 
     /**
