@@ -6,7 +6,7 @@ public enum PlayerStatsEnum {
      */
     TIC_TAC_TOE_NB_GAME("TIC_TAC_TOE_NB_GAME"),
     TIC_TAC_TOE_NB_WIN("TIC_TAC_TOE_NB_WIN"),
-    TIC_TAC_TOE_WIN_POURCENT("TIC_TAC_TOE_WIN_POURCENT"),
+    TIC_TAC_TOE_WIN_RATE("TIC_TAC_TOE_WIN_RATE"),
 
     /*
      * Connect four

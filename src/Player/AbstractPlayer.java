@@ -57,7 +57,7 @@ public abstract class AbstractPlayer implements Player {
 
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "0");
-        statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_WIN_POURCENT, "0");
+        statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE, "0");
         statsMap.put(PlayerStatsEnum.RUNNER_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.RUNNER_NB_WIN, "0");
         statsMap.put(PlayerStatsEnum.RUNNER_WIN_RATE, "0");

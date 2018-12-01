@@ -6,7 +6,15 @@ import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Model.GameEnum;
 import Repository.Game.*;
+import Repository.Game.ConnectFourRepository;
+import Repository.Game.CookieClickerRepository;
+import Repository.Game.RunnerRepository;
+import Repository.Game.TicTacToeRepository;
+import Repository.Player.PlayerStatsEnum;
+import Repository.Player.PlayerStatsRepository;
 
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ContestDataPersistor {
@@ -174,4 +182,161 @@ public class ContestDataPersistor {
         );
     }
 
+    public static void updateDataPlayer(String playerId, Map<PlayerStatsEnum, String> gameMap) {
+
+        if (!ContestDataPersistor.validatePlayerStatsMap(gameMap)) {
+            throw new RuntimeException("Player statistics map not valid, data not saved");
+        }
+
+        Map<PlayerStatsEnum, String> dataEntries = PlayerStatsRepository.getByPlayerId(playerId);
+
+        if (null == dataEntries) {
+            return;
+        }
+
+        for (Map.Entry<PlayerStatsEnum, String> entry : gameMap.entrySet()) {
+            ContestDataPersistor.updateIntValueDataPlayer(dataEntries, gameMap, entry.getKey());
+        }
+
+        ContestDataPersistor.updateRatePlayer(dataEntries);
+
+        dataEntries.put(
+                PlayerStatsEnum.MOST_PLAYED_GAME,
+                ContestDataPersistor.getMostPlayedGame(dataEntries)
+        );
+
+        PlayerStatsRepository.saveAll(playerId, dataEntries);
+    }
+
+    private static void updateIntValueDataPlayer(Map<PlayerStatsEnum, String> dataEntries, Map<PlayerStatsEnum, String> gamesEntries, PlayerStatsEnum stats) {
+        dataEntries.put(
+                stats,
+                String.valueOf(
+                        Integer.parseInt(gamesEntries.get(stats))
+                                + Integer.parseInt(dataEntries.get(stats))
+                )
+        );
+    }
+
+    private static void updateRatePlayer(Map<PlayerStatsEnum, String> dataEntries) {
+        dataEntries.put(
+                PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
+                PlayerStatsEnum.RUNNER_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
+                PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
+                PlayerStatsEnum.CONNECT_FOUR_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
+                PlayerStatsEnum.WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_GAME))
+                )
+        );
+    }
+
+    private static String getRate(int nbWin, int nbGame) {
+        DecimalFormat df = new DecimalFormat();
+        df.setMinimumFractionDigits(2);
+        df.setMaximumFractionDigits(2);
+        df.setDecimalSeparatorAlwaysShown(true);
+        return (nbGame > 0) ? String.valueOf(df.format(((float) nbWin / nbGame) * 100)) : "0";
+    }
+
+    private static boolean validatePlayerStatsMap(Map<PlayerStatsEnum, String> statsMap) {
+
+        if (
+                !statsMap.containsKey(PlayerStatsEnum.TOTAL_NB_GAME) ||
+                !statsMap.containsKey(PlayerStatsEnum.TOTAL_NB_LOOSE) ||
+                !statsMap.containsKey(PlayerStatsEnum.TOTAL_NB_WIN) ||
+                !(
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN)
+                        ) ||
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.RUNNER_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.RUNNER_NB_WIN)
+                        ) ||
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.CONNECT_FOUR_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.CONNECT_FOUR_NB_WIN)
+                        ) ||
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN)
+                        )
+                )
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Get the most played game
+     *
+     * @return The name of the most played game
+     */
+    public static String getMostPlayedGame(Map<PlayerStatsEnum, String> dataEntries) {
+        Map<GameEnum, Integer> nbGamesMap = ContestDataPersistor.getNbGamesMap(dataEntries);
+
+        GameEnum mostPlayedGame = GameEnum.TIC_TAC_TOE;
+        for (Map.Entry<GameEnum, Integer> entry : nbGamesMap.entrySet()) {
+            mostPlayedGame = (nbGamesMap.get(mostPlayedGame) < entry.getValue()) ? entry.getKey() : mostPlayedGame;
+        }
+
+        return mostPlayedGame.toString();
+    }
+
+    /**
+     * Get a map with the total of games matches per game
+     */
+    private static Map<GameEnum, Integer> getNbGamesMap(Map<PlayerStatsEnum, String> dataEntries) {
+        Map<GameEnum, Integer> nbGamesMap = new HashMap<>();
+
+        String ticTacToeNbGameString = dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME);
+        int ticTacToeNbGame = Integer.parseInt(ticTacToeNbGameString);
+        nbGamesMap.put(GameEnum.TIC_TAC_TOE, ticTacToeNbGame);
+
+        String runnerNbGameString = dataEntries.get(PlayerStatsEnum.RUNNER_NB_GAME);
+        int runnerNbGame = Integer.parseInt(runnerNbGameString);
+        nbGamesMap.put(GameEnum.RUNNER, runnerNbGame);
+
+        String connectFourNbGameString = dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_GAME);
+        int connectFourNbGame = Integer.parseInt(connectFourNbGameString);
+        nbGamesMap.put(GameEnum.CONNECT_FOUR, connectFourNbGame);
+
+        String cookieClickerNbGameString = dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME);
+        int cookieClickerNbGame = Integer.parseInt(cookieClickerNbGameString);
+        nbGamesMap.put(GameEnum.COOKIE_CLICKER, cookieClickerNbGame);
+
+        return nbGamesMap;
+    }
 }
