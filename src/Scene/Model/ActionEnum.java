@@ -79,6 +79,15 @@ public enum ActionEnum {
      * Map
      */
     END_MAP("END_MAP"),
+
+    /*
+     * Runner
+     */
+    KEY_PRESS_A("KEY_PRESS_A"),
+    KEY_PRESS_Z("KEY_PRESS_Z"),
+    KEY_PRESS_R("KEY_PRESS_R"),
+    KEY_PRESS_T("KEY_PRESS_T"),
+
     ;
 
     private String name = "";
