@@ -21,30 +21,46 @@ public class RunnerController extends AbstractGameController {
 
     @Override
     public void update(Observable o, Object action) {
+        // update model
         switch ((ActionEnum) action) {
             case KEY_PRESS_A:
                 ((RunnerModel) this.model).keyPressed(ControlEnum.LEFT, PlayerEnum.FIRST_PLAYER);
-                // TODO: check if game has finished
-                ((RunnerView) this.view).updateFirstPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.FIRST_PLAYER));
-                ((RunnerView) this.view).updateFirstPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.FIRST_PLAYER));
                 break;
             case KEY_PRESS_Z:
                 ((RunnerModel) this.model).keyPressed(ControlEnum.RIGHT, PlayerEnum.FIRST_PLAYER);
+                break;
+            case KEY_PRESS_R:
+                ((RunnerModel) this.model).keyPressed(ControlEnum.LEFT, PlayerEnum.SECOND_PLAYER);
+                break;
+            case KEY_PRESS_T:
+                ((RunnerModel) this.model).keyPressed(ControlEnum.RIGHT, PlayerEnum.SECOND_PLAYER);
+                break;
+            default:
+                throw new RuntimeException("Unable to find : " + action);
+        }
+
+        // update view
+        switch ((ActionEnum) action) {
+            case KEY_PRESS_A:
+            case KEY_PRESS_Z:
                 ((RunnerView) this.view).updateFirstPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.FIRST_PLAYER));
                 ((RunnerView) this.view).updateFirstPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.FIRST_PLAYER));
                 break;
             case KEY_PRESS_R:
-                ((RunnerModel) this.model).keyPressed(ControlEnum.LEFT, PlayerEnum.SECOND_PLAYER);
-                ((RunnerView) this.view).updateSecondPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.SECOND_PLAYER));
-                ((RunnerView) this.view).updateSecondPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.SECOND_PLAYER));
-                break;
             case KEY_PRESS_T:
-                ((RunnerModel) this.model).keyPressed(ControlEnum.RIGHT, PlayerEnum.SECOND_PLAYER);
                 ((RunnerView) this.view).updateSecondPlayerPosition(((RunnerModel) this.model).getRemainingSteps(PlayerEnum.SECOND_PLAYER));
                 ((RunnerView) this.view).updateSecondPlayerNextKey(((RunnerModel) this.model).isNextKeyLeft(PlayerEnum.SECOND_PLAYER));
                 break;
             default:
                 throw new RuntimeException("Unable to find : " + action);
+        }
+
+        // check winner
+        if (((RunnerModel) this.model).isGameFinished()) {
+            this.setChanged();
+            this.notifyObservers(
+                    ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.PLAYER_1_WON : ActionEnum.PLAYER_2_WON
+            );
         }
     }
 }

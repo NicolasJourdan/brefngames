@@ -60,13 +60,15 @@ public class RunnerModel extends AbstractGameModel {
 
     public boolean isGameFinished() {
         if (this.firstPlayerCounter.hasFinished()) {
-            System.out.println("Player 1 won");
             return true;
         }
         else if(this.secondPlayerCounter.hasFinished()) {
-            System.out.println("Player 2 won");
             return true;
         }
         return false;
+    }
+
+    public boolean isFirstPlayerWinner() {
+        return this.firstPlayerCounter.hasFinished();
     }
 }
