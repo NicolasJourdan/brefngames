@@ -13,6 +13,7 @@ import Repository.Game.TicTacToeRepository;
 import Repository.Player.PlayerStatsEnum;
 import Repository.Player.PlayerStatsRepository;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -218,65 +219,53 @@ public class ContestDataPersistor {
     }
 
     private static void updateRatePlayer(Map<PlayerStatsEnum, String> dataEntries) {
-        if (Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME)) > 0) {
-            dataEntries.put(
-                    PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE,
-                    String.valueOf(
-                            ((float) Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN))
-                                    / Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME))) * 100
-                    )
-            );
-        } else {
-            dataEntries.put(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE, "0");
-        }
+        dataEntries.put(
+                PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME))
+                )
+        );
 
-        if (Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_GAME)) > 0) {
-            dataEntries.put(
-                    PlayerStatsEnum.RUNNER_WIN_RATE,
-                    String.valueOf(
-                            ((float) Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_WIN))
-                                    / Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_GAME))) * 100
-                    )
-            );
-        } else {
-            dataEntries.put(PlayerStatsEnum.RUNNER_WIN_RATE, "0");
-        }
+        dataEntries.put(
+                PlayerStatsEnum.RUNNER_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.RUNNER_NB_GAME))
+                )
+        );
 
-        if (Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME)) > 0) {
-            dataEntries.put(
-                    PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE,
-                    String.valueOf(
-                            ((float) Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN))
-                                    / Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME))) * 100
-                    )
-            );
-        } else {
-            dataEntries.put(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE, "0");
-        }
+        dataEntries.put(
+                PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME))
+                )
+        );
 
-        if (Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_GAME)) > 0) {
-            dataEntries.put(
-                    PlayerStatsEnum.CONNECT_FOUR_WIN_RATE,
-                    String.valueOf(
-                            ((float) Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_WIN))
-                                    / Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_GAME))) * 100
-                    )
-            );
-        } else {
-            dataEntries.put(PlayerStatsEnum.CONNECT_FOUR_WIN_RATE, "0");
-        }
+        dataEntries.put(
+                PlayerStatsEnum.CONNECT_FOUR_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.CONNECT_FOUR_NB_GAME))
+                )
+        );
 
-        if (Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_GAME)) > 0) {
-            dataEntries.put(
-                    PlayerStatsEnum.WIN_RATE,
-                    String.valueOf(
-                            ((float) Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_WIN))
-                                    / Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_GAME))) * 100
-                    )
-            );
-        } else {
-            dataEntries.put(PlayerStatsEnum.WIN_RATE, "0");
-        }
+        dataEntries.put(
+                PlayerStatsEnum.WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_GAME))
+                )
+        );
+    }
+
+    private static String getRate(int nbWin, int nbGame) {
+        DecimalFormat df = new DecimalFormat();
+        df.setMinimumFractionDigits(2);
+        df.setMaximumFractionDigits(2);
+        df.setDecimalSeparatorAlwaysShown(true);
+        return (nbGame > 0) ? String.valueOf(df.format(((float) nbWin / nbGame) * 100)) : "0";
     }
 
     private static boolean validatePlayerStatsMap(Map<PlayerStatsEnum, String> statsMap) {
