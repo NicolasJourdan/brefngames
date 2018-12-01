@@ -3,9 +3,6 @@ package Game.Games.TicTacToe.TicTacToeModel;
 import Game.Games.TicTacToe.TicTacToeView.Coord;
 import Game.Model.AbstractGameModel;
 import Player.Player;
-import Statistic.Model.Statistic;
-
-import java.util.List;
 
 public class TicTacToeModel extends AbstractGameModel {
     private Board board;
@@ -25,11 +22,6 @@ public class TicTacToeModel extends AbstractGameModel {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
-    }
-
-    @Override
-    public List<Statistic> getListStatistics() {
-        return null;
     }
 
     public boolean isWinner() {

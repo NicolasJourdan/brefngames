@@ -1,6 +1,5 @@
 package Player;
 
-import Entity.PlayerEntity;
 import Repository.Player.PlayerStatsEnum;
 
 import javax.swing.*;
@@ -8,7 +7,7 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractPlayer extends PlayerEntity implements Player {
+public abstract class AbstractPlayer implements Player {
     protected String name;
     protected Color color;
     protected ImageIcon icon;

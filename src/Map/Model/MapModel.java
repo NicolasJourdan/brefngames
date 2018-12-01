@@ -2,9 +2,6 @@ package Map.Model;
 
 import Game.Model.AbstractGameModel;
 import Player.*;
-import Statistic.Model.Statistic;
-
-import java.util.List;
 
 public class MapModel extends AbstractGameModel {
 
@@ -32,10 +29,5 @@ public class MapModel extends AbstractGameModel {
 
     public boolean isFinish(History history) {
         return 0 == history.getNbRemainingGames();
-    }
-
-    @Override
-    public List<Statistic> getListStatistics() {
-        return null;
     }
 }
