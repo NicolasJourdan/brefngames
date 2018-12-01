@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CookieModel extends AbstractGameModel{
 
-    private static int DEFAULT_MAX_NUMBER = 20;
+    private static int DEFAULT_MAX_NUMBER = 40;
     private int goal;
     private int totJ1;
     private int totJ2;
@@ -22,6 +22,14 @@ public class CookieModel extends AbstractGameModel{
         this.diffJ1=0;
         this.diffJ2=0;
         this.goal = (int) ((Math.random()*DEFAULT_MAX_NUMBER) + 1);
+    }
+
+    public int getTotJ1() {
+        return totJ1;
+    }
+
+    public int getTotJ2() {
+        return totJ2;
     }
 
     public int getGoal() {
@@ -45,8 +53,8 @@ public class CookieModel extends AbstractGameModel{
     }
 
     public void check() {
-        this.diffJ1 = (this.totJ1 < this.goal) ? (this.goal - this.totJ1) : (this.totJ1 - this.goal);
-        this.diffJ2 = (this.totJ2 < this.goal) ? (this.goal - this.totJ2) : (this.totJ2 - this.goal);
+        this.diffJ1 = Math.abs(this.totJ1 - this.goal);
+        this.diffJ2 = Math.abs(this.totJ2 - this.goal);
     }
 
     @Override
@@ -54,4 +62,6 @@ public class CookieModel extends AbstractGameModel{
         return null;
     }
 }
+
+
 

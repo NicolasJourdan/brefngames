@@ -7,9 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class CookieView extends AbstractGameView implements KeyListener {
+public class CookieView extends AbstractGameView {
 
     private static String ACTION_PRESS_Q = "ACTION_PRESS_Q";
     private static String ACTION_RELEASE_Q = "ACTION_RELEASE_Q";
@@ -31,7 +30,6 @@ public class CookieView extends AbstractGameView implements KeyListener {
     public CookieView(){
         super();
         this.setLayout(new GridLayout(3,2));
-        this.addKeyListener(this);
         this.setFocusable(true);
         this.requestFocus();
         this.initComposant();
@@ -41,80 +39,78 @@ public class CookieView extends AbstractGameView implements KeyListener {
 
         // press Q
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, false),
-                ACTION_PRESS_Q
-        );
+                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, false), ACTION_PRESS_Q);
 
         // release Q
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, true),
-                ACTION_RELEASE_Q
-        );
+                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, true), ACTION_RELEASE_Q);
 
         // press M
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, false),
-                ACTION_PRESS_M
-        );
+                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, false), ACTION_PRESS_M);
 
         // release M
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, true),
-                ACTION_RELEASE_M
-        );
+                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, true), ACTION_RELEASE_M);
 
         // press S
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false),
-                ACTION_PRESS_S
-        );
+                KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false), ACTION_PRESS_S);
 
         // press L
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_L, 0, false),
-                ACTION_PRESS_L
-        );
+                KeyStroke.getKeyStroke(KeyEvent.VK_L, 0, false), ACTION_PRESS_L);
 
 
         this.getActionMap().put(ACTION_PRESS_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:
+                firstPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
+                repaint();
+                revalidate();
             }
         });
 
         this.getActionMap().put(ACTION_RELEASE_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:
+                firstPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
+                repaint();
+                revalidate();
+                observable.notifyObservers(ActionEnum.ADD_COOKIE_P1);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:
+                secondPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
+                repaint();
+                revalidate();
             }
         });
 
         this.getActionMap().put(ACTION_RELEASE_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:
+                secondPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
+                repaint();
+                revalidate();
+                observable.notifyObservers(ActionEnum.ADD_COOKIE_P2);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_S, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:
+                observable.notifyObservers(ActionEnum.CHECK);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_L, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:
+                observable.notifyObservers(ActionEnum.CHECK);
             }
         });
     }
@@ -122,7 +118,8 @@ public class CookieView extends AbstractGameView implements KeyListener {
     private void initComposant(){
         Font police = new Font("Arial", Font.BOLD, 20);
         Font police2 = new Font("Arial", Font.BOLD, 80);
-        Dimension dim = new Dimension(225, 225);
+        Dimension dim = new Dimension(300, 100);
+        Dimension dimCookie = new Dimension(300, 300);
 
         this.goalScreen = new JLabel("GOAL");
         this.goalScreen.setFont(police);
@@ -131,13 +128,19 @@ public class CookieView extends AbstractGameView implements KeyListener {
 
         this.firstPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
         this.firstPlayerButton.setFont(police2);
-        this.firstPlayerButton.setPreferredSize(dim);
-        this.firstPlayerButton.setPreferredSize(dim);
+        this.firstPlayerButton.setFocusable(false);
+        this.firstPlayerButton.setPreferredSize(dimCookie);
+        this.firstPlayerButton.setBorderPainted(false);
+        this.firstPlayerButton.setContentAreaFilled(false);
+        this.firstPlayerButton.setOpaque(false);
 
         this.secondPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
         this.secondPlayerButton.setFont(police2);
-        this.secondPlayerButton.setPreferredSize(dim);
-        this.secondPlayerButton.setPreferredSize(dim);
+        this.secondPlayerButton.setFocusable(false);
+        this.secondPlayerButton.setPreferredSize(dimCookie);
+        this.secondPlayerButton.setBorderPainted(false);
+        this.secondPlayerButton.setContentAreaFilled(false);
+        this.secondPlayerButton.setOpaque(false);
 
         this.firstPlayerCheck = new JButton("Check : S");
         this.firstPlayerCheck.setFont(police);
@@ -152,57 +155,6 @@ public class CookieView extends AbstractGameView implements KeyListener {
         this.add(this.firstPlayerCheck);
         this.add(this.secondPlayerCheck);
         this.add(this.goalScreen);
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        int keycode= e.getKeyCode();
-        switch (keycode){
-            case KeyEvent.VK_Q :
-                System.out.println("ici dans Q Typed");
-                firstPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
-                repaint();
-                revalidate();
-                this.observable.notifyObservers(ActionEnum.ADD_COOKIE_P1);
-                break;
-            case KeyEvent.VK_M :
-                System.out.println("ici dans M Typed");
-                secondPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
-                repaint();
-                revalidate();
-                this.observable.notifyObservers(ActionEnum.ADD_COOKIE_P2);
-                break;
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int keycode= e.getKeyCode();
-        switch (keycode){
-            case KeyEvent.VK_Q :
-                System.out.println("ici dans Q released");
-                firstPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
-                repaint();
-                revalidate();
-                this.observable.notifyObservers(ActionEnum.ADD_COOKIE_P1);
-                break;
-            case KeyEvent.VK_M :
-                System.out.println("ici dans M released");
-                secondPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
-                repaint();
-                revalidate();
-                this.observable.notifyObservers(ActionEnum.ADD_COOKIE_P2);
-                break;
-            case KeyEvent.VK_S :
-            case KeyEvent.VK_L :
-                System.out.println("ici dans L ou S released");
-                this.observable.notifyObservers(ActionEnum.CHECK);
-                break;
-        }
     }
 
     public void setGoalScreen(int goal) {
