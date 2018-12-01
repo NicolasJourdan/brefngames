@@ -11,11 +11,12 @@ import java.util.Map;
 
 public class Board extends JLayeredPane {
     protected TicTacToeView parent;
-    private Map<Coord, Box> map = new HashMap<Coord, Box>();
+    private Map<Coord, Box> map;
     private int size;
 
     public Board(int size, TicTacToeView parent) {
         super();
+        this.map = new HashMap<Coord, Box>();
         this.parent = parent;
         this.size = size;
         this.setLayout(new GridLayout(this.size, this.size, 5, 5));
@@ -24,7 +25,7 @@ public class Board extends JLayeredPane {
             for (int j = 0; j < this.size; j++) {
                 box = new Box(new Coord(i, j));
                 this.add(box);
-                map.put((box).getCoord(), box);
+                this.map.put((box).getCoord(), box);
                 box.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {

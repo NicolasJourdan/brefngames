@@ -22,7 +22,7 @@ public class TicTacToeModel extends AbstractGameModel {
     }
 
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return this.currentPlayer;
     }
 
     public boolean isWinner() {

@@ -25,5 +25,4 @@ public class ConnectFourView extends AbstractGameView {
     public ProxyObservable getObservable() {
         return this.observable;
     }
-
 }

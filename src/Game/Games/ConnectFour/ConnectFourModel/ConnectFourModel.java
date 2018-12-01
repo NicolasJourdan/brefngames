@@ -23,7 +23,7 @@ public class ConnectFourModel extends AbstractGameModel {
     }
 
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return this.currentPlayer;
     }
 
     @Override

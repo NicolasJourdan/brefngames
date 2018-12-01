@@ -10,10 +10,11 @@ import java.util.Map;
 
 public class Board extends JLayeredPane {
     protected ConnectFourView parent;
-    private Map<Coord, Box> map = new HashMap<Coord, Box>();
+    private Map<Coord, Box> map;
 
     public Board(int rows, int columns, ConnectFourView parent) {
         super();
+        this.map = new HashMap<Coord, Box>();
         this.parent = parent;
         this.setLayout(new GridLayout(rows, columns, 3, 3));
         Box box = null;
@@ -21,7 +22,7 @@ public class Board extends JLayeredPane {
             for (int i = 0; i < columns; i++) {
                 box = new Box(new Coord(i, j));
                 this.add(box);
-                map.put((box).getCoord(), box);
+                this.map.put((box).getCoord(), box);
                 box.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {

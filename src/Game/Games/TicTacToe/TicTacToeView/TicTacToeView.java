@@ -25,5 +25,4 @@ public class TicTacToeView extends AbstractGameView {
     public ProxyObservable getObservable() {
         return this.observable;
     }
-
 }

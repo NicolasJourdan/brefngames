@@ -38,6 +38,4 @@ public class Box extends JButton {
     public Coord getCoord() {
         return this.coord;
     }
-
-
 }

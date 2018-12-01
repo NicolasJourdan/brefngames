@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbstractBoard {
-    protected ArrayList<List<Pawn>> grid = new ArrayList();
+    protected List<List<Pawn>> grid;
     protected int rows;
     protected int columns;
 
     public AbstractBoard(int rows , int columns) {
+        this.grid = new ArrayList();
         this.rows = rows;
         this.columns = columns;
         for (int i = 0; i < this.rows; i++) {
@@ -16,7 +17,7 @@ public class AbstractBoard {
             for (int j = 0; j < this.columns; j++) {
                 subList.add(null);
             }
-            grid.add(subList);
+            this.grid.add(subList);
         }
         return;
     }
@@ -25,8 +26,8 @@ public class AbstractBoard {
         this(size, size);
     }
 
-    public ArrayList<List<Pawn>> getGrid() {
-        return grid;
+    public List<List<Pawn>> getGrid() {
+        return this.grid;
     }
 
     public Boolean isFill(){
@@ -43,5 +44,4 @@ public class AbstractBoard {
     public Pawn setPawn(Pawn pawn) {
         return null;
     }
-
     }

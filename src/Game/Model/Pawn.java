@@ -25,9 +25,4 @@ public class Pawn {
     public void setCoord(int x, int y) {
         this.coord = new Coord(x, y);
     }
-
-    @Override
-    public String toString() {
-        return "";
-    }
 }

@@ -17,7 +17,7 @@ public class Box extends JButton {
         this.setLayout(new BorderLayout());
         this.setFont(new Font("myFont", Font.PLAIN, 250));
         setOpaque(true);
-        color = Color.LIGHT_GRAY;
+        color = DEFAULT_BACKGROUND_COLOR;
     }
 
     @Override
@@ -44,9 +44,6 @@ public class Box extends JButton {
     }
 
     public Coord getCoord() {
-        // TODO Auto-generated method stub
         return this.coord;
     }
-
-
 }
