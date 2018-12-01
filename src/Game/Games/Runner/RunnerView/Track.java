@@ -10,10 +10,10 @@ import java.awt.*;
 public class Track extends JPanel
 {
 
-    public static int WIDTH = 80;
-    public static int HEIGHT = 250;
-    public static int STROKE_WIDTH = 10;
-    public static int ICON_SIZE = 25;
+    public final static int WIDTH = 80;
+    public final static int HEIGHT = 250;
+    public final static int STROKE_WIDTH = 10;
+    public final static int ICON_SIZE = 25;
 
     private final Image firstPlayerImage;
     private final Image secondPlayerImage;

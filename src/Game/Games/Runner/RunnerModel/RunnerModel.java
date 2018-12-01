@@ -4,14 +4,11 @@ import Game.Games.Runner.RunnerController.ControlEnum;
 import Game.Games.Runner.RunnerController.PlayerEnum;
 import Game.Model.AbstractGameModel;
 import Player.Player;
-import Statistic.Model.Statistic;
-
-import java.util.List;
 
 public class RunnerModel extends AbstractGameModel {
 
     // TODO: choose a value here
-    public static int STEPS_AMOUNT = 20;
+    public final static int DEFAULT_STEPS_AMOUNT = 20;
 
     private final RunCounter firstPlayerCounter;
     private final RunCounter secondPlayerCounter;
@@ -19,13 +16,8 @@ public class RunnerModel extends AbstractGameModel {
     public RunnerModel(Player[] listPlayers) {
         super(listPlayers);
 
-        this.firstPlayerCounter = new RunCounter(RunnerModel.STEPS_AMOUNT);
-        this.secondPlayerCounter = new RunCounter(RunnerModel.STEPS_AMOUNT);
-    }
-
-    @Override
-    public List<Statistic> getListStatistics() {
-        return null;
+        this.firstPlayerCounter = new RunCounter(RunnerModel.DEFAULT_STEPS_AMOUNT);
+        this.secondPlayerCounter = new RunCounter(RunnerModel.DEFAULT_STEPS_AMOUNT);
     }
 
     /**
@@ -42,7 +34,7 @@ public class RunnerModel extends AbstractGameModel {
     }
 
     public int getStepsAmount() {
-        return RunnerModel.STEPS_AMOUNT;
+        return RunnerModel.DEFAULT_STEPS_AMOUNT;
     }
 
     public int getRemainingSteps(PlayerEnum player) {
@@ -59,13 +51,7 @@ public class RunnerModel extends AbstractGameModel {
     }
 
     public boolean isGameFinished() {
-        if (this.firstPlayerCounter.hasFinished()) {
-            return true;
-        }
-        else if(this.secondPlayerCounter.hasFinished()) {
-            return true;
-        }
-        return false;
+        return this.firstPlayerCounter.hasFinished() || this.secondPlayerCounter.hasFinished();
     }
 
     public boolean isFirstPlayerWinner() {

@@ -11,10 +11,10 @@ import java.awt.event.KeyEvent;
 
 public class RunnerView extends AbstractGameView {
 
-    private static String ACTION_PRESS_A = "ACTION_PRESS_A";
-    private static String ACTION_PRESS_Z = "ACTION_PRESS_Z";
-    private static String ACTION_PRESS_R = "ACTION_PRESS_R";
-    private static String ACTION_PRESS_T = "ACTION_PRESS_T";
+    private final static String ACTION_PRESS_A = "ACTION_PRESS_A";
+    private final static String ACTION_PRESS_Z = "ACTION_PRESS_Z";
+    private final static String ACTION_PRESS_R = "ACTION_PRESS_R";
+    private final static String ACTION_PRESS_T = "ACTION_PRESS_T";
 
     private final Track track;
     private final PlayerControls firstPlayerControls;

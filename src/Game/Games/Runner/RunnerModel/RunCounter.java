@@ -19,8 +19,11 @@ public class RunCounter {
      */
     public boolean registerStep(ControlEnum controlEnum) {
         if (
-            (ControlEnum.LEFT == controlEnum && this.isLeftNextDirection) ||
-            (ControlEnum.RIGHT == controlEnum && !this.isLeftNextDirection)
+            this.remainingSteps > 0 &&
+            (
+                (ControlEnum.LEFT == controlEnum && this.isLeftNextDirection) ||
+                (ControlEnum.RIGHT == controlEnum && !this.isLeftNextDirection)
+            )
             ) {
             // the step is legal
             this.remainingSteps--;
@@ -32,7 +35,7 @@ public class RunCounter {
     }
 
     public int getRemainingSteps() {
-        return remainingSteps;
+        return this.remainingSteps;
     }
 
     public boolean hasFinished() {

@@ -6,10 +6,10 @@ import java.awt.*;
 
 public class VirtualKey extends JLabel
 {
-    private static Color ACTIVE_CONTROL_BACKGROUND = Color.DARK_GRAY;
-    private static Color ACTIVE_CONTROL_TEXT_COLOR = Color.WHITE;
-    private static Color INACTIVE_CONTROL_BACKGROUND = Color.LIGHT_GRAY;
-    private static Color INACTIVE_CONTROL_TEXT_COLOR = Color.BLACK;
+    private final static Color ACTIVE_CONTROL_BACKGROUND = Color.DARK_GRAY;
+    private final static Color ACTIVE_CONTROL_TEXT_COLOR = Color.WHITE;
+    private final static Color INACTIVE_CONTROL_BACKGROUND = Color.LIGHT_GRAY;
+    private final static Color INACTIVE_CONTROL_TEXT_COLOR = Color.BLACK;
 
     public VirtualKey(String text, boolean highlight) {
         super(text);
