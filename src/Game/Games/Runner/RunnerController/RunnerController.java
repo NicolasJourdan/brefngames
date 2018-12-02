@@ -57,6 +57,12 @@ public class RunnerController extends AbstractGameController {
 
         // check winner
         if (((RunnerModel) this.model).isGameFinished()) {
+            // save stats
+            if (!this.isTraining) {
+                ((RunnerModel) this.model).saveStatistics();
+            }
+
+            // change scene
             this.setChanged();
             this.notifyObservers(
                     ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.FIRST_PLAYER_WON : ActionEnum.SECOND_PLAYER_WON
