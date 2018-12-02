@@ -57,11 +57,15 @@ public class ConnectFourController extends AbstractGameController {
                 if (!orient.isEmpty()) {
                     this.setChanged();
                     if (((ConnectFourModel) this.model).getCurrentPlayer().getName().equals(((ConnectFourModel) this.model).getPlayers()[0].getName())) {
+                        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                         this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "1");
                         sendStats(orient);
                         this.notifyObservers(ActionEnum.PLAYER_1_WON);
                         return;
                     } else {
+                        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                         this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
                         sendStats(orient);
                         this.notifyObservers(ActionEnum.PLAYER_2_WON);
@@ -91,10 +95,16 @@ public class ConnectFourController extends AbstractGameController {
         this.statsp1 = new HashMap<>();
         this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
         this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
 
         this.statsp2 = new HashMap<>();
         this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
         this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
     private void sendStats(String orient){
