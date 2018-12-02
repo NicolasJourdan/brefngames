@@ -22,13 +22,16 @@ public class StatisticPlayerController extends AbstractSceneController {
 
     @Override
     public void update(Observable o, Object arg) {
-//        super.update(o, arg);
         switch ((ActionEnum)arg){
-            case STATISTIC_PLAYER_CHANGE :
+            case STATISTIC_PLAYER_CHANGE:
                 String p = ((StatisticPlayerView) this.view).getCurrentPlayer();
 
                 ((StatisticPlayerView) this.view).updateGlobalStatistic(
                     ((StatisticPlayerModel) this.model).getStatById(p));
+                break;
+            case STATISTIC_MENU:
+                super.update(o, arg);
+                break;
         }
     }
 }

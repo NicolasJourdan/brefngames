@@ -9,7 +9,7 @@ public class PlayerStatisticFactory {
                 return "TicTacToe Number of games";
             case TIC_TAC_TOE_NB_WIN:
                 return "TicTacToe Number of win";
-            case TIC_TAC_TOE_WIN_POURCENT:
+            case TIC_TAC_TOE_WIN_RATE:
                 return "TicTacToe pourcent of win";
             case CONNECT_FOUR_NB_GAME:
                 return "Connect Four Number of games";

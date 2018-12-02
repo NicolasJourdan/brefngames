@@ -61,6 +61,30 @@
         "TOTAL_NB_LOOSE":"0",
         "WIN_RATE":"0"
       }
+    },
+    {
+      "color": "BLUE",
+      "name": "j4",
+      "icon": "BATMAN",
+      "statistics": {
+        "TIC_TAC_TOE_NB_GAME":"1",
+        "TIC_TAC_TOE_NB_WIN":"1",
+        "TIC_TAC_TOE_WIN_RATE":"1",
+        "RUNNER_NB_GAME":"0",
+        "RUNNER_NB_WIN":"0",
+        "RUNNER_WIN_RATE":"0",
+        "CONNECT_FOUR_NB_GAME":"0",
+        "CONNECT_FOUR_NB_WIN":"0",
+        "CONNECT_FOUR_WIN_RATE":"0",
+        "COOKIE_CLICKER_NB_GAME":"0",
+        "COOKIE_CLICKER_NB_WIN":"0",
+        "COOKIE_CLICKER_WIN_RATE":"0",
+        "MOST_PLAYED_GAME":"NONE",
+        "TOTAL_NB_GAME":"0",
+        "TOTAL_NB_WIN":"0",
+        "TOTAL_NB_LOOSE":"0",
+        "WIN_RATE":"0"
+      }
     }
   ],
   "cookieClicker": [

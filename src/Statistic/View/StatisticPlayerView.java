@@ -92,6 +92,6 @@ public class StatisticPlayerView extends AbstractView {
     }
 
     public String getCurrentPlayer() {
-        return currentPlayer;
+        return this.currentPlayer;
     }
 }

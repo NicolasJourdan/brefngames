@@ -26,9 +26,9 @@ public class StatisticPlayerModel extends AbstractModel {
     }
 
     public String[] getAllPlayers(){
-        String[] players = new String[allPlayers.size()];
+        String[] players = new String[this.allPlayers.size()];
         int index = 0;
-        for (Player p : allPlayers) {
+        for (Player p : this.allPlayers) {
             players[index] = p.getName();
             index ++;
         }
@@ -37,17 +37,14 @@ public class StatisticPlayerModel extends AbstractModel {
 
     public Object[][] getStatById(String idJoueur){
         Map<PlayerStatsEnum, String> stat = PlayerStatsRepository.getByPlayerId(idJoueur);
-        int index = 0;
-        for (Map.Entry<PlayerStatsEnum, String> s : stat.entrySet()) {
-            index++;
-        }
+        int index = stat.size();
         this.donnees = new Object[index][2];
         index = 0;
         for (Map.Entry<PlayerStatsEnum, String> s : stat.entrySet()) {
-            donnees[index][0] = PlayerStatisticFactory.getStringStat(s.getKey());
-            donnees[index][1] = s.getValue();
+            this.donnees[index][0] = PlayerStatisticFactory.getStringStat(s.getKey());
+            this.donnees[index][1] = s.getValue();
             index++;
         }
-        return donnees;
+        return this.donnees;
     }
 }
