@@ -65,7 +65,7 @@ public class CookieView extends AbstractGameView {
         this.getActionMap().put(ACTION_PRESS_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                firstPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
+                CookieView.this.firstPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
                 repaint();
                 revalidate();
             }
@@ -74,17 +74,17 @@ public class CookieView extends AbstractGameView {
         this.getActionMap().put(ACTION_RELEASE_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                firstPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
+                CookieView.this.firstPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
                 repaint();
                 revalidate();
-                observable.notifyObservers(ActionEnum.ADD_COOKIE_FIRST_PLAYER);
+                CookieView.this.observable.notifyObservers(ActionEnum.ADD_COOKIE_FIRST_PLAYER);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                secondPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
+                CookieView.this.secondPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
                 repaint();
                 revalidate();
             }
@@ -93,24 +93,24 @@ public class CookieView extends AbstractGameView {
         this.getActionMap().put(ACTION_RELEASE_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                secondPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
+                CookieView.this.secondPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
                 repaint();
                 revalidate();
-                observable.notifyObservers(ActionEnum.ADD_COOKIE_SECOND_PLAYER);
+                CookieView.this.observable.notifyObservers(ActionEnum.ADD_COOKIE_SECOND_PLAYER);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_S, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                observable.notifyObservers(ActionEnum.CHECK);
+                CookieView.this.observable.notifyObservers(ActionEnum.CHECK);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_L, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                observable.notifyObservers(ActionEnum.CHECK);
+                CookieView.this.observable.notifyObservers(ActionEnum.CHECK);
             }
         });
     }

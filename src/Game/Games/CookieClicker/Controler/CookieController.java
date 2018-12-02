@@ -19,8 +19,8 @@ public class CookieController extends AbstractGameController {
 
     public CookieController(CookieModel model, CookieView view, boolean isTraining){
         super(model,view, isTraining);
-        initStats();
-        initTime = System.currentTimeMillis();
+        this.initStats();
+        this.initTime = System.currentTimeMillis();
         ((CookieView) this.view).setGoalScreen(((CookieModel) this.model).getGoal());
     }
 
@@ -77,13 +77,13 @@ public class CookieController extends AbstractGameController {
                 + ((CookieModel) this.model).getDiffFirstPlayer() + ((CookieModel) this.model).getDiffSecondPlayer();
         this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_FAULT, Integer.toString(totalFault));
         //Add nb perfect
-        if (0 == ((CookieModel) this.model).getDiffFirstPlayer() | 0 == ((CookieModel) this.model).getDiffSecondPlayer()){
+        if (0 == ((CookieModel) this.model).getDiffFirstPlayer() || 0 == ((CookieModel) this.model).getDiffSecondPlayer()){
             int nbPerfect = Integer.parseInt(this.statsMap.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_PERFECT)+1);
             this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_NB_PERFECT, Integer.toString(nbPerfect));
         }
         //Total Time
-        finalTime = System.currentTimeMillis();
-        totalTime = Long.toString((finalTime - initTime)/1000);
-        this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_TIME, totalTime);
+        this.finalTime = System.currentTimeMillis();
+        this.totalTime = Long.toString((this.finalTime - this.initTime)/1000);
+        this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_TIME, this.totalTime);
     }
 }
