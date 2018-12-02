@@ -1,8 +1,8 @@
 package Game.Games.Runner.RunnerView;
 
 public enum ControlsTypeEnum {
-    A_Z("A_Z"),
-    R_T("R_T"),
+    Q_S("Q_S"),
+    L_M("L_M"),
     ;
 
     private String name = "";
