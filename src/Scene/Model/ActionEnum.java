@@ -93,7 +93,6 @@ public enum ActionEnum {
      */
     ADD_COOKIE_P1("ADD_COOKIE_P1"),
     ADD_COOKIE_P2("ADD_COOKIE_P2"),
-    GET_GOAL("GET_GOAL"),
     CHECK("CHECK");
 
     private String name = "";

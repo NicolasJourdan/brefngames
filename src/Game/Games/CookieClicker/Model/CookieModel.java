@@ -2,9 +2,6 @@ package Game.Games.CookieClicker.Model;
 
 import Game.Model.AbstractGameModel;
 import Player.Player;
-import Statistic.Model.Statistic;
-import java.util.List;
-
 
 public class CookieModel extends AbstractGameModel{
 
@@ -56,12 +53,4 @@ public class CookieModel extends AbstractGameModel{
         this.diffJ1 = Math.abs(this.totJ1 - this.goal);
         this.diffJ2 = Math.abs(this.totJ2 - this.goal);
     }
-
-    @Override
-    public List<Statistic> getListStatistics() {
-        return null;
-    }
 }
-
-
-

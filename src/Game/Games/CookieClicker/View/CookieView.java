@@ -159,5 +159,7 @@ public class CookieView extends AbstractGameView {
 
     public void setGoalScreen(int goal) {
         this.goalScreen.setText("GOAL : " + goal);
+        this.revalidate();
+        this.repaint();
     }
 }
