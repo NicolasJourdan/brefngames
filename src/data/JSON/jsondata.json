@@ -2,39 +2,39 @@
   "ticTacToe": [
     {
       "name": "TIC_TAC_TOE_NB_GAMES",
-      "value": "0"
+      "value": "1"
     },
     {
       "name": "TIC_TAC_TOE_NB_DRAW",
       "value": "0"
     },
     {
-      "name": "TIC_TAC_TOE_NB_PERFECT",
-      "value": "0"
-    },
-    {
-      "name": "TIC_TAC_TOE_NB_CROSS",
-      "value": "0"
-    },
-    {
-      "name": "TIC_TAC_TOE_NB_CIRCLE",
-      "value": "0"
-    },
-    {
       "name": "TIC_TAC_TOE_NB_ALL_SIGNS",
-      "value": "0"
+      "value": "5"
     },
     {
       "name": "TIC_TAC_TOE_AVERAGE_TIME",
       "value": "0"
     },
     {
-      "name": "TIC_TAC_TOE_TOTAL_TIME",
-      "value": "0"
+      "name": "TIC_TAC_TOE_BEST_PLAYER",
+      "value": "j4"
     },
     {
-      "name": "TIC_TAC_TOE_BEST_PLAYER",
-      "value": "Bastos"
+      "name": "TIC_TAC_TOE_NB_CIRCLE",
+      "value": "3"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_PERFECT",
+      "value": "1"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_CROSS",
+      "value": "2"
+    },
+    {
+      "name": "TIC_TAC_TOE_TOTAL_TIME",
+      "value": "2"
     }
   ],
   "players": [
@@ -43,23 +43,23 @@
       "name": "j2",
       "icon": "BATMAN",
       "statistics": {
-        "TIC_TAC_TOE_NB_GAME":"0",
-        "TIC_TAC_TOE_NB_WIN":"0",
-        "TIC_TAC_TOE_WIN_RATE":"0",
-        "RUNNER_NB_GAME":"0",
-        "RUNNER_NB_WIN":"0",
-        "RUNNER_WIN_RATE":"0",
-        "CONNECT_FOUR_NB_GAME":"0",
-        "CONNECT_FOUR_NB_WIN":"0",
-        "CONNECT_FOUR_WIN_RATE":"0",
-        "COOKIE_CLICKER_NB_GAME":"0",
-        "COOKIE_CLICKER_NB_WIN":"0",
-        "COOKIE_CLICKER_WIN_RATE":"0",
-        "MOST_PLAYED_GAME":"NONE",
-        "TOTAL_NB_GAME":"0",
-        "TOTAL_NB_WIN":"0",
-        "TOTAL_NB_LOOSE":"0",
-        "WIN_RATE":"0"
+        "TOTAL_NB_GAME": "0",
+        "RUNNER_WIN_RATE": "0",
+        "COOKIE_CLICKER_NB_GAME": "0",
+        "COOKIE_CLICKER_WIN_RATE": "0",
+        "TOTAL_NB_WIN": "0",
+        "TOTAL_NB_LOOSE": "0",
+        "CONNECT_FOUR_WIN_RATE": "0",
+        "MOST_PLAYED_GAME": "NONE",
+        "TIC_TAC_TOE_WIN_RATE": "0",
+        "WIN_RATE": "0",
+        "RUNNER_NB_GAME": "0",
+        "RUNNER_NB_WIN": "0",
+        "COOKIE_CLICKER_NB_WIN": "0",
+        "TIC_TAC_TOE_NB_WIN": "0",
+        "CONNECT_FOUR_NB_GAME": "0",
+        "TIC_TAC_TOE_NB_GAME": "0",
+        "CONNECT_FOUR_NB_WIN": "0"
       }
     },
     {
@@ -67,23 +67,71 @@
       "name": "j4",
       "icon": "BATMAN",
       "statistics": {
-        "TIC_TAC_TOE_NB_GAME":"1",
-        "TIC_TAC_TOE_NB_WIN":"1",
-        "TIC_TAC_TOE_WIN_RATE":"1",
-        "RUNNER_NB_GAME":"0",
-        "RUNNER_NB_WIN":"0",
-        "RUNNER_WIN_RATE":"0",
-        "CONNECT_FOUR_NB_GAME":"0",
-        "CONNECT_FOUR_NB_WIN":"0",
-        "CONNECT_FOUR_WIN_RATE":"0",
-        "COOKIE_CLICKER_NB_GAME":"0",
-        "COOKIE_CLICKER_NB_WIN":"0",
-        "COOKIE_CLICKER_WIN_RATE":"0",
-        "MOST_PLAYED_GAME":"NONE",
-        "TOTAL_NB_GAME":"0",
-        "TOTAL_NB_WIN":"0",
-        "TOTAL_NB_LOOSE":"0",
-        "WIN_RATE":"0"
+        "TOTAL_NB_GAME": "0",
+        "RUNNER_WIN_RATE": "0",
+        "COOKIE_CLICKER_NB_GAME": "0",
+        "COOKIE_CLICKER_WIN_RATE": "0",
+        "TOTAL_NB_WIN": "0",
+        "TOTAL_NB_LOOSE": "0",
+        "CONNECT_FOUR_WIN_RATE": "0",
+        "MOST_PLAYED_GAME": "NONE",
+        "TIC_TAC_TOE_WIN_RATE": "1",
+        "WIN_RATE": "0",
+        "RUNNER_NB_GAME": "0",
+        "RUNNER_NB_WIN": "0",
+        "COOKIE_CLICKER_NB_WIN": "0",
+        "TIC_TAC_TOE_NB_WIN": "1",
+        "CONNECT_FOUR_NB_GAME": "0",
+        "TIC_TAC_TOE_NB_GAME": "1",
+        "CONNECT_FOUR_NB_WIN": "0"
+      }
+    },
+    {
+      "color": "RED",
+      "name": "Player 1",
+      "icon": "AQUAMAN",
+      "statistics": {
+        "TOTAL_NB_GAME": "0",
+        "RUNNER_WIN_RATE": "0",
+        "COOKIE_CLICKER_NB_GAME": "0",
+        "COOKIE_CLICKER_WIN_RATE": "0",
+        "TOTAL_NB_WIN": "0",
+        "TOTAL_NB_LOOSE": "0",
+        "CONNECT_FOUR_WIN_RATE": "0",
+        "MOST_PLAYED_GAME": "NONE",
+        "TIC_TAC_TOE_WIN_RATE": "0",
+        "WIN_RATE": "0",
+        "RUNNER_NB_GAME": "0",
+        "RUNNER_NB_WIN": "0",
+        "COOKIE_CLICKER_NB_WIN": "0",
+        "TIC_TAC_TOE_NB_WIN": "0",
+        "CONNECT_FOUR_NB_GAME": "0",
+        "TIC_TAC_TOE_NB_GAME": "0",
+        "CONNECT_FOUR_NB_WIN": "0"
+      }
+    },
+    {
+      "color": "YELLOW",
+      "name": "Player 2",
+      "icon": "AQUAMAN",
+      "statistics": {
+        "TOTAL_NB_GAME": "0",
+        "RUNNER_WIN_RATE": "0",
+        "COOKIE_CLICKER_NB_GAME": "0",
+        "COOKIE_CLICKER_WIN_RATE": "0",
+        "TOTAL_NB_WIN": "0",
+        "TOTAL_NB_LOOSE": "0",
+        "CONNECT_FOUR_WIN_RATE": "0",
+        "MOST_PLAYED_GAME": "NONE",
+        "TIC_TAC_TOE_WIN_RATE": "0",
+        "WIN_RATE": "0",
+        "RUNNER_NB_GAME": "0",
+        "RUNNER_NB_WIN": "0",
+        "COOKIE_CLICKER_NB_WIN": "0",
+        "TIC_TAC_TOE_NB_WIN": "0",
+        "CONNECT_FOUR_NB_GAME": "0",
+        "TIC_TAC_TOE_NB_GAME": "0",
+        "CONNECT_FOUR_NB_WIN": "0"
       }
     }
   ],
