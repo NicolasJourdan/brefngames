@@ -61,14 +61,14 @@ public class ConnectFourController extends AbstractGameController {
                         this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                         this.firstPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "1");
                         sendStats(orient);
-                        this.notifyObservers(ActionEnum.PLAYER_1_WON);
+                        this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
                         return;
                     } else {
                         this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
                         this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                         this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
                         sendStats(orient);
-                        this.notifyObservers(ActionEnum.PLAYER_2_WON);
+                        this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
                         return;
                     }
                 }
