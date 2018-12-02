@@ -58,7 +58,7 @@ public class StatisticMenuView extends AbstractView {
         this.c.gridy = 4;
         this.add(this.runnerStatistic, c);
 
-        this.coockieStatistic = new JButton("Coockie Cliquer");
+        this.coockieStatistic = new JButton("Coockie Clicker");
         this.c.gridx = 2;
         this.c.gridy = 4;
         this.add(this.coockieStatistic, c);
