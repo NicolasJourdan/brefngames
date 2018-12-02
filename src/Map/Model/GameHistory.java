@@ -13,15 +13,15 @@ public class GameHistory {
     /**
      * @param gameName The game name
      * @param players The player list
-     * @param result The result of the match (PLAYER_1_WON, PLAYER_2_WON, DRAW, UNDEFINED)
+     * @param result The result of the match (FIRST_PLAYER_WON, SECOND_PLAYER_WON, DRAW, UNDEFINED)
      */
     public GameHistory(SceneEnum gameName, Player[] players, ActionEnum result) {
         this.gameName = gameName;
         switch (result) {
-            case PLAYER_1_WON:
+            case FIRST_PLAYER_WON:
                 this.winner = players[0];
                 break;
-            case PLAYER_2_WON:
+            case SECOND_PLAYER_WON:
                 this.winner = players[1];
                 break;
             case DRAW:

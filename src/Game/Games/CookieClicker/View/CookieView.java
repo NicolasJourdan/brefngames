@@ -77,7 +77,7 @@ public class CookieView extends AbstractGameView {
                 firstPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
                 repaint();
                 revalidate();
-                observable.notifyObservers(ActionEnum.ADD_COOKIE_P1);
+                observable.notifyObservers(ActionEnum.ADD_COOKIE_FIRST_PLAYER);
             }
         });
 
@@ -96,7 +96,7 @@ public class CookieView extends AbstractGameView {
                 secondPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
                 repaint();
                 revalidate();
-                observable.notifyObservers(ActionEnum.ADD_COOKIE_P2);
+                observable.notifyObservers(ActionEnum.ADD_COOKIE_SECOND_PLAYER);
             }
         });
 

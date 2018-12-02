@@ -7,50 +7,50 @@ public class CookieModel extends AbstractGameModel{
 
     private static int DEFAULT_MAX_NUMBER = 40;
     private int goal;
-    private int totJ1;
-    private int totJ2;
-    private int diffJ1;
-    private int diffJ2;
+    private int totFirstPlayer;
+    private int totSecondPlayer;
+    private int diffFirstPlayer;
+    private int diffSecondPlayer;
 
     public CookieModel(Player[] players) {
         super(players);
-        this.totJ1=0;
-        this.totJ2=0;
-        this.diffJ1=0;
-        this.diffJ2=0;
+        this.totFirstPlayer =0;
+        this.totSecondPlayer =0;
+        this.diffFirstPlayer =0;
+        this.diffSecondPlayer =0;
         this.goal = (int) ((Math.random()*DEFAULT_MAX_NUMBER) + 1);
     }
 
-    public int getTotJ1() {
-        return totJ1;
+    public int getTotFirstPlayer() {
+        return totFirstPlayer;
     }
 
-    public int getTotJ2() {
-        return totJ2;
+    public int getTotSecondPlayer() {
+        return totSecondPlayer;
     }
 
     public int getGoal() {
         return this.goal;
     }
 
-    public int getDiffJ1() {
-        return this.diffJ1;
+    public int getDiffFirstPlayer() {
+        return this.diffFirstPlayer;
     }
 
-    public int getDiffJ2() {
-        return this.diffJ2;
+    public int getDiffSecondPlayer() {
+        return this.diffSecondPlayer;
     }
 
-    public void addJ1() {
-        this.totJ1++;
+    public void addPointFirstPlayer() {
+        this.totFirstPlayer++;
     }
 
-    public void addJ2() {
-        this.totJ2++;
+    public void addPointSecondPlayer() {
+        this.totSecondPlayer++;
     }
 
     public void check() {
-        this.diffJ1 = Math.abs(this.totJ1 - this.goal);
-        this.diffJ2 = Math.abs(this.totJ2 - this.goal);
+        this.diffFirstPlayer = Math.abs(this.totFirstPlayer - this.goal);
+        this.diffSecondPlayer = Math.abs(this.totSecondPlayer - this.goal);
     }
 }

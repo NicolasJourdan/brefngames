@@ -58,14 +58,14 @@ public class TicTacToeController extends AbstractGameController {
                     this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                     this.statsFirstPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
                     sendStats();
-                    this.notifyObservers(ActionEnum.PLAYER_1_WON);
+                    this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
                     return;
                 } else {
                     this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
                     this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                     this.statsSecondPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
                     sendStats();
-                    this.notifyObservers(ActionEnum.PLAYER_2_WON);
+                    this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
                     return;
                 }
             }

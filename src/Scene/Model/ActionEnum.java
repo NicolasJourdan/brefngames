@@ -5,8 +5,8 @@ public enum ActionEnum {
     /*
      * GameScene
      */
-    PLAYER_1_WON("PLAYER_1_WON"),
-    PLAYER_2_WON("PLAYER_2_WON"),
+    FIRST_PLAYER_WON("FIRST_PLAYER_WON"),
+    SECOND_PLAYER_WON("SECOND_PLAYER_WON"),
     DRAW("DRAW"),
     UNDEFINED("UNDEFINED"),
 
@@ -91,8 +91,8 @@ public enum ActionEnum {
     /*
      * CookieView Clicker
      */
-    ADD_COOKIE_P1("ADD_COOKIE_P1"),
-    ADD_COOKIE_P2("ADD_COOKIE_P2"),
+    ADD_COOKIE_FIRST_PLAYER("ADD_COOKIE_FIRST_PLAYER"),
+    ADD_COOKIE_SECOND_PLAYER("ADD_COOKIE_SECOND_PLAYER"),
     CHECK("CHECK");
 
     private String name = "";

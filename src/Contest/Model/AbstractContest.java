@@ -157,9 +157,9 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
     public void setWinner(ActionEnum action) {
         Player winner = null;
         switch (action) {
-            case PLAYER_1_WON:
+            case FIRST_PLAYER_WON:
                 winner = this.playersList[0];
-            case PLAYER_2_WON:
+            case SECOND_PLAYER_WON:
                 winner = this.playersList[1];
             case DRAW:
                 break;

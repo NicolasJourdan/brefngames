@@ -59,7 +59,7 @@ public class RunnerController extends AbstractGameController {
         if (((RunnerModel) this.model).isGameFinished()) {
             this.setChanged();
             this.notifyObservers(
-                    ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.PLAYER_1_WON : ActionEnum.PLAYER_2_WON
+                    ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.FIRST_PLAYER_WON : ActionEnum.SECOND_PLAYER_WON
             );
         }
     }

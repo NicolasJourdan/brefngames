@@ -28,21 +28,21 @@ public class CookieController extends AbstractGameController {
     public void update(Observable o, Object arg) {
         ActionEnum actionEnum = (ActionEnum) arg;
         switch (actionEnum) {
-            case ADD_COOKIE_P1:
-                ((CookieModel) this.model).addJ1();
+            case ADD_COOKIE_FIRST_PLAYER:
+                ((CookieModel) this.model).addPointFirstPlayer();
                 break;
-            case ADD_COOKIE_P2:
-                ((CookieModel) this.model).addJ2();
+            case ADD_COOKIE_SECOND_PLAYER:
+                ((CookieModel) this.model).addPointSecondPlayer();
                 break;
             case CHECK:
                 ((CookieModel) this.model).check();     //Check difference of clicks for each players
                 this.updateStats();                     //update my Map
                 //Notify the winner
                 this.setChanged();
-                if (((CookieModel) this.model).getDiffJ1()<((CookieModel) this.model).getDiffJ2()){
-                    this.notifyObservers(ActionEnum.PLAYER_1_WON);
-                } else if (((CookieModel) this.model).getDiffJ1()>((CookieModel) this.model).getDiffJ2()){
-                    this.notifyObservers(ActionEnum.PLAYER_2_WON);
+                if (((CookieModel) this.model).getDiffFirstPlayer()<((CookieModel) this.model).getDiffSecondPlayer()){
+                    this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
+                } else if (((CookieModel) this.model).getDiffFirstPlayer()>((CookieModel) this.model).getDiffSecondPlayer()){
+                    this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
                 } else {
                     this.notifyObservers(ActionEnum.DRAW);
                 }
@@ -66,7 +66,7 @@ public class CookieController extends AbstractGameController {
     private void updateStats(){
         //Add nb clicks
         int nbClicks = Integer.parseInt(this.statsMap.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_CLICS))
-                + ((CookieModel) this.model).getTotJ1() + ((CookieModel) this.model).getTotJ2();
+                + ((CookieModel) this.model).getTotFirstPlayer() + ((CookieModel) this.model).getTotSecondPlayer();
         this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_NB_CLICS, Integer.toString(nbClicks));
         //Add total required clicks
         int requiredClicks = Integer.parseInt(this.statsMap.get(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLIC))
@@ -74,10 +74,10 @@ public class CookieController extends AbstractGameController {
         this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLIC, Integer.toString(requiredClicks));
         //Add total fault
         int totalFault = Integer.parseInt(this.statsMap.get(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_FAULT))
-                + ((CookieModel) this.model).getDiffJ1() + ((CookieModel) this.model).getDiffJ2();
+                + ((CookieModel) this.model).getDiffFirstPlayer() + ((CookieModel) this.model).getDiffSecondPlayer();
         this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_FAULT, Integer.toString(totalFault));
         //Add nb perfect
-        if (0 == ((CookieModel) this.model).getDiffJ1() | 0 == ((CookieModel) this.model).getDiffJ2()){
+        if (0 == ((CookieModel) this.model).getDiffFirstPlayer() | 0 == ((CookieModel) this.model).getDiffSecondPlayer()){
             int nbPerfect = Integer.parseInt(this.statsMap.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_PERFECT)+1);
             this.statsMap.put(CookieClickerStatsEnum.COOKIE_CLICKER_NB_PERFECT, Integer.toString(nbPerfect));
         }
