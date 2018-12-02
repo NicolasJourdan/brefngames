@@ -54,11 +54,15 @@ public class TicTacToeController extends AbstractGameController {
                     this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_PERFECT, "1");
                 }
                 if (((TicTacToeModel) this.model).getCurrentPlayer().getName().equals(((TicTacToeModel) this.model).getPlayers()[0].getName())) {
+                    this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                    this.statsp2.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                     this.statsp1.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
                     sendStats();
                     this.notifyObservers(ActionEnum.PLAYER_1_WON);
                     return;
                 } else {
+                    this.statsp2.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                    this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                     this.statsp2.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
                     sendStats();
                     this.notifyObservers(ActionEnum.PLAYER_2_WON);
@@ -78,6 +82,8 @@ public class TicTacToeController extends AbstractGameController {
 
     private void initStats(){
         this.statsMap = new HashMap<>();
+        this.statsp1 = new HashMap<>();
+        this.statsp2 = new HashMap<>();
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS, "0");
@@ -87,9 +93,15 @@ public class TicTacToeController extends AbstractGameController {
 
         this.statsp1.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, "1");
         this.statsp1.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "0");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
 
         this.statsp2.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, "1");
         this.statsp2.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "0");
+        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
     private void sendStats(){
