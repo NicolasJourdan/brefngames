@@ -22,9 +22,9 @@ public class ConnectFourController extends AbstractGameController {
     private long initTime;
     private long finalTime;
     private String totalTime;
-    private Map<ConnectFourStatsEnum, String> statsMap;
-    private Map<PlayerStatsEnum, String> statsp1;
-    private Map<PlayerStatsEnum, String> statsp2;
+    private Map<ConnectFourStatsEnum, String> gameStats;
+    private Map<PlayerStatsEnum, String> firstPlayerStats;
+    private Map<PlayerStatsEnum, String> secondPlayerStats;
 
 
     public ConnectFourController(ConnectFourModel m, ConnectFourView v, int rows, int columns, boolean isTraining) {
@@ -45,11 +45,11 @@ public class ConnectFourController extends AbstractGameController {
             if (!status.isEmpty()) {
                 round += 1;
                 if (status.equals("R")) {
-                    int cross = Integer.parseInt(this.statsMap.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS)) + 1;
-                    this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS, Integer.toString(cross));
+                    int cross = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS)) + 1;
+                    this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS, Integer.toString(cross));
                 } else {
-                    int circle = Integer.parseInt(this.statsMap.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS)) + 1;
-                    this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS, Integer.toString(circle));
+                    int circle = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS)) + 1;
+                    this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS, Integer.toString(circle));
                 }
                 Color color = ((ConnectFourModel) this.model).getCurrentPlayer().getColor();
                 ((ConnectFourView) this.view).setPawnView(color, pawn.getCoord());
@@ -57,23 +57,23 @@ public class ConnectFourController extends AbstractGameController {
                 if (!orient.isEmpty()) {
                     this.setChanged();
                     if (((ConnectFourModel) this.model).getCurrentPlayer().getName().equals(((ConnectFourModel) this.model).getPlayers()[0].getName())) {
-                        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
-                        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
-                        this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "1");
+                        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
+                        this.firstPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "1");
                         sendStats(orient);
                         this.notifyObservers(ActionEnum.PLAYER_1_WON);
                         return;
                     } else {
-                        this.statsp2.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
-                        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
-                        this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+                        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
+                        this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
                         sendStats(orient);
                         this.notifyObservers(ActionEnum.PLAYER_2_WON);
                         return;
                     }
                 }
                 if (((ConnectFourModel) this.model).isDraw()) {
-                    this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "1");
+                    this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "1");
                     sendStats(orient);
                     this.setChanged();
                     this.notifyObservers(ActionEnum.DRAW);
@@ -85,26 +85,27 @@ public class ConnectFourController extends AbstractGameController {
     }
 
     private void initStats(){
-        this.statsMap = new HashMap<>();
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS, "0");
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS, "0");
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, "0");
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "0");
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES, "1");
-
-        this.statsp1 = new HashMap<>();
-        this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
-        this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
-        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
-        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
-        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
-
-        this.statsp2 = new HashMap<>();
-        this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
-        this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
-        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
-        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
-        this.statsp1.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
+        //Game Stats
+        this.gameStats = new HashMap<>();
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS, "0");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS, "0");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, "0");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "0");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES, "1");
+        //First Player Stats
+        this.firstPlayerStats = new HashMap<>();
+        this.firstPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
+        this.firstPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
+        //Second Player Stats
+        this.secondPlayerStats = new HashMap<>();
+        this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
+        this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
     private void sendStats(String orient){
@@ -112,23 +113,23 @@ public class ConnectFourController extends AbstractGameController {
             return;
         }
         if (orient.equals("vertical")) {
-            this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_VERTICAL, "1");
+            this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_VERTICAL, "1");
         }
         else if (orient.equals("landscape")) {
-            this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_LANDSCAPE, "1");
+            this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_LANDSCAPE, "1");
         }
         else if (orient.equals("diagonal")) {
-            this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_DIAG, "1");
+            this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_DIAG, "1");
         }
 
         finalTime = System.currentTimeMillis();
         totalTime = Long.toString((finalTime - initTime)/1000);
-        int yellowNb = Integer.parseInt(this.statsMap.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS));
-        int redNb = Integer.parseInt(this.statsMap.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS));
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
-        this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME, totalTime);
-        ContestDataPersistor.updateConnectFour(this.statsMap);
-        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[0].getName(),this.statsp1);
-        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[1].getName(),this.statsp2);
+        int yellowNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS));
+        int redNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS));
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME, totalTime);
+        ContestDataPersistor.updateConnectFour(this.gameStats);
+        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[0].getName(),this.firstPlayerStats);
+        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[1].getName(),this.secondPlayerStats);
     }
 }
