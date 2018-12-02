@@ -7,6 +7,7 @@ import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.ConnectFour.ConnectFourView.ConnectFourView;
 import Game.Games.Coord;
 import Game.Model.Pawn;
+import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
 
 import java.awt.*;
@@ -22,6 +23,8 @@ public class ConnectFourController extends AbstractGameController {
     private long finalTime;
     private String totalTime;
     private Map<ConnectFourStatsEnum, String> statsMap;
+    private Map<PlayerStatsEnum, String> statsp1;
+    private Map<PlayerStatsEnum, String> statsp2;
 
 
     public ConnectFourController(ConnectFourModel m, ConnectFourView v, int rows, int columns, boolean isTraining) {
@@ -53,11 +56,14 @@ public class ConnectFourController extends AbstractGameController {
                 String orient = ((ConnectFourModel) this.model).isWinner();
                 if (!orient.isEmpty()) {
                     this.setChanged();
-                    sendStats(orient);
                     if (((ConnectFourModel) this.model).getCurrentPlayer().getName().equals(((ConnectFourModel) this.model).getPlayers()[0].getName())) {
+                        this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "1");
+                        sendStats(orient);
                         this.notifyObservers(ActionEnum.PLAYER_1_WON);
                         return;
                     } else {
+                        this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+                        sendStats(orient);
                         this.notifyObservers(ActionEnum.PLAYER_2_WON);
                         return;
                     }
@@ -81,6 +87,14 @@ public class ConnectFourController extends AbstractGameController {
         this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, "0");
         this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "0");
         this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES, "1");
+
+        this.statsp1 = new HashMap<>();
+        this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
+        this.statsp1.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
+
+        this.statsp2 = new HashMap<>();
+        this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
+        this.statsp2.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
     }
 
     private void sendStats(String orient){
@@ -104,5 +118,7 @@ public class ConnectFourController extends AbstractGameController {
         this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
         this.statsMap.put(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME, totalTime);
         ContestDataPersistor.updateConnectFour(this.statsMap);
+        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[0].getName(),this.statsp1);
+        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[1].getName(),this.statsp2);
     }
 }

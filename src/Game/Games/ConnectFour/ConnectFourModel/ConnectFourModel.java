@@ -4,9 +4,6 @@ import Game.Games.Coord;
 import Game.Model.AbstractGameModel;
 import Game.Model.Pawn;
 import Player.Player;
-import Statistic.Model.Statistic;
-
-import java.util.List;
 
 public class ConnectFourModel extends AbstractGameModel {
     private Board board;
@@ -24,11 +21,6 @@ public class ConnectFourModel extends AbstractGameModel {
 
     public Player getCurrentPlayer() {
         return this.currentPlayer;
-    }
-
-    @Override
-    public List<Statistic> getListStatistics() {
-        return null;
     }
 
     public String isWinner() {
