@@ -6,6 +6,7 @@ import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Games.TicTacToe.TicTacToeView.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
+import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
 import java.awt.*;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ public class TicTacToeController extends AbstractGameController {
     private long finalTime;
     private String totalTime;
     private Map<TicTacToeStatsEnum, String> statsMap;
+    private Map<PlayerStatsEnum, String> statsFirstPlayer;
+    private Map<PlayerStatsEnum, String> statsSecondPlayer;
 
 
     public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size, boolean isTraining) {
@@ -50,11 +53,18 @@ public class TicTacToeController extends AbstractGameController {
                 if (round<=6){
                     this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_PERFECT, "1");
                 }
-                sendStats();
                 if (((TicTacToeModel) this.model).getCurrentPlayer().getName().equals(((TicTacToeModel) this.model).getPlayers()[0].getName())) {
+                    this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                    this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
+                    this.statsFirstPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
+                    sendStats();
                     this.notifyObservers(ActionEnum.PLAYER_1_WON);
                     return;
                 } else {
+                    this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+                    this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
+                    this.statsSecondPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
+                    sendStats();
                     this.notifyObservers(ActionEnum.PLAYER_2_WON);
                     return;
                 }
@@ -72,12 +82,26 @@ public class TicTacToeController extends AbstractGameController {
 
     private void initStats(){
         this.statsMap = new HashMap<>();
+        this.statsFirstPlayer = new HashMap<>();
+        this.statsSecondPlayer = new HashMap<>();
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_PERFECT, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_DRAW, "0");
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_GAMES, "1");
+
+        this.statsFirstPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, "1");
+        this.statsFirstPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "0");
+        this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
+
+        this.statsSecondPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, "1");
+        this.statsSecondPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "0");
+        this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
     private void sendStats(){
@@ -92,5 +116,7 @@ public class TicTacToeController extends AbstractGameController {
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS, Integer.toString(crossNb + circleNb));
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_TOTAL_TIME, totalTime);
         ContestDataPersistor.updateTicTacToe(this.statsMap);
+        ContestDataPersistor.updateDataPlayer(((TicTacToeModel) this.model).getPlayers()[0].getName(),this.statsFirstPlayer);
+        ContestDataPersistor.updateDataPlayer(((TicTacToeModel) this.model).getPlayers()[1].getName(),this.statsSecondPlayer);
     }
 }
