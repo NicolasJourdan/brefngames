@@ -98,19 +98,19 @@ public class ContestDataPersistor {
         );
     }
 
-    public static void updateCookieCliker(Map<CookieClickerStatsEnum, String> gameMap) {
+    public static void updateCookieClicker(Map<CookieClickerStatsEnum, String> gameMap) {
         Map<CookieClickerStatsEnum, String> dataEntries = CookieClickerRepository.getAll();
         updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES);
-        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_CLICS);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_CLICKS);
         updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_NB_PERFECT);
         updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_FAULT);
         updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_TIME);
-        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLIC);
+        updateIntValueCookieClicker(dataEntries, gameMap, CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLICKS);
         // Average required clicks per game
         dataEntries.put(
-                CookieClickerStatsEnum.COOKIE_CLICKER_AVERAGE_REQUIRED_CLIC,
+                CookieClickerStatsEnum.COOKIE_CLICKER_AVERAGE_REQUIRED_CLICKS,
                 String.valueOf(
-                        Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLIC))
+                        Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_TOTAL_REQUIRED_CLICKS))
                                 / Integer.parseInt(dataEntries.get(CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES))
                 )
         );

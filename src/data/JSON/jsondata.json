@@ -69,7 +69,7 @@
       "value": "0"
     },
     {
-      "name": "COOKIE_CLICKER_NB_CLICS",
+      "name": "COOKIE_CLICKER_NB_CLICKS",
       "value": "0"
     },
     {
@@ -81,11 +81,11 @@
       "value": "0"
     },
     {
-      "name": "COOKIE_CLICKER_TOTAL_REQUIRED_CLIC",
+      "name": "COOKIE_CLICKER_TOTAL_REQUIRED_CLICKS",
       "value": "0"
     },
     {
-      "name": "COOKIE_CLICKER_AVERAGE_REQUIRED_CLIC",
+      "name": "COOKIE_CLICKER_AVERAGE_REQUIRED_CLICKS",
       "value": "0"
     },
     {
