@@ -1,34 +1,36 @@
 package Statistic.Model;
 
+import Game.Games.GlobalStatisticsEnum;
 import Menu.Model.MenuModel;
+import Repository.Game.GlobalStatisticsRepository;
 import Scene.Model.ActionEnum;
+import Statistic.Factory.GlobalStatisticFactory;
 
 import java.awt.*;
+import java.util.Map;
 
 public class StatisticMenuModel extends MenuModel {
     private Object[][] donnees;
-    private String[] entetes;
+
     public StatisticMenuModel() {
-        // Recuper les infos du repo
-        // Table for general statistic
-
-        this.donnees = new Object[][]{
-                {"Johnathan", "Sykes", Color.red, true},
-                {"Nicolas", "Van de Kampf", Color.black, true},
-                {"Damien", "Cuthbert", Color.cyan, true},
-                {"Corinne", "Valance", Color.blue, false},
-                {"Emilie", "Schrödinger", Color.magenta, false},
-                {"Delphine", "Duke", Color.yellow, false},
-                {"Eric", "Trump", Color.pink, true},
-        };
-
-        this.entetes = new String[]{"Prénom", "Nom", "Couleur favorite", "Homme"};
+        this.donnees = getAllGlobalStat();
     }
-
     public Object[][] getGlobalStatisctic(){
         return this.donnees;
     }
-    public String[] getHeaderTable(){
-        return this.entetes;
+
+
+    public Object[][] getAllGlobalStat(){
+        Map<GlobalStatisticsEnum, String> stat = GlobalStatisticsRepository.getAll();
+        int index = stat.size();
+        this.donnees = new Object[index][2];
+        index = 0;
+        for (Map.Entry<GlobalStatisticsEnum, String> s : stat.entrySet()) {
+            this.donnees[index][0] = GlobalStatisticFactory.getStringStat(s.getKey());
+            this.donnees[index][1] = s.getValue();
+            index++;
+        }
+        return this.donnees;
     }
+
 }

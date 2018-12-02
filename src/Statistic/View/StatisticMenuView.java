@@ -4,6 +4,7 @@ import Scene.Model.ActionEnum;
 import Structure.AbstractView;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,61 +18,60 @@ public class StatisticMenuView extends AbstractView {
     private JButton connectStatistic;
     private javax.swing.JLabel globalSettings;
     private JTable tableau;
+    private DefaultTableModel model;
+
     private Object[][] dataTable;
-    private String[] headerTable;
     private GridBagConstraints c;
 
 
     public StatisticMenuView() {
         super();
-        dataTable = new Object[][]{};
-        headerTable = new String[]{};
-
+        this.dataTable = new Object[][]{};
 
         this.setLayout(new GridBagLayout());
-        c = new GridBagConstraints();
+        this.c = new GridBagConstraints();
 
-        c.fill = GridBagConstraints.HORIZONTAL;
+        this.c.fill = GridBagConstraints.HORIZONTAL;
 
         this.globalSettings = new javax.swing.JLabel("Global Statistic ", SwingConstants.CENTER);
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 4;   // largeur 2 colonne
+        this.c.gridx = 0;
+        this.c.gridy = 0;
+        this.c.gridwidth = 4;   // largeur 2 colonne
         this.add(this.globalSettings, c);
 
         this.updateTableView();
 
         this.playerStatistic = new JButton("Statistic by Player");
-        c.gridx = 1;
-        c.gridy = 3;
-        c.gridwidth = 2;   // largeur 2 colonne
+        this.c.gridx = 1;
+        this.c.gridy = 3;
+        this.c.gridwidth = 2;   // largeur 2 colonne
         this.add(this.playerStatistic, c);
 
         this.tttStatistic = new JButton("Tic Tac Toe");
-        c.gridwidth = 1;   // Re init
-        c.gridx = 0;
-        c.gridy = 4;
+        this.c.gridwidth = 1;   // Re init
+        this.c.gridx = 0;
+        this.c.gridy = 4;
         this.add(this.tttStatistic, c);
 
         this.runnerStatistic = new JButton("Runner");
-        c.gridx = 1;
-        c.gridy = 4;
+        this.c.gridx = 1;
+        this.c.gridy = 4;
         this.add(this.runnerStatistic, c);
 
         this.coockieStatistic = new JButton("Coockie Cliquer");
-        c.gridx = 2;
-        c.gridy = 4;
+        this.c.gridx = 2;
+        this.c.gridy = 4;
         this.add(this.coockieStatistic, c);
 
         this.connectStatistic = new JButton("Connect Four");
-        c.gridx = 3;
-        c.gridy = 4;
+        this.c.gridx = 3;
+        this.c.gridy = 4;
         this.add(this.connectStatistic, c);
 
         this.backButton = new JButton("Back");
-        c.gridx = 1;
-        c.gridy = 5;
-        c.gridwidth = 2;   // largeur 2 colonne
+        this.c.gridx = 1;
+        this.c.gridy = 5;
+        this.c.gridwidth = 2;   // largeur 2 colonne
         this.add(this.backButton, c);
 
         this.initButtonsActionListeners();
@@ -115,9 +115,8 @@ public class StatisticMenuView extends AbstractView {
         });
     }
 
-    public void updateGlobalStatistic(Object[][] dataTable, String[] headerTable){
+    public void updateGlobalStatistic(Object[][] dataTable){
         this.dataTable = dataTable;
-        this.headerTable = headerTable;
         this.updateTableView();
         this.tableau.revalidate();
         this.tableau.repaint();
@@ -126,14 +125,11 @@ public class StatisticMenuView extends AbstractView {
     }
 
     public void updateTableView(){
-        tableau = new JTable(dataTable, headerTable);
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 4;   // largeur 4 colonne
-        this.add(tableau.getTableHeader(), c);
-        c.gridx = 0;
-        c.gridy = 2;
-        c.gridwidth = 4;   // largeur 4 colonne
+        this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
+        this.tableau = new JTable(this.model);
+        this.c.gridx = 0;
+        this.c.gridy = 2;
+        this.c.gridwidth = 4;   // largeur 4 colonne
         this.add(tableau, c);
     }
 }

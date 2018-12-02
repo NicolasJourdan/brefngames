@@ -13,7 +13,6 @@ public class StatisticMenuController extends AbstractSceneController {
         super(model, view);
         // Not observer observable because the view is not created yet
         ((StatisticMenuView) this.view).updateGlobalStatistic(
-                ((StatisticMenuModel) this.model).getGlobalStatisctic(),
-                ((StatisticMenuModel) this.model).getHeaderTable());
+                ((StatisticMenuModel) this.model).getGlobalStatisctic());
     }
 }
