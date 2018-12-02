@@ -40,6 +40,6 @@ public abstract class AbstractBoard {
         }
         return true;
     }
-    
+
     protected abstract Pawn setPawn(Pawn pawn);
     }

@@ -92,6 +92,10 @@ public class ConnectFourController extends AbstractGameController {
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, "0");
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "0");
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_GAMES, "1");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_LANDSCAPE, "0");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_VERTICAL, "0");
+        this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_DIAG, "0");
+
         //First Player Stats
         this.firstPlayerStats = new HashMap<>();
         this.firstPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
@@ -103,9 +107,9 @@ public class ConnectFourController extends AbstractGameController {
         this.secondPlayerStats = new HashMap<>();
         this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_GAME, "1");
         this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
-        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
-        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
-        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
+        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
     private void sendStats(String orient){
@@ -122,8 +126,8 @@ public class ConnectFourController extends AbstractGameController {
             this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_DIAG, "1");
         }
 
-        finalTime = System.currentTimeMillis();
-        totalTime = Long.toString((finalTime - initTime)/1000);
+        this.finalTime = System.currentTimeMillis();
+        this.totalTime = Long.toString((finalTime - initTime)/1000);
         int yellowNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS));
         int redNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
