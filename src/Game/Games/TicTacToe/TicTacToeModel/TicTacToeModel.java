@@ -92,7 +92,7 @@ public class TicTacToeModel extends AbstractGameModel {
         }
     }
 
-    public Boolean isDraw(){
+    public boolean isDraw(){
         return this.board.isFill();
     }
 }

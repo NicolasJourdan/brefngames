@@ -3,7 +3,7 @@ package Game.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractBoard {
+public abstract class AbstractBoard {
     protected List<List<Pawn>> grid;
     protected int rows;
     protected int columns;
@@ -30,8 +30,7 @@ public class AbstractBoard {
         return this.grid;
     }
 
-    public Boolean isFill(){
-        Boolean status = true;
+    public boolean isFill(){
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
                 if (this.grid.get(i).get(j) == null) {
@@ -39,9 +38,8 @@ public class AbstractBoard {
                 }
             }
         }
-        return status;
+        return true;
     }
-    public Pawn setPawn(Pawn pawn) {
-        return null;
-    }
+    
+    protected abstract Pawn setPawn(Pawn pawn);
     }

@@ -16,7 +16,7 @@ public class Box extends JButton {
         this.setPreferredSize(new Dimension(75, 75));
         this.setLayout(new BorderLayout());
         setOpaque(true);
-        this.color = Color.LIGHT_GRAY;
+        this.color = DEFAULT_BACKGROUND_COLOR;
     }
 
     @Override

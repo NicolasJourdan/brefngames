@@ -32,8 +32,8 @@ public class ConnectFourController extends AbstractGameController {
         this.rows = rows;
         this.columns = columns;
         this.round = 0;
-        initStats();
-        initTime = System.currentTimeMillis();
+        this.initStats();
+        this.initTime = System.currentTimeMillis();
     }
 
     @Override
@@ -60,21 +60,21 @@ public class ConnectFourController extends AbstractGameController {
                         this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
                         this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                         this.firstPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "1");
-                        sendStats(orient);
+                        this.sendStats(orient);
                         this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
                         return;
                     } else {
                         this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
                         this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                         this.secondPlayerStats.put(PlayerStatsEnum.CONNECT_FOUR_NB_WIN, "0");
-                        sendStats(orient);
+                        this.sendStats(orient);
                         this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
                         return;
                     }
                 }
                 if (((ConnectFourModel) this.model).isDraw()) {
                     this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "1");
-                    sendStats(orient);
+                    this.sendStats(orient);
                     this.setChanged();
                     this.notifyObservers(ActionEnum.DRAW);
                     return;
