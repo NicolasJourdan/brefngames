@@ -59,7 +59,7 @@ public class ContestDataPersistor {
     public static void updateRunner(Map<RunnerStatsEnum, String> gameMap) {
         Map<RunnerStatsEnum, String> dataEntries = RunnerRepository.getAll();
         updateIntValueRunner(dataEntries, gameMap, RunnerStatsEnum.RUNNER_NB_GAMES);
-        updateIntValueRunner(dataEntries, gameMap, RunnerStatsEnum.RUNNER_NB_CLICS);
+        updateIntValueRunner(dataEntries, gameMap, RunnerStatsEnum.RUNNER_NB_CLICKS);
         updateIntValueRunner(dataEntries, gameMap, RunnerStatsEnum.RUNNER_TOTAL_TIME);
         // Average time of each race
         dataEntries.put(
@@ -74,7 +74,7 @@ public class ContestDataPersistor {
         dataEntries.put(
                 RunnerStatsEnum.RUNNER_AVERAGE_SPEED,
                 String.valueOf(
-                        Integer.parseInt(dataEntries.get(RunnerStatsEnum.RUNNER_NB_CLICS))
+                        Integer.parseInt(dataEntries.get(RunnerStatsEnum.RUNNER_NB_CLICKS))
                                 / Integer.parseInt(dataEntries.get(RunnerStatsEnum.RUNNER_TOTAL_TIME))
                 )
         );
