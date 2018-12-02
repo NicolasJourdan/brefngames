@@ -11,10 +11,10 @@ import java.awt.event.KeyEvent;
 
 public class RunnerView extends AbstractGameView {
 
-    private final static String ACTION_PRESS_A = "ACTION_PRESS_A";
-    private final static String ACTION_PRESS_Z = "ACTION_PRESS_Z";
-    private final static String ACTION_PRESS_R = "ACTION_PRESS_R";
-    private final static String ACTION_PRESS_T = "ACTION_PRESS_T";
+    private final static String ACTION_PRESS_Q = "ACTION_PRESS_Q";
+    private final static String ACTION_PRESS_S = "ACTION_PRESS_S";
+    private final static String ACTION_PRESS_L = "ACTION_PRESS_L";
+    private final static String ACTION_PRESS_M = "ACTION_PRESS_M";
 
     private final Track track;
     private final PlayerControls firstPlayerControls;
@@ -40,12 +40,12 @@ public class RunnerView extends AbstractGameView {
         constraint.gridx = 0;
         constraint.gridy = 1;
         constraint.gridwidth = 1;
-        this.firstPlayerControls = new PlayerControls(ControlsTypeEnum.A_Z, players[0]);
+        this.firstPlayerControls = new PlayerControls(ControlsTypeEnum.Q_S, players[0]);
         this.add(this.firstPlayerControls, constraint);
 
         // second player controls
         constraint.gridx = 1;
-        this.secondPlayerControls = new PlayerControls(ControlsTypeEnum.R_T, players[1]);
+        this.secondPlayerControls = new PlayerControls(ControlsTypeEnum.L_M, players[1]);
         this.add(this.secondPlayerControls, constraint);
 
         this.revalidate();
@@ -55,11 +55,11 @@ public class RunnerView extends AbstractGameView {
 
         // press A
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_A, 0, false),
-                RunnerView.ACTION_PRESS_A
+                KeyStroke.getKeyStroke(KeyEvent.VK_Q, 0, false),
+                RunnerView.ACTION_PRESS_Q
         );
 
-        this.getActionMap().put(ACTION_PRESS_A, new AbstractAction() {
+        this.getActionMap().put(ACTION_PRESS_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_A);
@@ -68,11 +68,11 @@ public class RunnerView extends AbstractGameView {
 
         // press Z
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_Z, 0, false),
-                RunnerView.ACTION_PRESS_Z
+                KeyStroke.getKeyStroke(KeyEvent.VK_S, 0, false),
+                RunnerView.ACTION_PRESS_S
         );
 
-        this.getActionMap().put(ACTION_PRESS_Z, new AbstractAction() {
+        this.getActionMap().put(ACTION_PRESS_S, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_Z);
@@ -81,11 +81,11 @@ public class RunnerView extends AbstractGameView {
 
         // press R
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_R, 0, false),
-                RunnerView.ACTION_PRESS_R
+                KeyStroke.getKeyStroke(KeyEvent.VK_L, 0, false),
+                RunnerView.ACTION_PRESS_L
         );
 
-        this.getActionMap().put(ACTION_PRESS_R, new AbstractAction() {
+        this.getActionMap().put(ACTION_PRESS_L, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_R);
@@ -94,11 +94,11 @@ public class RunnerView extends AbstractGameView {
 
         // press T
         this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_T, 0, false),
-                RunnerView.ACTION_PRESS_T
+                KeyStroke.getKeyStroke(KeyEvent.VK_M, 0, false),
+                RunnerView.ACTION_PRESS_M
         );
 
-        this.getActionMap().put(ACTION_PRESS_T, new AbstractAction() {
+        this.getActionMap().put(ACTION_PRESS_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RunnerView.this.observable.notifyObservers(ActionEnum.KEY_PRESS_T);

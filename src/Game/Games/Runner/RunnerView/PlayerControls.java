@@ -33,14 +33,14 @@ public class PlayerControls extends JPanel {
         constraint.gridy = 1;
         constraint.gridwidth = 1;
         this.leftKey = new VirtualKey(
-            ControlsTypeEnum.A_Z == controlsType ? "A" : "R",
+            ControlsTypeEnum.Q_S == controlsType ? "Q" : "L",
             true
         );
         this.add(this.leftKey, constraint);
 
         constraint.gridx = 2;
         this.rightKey = new VirtualKey(
-            ControlsTypeEnum.A_Z == controlsType ? "Z" : "T",
+            ControlsTypeEnum.Q_S == controlsType ? "S" : "M",
             false
         );
         this.add(this.rightKey, constraint);
