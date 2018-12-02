@@ -36,8 +36,8 @@ public class ContestController extends AbstractSceneManagerController {
             /**
              * Game finished
              */
-            case PLAYER_1_WON:
-            case PLAYER_2_WON:
+            case FIRST_PLAYER_WON:
+            case SECOND_PLAYER_WON:
             case DRAW:
                 ((AbstractContest) this.model).setWinner(actionEnum);
                 ((GameSceneFactory) this.sceneFactory).updateHistory(((AbstractContest) this.model).getHistory());

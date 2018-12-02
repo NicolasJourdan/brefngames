@@ -41,10 +41,10 @@ public class TrainingController extends AbstractSceneManagerController {
     @Override
     protected SceneEnum getNextScene(ActionEnum actionEnum) {
         switch (actionEnum) {
-            case PLAYER_1_WON:
+            case FIRST_PLAYER_WON:
                 this.updateWinnerInHistory(DEFAULT_PLAYERS[0]);
                 return SceneEnum.MAP;
-            case PLAYER_2_WON:
+            case SECOND_PLAYER_WON:
                 this.updateWinnerInHistory(DEFAULT_PLAYERS[1]);
                 return SceneEnum.MAP;
             case DRAW:

@@ -1,6 +1,7 @@
 package Game;
 
 import Game.Games.Runner.RunnerScene;
+import Game.Games.CookieClicker.CookieClickerScene;
 import Game.Games.TicTacToe.TicTacToeScene;
 import Map.MapScene;
 import Map.Model.History;
@@ -36,7 +37,7 @@ public class GameSceneFactory implements SceneFactoryInterface {
             case CONNECT_FOUR:
                 // return new ConnectFourScene(this.listPlayers);
             case COOKIE_CLICKER:
-                // return new CookieClickerScene(this.listPlayers);
+                return new CookieClickerScene(this.playersList, isTraining);
             case TRAINING_MENU:
                 return new TrainingMenuScene();
             case CONTEST_MENU:
