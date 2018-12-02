@@ -92,7 +92,7 @@ public class StatisticMenuView extends AbstractView {
         this.tttStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_TTT);
             }
         });
         this.runnerStatistic.addActionListener(new ActionListener() {
