@@ -104,13 +104,13 @@ public class StatisticMenuView extends AbstractView {
         this.coockieStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_RUNNER);
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_COOCKIE);
             }
         });
         this.connectStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_CONNECT);
             }
         });
     }

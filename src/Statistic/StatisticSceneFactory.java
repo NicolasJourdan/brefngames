@@ -16,6 +16,10 @@ public class StatisticSceneFactory implements SceneFactoryInterface {
                 return new StatisticTTTScene();
             case STATISTIC_RUNNER:
                 return new StatisticRunnerScene();
+            case STATISTIC_COOCKIE:
+                return new StatisticCCScene();
+            case STATISTIC_CONNECT:
+                return new StatisticCFScene();
             default:
                 throw new RuntimeException("ParametersScene (" + sceneEnum + ") is unknown");
         }
