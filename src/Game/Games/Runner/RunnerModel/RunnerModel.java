@@ -7,8 +7,7 @@ import Player.Player;
 
 public class RunnerModel extends AbstractGameModel {
 
-    // TODO: choose a value here
-    public final static int DEFAULT_STEPS_AMOUNT = 20;
+    public final static int DEFAULT_STEPS_AMOUNT = 40;
 
     private final RunCounter firstPlayerCounter;
     private final RunCounter secondPlayerCounter;
