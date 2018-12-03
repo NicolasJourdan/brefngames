@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StatisticCCView extends AbstractView {
+public class StatisticConnectFourView extends AbstractView {
 
     private JButton backButton;
 
@@ -18,7 +18,7 @@ public class StatisticCCView extends AbstractView {
     private GridBagConstraints c;
     private Object[][] dataTable;
 
-    public StatisticCCView() {
+    public StatisticConnectFourView() {
         super();
 
         this.dataTable = new Object[][]{};
@@ -42,12 +42,12 @@ public class StatisticCCView extends AbstractView {
         this.backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticCCView.this.observable.notifyObservers(ActionEnum.STATISTIC_MENU);
+                StatisticConnectFourView.this.observable.notifyObservers(ActionEnum.STATISTIC_MENU);
             }
         });
     }
 
-    public void updateCCStatistic(Object[][] dataTable){
+    public void updateCFStatistic(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();

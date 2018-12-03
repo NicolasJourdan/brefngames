@@ -2,7 +2,7 @@ package Statistic.Factory;
 
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
 
-public class CCStatisticFactory {
+public class CookieClickerStatisticFactory {
     public static String getStringStat(CookieClickerStatsEnum stat) {
         switch (stat) {
             case COOKIE_CLICKER_NB_GAMES:

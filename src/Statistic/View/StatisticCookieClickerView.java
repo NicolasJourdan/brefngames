@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StatisticTTTView extends AbstractView {
+public class StatisticCookieClickerView extends AbstractView {
 
     private JButton backButton;
 
@@ -18,7 +18,7 @@ public class StatisticTTTView extends AbstractView {
     private GridBagConstraints c;
     private Object[][] dataTable;
 
-    public StatisticTTTView() {
+    public StatisticCookieClickerView() {
         super();
 
         this.dataTable = new Object[][]{};
@@ -42,12 +42,12 @@ public class StatisticTTTView extends AbstractView {
         this.backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticTTTView.this.observable.notifyObservers(ActionEnum.STATISTIC_MENU);
+                StatisticCookieClickerView.this.observable.notifyObservers(ActionEnum.STATISTIC_MENU);
             }
         });
     }
 
-    public void updateTTTStatistic(Object[][] dataTable){
+    public void updateCCStatistic(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();

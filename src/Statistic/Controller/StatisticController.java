@@ -24,21 +24,19 @@ public class StatisticController extends AbstractSceneManagerController {
     protected SceneEnum getNextScene(ActionEnum actionEnum) {
         switch (actionEnum) {
             case END_STATISTIC:
-                // Call the parent (ParametersScene), this parent will call its own parent (LauncherController)
-                // to change the current scene and destroy this scene manager controller
                 this.setChanged();
                 this.notifyObservers(actionEnum);
                 return SceneEnum.END_SCENE;
             case STATISTIC_PLAYER:
                 return SceneEnum.STATISTIC_PLAYER;
-            case STATISTIC_CONNECT:
-                return SceneEnum.STATISTIC_CONNECT;
+            case STATISTIC_CONNECT_FOUR:
+                return SceneEnum.STATISTIC_CONNECT_FOUR;
             case STATISTIC_RUNNER:
                 return SceneEnum.STATISTIC_RUNNER;
-            case STATISTIC_COOCKIE:
-                return SceneEnum.STATISTIC_COOCKIE;
-            case STATISTIC_TTT:
-                return SceneEnum.STATISTIC_TTT;
+            case STATISTIC_COOCKIE_CLICKER:
+                return SceneEnum.STATISTIC_COOCKIE_CLICKER;
+            case STATISTIC_TICTACTOE:
+                return SceneEnum.STATISTIC_TICTACTOE;
             case STATISTIC_MENU:
                 return SceneEnum.STATISTIC_MENU;
             default:

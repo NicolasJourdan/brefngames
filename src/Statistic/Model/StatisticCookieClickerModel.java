@@ -2,17 +2,16 @@ package Statistic.Model;
 
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
 import Repository.Game.CookieClickerRepository;
-import Repository.Game.TicTacToeRepository;
-import Statistic.Factory.CCStatisticFactory;
+import Statistic.Factory.CookieClickerStatisticFactory;
 import Structure.AbstractModel;
 
 import java.util.Map;
 
-public class StatisticCCModel extends AbstractModel {
+public class StatisticCookieClickerModel extends AbstractModel {
 
     private Object[][] donnees;
 
-    public StatisticCCModel() {
+    public StatisticCookieClickerModel() {
         this.donnees = new Object[][]{};
     }
 
@@ -26,7 +25,7 @@ public class StatisticCCModel extends AbstractModel {
         this.donnees = new Object[index][2];
         index = 0;
         for (Map.Entry<CookieClickerStatsEnum, String> s : stat.entrySet()) {
-            this.donnees[index][0] = CCStatisticFactory.getStringStat(s.getKey());
+            this.donnees[index][0] = CookieClickerStatisticFactory.getStringStat(s.getKey());
             this.donnees[index][1] = s.getValue();
             index++;
         }

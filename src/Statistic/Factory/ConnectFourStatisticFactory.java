@@ -2,7 +2,7 @@ package Statistic.Factory;
 
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
 
-public class CFStatisticFactory {
+public class ConnectFourStatisticFactory {
     public static String getStringStat(ConnectFourStatsEnum stat) {
         switch (stat) {
             case CONNECT_FOUR_NB_GAMES:

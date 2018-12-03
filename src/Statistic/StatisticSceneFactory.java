@@ -12,14 +12,14 @@ public class StatisticSceneFactory implements SceneFactoryInterface {
                 return new StatisticMenuScene();
             case STATISTIC_PLAYER:
                 return new StatisticPlayerScene();
-            case STATISTIC_TTT:
-                return new StatisticTTTScene();
+            case STATISTIC_TICTACTOE:
+                return new StatisticTicTacToeScene();
             case STATISTIC_RUNNER:
                 return new StatisticRunnerScene();
-            case STATISTIC_COOCKIE:
-                return new StatisticCCScene();
-            case STATISTIC_CONNECT:
-                return new StatisticCFScene();
+            case STATISTIC_COOCKIE_CLICKER:
+                return new StatisticCookieClickerScene();
+            case STATISTIC_CONNECT_FOUR:
+                return new StatisticConnectFourScene();
             default:
                 throw new RuntimeException("ParametersScene (" + sceneEnum + ") is unknown");
         }

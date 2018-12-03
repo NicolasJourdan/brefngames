@@ -92,7 +92,7 @@ public class StatisticMenuView extends AbstractView {
         this.tttStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_TTT);
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_TICTACTOE);
             }
         });
         this.runnerStatistic.addActionListener(new ActionListener() {
@@ -104,13 +104,13 @@ public class StatisticMenuView extends AbstractView {
         this.coockieStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_COOCKIE);
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_COOCKIE_CLICKER);
             }
         });
         this.connectStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_CONNECT);
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_CONNECT_FOUR);
             }
         });
     }

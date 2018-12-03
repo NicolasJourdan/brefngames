@@ -2,16 +2,16 @@ package Statistic.Model;
 
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Repository.Game.ConnectFourRepository;
-import Statistic.Factory.CFStatisticFactory;
+import Statistic.Factory.ConnectFourStatisticFactory;
 import Structure.AbstractModel;
 
 import java.util.Map;
 
-public class StatisticCFModel extends AbstractModel {
+public class StatisticConnectFourModel extends AbstractModel {
 
     private Object[][] donnees;
 
-    public StatisticCFModel() {
+    public StatisticConnectFourModel() {
         this.donnees = new Object[][]{};
     }
 
@@ -25,7 +25,7 @@ public class StatisticCFModel extends AbstractModel {
         this.donnees = new Object[index][2];
         index = 0;
         for (Map.Entry<ConnectFourStatsEnum, String> s : stat.entrySet()) {
-            this.donnees[index][0] = CFStatisticFactory.getStringStat(s.getKey());
+            this.donnees[index][0] = ConnectFourStatisticFactory.getStringStat(s.getKey());
             this.donnees[index][1] = s.getValue();
             index++;
         }

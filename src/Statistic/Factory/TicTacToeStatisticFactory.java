@@ -2,7 +2,7 @@ package Statistic.Factory;
 
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 
-public class TTTStatisticFactory {
+public class TicTacToeStatisticFactory {
     public static String getStringStat(TicTacToeStatsEnum stat) {
         switch (stat) {
             case TIC_TAC_TOE_NB_GAMES:
