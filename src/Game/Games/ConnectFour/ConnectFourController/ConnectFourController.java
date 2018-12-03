@@ -43,7 +43,7 @@ public class ConnectFourController extends AbstractGameController {
         if (pawn != null) {
             String status = pawn.toString();
             if (!status.isEmpty()) {
-                round += 1;
+                this.round++;
                 if (status.equals("R")) {
                     int cross = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS)) + 1;
                     this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS, Integer.toString(cross));
@@ -132,8 +132,8 @@ public class ConnectFourController extends AbstractGameController {
         int redNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME, totalTime);
-        ContestDataPersistor.updateConnectFour(this.gameStats);
         ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[0].getName(),this.firstPlayerStats);
         ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[1].getName(),this.secondPlayerStats);
+        ContestDataPersistor.updateConnectFour(this.gameStats);
     }
 }
