@@ -1,7 +1,6 @@
-package Game.Games.TicTacToe.TicTacToeView;
+package Game.Games.ConnectFour.ConnectFourView;
 
 import Game.Games.Coord;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,19 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Board extends JLayeredPane {
-    protected TicTacToeView parent;
+    protected ConnectFourView parent;
     private Map<Coord, Box> map;
-    private int size;
 
-    public Board(int size, TicTacToeView parent) {
+    public Board(int rows, int columns, ConnectFourView parent) {
         super();
         this.map = new HashMap<Coord, Box>();
         this.parent = parent;
-        this.size = size;
-        this.setLayout(new GridLayout(this.size, this.size, 5, 5));
+        this.setLayout(new GridLayout(rows, columns, 3, 3));
         Box box = null;
-        for (int i = 0; i < this.size; i++) {
-            for (int j = 0; j < this.size; j++) {
+        for (int j = 0; j < rows; j++) {
+            for (int i = 0; i < columns; i++) {
                 box = new Box(new Coord(i, j));
                 this.add(box);
                 this.map.put((box).getCoord(), box);
@@ -38,8 +35,8 @@ public class Board extends JLayeredPane {
         this.repaint();
     }
 
-    public void setPawnBoard(String text, Color color, Coord coord) {
-        map.get(coord).setPawn(text, color);
+    public void setPawnBoard(Color color, Coord coord) {
+        map.get(coord).setPawn(color);
         this.revalidate();
         this.repaint();
     }

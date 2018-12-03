@@ -1,6 +1,7 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 
-import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Game.Games.Coord;
+import Game.Model.Pawn;
 import Player.Player;
 
 public class Cross extends Pawn {

@@ -1,7 +1,8 @@
 package Game.Games.TicTacToe.TicTacToeModel;
 
-import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Game.Games.Coord;
 import Game.Model.AbstractGameModel;
+import Game.Model.Pawn;
 import Player.Player;
 
 public class TicTacToeModel extends AbstractGameModel {
@@ -21,7 +22,7 @@ public class TicTacToeModel extends AbstractGameModel {
     }
 
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return this.currentPlayer;
     }
 
     public boolean isWinner() {
@@ -64,9 +65,9 @@ public class TicTacToeModel extends AbstractGameModel {
     }
 
     private int getVal(int i, int j) {
-        if (board.grid.get(i).get(j) instanceof Cross) {
+        if (board.getGrid().get(i).get(j) instanceof Cross) {
             return 1;
-        } else if (board.grid.get(i).get(j) instanceof Circle) {
+        } else if (board.getGrid().get(i).get(j) instanceof Circle) {
             return -1;
         } else {
             return 0;
@@ -80,7 +81,7 @@ public class TicTacToeModel extends AbstractGameModel {
         } else {
             pawn = new Cross(this.currentPlayer, coord);
         }
-        return board.setPawn(pawn);
+        return board.setPawn(pawn).toString();
     }
 
     public void changePlayer() {
@@ -91,7 +92,7 @@ public class TicTacToeModel extends AbstractGameModel {
         }
     }
 
-    public Boolean isDraw(){
+    public boolean isDraw(){
         return this.board.isFill();
     }
 }

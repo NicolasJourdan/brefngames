@@ -4,7 +4,7 @@ import Contest.Model.ContestDataPersistor;
 import Game.Controller.AbstractGameController;
 import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
-import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Game.Games.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
@@ -28,8 +28,8 @@ public class TicTacToeController extends AbstractGameController {
         super(m, v, isTraining);
         this.size = size;
         this.round = 0;
-        initStats();
-        initTime = System.currentTimeMillis();
+        this.initStats();
+        this.initTime = System.currentTimeMillis();
     }
 
     @Override
@@ -57,21 +57,21 @@ public class TicTacToeController extends AbstractGameController {
                     this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
                     this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                     this.statsFirstPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
-                    sendStats();
+                    this.sendStats();
                     this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
                     return;
                 } else {
                     this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
                     this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
                     this.statsSecondPlayer.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "1");
-                    sendStats();
+                    this.sendStats();
                     this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
                     return;
                 }
             }
             if (((TicTacToeModel) this.model).isDraw()) {
                 this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_DRAW, "1");
-                sendStats();
+                this.sendStats();
                 this.setChanged();
                 this.notifyObservers(ActionEnum.DRAW);
                 return;
@@ -109,8 +109,8 @@ public class TicTacToeController extends AbstractGameController {
             return;
         }
 
-        finalTime = System.currentTimeMillis();
-        totalTime = Long.toString((finalTime - initTime)/1000);
+        this.finalTime = System.currentTimeMillis();
+        this.totalTime = Long.toString((finalTime - initTime)/1000);
         int crossNb = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE));
         int circleNb = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS));
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS, Integer.toString(crossNb + circleNb));

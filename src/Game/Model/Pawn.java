@@ -1,6 +1,6 @@
-package Game.Games.TicTacToe.TicTacToeModel;
+package Game.Model;
 
-import Game.Games.TicTacToe.TicTacToeView.Coord;
+import Game.Games.Coord;
 import Player.Player;
 
 import java.awt.*;
@@ -20,5 +20,9 @@ public class Pawn {
 
     public Color getColor() {
         return color;
+    }
+
+    public void setCoord(int x, int y) {
+        this.coord = new Coord(x, y);
     }
 }

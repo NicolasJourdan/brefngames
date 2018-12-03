@@ -1,17 +1,17 @@
-package Game.Games.TicTacToe.TicTacToeModel;
+package Game.Games.ConnectFour.ConnectFourModel;
 
 import Game.Games.Coord;
 import Game.Model.Pawn;
 import Player.Player;
 
-public class Circle extends Pawn {
+public class YellowPawn extends Pawn {
 
-    public Circle(Player player, Coord coord) {
+    public YellowPawn(Player player, Coord coord) {
         super(player, coord);
     }
 
     @Override
     public String toString() {
-        return ("o");
+        return "Y";
     }
 }
