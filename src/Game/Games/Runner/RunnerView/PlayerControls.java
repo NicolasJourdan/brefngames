@@ -1,11 +1,14 @@
 package Game.Games.Runner.RunnerView;
 
 import Player.Player;
+import Utils.Image.ImageResizer;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PlayerControls extends JPanel {
+
+    private static final int PLAYER_ICON_SIZE = 80;
 
     private final JLabel playerIcon;
     private final VirtualKey leftKey;
@@ -25,7 +28,7 @@ public class PlayerControls extends JPanel {
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
         this.playerIcon = new JLabel(
-            player.getIcon()
+            ImageResizer.resizeImage(player.getIcon(), PlayerControls.PLAYER_ICON_SIZE)
         );
         this.add(this.playerIcon, constraint);
 
