@@ -29,8 +29,18 @@ public class ContestSettingsModel extends AbstractModel {
      * @return boolean
      */
     public boolean validateSettingsDataObject(ContestSettingsDataObject settingsDataObject) {
+        this.invalidDataObjectText = "";
+
+        if (settingsDataObject.getSelectedGameTypes().isEmpty()) {
+            this.invalidDataObjectText = "At least one game type has to be selected<br>";
+        }
+
         if (settingsDataObject.getFirstPlayerColor() == settingsDataObject.getSecondPlayerColor()) {
-            this.invalidDataObjectText = "Both players can't choose the same color";
+            this.invalidDataObjectText += "Both players can't choose the same color<br>";
+        }
+
+        if (!this.invalidDataObjectText.equals("")) {
+            this.invalidDataObjectText = "<html>" + this.invalidDataObjectText + "</html>";
             return false;
         }
 
