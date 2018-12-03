@@ -21,10 +21,6 @@ public class CookieModel extends AbstractGameModel{
         this.goal = (int) ((Math.random()*DEFAULT_MAX_NUMBER) + 1);
     }
 
-    public Player[] getPlayers(){
-        return this.listPlayers;
-    }
-
     public int getTotFirstPlayer() {
         return totFirstPlayer;
     }

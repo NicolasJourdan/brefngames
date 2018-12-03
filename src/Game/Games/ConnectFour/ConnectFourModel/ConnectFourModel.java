@@ -15,10 +15,6 @@ public class ConnectFourModel extends AbstractGameModel {
         this.board = new Board(rows, columns);
     }
 
-    public Player[] getPlayers() {
-        return this.listPlayers;
-    }
-
     public Player getCurrentPlayer() {
         return this.currentPlayer;
     }

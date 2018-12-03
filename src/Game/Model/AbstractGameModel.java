@@ -13,4 +13,8 @@ public abstract class AbstractGameModel extends AbstractModel {
     public AbstractGameModel(Player[] listPlayers) {
         this.listPlayers = listPlayers;
     }
+
+    public Player[] getPlayers() {
+        return this.listPlayers;
+    }
 }
