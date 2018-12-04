@@ -72,12 +72,17 @@ public class TicTacToeModel extends AbstractGameModel {
 
     public String setPawnModel(Coord coord) {
         Pawn pawn;
+        Pawn status;
         if (this.currentPlayer.equals(this.listPlayers[0])) {
             pawn = new Circle(this.currentPlayer, coord);
         } else {
             pawn = new Cross(this.currentPlayer, coord);
         }
-        return board.setPawn(pawn).toString();
+        status = board.setPawn(pawn);
+        if(status != null){
+            return status.toString();
+        }
+        return "";
     }
 
     public void changePlayer() {
