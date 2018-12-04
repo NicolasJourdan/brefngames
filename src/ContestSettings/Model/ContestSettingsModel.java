@@ -32,11 +32,11 @@ public class ContestSettingsModel extends AbstractModel {
         this.invalidDataObjectText = "";
 
         if (settingsDataObject.getSelectedGameTypes().isEmpty()) {
-            this.invalidDataObjectText = "At least one game type has to be selected<br>";
+            this.invalidDataObjectText += "At least one game type has to be selected<br>";
         }
 
         if (settingsDataObject.getFirstPlayerName().equals(settingsDataObject.getSecondPlayerName())) {
-            this.invalidDataObjectText = "Both player can't have the same name<br>";
+            this.invalidDataObjectText += "Both player can't have the same name<br>";
         }
 
         if (settingsDataObject.getFirstPlayerColor() == settingsDataObject.getSecondPlayerColor()) {
@@ -55,6 +55,6 @@ public class ContestSettingsModel extends AbstractModel {
      * @return Invalid settings DTO text
      */
     public String getInvalidDataObjectText() {
-        return invalidDataObjectText;
+        return this.invalidDataObjectText;
     }
 }
