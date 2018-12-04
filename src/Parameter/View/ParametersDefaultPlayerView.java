@@ -36,6 +36,8 @@ public class ParametersDefaultPlayerView extends AbstractView {
     private JRadioButton secondColorPlayerGreen;
     private JRadioButton secondColorPlayerYellow;
 
+    private JLabel warningLabel;
+
     public ParametersDefaultPlayerView() {
         super();
         this.setLayout(new GridLayout(5, 4));
@@ -61,6 +63,9 @@ public class ParametersDefaultPlayerView extends AbstractView {
         this.secondColorPlayerBlue = new JRadioButton("Blue_2");
         this.secondColorPlayerGreen = new JRadioButton("Green_2");
         this.secondColorPlayerYellow = new JRadioButton("Yellow_2");
+
+        this.warningLabel = new JLabel("");
+        this.warningLabel.setForeground(Color.RED);
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -109,6 +114,7 @@ public class ParametersDefaultPlayerView extends AbstractView {
         this.add(this.secondColorPlayerYellow);
 
         this.add(this.backButton);
+        this.add(this.warningLabel);
     }
 
     private void initButtonsActionListeners() {
@@ -310,5 +316,16 @@ public class ParametersDefaultPlayerView extends AbstractView {
             default:
                 throw new RuntimeException("The action : " + actionEnum + " is not acceptable here");
         }
+    }
+
+    /**
+     * Set a warning label
+     *
+     * @param invalidDataObjectText
+     */
+    public void updateWarningMessage(String invalidDataObjectText) {
+        this.warningLabel.setText(invalidDataObjectText);
+        this.revalidate();
+        this.repaint();
     }
 }
