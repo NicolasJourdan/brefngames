@@ -3,6 +3,7 @@ package Game.Games.Runner.RunnerView;
 import Parameter.Model.ThemeEnum;
 import Player.Player;
 import Repository.Parameter.ThemeParameterRepository;
+import Utils.Image.ImageResizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,25 +16,16 @@ public class Track extends JPanel
     public final static int STROKE_WIDTH = 10;
     public final static int ICON_SIZE = 25;
 
-    private final Image firstPlayerImage;
-    private final Image secondPlayerImage;
+    private final ImageIcon firstPlayerImage;
+    private final ImageIcon secondPlayerImage;
 
     private int stepsAmount;
     private int firstPlayerRemainingSteps;
     private int secondPlayerRemainingSteps;
 
     public Track(Player[] players) {
-        this.firstPlayerImage = players[0].getIcon().getImage().getScaledInstance(
-            Track.ICON_SIZE,
-            Track.ICON_SIZE,
-            java.awt.Image.SCALE_SMOOTH
-        );
-
-        this.secondPlayerImage = players[1].getIcon().getImage().getScaledInstance(
-            Track.ICON_SIZE,
-            Track.ICON_SIZE,
-            java.awt.Image.SCALE_SMOOTH
-        );
+        this.firstPlayerImage = ImageResizer.resizeImage(players[0].getIcon(), Track.ICON_SIZE);
+        this.secondPlayerImage = ImageResizer.resizeImage(players[1].getIcon(), Track.ICON_SIZE);
 
         this.setPreferredSize(
             new Dimension(Track.WIDTH, Track.HEIGHT)
@@ -104,17 +96,17 @@ public class Track extends JPanel
 
         // players
         g2d.drawImage(
-                this.firstPlayerImage,
-                (Track.WIDTH - Track.STROKE_WIDTH) / 2 - Track.ICON_SIZE,
-                (int) (((float) this.firstPlayerRemainingSteps / this.stepsAmount) * (Track.HEIGHT - Track.ICON_SIZE)),
-                this
+            this.firstPlayerImage.getImage(),
+            (Track.WIDTH - Track.STROKE_WIDTH) / 2 - Track.ICON_SIZE,
+            (int) (((float) this.firstPlayerRemainingSteps / this.stepsAmount) * (Track.HEIGHT - Track.ICON_SIZE)),
+            this
         );
 
         g2d.drawImage(
-                this.secondPlayerImage,
-                (Track.WIDTH + Track.STROKE_WIDTH) / 2,
-                (int) (((float) this.secondPlayerRemainingSteps / this.stepsAmount) * (Track.HEIGHT - Track.ICON_SIZE)),
-                this
+            this.secondPlayerImage.getImage(),
+            (Track.WIDTH + Track.STROKE_WIDTH) / 2,
+            (int) (((float) this.secondPlayerRemainingSteps / this.stepsAmount) * (Track.HEIGHT - Track.ICON_SIZE)),
+            this
         );
     }
 }
