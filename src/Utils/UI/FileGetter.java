@@ -30,7 +30,11 @@ public class FileGetter {
      * @return
      */
     public static Image getImage(String imagePath) {
-        return new ImageIcon(FileGetter.getResource("PNG/" + FileGetter.getColor() + imagePath)).getImage();
+        return FileGetter.getImageIcon(imagePath).getImage();
+    }
+
+    public static ImageIcon getImageIcon(String imagePath) {
+        return new ImageIcon(FileGetter.getResource("PNG/" + FileGetter.getColor() + imagePath));
     }
 
     /**
