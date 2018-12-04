@@ -93,6 +93,10 @@ public class ParametersDefaultPlayerController extends AbstractSceneController {
                 ((ParametersDefaultPlayerModel) this.model).setPlayerIcon(ParameterEnum.PLAYER_2_ICON, ActionEnum.AQUAMAN_2.toString());
                 break;
             case PARAMETERS_MENU:
+                if (!((ParametersDefaultPlayerModel) this.model).validateParametersData()) {
+                    ((ParametersDefaultPlayerView) this.view).updateWarningMessage(((ParametersDefaultPlayerModel) this.model).getInvalidDataObjectText());
+                    break;
+                }
                 Parameters.save(((ParametersDefaultPlayerModel) this.model).getConfigurations());
                 this.setChanged();
                 this.notifyObservers(arg);

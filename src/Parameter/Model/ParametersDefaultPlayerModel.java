@@ -13,10 +13,12 @@ import java.util.Map;
 public class ParametersDefaultPlayerModel extends AbstractModel {
 
     private Map<ParameterEnum, Configurable> configurations;
+    private String invalidDataObjectText;
 
     public ParametersDefaultPlayerModel() {
         super();
         this.configurations = LauncherController.getConfiguration();
+        this.invalidDataObjectText = "";
     }
 
     public void setPlayerColor(ParameterEnum player, String color) {
@@ -31,5 +33,23 @@ public class ParametersDefaultPlayerModel extends AbstractModel {
 
     public Map<ParameterEnum, Configurable> getConfigurations() {
         return this.configurations;
+    }
+
+    /**
+     * Check if the parameter data is valid
+     *
+     * @return boolean
+     */
+    public boolean validateParametersData() {
+        if (this.configurations.get(ParameterEnum.PLAYER_1_COLOR).getValue() == this.configurations.get(ParameterEnum.PLAYER_2_COLOR).getValue()) {
+            this.invalidDataObjectText = "Both default players can't have the same color";
+            return false;
+        }
+
+        return true;
+    }
+
+    public String getInvalidDataObjectText() {
+        return this.invalidDataObjectText;
     }
 }
