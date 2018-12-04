@@ -39,7 +39,7 @@ public class FileGetter {
      */
     public static Font getFont() {
         try {
-            return Font.createFont(Font.TRUETYPE_FONT, new File(FileGetter.UI_PATH + "/Font/kenvector_future_thin.ttf"));
+            return Font.createFont(Font.TRUETYPE_FONT, new File("src/" + FileGetter.UI_PATH + "/Font/kenvector_future_thin.ttf"));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
