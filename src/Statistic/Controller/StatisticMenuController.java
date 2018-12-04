@@ -1,7 +1,6 @@
 package Statistic.Controller;
 
 import Scene.Controller.AbstractSceneController;
-import Scene.Model.ActionEnum;
 import Statistic.Model.StatisticMenuModel;
 import Statistic.View.StatisticMenuView;
 import Structure.AbstractModel;
@@ -12,7 +11,7 @@ public class StatisticMenuController extends AbstractSceneController {
     public StatisticMenuController(AbstractModel model, AbstractView view) {
         super(model, view);
         // Not observer observable because the view is not created yet
-        ((StatisticMenuView) this.view).updateGlobalStatistic(
+        ((StatisticMenuView) this.view).updateGlobalStatistics(
                 ((StatisticMenuModel) this.model).getGlobalStatisctic());
     }
 }

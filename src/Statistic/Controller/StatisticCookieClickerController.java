@@ -10,7 +10,7 @@ public class StatisticCookieClickerController extends AbstractSceneController {
     public StatisticCookieClickerController(AbstractModel model, AbstractView view) {
         super(model, view);
         // Not observer observable because the view is not created yet
-        ((StatisticCookieClickerView) this.view).updateCCStatistic(
-                ((StatisticCookieClickerModel) this.model).getAllCCStat());
+        ((StatisticCookieClickerView) this.view).updateCookieClickerStatistics(
+                ((StatisticCookieClickerModel) this.model).getAllCookieClickerStats());
     }
 }

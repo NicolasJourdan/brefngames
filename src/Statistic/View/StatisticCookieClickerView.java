@@ -47,7 +47,7 @@ public class StatisticCookieClickerView extends AbstractView {
         });
     }
 
-    public void updateCCStatistic(Object[][] dataTable){
+    public void updateCookieClickerStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();

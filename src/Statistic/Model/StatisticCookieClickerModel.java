@@ -19,7 +19,7 @@ public class StatisticCookieClickerModel extends AbstractModel {
         return this.donnees;
     }
 
-    public Object[][] getAllCCStat(){
+    public Object[][] getAllCookieClickerStats(){
         Map<CookieClickerStatsEnum, String> stat = CookieClickerRepository.getAll();
         int index = stat.size();
         this.donnees = new Object[index][2];

@@ -19,7 +19,7 @@ public class StatisticRunnerModel extends AbstractModel {
         return this.donnees;
     }
 
-    public Object[][] getAllRunnerStat(){
+    public Object[][] getAllRunnerStats(){
         Map<RunnerStatsEnum, String> stat = RunnerRepository.getAll();
         int index = stat.size();
         this.donnees = new Object[index][2];

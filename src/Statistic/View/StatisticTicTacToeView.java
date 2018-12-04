@@ -47,7 +47,7 @@ public class StatisticTicTacToeView extends AbstractView {
         });
     }
 
-    public void updateTTTStatistic(Object[][] dataTable){
+    public void updateTicTacToeStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();

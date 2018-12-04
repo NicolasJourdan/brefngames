@@ -14,7 +14,7 @@ public class StatisticPlayerController extends AbstractSceneController {
     public StatisticPlayerController(AbstractModel model, AbstractView view) {
         super(model, view);
         // Not observer observable because the view is not created yet
-        ((StatisticPlayerView) this.view).updateGlobalStatistic(
+        ((StatisticPlayerView) this.view).updateGlobalStatistics(
                 ((StatisticPlayerModel) this.model).getGlobalStatisctic());
         ((StatisticPlayerView) this.view).updateJCBView(
                 ((StatisticPlayerModel) this.model).getAllPlayers());
@@ -26,11 +26,12 @@ public class StatisticPlayerController extends AbstractSceneController {
             case STATISTIC_PLAYER_CHANGE:
                 String p = ((StatisticPlayerView) this.view).getCurrentPlayer();
 
-                ((StatisticPlayerView) this.view).updateGlobalStatistic(
+                ((StatisticPlayerView) this.view).updateGlobalStatistics(
                     ((StatisticPlayerModel) this.model).getStatById(p));
                 break;
             case STATISTIC_MENU:
-                super.update(o, arg);
+                this.setChanged();
+                this.notifyObservers(arg);
                 break;
         }
     }

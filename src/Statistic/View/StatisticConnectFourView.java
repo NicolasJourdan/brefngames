@@ -47,7 +47,7 @@ public class StatisticConnectFourView extends AbstractView {
         });
     }
 
-    public void updateCFStatistic(Object[][] dataTable){
+    public void updateConnectFourStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();

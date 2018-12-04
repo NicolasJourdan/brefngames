@@ -19,7 +19,7 @@ public class StatisticTicTacToeModel extends AbstractModel {
         return this.donnees;
     }
 
-    public Object[][] getAllTTTStat(){
+    public Object[][] getAllTicTacToeStats(){
         Map<TicTacToeStatsEnum, String> stat = TicTacToeRepository.getAll();
         int index = stat.size();
         this.donnees = new Object[index][2];

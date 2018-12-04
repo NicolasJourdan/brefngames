@@ -10,7 +10,7 @@ public class StatisticTicTacToeController extends AbstractSceneController {
     public StatisticTicTacToeController(AbstractModel model, AbstractView view) {
         super(model, view);
         // Not observer observable because the view is not created yet
-        ((StatisticTicTacToeView) this.view).updateTTTStatistic(
-                ((StatisticTicTacToeModel) this.model).getAllTTTStat());
+        ((StatisticTicTacToeView) this.view).updateTicTacToeStatistics(
+                ((StatisticTicTacToeModel) this.model).getAllTicTacToeStats());
     }
 }

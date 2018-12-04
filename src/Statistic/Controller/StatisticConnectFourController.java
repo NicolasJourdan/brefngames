@@ -10,7 +10,7 @@ public class StatisticConnectFourController extends AbstractSceneController {
     public StatisticConnectFourController(AbstractModel model, AbstractView view) {
         super(model, view);
         // Not observer observable because the view is not created yet
-        ((StatisticConnectFourView) this.view).updateCFStatistic(
-                ((StatisticConnectFourModel) this.model).getAllCFStat());
+        ((StatisticConnectFourView) this.view).updateConnectFourStatistics(
+                ((StatisticConnectFourModel) this.model).getAllConnectFourStats());
     }
 }

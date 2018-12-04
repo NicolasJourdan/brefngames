@@ -19,7 +19,7 @@ public class StatisticConnectFourModel extends AbstractModel {
         return this.donnees;
     }
 
-    public Object[][] getAllCFStat(){
+    public Object[][] getAllConnectFourStats(){
         Map<ConnectFourStatsEnum, String> stat = ConnectFourRepository.getAll();
         int index = stat.size();
         this.donnees = new Object[index][2];

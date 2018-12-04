@@ -67,7 +67,7 @@ public class StatisticPlayerView extends AbstractView {
         });
     }
 
-    public void updateGlobalStatistic(Object[][] dataTable){
+    public void updateGlobalStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();

@@ -10,7 +10,7 @@ public class StatisticRunnerController extends AbstractSceneController {
     public StatisticRunnerController(AbstractModel model, AbstractView view) {
         super(model, view);
         // Not observer observable because the view is not created yet
-        ((StatisticRunnerView) this.view).updateRunnerStatistic(
-                ((StatisticRunnerModel) this.model).getAllRunnerStat());
+        ((StatisticRunnerView) this.view).updateRunnerStatistics(
+                ((StatisticRunnerModel) this.model).getAllRunnerStats());
     }
 }

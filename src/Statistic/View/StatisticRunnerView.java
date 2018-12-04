@@ -47,7 +47,7 @@ public class StatisticRunnerView extends AbstractView {
         });
     }
 
-    public void updateRunnerStatistic(Object[][] dataTable){
+    public void updateRunnerStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
         this.tableau.revalidate();
