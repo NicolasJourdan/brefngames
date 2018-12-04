@@ -3,6 +3,7 @@ package Map.View;
 import Game.View.AbstractGameView;
 import Player.Player;
 import Scene.Model.ActionEnum;
+import Utils.Image.ImageResizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,7 +49,7 @@ public class MapView extends AbstractGameView {
             current.add(new JLabel("Draw"));
             current.add(new JLabel("Draw"));
         } else {
-            current.add(new JLabel(resizeImage(winner.getIcon())));
+            current.add(new JLabel(ImageResizer.resizeImage(winner.getIcon(), 64, 64)));
             current.add(new JLabel(winner.getName()));
         }
 
@@ -76,7 +77,7 @@ public class MapView extends AbstractGameView {
 
         JPanel firstPlayerPanel = new JPanel();
         firstPlayerPanel.setLayout(new GridLayout(2, 1));
-        firstPlayerPanel.add(new JLabel(resizeImage(players[0].getIcon())));
+        firstPlayerPanel.add(new JLabel(ImageResizer.resizeImage(players[0].getIcon(), 64)));
         firstPlayerPanel.add(new JLabel(players[0].getName()));
         scorePanel.add(firstPlayerPanel);
 
@@ -84,7 +85,7 @@ public class MapView extends AbstractGameView {
 
         JPanel secondPlayerPanel = new JPanel();
         secondPlayerPanel.setLayout(new GridLayout(2, 1));
-        secondPlayerPanel.add(new JLabel(resizeImage(players[1].getIcon())));
+        secondPlayerPanel.add(new JLabel(ImageResizer.resizeImage(players[1].getIcon(), 64)));
         secondPlayerPanel.add(new JLabel(players[1].getName()));
         scorePanel.add(secondPlayerPanel);
 
@@ -101,11 +102,5 @@ public class MapView extends AbstractGameView {
 
     public void setBackButton() {
         this.button.setText("Back");
-    }
-
-    private ImageIcon resizeImage(ImageIcon imageIcon) {
-        Image image = imageIcon.getImage();
-        Image imageResized = image.getScaledInstance(64, 64, Image.SCALE_SMOOTH);
-        return new ImageIcon(imageResized);
     }
 }
