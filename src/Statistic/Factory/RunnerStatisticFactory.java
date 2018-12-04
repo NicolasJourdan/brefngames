@@ -7,7 +7,7 @@ public class RunnerStatisticFactory {
         switch (stat) {
             case RUNNER_NB_GAMES:
                 return "Runner Number of games";
-            case RUNNER_NB_CLICS:
+            case RUNNER_NB_CLICKS:
                 return "Runner Number of click";
             case RUNNER_AVERAGE_SPEED:
                 return "Runner average speed";
