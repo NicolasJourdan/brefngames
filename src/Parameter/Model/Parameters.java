@@ -3,14 +3,19 @@ package Parameter.Model;
 import Parameter.Parameters.ColorParameter;
 import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
+import Repository.ModifyFiles;
 import Repository.Parameter.DefaultPlayerParameterRepository;
 import Repository.Parameter.SoundParameterRepository;
 import Repository.Parameter.ThemeParameterRepository;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Parameters {
+
+    public final static String DEFAULT_PARAMETER_FILE_JSON = "src/data/JSON/parameters.default.json";
+    public final static String PARAMETERS_JSON_FILE = "src/data/JSON/parameters.json";
 
     public static Map<ParameterEnum, Configurable> getConfiguration() {
         Map<ParameterEnum, Configurable> configuration = new HashMap<>();
@@ -66,5 +71,13 @@ public class Parameters {
         SoundParameterRepository.save(
                 (boolean) configuration.get(ParameterEnum.SOUND).getValue()
         );
+    }
+
+    public static void reset() {
+        try {
+            ModifyFiles.copyFile(Parameters.DEFAULT_PARAMETER_FILE_JSON, Parameters.PARAMETERS_JSON_FILE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

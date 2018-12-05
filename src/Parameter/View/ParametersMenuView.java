@@ -13,6 +13,7 @@ public class ParametersMenuView extends AbstractView {
     private final JButton backButton;
     private final JButton themeAndSoundButton;
     private final JButton defaultPlayerButton;
+    private final JButton resetButton;
 
     public ParametersMenuView() {
         super();
@@ -21,12 +22,14 @@ public class ParametersMenuView extends AbstractView {
         this.backButton = new JButton("Back");
         this.themeAndSoundButton = new JButton("Theme personalisation and sound effect");
         this.defaultPlayerButton = new JButton("Player personalisation");
+        this.resetButton = new JButton("Reset Parameters");
 
         this.initButtonsActionListeners();
 
         this.add(this.backButton);
         this.add(this.themeAndSoundButton);
         this.add(this.defaultPlayerButton);
+        this.add(this.resetButton);
     }
 
     private void initButtonsActionListeners() {
@@ -48,6 +51,13 @@ public class ParametersMenuView extends AbstractView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ParametersMenuView.this.observable.notifyObservers(ActionEnum.PLAYER_PARAMETERS);
+            }
+        });
+
+        this.resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ParametersMenuView.this.observable.notifyObservers(ActionEnum.RESET_PARAMETERS);
             }
         });
     }
