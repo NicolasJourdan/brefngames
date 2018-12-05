@@ -11,6 +11,7 @@ import Parameter.Model.ParameterEnum;
 import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
 import Structure.AbstractView;
+import Utils.UI.CustomCheckBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -87,22 +88,22 @@ public class ContestSettingsView extends AbstractView {
         // Game checkboxes
         constraint.gridy = 1;
         constraint.gridwidth = 1;
-        this.ticTacToeCheckbox = new JCheckBox("Tic Tac Toe");
+        this.ticTacToeCheckbox = new CustomCheckBox("Tic Tac Toe");
         this.ticTacToeCheckbox.setSelected(true);
         this.add(this.ticTacToeCheckbox, constraint);
 
         constraint.gridy = 2;
-        this.connectFourCheckbox = new JCheckBox("Connect Four");
+        this.connectFourCheckbox = new CustomCheckBox("Connect Four");
         this.connectFourCheckbox.setSelected(true);
         this.add(this.connectFourCheckbox, constraint);
 
         constraint.gridy = 3;
-        this.cookieClickerCheckbox = new JCheckBox("Cookie Clicker");
+        this.cookieClickerCheckbox = new CustomCheckBox("Cookie Clicker");
         this.cookieClickerCheckbox.setSelected(true);
         this.add(this.cookieClickerCheckbox, constraint);
 
         constraint.gridy = 4;
-        this.runnerCheckbox = new JCheckBox("Runner");
+        this.runnerCheckbox = new CustomCheckBox("Runner");
         this.runnerCheckbox.setSelected(true);
         this.add(this.runnerCheckbox, constraint);
 

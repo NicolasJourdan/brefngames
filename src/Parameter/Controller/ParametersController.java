@@ -1,6 +1,7 @@
 package Parameter.Controller;
 
 import Parameter.Factory.ParameterSceneFactory;
+import Parameter.Model.Parameters;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;
@@ -28,6 +29,8 @@ public class ParametersController extends AbstractSceneManagerController {
                 return SceneEnum.THEME_SOUND_PARAMETERS;
             case PLAYER_PARAMETERS:
                 return SceneEnum.PLAYER_PARAMETERS;
+            case RESET_PARAMETERS:
+                Parameters.reset();
             case PARAMETERS_MENU:
                 return SceneEnum.PARAMETERS_MENU;
             default:

@@ -3,6 +3,7 @@ package Parameter.View;
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
 import Utils.UI.WarningLabel;
+import Utils.UI.CustomRadioButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,25 +47,25 @@ public class ParametersDefaultPlayerView extends AbstractView {
 
         this.backButton = new JButton("Back");
 
-        this.firstIconSuperman = new JRadioButton("Superman_1");
-        this.firstIconBatman = new JRadioButton("Batman_1");
-        this.firstIconFlash = new JRadioButton("Flash_1");
-        this.firstIconAquaman = new JRadioButton("Aquaman_1");
+        this.firstIconSuperman = new CustomRadioButton("Superman_1");
+        this.firstIconBatman = new CustomRadioButton("Batman_1");
+        this.firstIconFlash = new CustomRadioButton("Flash_1");
+        this.firstIconAquaman = new CustomRadioButton("Aquaman_1");
 
-        this.secondIconSuperman = new JRadioButton("Superman_2");
-        this.secondIconBatman = new JRadioButton("Batman_2");
-        this.secondIconFlash = new JRadioButton("Flash_2");
-        this.secondIconAquaman = new JRadioButton("Aquaman_2");
+        this.secondIconSuperman = new CustomRadioButton("Superman_2");
+        this.secondIconBatman = new CustomRadioButton("Batman_2");
+        this.secondIconFlash = new CustomRadioButton("Flash_2");
+        this.secondIconAquaman = new CustomRadioButton("Aquaman_2");
 
-        this.firstColorPlayerRed = new JRadioButton("Red_1");
-        this.firstColorPlayerBlue = new JRadioButton("Blue_1");
-        this.firstColorPlayerGreen = new JRadioButton("Green_1");
-        this.firstColorPlayerYellow = new JRadioButton("Yellow_1");
+        this.firstColorPlayerRed = new CustomRadioButton("Red_1");
+        this.firstColorPlayerBlue = new CustomRadioButton("Blue_1");
+        this.firstColorPlayerGreen = new CustomRadioButton("Green_1");
+        this.firstColorPlayerYellow = new CustomRadioButton("Yellow_1");
 
-        this.secondColorPlayerRed = new JRadioButton("Red_2");
-        this.secondColorPlayerBlue = new JRadioButton("Blue_2");
-        this.secondColorPlayerGreen = new JRadioButton("Green_2");
-        this.secondColorPlayerYellow = new JRadioButton("Yellow_2");
+        this.secondColorPlayerRed = new CustomRadioButton("Red_2");
+        this.secondColorPlayerBlue = new CustomRadioButton("Blue_2");
+        this.secondColorPlayerGreen = new CustomRadioButton("Green_2");
+        this.secondColorPlayerYellow = new CustomRadioButton("Yellow_2");
 
         this.warningLabel = new WarningLabel("");
 

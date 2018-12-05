@@ -6,6 +6,7 @@ import Parameter.Scenes.ParametersScene;
 import Scene.Model.Scene;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
+import Statistic.StatisticScene;
 import Training.TrainingScene;
 
 public class LauncherFactory implements SceneFactoryInterface {
@@ -20,6 +21,7 @@ public class LauncherFactory implements SceneFactoryInterface {
             case CONTEST:
                 return new ContestScene();
             case STATISTICS:
+                return new StatisticScene();
             case PARAMETERS:
                 return new ParametersScene();
             case QUIT:
