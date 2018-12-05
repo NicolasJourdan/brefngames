@@ -2,6 +2,7 @@ package Parameter.View;
 
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
+import Utils.UI.WarningLabel;
 import Utils.UI.CustomRadioButton;
 
 import javax.swing.*;
@@ -41,7 +42,8 @@ public class ParametersDefaultPlayerView extends AbstractView {
 
     public ParametersDefaultPlayerView() {
         super();
-        this.setLayout(new GridLayout(5, 4));
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
 
         this.backButton = new JButton("Back");
 
@@ -65,8 +67,7 @@ public class ParametersDefaultPlayerView extends AbstractView {
         this.secondColorPlayerGreen = new CustomRadioButton("Green_2");
         this.secondColorPlayerYellow = new CustomRadioButton("Yellow_2");
 
-        this.warningLabel = new JLabel("");
-        this.warningLabel.setForeground(Color.RED);
+        this.warningLabel = new WarningLabel("");
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -94,28 +95,53 @@ public class ParametersDefaultPlayerView extends AbstractView {
 
         this.initButtonsActionListeners();
 
-        this.add(this.firstIconSuperman);
-        this.add(this.firstIconBatman);
-        this.add(this.firstIconFlash);
-        this.add(this.firstIconAquaman);
+        constraints.gridy = 0;
+        constraints.gridx = 0;
+        this.add(this.firstIconSuperman, constraints);
+        constraints.gridx = 1;
+        this.add(this.firstIconBatman, constraints);
+        constraints.gridx = 2;
+        this.add(this.firstIconFlash, constraints);
+        constraints.gridx = 3;
+        this.add(this.firstIconAquaman, constraints);
 
-        this.add(this.secondIconSuperman);
-        this.add(this.secondIconBatman);
-        this.add(this.secondIconFlash);
-        this.add(this.secondIconAquaman);
+        constraints.gridy = 1;
+        constraints.gridx = 0;
+        this.add(this.secondIconSuperman, constraints);
+        constraints.gridx = 1;
+        this.add(this.secondIconBatman, constraints);
+        constraints.gridx = 2;
+        this.add(this.secondIconFlash, constraints);
+        constraints.gridx = 3;
+        this.add(this.secondIconAquaman, constraints);
 
-        this.add(this.firstColorPlayerRed);
-        this.add(this.firstColorPlayerBlue);
-        this.add(this.firstColorPlayerGreen);
-        this.add(this.firstColorPlayerYellow);
+        constraints.gridy = 2;
+        constraints.gridx = 0;
+        this.add(this.firstColorPlayerRed, constraints);
+        constraints.gridx = 1;
+        this.add(this.firstColorPlayerBlue, constraints);
+        constraints.gridx = 2;
+        this.add(this.firstColorPlayerGreen, constraints);
+        constraints.gridx = 3;
+        this.add(this.firstColorPlayerYellow, constraints);
 
-        this.add(this.secondColorPlayerRed);
-        this.add(this.secondColorPlayerBlue);
-        this.add(this.secondColorPlayerGreen);
-        this.add(this.secondColorPlayerYellow);
+        constraints.gridy = 3;
+        constraints.gridx = 0;
+        this.add(this.secondColorPlayerRed, constraints);
+        constraints.gridx = 1;
+        this.add(this.secondColorPlayerBlue, constraints);
+        constraints.gridx = 2;
+        this.add(this.secondColorPlayerGreen, constraints);
+        constraints.gridx = 3;
+        this.add(this.secondColorPlayerYellow, constraints);
 
-        this.add(this.backButton);
-        this.add(this.warningLabel);
+        constraints.gridy = 4;
+        constraints.gridx = 0;
+        this.add(this.backButton, constraints);
+        constraints.gridy = 5;
+        constraints.gridx = 0;
+        constraints.gridwidth = 4;
+        this.add(this.warningLabel, constraints);
     }
 
     private void initButtonsActionListeners() {
