@@ -10,24 +10,30 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 public class CustomButton extends JButton {
 
     private final static int WIDTH = 190;
     private final static int HEIGHT = 49;
     private final static int Y_OFFSET = 4;
+    private static final int BORDER_WIDTH = 5;
 
     private Font font;
     private Image backgroundImage;
     private int yOffset;
 
     public CustomButton(String text) {
+        this(text, CustomButton.WIDTH);
+    }
+
+    public CustomButton(String text, int width) {
         super(text);
 
         Border emptyBorder = BorderFactory.createEmptyBorder();
         this.setBorder(emptyBorder);
         this.setBackgroundNormal();
-        this.setPreferredSize(new Dimension(CustomButton.WIDTH, CustomButton.HEIGHT));
+        this.setPreferredSize(new Dimension(width, CustomButton.HEIGHT));
 
         this.font = FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_BUTTON_TEXT);
 
@@ -76,7 +82,61 @@ public class CustomButton extends JButton {
         Graphics2D g2d = (Graphics2D) g;
 
         // background image
-        g2d.drawImage(this.backgroundImage, 0, this.yOffset, this);
+
+        // Create a buffered image
+        BufferedImage bufferedImage = new BufferedImage(
+                this.backgroundImage.getWidth(null),
+                this.backgroundImage.getHeight(null),
+                BufferedImage.TYPE_INT_ARGB
+        );
+        // draw image on buffered image
+        Graphics2D bGr = bufferedImage.createGraphics();
+        bGr.drawImage(this.backgroundImage, 0, 0, null);
+        bGr.dispose();
+
+        // left border
+        BufferedImage leftBorder = bufferedImage.getSubimage(
+                0,
+                0,
+                CustomButton.BORDER_WIDTH,
+                CustomButton.HEIGHT - this.yOffset
+        );
+        g2d.drawImage(
+                leftBorder,
+                0,
+                this.yOffset,
+                this
+        );
+
+        // right border
+        BufferedImage rightBorder = bufferedImage.getSubimage(
+                CustomButton.WIDTH - CustomButton.BORDER_WIDTH,
+                0,
+                CustomButton.BORDER_WIDTH,
+                CustomButton.HEIGHT - this.yOffset
+        );
+        g2d.drawImage(
+                rightBorder,
+                this.getWidth() - CustomButton.BORDER_WIDTH,
+                this.yOffset,
+                this
+        );
+
+        // section
+        BufferedImage section = bufferedImage.getSubimage(
+                CustomButton.BORDER_WIDTH,
+                0,
+                1,
+                CustomButton.HEIGHT - this.yOffset
+        );
+        g2d.drawImage(
+                section,
+                CustomButton.BORDER_WIDTH,
+                this.yOffset,
+                this.getWidth() - (2 * CustomButton.BORDER_WIDTH),
+                CustomButton.HEIGHT - this.yOffset,
+                this
+        );
 
         // text
         g2d.setFont(this.font);
