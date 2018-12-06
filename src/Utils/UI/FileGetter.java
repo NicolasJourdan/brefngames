@@ -6,8 +6,7 @@ import Repository.Parameter.ThemeParameterRepository;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 
 public class FileGetter {
@@ -42,8 +41,9 @@ public class FileGetter {
      * @return
      */
     public static Font getFont() {
+
         try {
-            return Font.createFont(Font.TRUETYPE_FONT, new File("src/" + FileGetter.UI_PATH + "/Font/kenvector_future_thin.ttf"));
+            return Font.createFont(Font.TRUETYPE_FONT, new File("src" + FileGetter.UI_PATH + "/Font/kenvector_future_thin.ttf"));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -51,6 +51,16 @@ public class FileGetter {
         }
 
         return new JLabel().getFont();
+    }
+
+    /**
+     * Get a sound for the UIpack
+     *
+     * @param sound
+     * @return
+     */
+    public static File getSound(String sound) {
+        return new File("src" + FileGetter.UI_PATH + "Bonus/" + sound);
     }
 
     /**
