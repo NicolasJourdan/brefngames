@@ -2,6 +2,7 @@ package Statistic.View;
 
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
+import Utils.UI.CustomeComboBox.CustomComboBox;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +35,7 @@ public class StatisticPlayerView extends AbstractView {
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
 
-        this.jcb  = new JComboBox();
+        this.jcb  = new CustomComboBox();
         this.c.gridx = 0;
         this.c.gridy = 0;
         this.c.gridwidth = 2;   // largeur 2 colonne
