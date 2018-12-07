@@ -12,6 +12,7 @@ import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
 import Structure.AbstractView;
 import Utils.UI.CustomCheckBox;
+import Utils.UI.CustomSpinner.CustomSpinner;
 import Utils.UI.WarningLabel;
 
 import javax.swing.*;
@@ -115,7 +116,7 @@ public class ContestSettingsView extends AbstractView {
 
         JLabel nbGamesLabel = new JLabel("Number of matches");
         nbGamesPanel.add(nbGamesLabel);
-        this.spinnerNbGames = new JSpinner(
+        this.spinnerNbGames = new CustomSpinner(
             new SpinnerNumberModel(
                 NB_DEFAULT_GAMES,
                 NB_MIN_GAMES,
