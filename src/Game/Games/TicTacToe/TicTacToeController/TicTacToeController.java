@@ -36,7 +36,7 @@ public class TicTacToeController extends AbstractGameController {
     public void update(Observable o, Object arg) {
         Coord coord = (Coord) arg;
         String status = ((TicTacToeModel) this.model).setPawnModel(coord);
-        if (status != null) {
+        if (!status.isEmpty()) {
             round += 1;
             if (status.equals("x")){
                 int cross = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS)) + 1;

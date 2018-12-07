@@ -20,7 +20,7 @@ public class Board extends AbstractBoard {
         int y = coordPawn.getY();
         if (x < this.rows && x >= 0 && y < this.columns && y >= 0) {
             if (this.grid.get(x).get(y) != null) {
-                System.out.print("Error: this case already contain a pawn\n");
+                System.out.print("Error: this box already contain a pawn\n");
                 return null;
             } else {
                 this.grid.get(x).set(y, pawn);
