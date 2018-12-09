@@ -29,7 +29,7 @@ public class CookieView extends AbstractGameView {
 
     public CookieView(){
         super();
-        this.setLayout(new GridLayout(3,2));
+        this.setLayout(new GridBagLayout());
         this.setFocusable(true);
         this.requestFocus();
         this.initComposant();
@@ -116,13 +116,15 @@ public class CookieView extends AbstractGameView {
     }
 
     private void initComposant(){
+        GridBagConstraints constraint = new GridBagConstraints();
+
         Font police = new Font("Arial", Font.BOLD, 20);
-        Font police2 = new Font("Arial", Font.BOLD, 80);
-        Dimension dim = new Dimension(300, 100);
+        Font police2 = new Font("Arial", Font.BOLD, 30);
+        Dimension dim = new Dimension(150, 100);
         Dimension dimCookie = new Dimension(300, 300);
 
         this.goalScreen = new JLabel("GOAL");
-        this.goalScreen.setFont(police);
+        this.goalScreen.setFont(police2);
         this.goalScreen.setForeground(Color.RED);
         this.goalScreen.setHorizontalAlignment(JLabel.RIGHT);
 
@@ -145,16 +147,45 @@ public class CookieView extends AbstractGameView {
         this.firstPlayerCheck = new JButton("Check : S");
         this.firstPlayerCheck.setFont(police);
         this.firstPlayerCheck.setPreferredSize(dim);
+        this.firstPlayerCheck.setBorderPainted(false);
+        this.firstPlayerCheck.setContentAreaFilled(false);
 
         this.secondPlayerCheck = new JButton("Check : L");
         this.secondPlayerCheck.setFont(police);
         this.secondPlayerCheck.setPreferredSize(dim);
+        this.secondPlayerCheck.setBorderPainted(false);
+        this.secondPlayerCheck.setContentAreaFilled(false);
 
-        this.add(this.firstPlayerButton);
-        this.add(this.secondPlayerButton);
-        this.add(this.firstPlayerCheck);
-        this.add(this.secondPlayerCheck);
-        this.add(this.goalScreen);
+        constraint.gridy = 0;
+        constraint.gridx = 2;
+        constraint.gridwidth = 1;
+        constraint.gridheight = 1;
+        this.add(firstPlayerButton, constraint);
+
+        constraint.gridy = 0;
+        constraint.gridx = 3;
+        constraint.gridwidth = 1;
+        constraint.gridheight = 1;
+        this.add(secondPlayerButton, constraint);
+
+        constraint.gridy = 1;
+        constraint.gridx = 2;
+        constraint.gridwidth = 1;
+        constraint.gridheight = 1;
+        this.add(firstPlayerCheck, constraint);
+
+        constraint.gridy = 1;
+        constraint.gridx = 2;
+        constraint.gridwidth = 2;
+        constraint.gridheight = 1;
+        this.add(goalScreen, constraint);
+
+        constraint.gridy = 1;
+        constraint.gridx = 3;
+        constraint.gridwidth = 1;
+        constraint.gridheight = 1;
+        this.add(secondPlayerCheck, constraint);
+
     }
 
     public void setGoalScreen(int goal) {
