@@ -37,6 +37,19 @@ public class FileGetter {
     }
 
     /**
+     * Get a grey image from the UIpack
+     * @param imagePath
+     * @return
+     */
+    public static Image getGreyImage(String imagePath) {
+        return FileGetter.getGreyImageIcon(imagePath).getImage();
+    }
+
+    public static ImageIcon getGreyImageIcon(String imagePath) {
+        return new ImageIcon(FileGetter.getResource("PNG/grey" + imagePath));
+    }
+
+    /**
      * Get a font from the UIpag
      * @return
      */
