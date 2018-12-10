@@ -2,6 +2,8 @@ package Game.Games.CookieClicker.View;
 
 import Game.View.AbstractGameView;
 import Scene.Model.ActionEnum;
+import Utils.UI.CustomLabel;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,10 +24,12 @@ public class CookieView extends AbstractGameView {
 
     private JButton firstPlayerButton = new JButton();
     private JButton secondPlayerButton = new JButton();
-    private JButton firstPlayerCheck = new JButton();
-    private JButton secondPlayerCheck = new JButton();
+    private CustomLabel firstPlayerCheck;
+    private CustomLabel secondPlayerCheck;
+    private CustomLabel commandFirstPlayer;
+    private CustomLabel commandSecondPlayer;
 
-    private JLabel goalScreen = new JLabel();
+    private CustomLabel goalScreen;
 
     public CookieView(){
         super();
@@ -120,13 +124,12 @@ public class CookieView extends AbstractGameView {
 
         Font police = new Font("Arial", Font.BOLD, 20);
         Font police2 = new Font("Arial", Font.BOLD, 30);
-        Dimension dim = new Dimension(150, 100);
+        Dimension dim = new Dimension(300, 100);
         Dimension dimCookie = new Dimension(300, 300);
 
-        this.goalScreen = new JLabel("GOAL");
-        this.goalScreen.setFont(police2);
+        this.goalScreen = new CustomLabel("GOAL");
         this.goalScreen.setForeground(Color.RED);
-        this.goalScreen.setHorizontalAlignment(JLabel.RIGHT);
+        goalScreen.setFont(goalScreen.getFont().deriveFont(Utils.DEFAULT_GOAL_SIZE_LABEL));
 
         this.firstPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
         this.firstPlayerButton.setFont(police2);
@@ -144,48 +147,42 @@ public class CookieView extends AbstractGameView {
         this.secondPlayerButton.setContentAreaFilled(false);
         this.secondPlayerButton.setOpaque(false);
 
-        this.firstPlayerCheck = new JButton("Check : S");
-        this.firstPlayerCheck.setFont(police);
-        this.firstPlayerCheck.setPreferredSize(dim);
-        this.firstPlayerCheck.setBorderPainted(false);
-        this.firstPlayerCheck.setContentAreaFilled(false);
+        this.firstPlayerCheck = new CustomLabel("Validate tap 'S'");
+        firstPlayerCheck.setFont(firstPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.secondPlayerCheck = new CustomLabel("Validate tap 'L'");
+        secondPlayerCheck.setFont(secondPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
 
-        this.secondPlayerCheck = new JButton("Check : L");
-        this.secondPlayerCheck.setFont(police);
-        this.secondPlayerCheck.setPreferredSize(dim);
-        this.secondPlayerCheck.setBorderPainted(false);
-        this.secondPlayerCheck.setContentAreaFilled(false);
+        this.commandFirstPlayer = new CustomLabel("Press Q");
+        this.commandSecondPlayer = new CustomLabel("Press M");
 
         constraint.gridy = 0;
         constraint.gridx = 2;
-        constraint.gridwidth = 1;
-        constraint.gridheight = 1;
         this.add(firstPlayerButton, constraint);
 
         constraint.gridy = 0;
         constraint.gridx = 3;
-        constraint.gridwidth = 1;
-        constraint.gridheight = 1;
         this.add(secondPlayerButton, constraint);
 
         constraint.gridy = 1;
         constraint.gridx = 2;
-        constraint.gridwidth = 1;
-        constraint.gridheight = 1;
-        this.add(firstPlayerCheck, constraint);
-
-        constraint.gridy = 1;
-        constraint.gridx = 2;
-        constraint.gridwidth = 2;
-        constraint.gridheight = 1;
-        this.add(goalScreen, constraint);
+        this.add(commandFirstPlayer, constraint);
 
         constraint.gridy = 1;
         constraint.gridx = 3;
-        constraint.gridwidth = 1;
-        constraint.gridheight = 1;
+        this.add(commandSecondPlayer, constraint);
+
+        constraint.gridy = 2;
+        constraint.gridx = 2;
+        this.add(firstPlayerCheck, constraint);
+
+        constraint.gridy = 2;
+        constraint.gridx = 3;
         this.add(secondPlayerCheck, constraint);
 
+        constraint.gridy = 3;
+        constraint.gridx = 2;
+        constraint.gridwidth = 2;
+        this.add(goalScreen, constraint);
     }
 
     public void setGoalScreen(int goal) {
