@@ -76,7 +76,11 @@ public class StatisticPlayerView extends AbstractView {
 
     public void updateTableView(){
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
-        this.tableau = new JTable(this.model);
+        this.tableau = new JTable(this.model){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         this.c.gridx = 0;
         this.c.gridy = 2;
         this.c.gridwidth = 4;   // largeur 4 colonne
