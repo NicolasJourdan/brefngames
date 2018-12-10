@@ -1,17 +1,1 @@
-{
-    "sound": true,
-    "defaultPlayers": {
-        "player1": {
-            "color": "COLOR_FIRST_PLAYER_YELLOW",
-            "icon": "AQUAMAN_1"
-        },
-        "player2": {
-            "color": "COLOR_SECOND_PLAYER_YELLOW",
-            "icon": "AQUAMAN_2"
-        }
-    },
-    "theme": {
-        "secondColor": "SECOND_COLOR_BLACK",
-        "firstColor": "FIRST_COLOR_YELLOW"
-    }
-}
+{"sound":true,"theme":{"secondColor":"SECOND_COLOR_LIGHT_GRAY","firstColor":"FIRST_COLOR_GREEN"},"defaultPlayers":{"player1":{"icon":"AQUAMAN_1","color":"COLOR_FIRST_PLAYER_YELLOW"},"player2":{"icon":"AQUAMAN_2","color":"COLOR_SECOND_PLAYER_YELLOW"}}}

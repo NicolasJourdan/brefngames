@@ -37,17 +37,17 @@ public class Box extends JButton {
         g.setColor(this.backgroundColor);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(this.opositeColor);
-        g.fillOval(-3, -3, this.getWidth(), this.getHeight());
+        g.fillOval(0, 0, this.getWidth() - 5, this.getHeight() - 5);
         g.setColor(this.emptyColor);
-        g.fillOval(0, 0, this.getWidth(), this.getHeight());
+        g.fillOval(3, 3, this.getWidth() - 5, this.getHeight() - 5);
         g.setColor(this.borderColor);
-        g.fillOval(5, 5, this.getWidth() - 6, this.getHeight() - 6);
+        g.fillOval(6, 6, this.getWidth() - 11, this.getHeight() - 11);
         g.setColor(this.color);
-        g.fillOval(3, 3, this.getWidth() - 6, this.getHeight() - 6);
+        g.fillOval(4, 4, this.getWidth() - 11, this.getHeight() - 11);
         g.setColor(this.borderColor);
-        g.fillOval(10, 10, this.getWidth() - 20, this.getHeight() - 20);
+        g.fillOval(11, 11, this.getWidth() - 25, this.getHeight() - 25);
         g.setColor(this.color);
-        g.fillOval(12, 12, this.getWidth() - 24, this.getHeight() - 24);
+        g.fillOval(13, 13, this.getWidth() - 29, this.getHeight() - 29);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     }
