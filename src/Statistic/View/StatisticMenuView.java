@@ -33,8 +33,8 @@ public class StatisticMenuView extends AbstractView {
 
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
-        c.insets = new Insets(5, 2, 5, 2);
-        c.gridwidth = GridBagConstraints.REMAINDER;
+        this.c.insets = new Insets(5, 2, 5, 2);
+        this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
 
