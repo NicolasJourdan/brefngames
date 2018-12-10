@@ -2,6 +2,9 @@ package Statistic.View;
 
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
+import Utils.UI.CustomButton;
+import Utils.UI.CustomLabel;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,13 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StatisticMenuView extends AbstractView {
-    private JButton backButton;
-    private JButton playerStatistic;
-    private JButton tttStatistic;
-    private JButton runnerStatistic;
-    private JButton coockieStatistic;
-    private JButton connectStatistic;
-    private javax.swing.JLabel globalSettings;
+    private CustomButton backButton;
+    private CustomButton playerStatistic;
+    private CustomButton tttStatistic;
+    private CustomButton runnerStatistic;
+    private CustomButton coockieStatistic;
+    private CustomButton connectStatistic;
+    private CustomLabel globalSettings;
     private JTable tableau;
     private DefaultTableModel model;
 
@@ -30,10 +33,14 @@ public class StatisticMenuView extends AbstractView {
 
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
+        c.insets = new Insets(5, 2, 5, 2);
+        c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
 
-        this.globalSettings = new javax.swing.JLabel("Global Statistic ", SwingConstants.CENTER);
+        this.globalSettings = new CustomLabel("Global Statistic");
+        this.globalSettings.setHorizontalAlignment(JLabel.CENTER);
+        globalSettings.setFont(globalSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_TITLE));
         this.c.gridx = 0;
         this.c.gridy = 0;
         this.c.gridwidth = 4;   // largeur 2 colonne
@@ -41,34 +48,34 @@ public class StatisticMenuView extends AbstractView {
 
         this.updateTableView();
 
-        this.playerStatistic = new JButton("Statistic by Player");
+        this.playerStatistic = new CustomButton("Statistic by Player");
         this.c.gridx = 1;
         this.c.gridy = 3;
         this.c.gridwidth = 2;   // largeur 2 colonne
         this.add(this.playerStatistic, c);
 
-        this.tttStatistic = new JButton("Tic Tac Toe");
+        this.tttStatistic = new CustomButton("Tic Tac Toe");
         this.c.gridwidth = 1;   // Re init
         this.c.gridx = 0;
         this.c.gridy = 4;
         this.add(this.tttStatistic, c);
 
-        this.runnerStatistic = new JButton("Runner");
+        this.runnerStatistic = new CustomButton("Runner");
         this.c.gridx = 1;
         this.c.gridy = 4;
         this.add(this.runnerStatistic, c);
 
-        this.coockieStatistic = new JButton("Coockie Clicker");
+        this.coockieStatistic = new CustomButton("Coockie Clicker");
         this.c.gridx = 2;
         this.c.gridy = 4;
         this.add(this.coockieStatistic, c);
 
-        this.connectStatistic = new JButton("Connect Four");
+        this.connectStatistic = new CustomButton("Connect Four");
         this.c.gridx = 3;
         this.c.gridy = 4;
         this.add(this.connectStatistic, c);
 
-        this.backButton = new JButton("Back");
+        this.backButton = new CustomButton("Back");
         this.c.gridx = 1;
         this.c.gridy = 5;
         this.c.gridwidth = 2;   // largeur 2 colonne
