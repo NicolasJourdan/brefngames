@@ -1,5 +1,8 @@
 package Utils.UI;
 
+import Parameter.Model.ThemeEnum;
+import Repository.Parameter.ThemeParameterRepository;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -11,7 +14,8 @@ public class CustomTextField extends JTextField {
     private final static int WIDTH = 190;
     private final static int HEIGHT = 49;
     private final static int BORDER = 11;
-    private final static int COLUMNS = 20;
+    // tested value so the text doesn't go outside the borders
+    private final static int COLUMNS = 14;
 
     private final Image backgroundImage;
 
@@ -19,11 +23,21 @@ public class CustomTextField extends JTextField {
      * The number of columns is forced by the const COLUMNS in order to have a correct width
      *
      * @param text
-     * @param columns
      */
-    public CustomTextField(String text, int columns) {
+    public CustomTextField(String text) {
+        this(text, CustomTextField.COLUMNS);
+    }
+
+        /**
+         * The number of columns is forced by the const COLUMNS in order to have a correct width
+         *
+         * @param text
+         * @param columns
+         */
+    private CustomTextField(String text, int columns) {
         super(text, COLUMNS);
 
+        this.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
         this.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL));
         this.setBorder(new EmptyBorder(0, CustomTextField.BORDER, 0, CustomTextField.BORDER));
         this.setOpaque(false);
