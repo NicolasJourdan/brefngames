@@ -21,6 +21,9 @@ public class CookieView extends AbstractGameView {
     private static String ACTION_PRESS_S = "ACTION_PRESS_S";
     private static String ACTION_PRESS_L = "ACTION_PRESS_L";
 
+    public static final int WIDTH_COOKIE = 300;
+    public static final int HEIGHT_COOKIE = 300;
+
     private static Icon DEFAULT_SMALL_COOKIE = new ImageIcon(CookieView.class.getResource("/data/Images/cookieSmall.png"));
     private static Icon DEFAULT_BIG_COOKIE = new ImageIcon(CookieView.class.getResource("/data/Images/cookieBig.png"));
 
@@ -124,11 +127,11 @@ public class CookieView extends AbstractGameView {
     private void initComposant(){
         GridBagConstraints constraint = new GridBagConstraints();
 
-        Dimension dimCookie = new Dimension(300, 300);
+        Dimension dimCookie = new Dimension(WIDTH_COOKIE, HEIGHT_COOKIE);
 
         this.goalScreen = new CustomLabel("GOAL");
         this.goalScreen.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue());
-        goalScreen.setFont(goalScreen.getFont().deriveFont(Utils.DEFAULT_GOAL_SIZE_LABEL));
+        this.goalScreen.setFont(goalScreen.getFont().deriveFont(Utils.DEFAULT_GOAL_SIZE_LABEL));
 
         this.firstPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
         this.firstPlayerButton.setFocusable(false);
@@ -145,9 +148,9 @@ public class CookieView extends AbstractGameView {
         this.secondPlayerButton.setOpaque(false);
 
         this.firstPlayerCheck = new CustomLabel("Validate tap 'S'");
-        firstPlayerCheck.setFont(firstPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.firstPlayerCheck.setFont(firstPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.secondPlayerCheck = new CustomLabel("Validate tap 'L'");
-        secondPlayerCheck.setFont(secondPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.secondPlayerCheck.setFont(secondPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
 
         this.commandFirstPlayer = new CustomLabel("Press Q");
         this.commandSecondPlayer = new CustomLabel("Press M");
