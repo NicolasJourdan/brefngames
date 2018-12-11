@@ -15,7 +15,16 @@ public class LauncherWindow extends JFrame {
         this.setFocusable(true);
 
         // dimensions and location
-        this.setSize(new Dimension(LauncherWindow.JFRAME_WIDTH, LauncherWindow.JFRAME_HEIGHT));
+        this.setVisible(true);
+
+        // get insest to set inner window size
+        Insets insest = this.getInsets();
+        this.setSize(
+                new Dimension(
+                        LauncherWindow.JFRAME_WIDTH + insest.left + insest.right,
+                        LauncherWindow.JFRAME_HEIGHT + insest.top + insest.bottom
+                )
+        );
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
