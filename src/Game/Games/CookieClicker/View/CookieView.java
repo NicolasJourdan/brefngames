@@ -1,6 +1,8 @@
 package Game.Games.CookieClicker.View;
 
 import Game.View.AbstractGameView;
+import Parameter.Model.ThemeEnum;
+import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomLabel;
 import Utils.UI.Utils;
@@ -122,17 +124,13 @@ public class CookieView extends AbstractGameView {
     private void initComposant(){
         GridBagConstraints constraint = new GridBagConstraints();
 
-        Font police = new Font("Arial", Font.BOLD, 20);
-        Font police2 = new Font("Arial", Font.BOLD, 30);
-        Dimension dim = new Dimension(300, 100);
         Dimension dimCookie = new Dimension(300, 300);
 
         this.goalScreen = new CustomLabel("GOAL");
-        this.goalScreen.setForeground(Color.RED);
+        this.goalScreen.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue());
         goalScreen.setFont(goalScreen.getFont().deriveFont(Utils.DEFAULT_GOAL_SIZE_LABEL));
 
         this.firstPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
-        this.firstPlayerButton.setFont(police2);
         this.firstPlayerButton.setFocusable(false);
         this.firstPlayerButton.setPreferredSize(dimCookie);
         this.firstPlayerButton.setBorderPainted(false);
@@ -140,7 +138,6 @@ public class CookieView extends AbstractGameView {
         this.firstPlayerButton.setOpaque(false);
 
         this.secondPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
-        this.secondPlayerButton.setFont(police2);
         this.secondPlayerButton.setFocusable(false);
         this.secondPlayerButton.setPreferredSize(dimCookie);
         this.secondPlayerButton.setBorderPainted(false);
