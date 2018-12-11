@@ -1,5 +1,6 @@
 package Parameter.Model;
 
+import Launcher.Controller.LauncherController;
 import Parameter.Parameters.ColorParameter;
 import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
@@ -76,6 +77,7 @@ public class Parameters {
     public static void reset() {
         try {
             ModifyFiles.copyFile(Parameters.DEFAULT_PARAMETER_FILE_JSON, Parameters.PARAMETERS_JSON_FILE);
+            LauncherController.reloadConfiguration();
         } catch (IOException e) {
             e.printStackTrace();
         }

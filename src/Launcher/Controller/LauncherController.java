@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class LauncherController extends AbstractSceneManagerController {
 
-    private static Map<ParameterEnum, Configurable> configurations = Parameters.getConfiguration();;
+    private static Map<ParameterEnum, Configurable> configuration = Parameters.getConfiguration();
 
     public LauncherController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
         super(model, view, new LauncherFactory());
@@ -49,6 +49,10 @@ public class LauncherController extends AbstractSceneManagerController {
     }
 
     public static Map<ParameterEnum, Configurable> getConfiguration() {
-        return configurations;
+        return configuration;
+    }
+
+    public static void reloadConfiguration() {
+        LauncherController.configuration = Parameters.getConfiguration();
     }
 }
