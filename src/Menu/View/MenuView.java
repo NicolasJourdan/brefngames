@@ -1,7 +1,9 @@
 package Menu.View;
 
+import Launcher.LauncherWindow;
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
+import Utils.UI.CustomButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,21 +20,34 @@ public class MenuView extends AbstractView {
 
     public MenuView() {
         super();
-        this.setLayout(new GridLayout());
 
-        this.trainingButton = new JButton("Training");
-        this.contestButton = new JButton("Contest");
-        this.parametersButton = new JButton("Parameters");
-        this.statisticsButton = new JButton("Statistics");
-        this.quitButton = new JButton("Quit");
+        this.setPreferredSize(new Dimension(LauncherWindow.JFRAME_WIDTH, LauncherWindow.JFRAME_HEIGHT));
+        this.setLayout(new GridBagLayout());
+
+        this.trainingButton = new CustomButton("Training");
+        this.contestButton = new CustomButton("Contest");
+        this.parametersButton = new CustomButton("Parameters");
+        this.statisticsButton = new CustomButton("Statistics");
+        this.quitButton = new CustomButton("Quit");
 
         this.initButtonsActionListeners();
 
-        this.add(this.trainingButton);
-        this.add(this.contestButton);
-        this.add(this.parametersButton);
-        this.add(this.statisticsButton);
-        this.add(this.quitButton);
+        // reusable GridBagConstraint to place every needed components
+        GridBagConstraints constraint = new GridBagConstraints();
+        constraint.fill = GridBagConstraints.VERTICAL;
+
+        int verticalPadding = (LauncherWindow.JFRAME_HEIGHT / 6) / 4;
+        constraint.insets = new Insets(verticalPadding,0,verticalPadding,0);
+
+        this.add(this.trainingButton, constraint);
+        constraint.gridy = 1;
+        this.add(this.contestButton, constraint);
+        constraint.gridy = 2;
+        this.add(this.parametersButton, constraint);
+        constraint.gridy = 3;
+        this.add(this.statisticsButton, constraint);
+        constraint.gridy = 4;
+        this.add(this.quitButton, constraint);
     }
 
     private void initButtonsActionListeners() {
