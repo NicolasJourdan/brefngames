@@ -39,7 +39,7 @@ public class ContestSettingsModel extends AbstractModel {
             this.invalidDataObjectText += "Both player can't have the same name<br>";
         }
 
-        if (settingsDataObject.getFirstPlayerColor() == settingsDataObject.getSecondPlayerColor()) {
+        if (settingsDataObject.getFirstPlayerColor().equals(settingsDataObject.getSecondPlayerColor())) {
             this.invalidDataObjectText += "Both players can't choose the same color<br>";
         }
 

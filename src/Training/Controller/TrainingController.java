@@ -20,8 +20,8 @@ public class TrainingController extends AbstractSceneManagerController {
 
     private static final String DEFAULT_PLAYER_1_NAME = "Player1";
     private static final String DEFAULT_PLAYER_2_NAME = "Player2";
-    private static final Color DEFAULT_PLAYER_1_COLOR = Color.BLUE;
-    private static final Color DEFAULT_PLAYER_2_COLOR = Color.RED;
+    private static final Color DEFAULT_PLAYER_1_COLOR = Color.decode("#1EA7E1");
+    private static final Color DEFAULT_PLAYER_2_COLOR = Color.decode("#E86A17");
     private static final ImageIcon DEFAULT_PLAYER_1_ICON = IconFactory.getIcon("SUPERMAN");
     private static final ImageIcon DEFAULT_PLAYER_2_ICON = IconFactory.getIcon("BATMAN");
 
