@@ -1,7 +1,11 @@
 package Game.Games.CookieClicker.View;
 
 import Game.View.AbstractGameView;
+import Parameter.Model.ThemeEnum;
+import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
+import Utils.UI.CustomLabel;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,19 +21,24 @@ public class CookieView extends AbstractGameView {
     private static String ACTION_PRESS_S = "ACTION_PRESS_S";
     private static String ACTION_PRESS_L = "ACTION_PRESS_L";
 
+    public static final int WIDTH_COOKIE = 300;
+    public static final int HEIGHT_COOKIE = 300;
+
     private static Icon DEFAULT_SMALL_COOKIE = new ImageIcon(CookieView.class.getResource("/data/Images/cookieSmall.png"));
     private static Icon DEFAULT_BIG_COOKIE = new ImageIcon(CookieView.class.getResource("/data/Images/cookieBig.png"));
 
     private JButton firstPlayerButton = new JButton();
     private JButton secondPlayerButton = new JButton();
-    private JButton firstPlayerCheck = new JButton();
-    private JButton secondPlayerCheck = new JButton();
+    private CustomLabel firstPlayerCheck;
+    private CustomLabel secondPlayerCheck;
+    private CustomLabel commandFirstPlayer;
+    private CustomLabel commandSecondPlayer;
 
-    private JLabel goalScreen = new JLabel();
+    private CustomLabel goalScreen;
 
     public CookieView(){
         super();
-        this.setLayout(new GridLayout(3,2));
+        this.setLayout(new GridBagLayout());
         this.setFocusable(true);
         this.requestFocus();
         this.initComposant();
@@ -116,18 +125,15 @@ public class CookieView extends AbstractGameView {
     }
 
     private void initComposant(){
-        Font police = new Font("Arial", Font.BOLD, 20);
-        Font police2 = new Font("Arial", Font.BOLD, 80);
-        Dimension dim = new Dimension(300, 100);
-        Dimension dimCookie = new Dimension(300, 300);
+        GridBagConstraints constraint = new GridBagConstraints();
 
-        this.goalScreen = new JLabel("GOAL");
-        this.goalScreen.setFont(police);
-        this.goalScreen.setForeground(Color.RED);
-        this.goalScreen.setHorizontalAlignment(JLabel.RIGHT);
+        Dimension dimCookie = new Dimension(WIDTH_COOKIE, HEIGHT_COOKIE);
+
+        this.goalScreen = new CustomLabel("GOAL");
+        this.goalScreen.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue());
+        this.goalScreen.setFont(goalScreen.getFont().deriveFont(Utils.DEFAULT_GOAL_SIZE_LABEL));
 
         this.firstPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
-        this.firstPlayerButton.setFont(police2);
         this.firstPlayerButton.setFocusable(false);
         this.firstPlayerButton.setPreferredSize(dimCookie);
         this.firstPlayerButton.setBorderPainted(false);
@@ -135,26 +141,48 @@ public class CookieView extends AbstractGameView {
         this.firstPlayerButton.setOpaque(false);
 
         this.secondPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
-        this.secondPlayerButton.setFont(police2);
         this.secondPlayerButton.setFocusable(false);
         this.secondPlayerButton.setPreferredSize(dimCookie);
         this.secondPlayerButton.setBorderPainted(false);
         this.secondPlayerButton.setContentAreaFilled(false);
         this.secondPlayerButton.setOpaque(false);
 
-        this.firstPlayerCheck = new JButton("Check : S");
-        this.firstPlayerCheck.setFont(police);
-        this.firstPlayerCheck.setPreferredSize(dim);
+        this.firstPlayerCheck = new CustomLabel("Validate tap 'S'");
+        this.firstPlayerCheck.setFont(firstPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.secondPlayerCheck = new CustomLabel("Validate tap 'L'");
+        this.secondPlayerCheck.setFont(secondPlayerCheck.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
 
-        this.secondPlayerCheck = new JButton("Check : L");
-        this.secondPlayerCheck.setFont(police);
-        this.secondPlayerCheck.setPreferredSize(dim);
+        this.commandFirstPlayer = new CustomLabel("Press Q");
+        this.commandSecondPlayer = new CustomLabel("Press M");
 
-        this.add(this.firstPlayerButton);
-        this.add(this.secondPlayerButton);
-        this.add(this.firstPlayerCheck);
-        this.add(this.secondPlayerCheck);
-        this.add(this.goalScreen);
+        constraint.gridy = 0;
+        constraint.gridx = 2;
+        this.add(firstPlayerButton, constraint);
+
+        constraint.gridy = 0;
+        constraint.gridx = 3;
+        this.add(secondPlayerButton, constraint);
+
+        constraint.gridy = 1;
+        constraint.gridx = 2;
+        this.add(commandFirstPlayer, constraint);
+
+        constraint.gridy = 1;
+        constraint.gridx = 3;
+        this.add(commandSecondPlayer, constraint);
+
+        constraint.gridy = 2;
+        constraint.gridx = 2;
+        this.add(firstPlayerCheck, constraint);
+
+        constraint.gridy = 2;
+        constraint.gridx = 3;
+        this.add(secondPlayerCheck, constraint);
+
+        constraint.gridy = 3;
+        constraint.gridx = 2;
+        constraint.gridwidth = 2;
+        this.add(goalScreen, constraint);
     }
 
     public void setGoalScreen(int goal) {
