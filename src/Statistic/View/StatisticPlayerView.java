@@ -6,28 +6,25 @@ import Utils.UI.CustomeComboBox.CustomComboBox;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
 import Utils.UI.Utils;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import static Scene.Model.ActionEnum.STATISTIC_PLAYER_CHANGE;
 
 public class StatisticPlayerView extends AbstractView {
+
     private CustomButton backButton;
+    private CustomComboBox jcb;
+    private CustomLabel playerSettings;
 
     private JTable tableau;
     private DefaultTableModel model;
     private GridBagConstraints c;
     private Object[][] dataTable;
-    private CustomComboBox jcb;
-    private CustomLabel playerSettings;
-
 
     private String currentPlayer;
-
 
     public StatisticPlayerView() {
         super();
@@ -37,12 +34,16 @@ public class StatisticPlayerView extends AbstractView {
 
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
-        this.c.insets = new Insets(5, 0, 5, 0);
+        this.c.insets = new Insets(
+                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                0,
+                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                0);
 
         this.c.fill = GridBagConstraints.CENTER;
 
         this.playerSettings = new CustomLabel("Player Statistic");
-        this.playerSettings.setFont(playerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.playerSettings.setFont(this.playerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 1;
         this.add(this.playerSettings, c);
 

@@ -5,7 +5,6 @@ import Structure.AbstractView;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
 import Utils.UI.Utils;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -15,7 +14,6 @@ import java.awt.event.ActionListener;
 public class StatisticRunnerView extends AbstractView {
 
     private CustomButton backButton;
-
     private CustomLabel runnerSettings;
 
     private JTable tableau;
@@ -30,7 +28,11 @@ public class StatisticRunnerView extends AbstractView {
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
 
-        this.c.insets = new Insets(5, 2, 5, 2);
+        this.c.insets = new Insets(
+                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                Utils.DEFAULT_BUTTON_PADDING_SIDE,
+                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                Utils.DEFAULT_BUTTON_PADDING_SIDE);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.CENTER;

@@ -5,7 +5,6 @@ import Structure.AbstractView;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
 import Utils.UI.Utils;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -13,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StatisticMenuView extends AbstractView {
+
     private CustomButton backButton;
     private CustomButton playerStatistic;
     private CustomButton tttStatistic;
@@ -20,9 +20,9 @@ public class StatisticMenuView extends AbstractView {
     private CustomButton coockieStatistic;
     private CustomButton connectStatistic;
     private CustomLabel globalSettings;
+
     private JTable tableau;
     private DefaultTableModel model;
-
     private Object[][] dataTable;
     private GridBagConstraints c;
 
@@ -33,7 +33,11 @@ public class StatisticMenuView extends AbstractView {
 
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
-        this.c.insets = new Insets(5, 2, 5, 2);
+        this.c.insets = new Insets(
+                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                Utils.DEFAULT_BUTTON_PADDING_SIDE,
+                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                Utils.DEFAULT_BUTTON_PADDING_SIDE);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
