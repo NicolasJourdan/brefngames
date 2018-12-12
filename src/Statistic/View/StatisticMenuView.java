@@ -40,7 +40,7 @@ public class StatisticMenuView extends AbstractView {
 
         this.globalSettings = new CustomLabel("Global Statistic");
         this.globalSettings.setHorizontalAlignment(JLabel.CENTER);
-        globalSettings.setFont(globalSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.globalSettings.setFont(this.globalSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
         this.c.gridwidth = 4;   // largeur 2 colonne

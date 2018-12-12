@@ -91,7 +91,6 @@ public class StatisticPlayerView extends AbstractView {
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
         this.tableau = new JTable(this.model);
-        //this.tableau.setPreferredSize(new Dimension(600, 300));
         this.c.gridx = 0;
         this.c.gridwidth = 3;
         this.c.gridy = 2;
