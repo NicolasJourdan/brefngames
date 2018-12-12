@@ -2,7 +2,9 @@ package Statistic.View;
 
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
-
+import Utils.UI.CustomButton;
+import Utils.UI.CustomLabel;
+import Utils.UI.Utils;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -11,7 +13,8 @@ import java.awt.event.ActionListener;
 
 public class StatisticCookieClickerView extends AbstractView {
 
-    private JButton backButton;
+    private CustomButton backButton;
+    private CustomLabel cookieClickerSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -25,14 +28,28 @@ public class StatisticCookieClickerView extends AbstractView {
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
 
-        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.c.insets = new Insets(
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
+        this.c.gridwidth = GridBagConstraints.REMAINDER;
+
+        this.c.fill = GridBagConstraints.CENTER;
+
+        this.cookieClickerSettingsLabel = new CustomLabel("Cookie Clicker Statistic");
+        this.cookieClickerSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.cookieClickerSettingsLabel.setFont(this.cookieClickerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.c.gridx = 0;
+        this.c.gridy = 0;
+        this.add(this.cookieClickerSettingsLabel, c);
 
         this.updateTableView();
 
-        this.backButton = new JButton("Back");
+        this.backButton = new CustomButton("Back");
+        this.c.fill = GridBagConstraints.CENTER;
         this.c.gridx = 1;
         this.c.gridy = 5;
-        this.c.gridwidth = 2;   // largeur 2 colonne
         this.add(this.backButton, c);
 
         this.initButtonsActionListeners();
@@ -59,7 +76,7 @@ public class StatisticCookieClickerView extends AbstractView {
         this.tableau = new JTable(this.model);
         this.c.gridx = 0;
         this.c.gridy = 2;
-        this.c.gridwidth = 4;   // largeur 4 colonne
+        this.c.fill = GridBagConstraints.HORIZONTAL;
         this.add(this.tableau, c);
         this.tableau.setTableHeader(null);
     }
