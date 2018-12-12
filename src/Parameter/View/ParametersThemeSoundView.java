@@ -53,7 +53,7 @@ public class ParametersThemeSoundView extends AbstractView {
 
         this.constraints.anchor = GridBagConstraints.CENTER;
 
-        this.parametersThemeSound = new CustomLabel("Player Parameters");
+        this.parametersThemeSound = new CustomLabel("Theme and Sound Parameters");
         this.parametersThemeSound.setHorizontalAlignment(JLabel.CENTER);
         this.parametersThemeSound.setFont(this.parametersThemeSound.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 1;
