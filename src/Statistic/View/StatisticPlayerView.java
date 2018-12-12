@@ -39,9 +39,10 @@ public class StatisticPlayerView extends AbstractView {
         this.c = new GridBagConstraints();
         this.c.insets = new Insets(5, 0, 5, 0);
 
-        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.c.fill = GridBagConstraints.CENTER;
 
         this.playerSettings = new CustomLabel("Player Statistic");
+
         this.playerSettings.setFont(playerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
 
         this.c.gridx = 0;
@@ -56,11 +57,14 @@ public class StatisticPlayerView extends AbstractView {
         this.updateTableView();
 
         this.backButton = new CustomButton("Back");
-        this.c.gridx = 0;
+        this.c.gridx = 1;
         this.c.gridy = 5;
         this.add(this.backButton, c);
 
         this.initButtonsActionListeners();
+
+        this.revalidate();
+        this.repaint();
     }
 
     public void initButtonsActionListeners(){
@@ -90,11 +94,14 @@ public class StatisticPlayerView extends AbstractView {
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
         this.tableau = new JTable(this.model);
+        //this.tableau.setPreferredSize(new Dimension(600, 300));
         this.c.gridx = 0;
+        this.c.gridwidth = 3;
         this.c.gridy = 2;
         this.add(this.tableau, c);
         this.tableau.setTableHeader(null);
-}
+        this.c.gridwidth = 1;
+    }
 
     public void updateJCBView(String[] players){
         this.jcb.removeAllItems();
