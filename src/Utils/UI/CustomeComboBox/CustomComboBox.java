@@ -21,6 +21,7 @@ public class CustomComboBox extends JComboBox {
         // Remove arrow
         this.remove(this.getComponent(0));
         this.setRenderer(new CustomComboBoxRenderer());
+
         this.setMaximumRowCount(MAXIMUM_ROW_COUNT);
     }
 }

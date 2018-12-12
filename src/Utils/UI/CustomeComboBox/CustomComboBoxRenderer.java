@@ -33,7 +33,6 @@ public class CustomComboBoxRenderer extends BasicComboBoxRenderer {
             this.backgroundImage = FileGetter.getImage("_button_arrow.png");
         } else if (isSelected) {
             this.backgroundImage = FileGetter.getImage("_button_unfilled.png");
-
         } else {
             this.backgroundImage = FileGetter.getImage("_button_rectangle.png");
         }
