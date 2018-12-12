@@ -1,6 +1,7 @@
 package Game.Games.TicTacToe.TicTacToeView;
 
 import Game.Games.Coord;
+import Game.Games.DisplayPanel;
 import Game.View.AbstractGameView;
 import Player.Player;
 import Structure.ProxyObservable;
@@ -12,16 +13,36 @@ public class TicTacToeView extends AbstractGameView {
     private Board board;
     private DisplayPanel secondPlayerDisplay;
     private int size;
+    private DisplayPanel currentPlayer;
+    private DisplayPanel otherPlayer;
+
 
     public TicTacToeView(int size, Player[] players) {
         this.size = size;
-        this.setLayout(new GridLayout(1, 3, 0, 0));
-        this.firstPlayerDisplay = new DisplayPanel(players[0], false);
+        this.setLayout(new GridBagLayout());
+        this.firstPlayerDisplay = new DisplayPanel(players[0], true);
         this.board = new Board(this.size, this);
         this.secondPlayerDisplay = new DisplayPanel(players[1], false);
-        this.add(this.firstPlayerDisplay);
-        this.add(this.board);
-        this.add(this.secondPlayerDisplay);
+        GridBagConstraints constraint = new GridBagConstraints();
+        constraint.gridy = 2;
+        constraint.gridx = 0;
+        constraint.gridwidth = 1;
+        constraint.gridheight = 1;
+        constraint.insets = new Insets(10,10,10,10);
+        this.add(this.firstPlayerDisplay, constraint);
+        constraint.gridy = 0;
+        constraint.gridx = 1;
+        constraint.gridwidth = 3;
+        constraint.gridheight = 3;
+        this.add(this.board, constraint);
+        constraint.gridy = 2;
+        constraint.gridx = 4;
+        constraint.gridwidth = 2;
+        constraint.gridheight = 1;
+        constraint.insets = new Insets(10,10,10,10);
+        this.add(this.secondPlayerDisplay, constraint);
+        this.currentPlayer = this.firstPlayerDisplay;
+        this.otherPlayer = this.secondPlayerDisplay;
         this.revalidate();
         this.repaint();
     }
@@ -30,6 +51,14 @@ public class TicTacToeView extends AbstractGameView {
         this.board.setPawnBoard(text, color, coord);
         this.revalidate();
         this.repaint();
+    }
+
+    public void changePlayer(){
+        DisplayPanel tmp = this.currentPlayer;
+        this.currentPlayer = this.otherPlayer;
+        this.otherPlayer = tmp;
+        this.currentPlayer.setFocus(true);
+        this.otherPlayer.setFocus(false);
     }
 
     public ProxyObservable getObservable() {

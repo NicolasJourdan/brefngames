@@ -9,7 +9,8 @@ import java.awt.*;
 
 
 public class Box extends JButton {
-    private static final Color DEFAULT_GRADIENT_COLOR = Color.GRAY;
+
+    private static final int FONT_SIZE = 170;
     private final Coord coord;
     private Color color;
     private Color backgroundColor;
@@ -19,9 +20,9 @@ public class Box extends JButton {
 
     public Box(Coord coord) {
         this.coord = coord;
-        this.setPreferredSize(new Dimension(150, 150));
+        this.setPreferredSize(new Dimension(100, 100));
         this.setLayout(new BorderLayout());
-        this.setFont(new Font("myFont", Font.PLAIN, 250));
+        this.setFont(new Font("myFont", Font.PLAIN, FONT_SIZE));
         setOpaque(true);
         this.borderColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue();
         this.backgroundColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
@@ -52,7 +53,7 @@ public class Box extends JButton {
         FontMetrics fm = g2d.getFontMetrics();
         String text = this.getText();
         int x = (d.width - fm.stringWidth(text)) / 2;
-        int y = (d.height + fm.getAscent()) / 2 - 55;
+        int y = (d.height + fm.getAscent()) / 2 - ((int) (0.22 * FONT_SIZE));
         g2d.drawString(text, x, y);
         g2d.setColor(color);
         x = x - 5;
