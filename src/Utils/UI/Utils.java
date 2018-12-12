@@ -11,5 +11,7 @@ public class Utils {
     public final static int DEFAULT_BUTTON_PADDING_LEFT = 2;
     public final static int DEFAULT_BUTTON_PADDING_RIGHT = 2;
 
+    public final static int DEFAULT_BUTTON_SIZE = 500;
+
     public final static String DEFAULT_CLICK_SOUND = "click1.wav";
 }
