@@ -45,11 +45,6 @@ public class ParametersDefaultPlayerView extends AbstractView {
 
     private GridBagConstraints constraints;
 
-    private static String COLOR_BLUE = "BLUE";
-    private static String COLOR_RED = "RED";
-    private static String COLOR_YELLOW = "YELLOW";
-    private static String COLOR_GREEN = "GREEN";
-
     public ParametersDefaultPlayerView() {
         super();
         this.setLayout(new GridBagLayout());
@@ -63,7 +58,7 @@ public class ParametersDefaultPlayerView extends AbstractView {
 
         this.constraints.anchor = GridBagConstraints.CENTER;
 
-        this.parametersPlayersLabel = new CustomLabel("Global Statistic");
+        this.parametersPlayersLabel = new CustomLabel("Player Parameters");
         this.parametersPlayersLabel.setHorizontalAlignment(JLabel.CENTER);
         this.parametersPlayersLabel.setFont(this.parametersPlayersLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 1;
@@ -74,19 +69,19 @@ public class ParametersDefaultPlayerView extends AbstractView {
         this.constraints.anchor = GridBagConstraints.WEST;
 
         // Second
-        this.secondIconSuperman = new CustomRadioButton("Superman");
-        this.secondIconBatman = new CustomRadioButton("Batman");
-        this.secondIconFlash = new CustomRadioButton("Flash");
-        this.secondIconAquaman = new CustomRadioButton("Aquaman");
+        this.secondIconSuperman = new CustomRadioButton(Utils.SUPERMAN);
+        this.secondIconBatman = new CustomRadioButton(Utils.BATMAN);
+        this.secondIconFlash = new CustomRadioButton(Utils.FLASH);
+        this.secondIconAquaman = new CustomRadioButton(Utils.AQUAMAN);
         // Second
-        this.secondColorPlayerRed = new CustomRadioButton("RED");
-        this.secondColorPlayerRed.setForeground(ColorFactory.getColor(COLOR_RED));
-        this.secondColorPlayerBlue = new CustomRadioButton("BLUE");
-        this.secondColorPlayerBlue.setForeground(ColorFactory.getColor(COLOR_BLUE));
-        this.secondColorPlayerGreen = new CustomRadioButton("GREEN");
-        this.secondColorPlayerGreen.setForeground(ColorFactory.getColor(COLOR_GREEN));
-        this.secondColorPlayerYellow = new CustomRadioButton("YELLOW");
-        this.secondColorPlayerYellow.setForeground(ColorFactory.getColor(COLOR_YELLOW));
+        this.secondColorPlayerRed = new CustomRadioButton(Utils.COLOR_RED);
+        this.secondColorPlayerRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
+        this.secondColorPlayerBlue = new CustomRadioButton(Utils.COLOR_BLUE);
+        this.secondColorPlayerBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
+        this.secondColorPlayerGreen = new CustomRadioButton(Utils.COLOR_GREEN);
+        this.secondColorPlayerGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
+        this.secondColorPlayerYellow = new CustomRadioButton(Utils.COLOR_YELLOW);
+        this.secondColorPlayerYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
 
         this.constraints.anchor = GridBagConstraints.CENTER;
 
@@ -102,19 +97,19 @@ public class ParametersDefaultPlayerView extends AbstractView {
         this.constraints.gridwidth = 1;
 
         // First
-        this.firstIconSuperman = new CustomRadioButton("Superman");
-        this.firstIconBatman = new CustomRadioButton("Batman");
-        this.firstIconFlash = new CustomRadioButton("Flash");
-        this.firstIconAquaman = new CustomRadioButton("Aquaman");
+        this.firstIconSuperman = new CustomRadioButton(Utils.SUPERMAN);
+        this.firstIconBatman = new CustomRadioButton(Utils.BATMAN);
+        this.firstIconFlash = new CustomRadioButton(Utils.FLASH);
+        this.firstIconAquaman = new CustomRadioButton(Utils.AQUAMAN);
         // First
-        this.firstColorPlayerRed = new CustomRadioButton("Red");
-        this.firstColorPlayerRed.setForeground(ColorFactory.getColor(COLOR_RED));
-        this.firstColorPlayerBlue = new CustomRadioButton("Blue");
-        this.firstColorPlayerBlue.setForeground(ColorFactory.getColor(COLOR_BLUE));
-        this.firstColorPlayerGreen = new CustomRadioButton("Green");
-        this.firstColorPlayerGreen.setForeground(ColorFactory.getColor(COLOR_GREEN));
-        this.firstColorPlayerYellow = new CustomRadioButton("Yellow");
-        this.firstColorPlayerYellow.setForeground(ColorFactory.getColor(COLOR_YELLOW));
+        this.firstColorPlayerRed = new CustomRadioButton(Utils.COLOR_RED);
+        this.firstColorPlayerRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
+        this.firstColorPlayerBlue = new CustomRadioButton(Utils.COLOR_BLUE);
+        this.firstColorPlayerBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
+        this.firstColorPlayerGreen = new CustomRadioButton(Utils.COLOR_GREEN);
+        this.firstColorPlayerGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
+        this.firstColorPlayerYellow = new CustomRadioButton(Utils.COLOR_YELLOW);
+        this.firstColorPlayerYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
 
 
         this.constraints.gridy = 2;
