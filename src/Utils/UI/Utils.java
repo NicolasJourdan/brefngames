@@ -2,6 +2,7 @@ package Utils.UI;
 
 public class Utils {
     public final static float DEFAULT_SIZE_LABEL = 15f;
+    public final static float DEFAULT_SIZE_LABEL_PLAYER = 20f;
     public final static float DEFAULT_SIZE_TITLE_LABEL = 25f;
     public final static float DEFAULT_GOAL_SIZE_LABEL = 45f;
     public final static float DEFAULT_SIZE_BUTTON_TEXT = 18f;

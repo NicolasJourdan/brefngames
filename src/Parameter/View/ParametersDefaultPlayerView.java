@@ -1,9 +1,9 @@
 package Parameter.View;
 
+import Parameter.Factory.ColorFactory;
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
-import Utils.UI.WarningLabel;
-import Utils.UI.CustomRadioButton;
+import Utils.UI.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,62 +12,121 @@ import java.awt.event.ActionListener;
 
 public class ParametersDefaultPlayerView extends AbstractView {
 
-    private JButton backButton;
+    private CustomButton backButton;
 
     // First icon player
-    private JRadioButton firstIconSuperman;
-    private JRadioButton firstIconBatman;
-    private JRadioButton firstIconFlash;
-    private JRadioButton firstIconAquaman;
+    private CustomRadioButton firstIconSuperman;
+    private CustomRadioButton firstIconBatman;
+    private CustomRadioButton firstIconFlash;
+    private CustomRadioButton firstIconAquaman;
 
     // Second icon player
-    private JRadioButton secondIconSuperman;
-    private JRadioButton secondIconBatman;
-    private JRadioButton secondIconFlash;
-    private JRadioButton secondIconAquaman;
+    private CustomRadioButton secondIconSuperman;
+    private CustomRadioButton secondIconBatman;
+    private CustomRadioButton secondIconFlash;
+    private CustomRadioButton secondIconAquaman;
 
     // First color player
-    private JRadioButton firstColorPlayerRed;
-    private JRadioButton firstColorPlayerBlue;
-    private JRadioButton firstColorPlayerGreen;
-    private JRadioButton firstColorPlayerYellow;
+    private CustomRadioButton firstColorPlayerRed;
+    private CustomRadioButton firstColorPlayerBlue;
+    private CustomRadioButton firstColorPlayerGreen;
+    private CustomRadioButton firstColorPlayerYellow;
 
     // Second color player
-    private JRadioButton secondColorPlayerRed;
-    private JRadioButton secondColorPlayerBlue;
-    private JRadioButton secondColorPlayerGreen;
-    private JRadioButton secondColorPlayerYellow;
+    private CustomRadioButton secondColorPlayerRed;
+    private CustomRadioButton secondColorPlayerBlue;
+    private CustomRadioButton secondColorPlayerGreen;
+    private CustomRadioButton secondColorPlayerYellow;
 
-    private JLabel warningLabel;
+    private CustomLabel warningLabel;
+    private CustomLabel firstPlayerLabel;
+    private CustomLabel secondPlayerLabel;
+    private CustomLabel parametersPlayersLabel;
+
+    private GridBagConstraints constraints;
+
+    private static String COLOR_BLUE = "BLUE";
+    private static String COLOR_RED = "RED";
+    private static String COLOR_YELLOW = "YELLOW";
+    private static String COLOR_GREEN = "GREEN";
 
     public ParametersDefaultPlayerView() {
         super();
         this.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
+        this.constraints = new GridBagConstraints();
 
-        this.backButton = new JButton("Back");
+        this.constraints.insets = new Insets(
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
 
-        this.firstIconSuperman = new CustomRadioButton("Superman_1");
-        this.firstIconBatman = new CustomRadioButton("Batman_1");
-        this.firstIconFlash = new CustomRadioButton("Flash_1");
-        this.firstIconAquaman = new CustomRadioButton("Aquaman_1");
+        this.constraints.anchor = GridBagConstraints.CENTER;
 
-        this.secondIconSuperman = new CustomRadioButton("Superman_2");
-        this.secondIconBatman = new CustomRadioButton("Batman_2");
-        this.secondIconFlash = new CustomRadioButton("Flash_2");
-        this.secondIconAquaman = new CustomRadioButton("Aquaman_2");
+        this.parametersPlayersLabel = new CustomLabel("Global Statistic");
+        this.parametersPlayersLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.parametersPlayersLabel.setFont(this.parametersPlayersLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 0;
+        this.constraints.gridwidth = 2;
+        this.add(this.parametersPlayersLabel, this.constraints);
 
-        this.firstColorPlayerRed = new CustomRadioButton("Red_1");
-        this.firstColorPlayerBlue = new CustomRadioButton("Blue_1");
-        this.firstColorPlayerGreen = new CustomRadioButton("Green_1");
-        this.firstColorPlayerYellow = new CustomRadioButton("Yellow_1");
+        this.constraints.anchor = GridBagConstraints.WEST;
 
-        this.secondColorPlayerRed = new CustomRadioButton("Red_2");
-        this.secondColorPlayerBlue = new CustomRadioButton("Blue_2");
-        this.secondColorPlayerGreen = new CustomRadioButton("Green_2");
-        this.secondColorPlayerYellow = new CustomRadioButton("Yellow_2");
+        // Second
+        this.secondIconSuperman = new CustomRadioButton("Superman");
+        this.secondIconBatman = new CustomRadioButton("Batman");
+        this.secondIconFlash = new CustomRadioButton("Flash");
+        this.secondIconAquaman = new CustomRadioButton("Aquaman");
+        // Second
+        this.secondColorPlayerRed = new CustomRadioButton("RED");
+        this.secondColorPlayerRed.setForeground(ColorFactory.getColor(COLOR_RED));
+        this.secondColorPlayerBlue = new CustomRadioButton("BLUE");
+        this.secondColorPlayerBlue.setForeground(ColorFactory.getColor(COLOR_BLUE));
+        this.secondColorPlayerGreen = new CustomRadioButton("GREEN");
+        this.secondColorPlayerGreen.setForeground(ColorFactory.getColor(COLOR_GREEN));
+        this.secondColorPlayerYellow = new CustomRadioButton("YELLOW");
+        this.secondColorPlayerYellow.setForeground(ColorFactory.getColor(COLOR_YELLOW));
 
-        this.warningLabel = new WarningLabel("");
+        this.constraints.anchor = GridBagConstraints.CENTER;
+
+        this.firstPlayerLabel = new CustomLabel("Player 1");
+        this.firstPlayerLabel.setFont(this.firstPlayerLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 1;
+        this.constraints.gridwidth = 2;
+        this.add(this.firstPlayerLabel, this.constraints);
+
+        this.constraints.anchor = GridBagConstraints.WEST;
+
+        this.constraints.gridwidth = 1;
+
+        // First
+        this.firstIconSuperman = new CustomRadioButton("Superman");
+        this.firstIconBatman = new CustomRadioButton("Batman");
+        this.firstIconFlash = new CustomRadioButton("Flash");
+        this.firstIconAquaman = new CustomRadioButton("Aquaman");
+        // First
+        this.firstColorPlayerRed = new CustomRadioButton("Red");
+        this.firstColorPlayerRed.setForeground(ColorFactory.getColor(COLOR_RED));
+        this.firstColorPlayerBlue = new CustomRadioButton("Blue");
+        this.firstColorPlayerBlue.setForeground(ColorFactory.getColor(COLOR_BLUE));
+        this.firstColorPlayerGreen = new CustomRadioButton("Green");
+        this.firstColorPlayerGreen.setForeground(ColorFactory.getColor(COLOR_GREEN));
+        this.firstColorPlayerYellow = new CustomRadioButton("Yellow");
+        this.firstColorPlayerYellow.setForeground(ColorFactory.getColor(COLOR_YELLOW));
+
+
+        this.constraints.gridy = 2;
+
+        this.constraints.gridx = 0;
+        this.add(this.firstIconSuperman, this.constraints);
+        this.constraints.gridx = 1;
+        this.add(this.firstIconBatman, this.constraints);
+        this.constraints.gridx = 2;
+        this.add(this.firstIconFlash, this.constraints);
+        this.constraints.gridx = 3;
+        this.add(this.firstIconAquaman, this.constraints);
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -75,11 +134,16 @@ public class ParametersDefaultPlayerView extends AbstractView {
         firstIconGroup.add(this.firstIconFlash);
         firstIconGroup.add(this.firstIconAquaman);
 
-        ButtonGroup secondIconGroup = new ButtonGroup();
-        secondIconGroup.add(this.secondIconSuperman);
-        secondIconGroup.add(this.secondIconBatman);
-        secondIconGroup.add(this.secondIconFlash);
-        secondIconGroup.add(this.secondIconAquaman);
+        this.constraints.gridy = 3;
+
+        this.constraints.gridx = 0;
+        this.add(this.firstColorPlayerRed, this.constraints);
+        this.constraints.gridx = 1;
+        this.add(this.firstColorPlayerBlue, this.constraints);
+        this.constraints.gridx = 2;
+        this.add(this.firstColorPlayerGreen, this.constraints);
+        this.constraints.gridx = 3;
+        this.add(this.firstColorPlayerYellow, this.constraints);
 
         ButtonGroup firstColorGroup = new ButtonGroup();
         firstColorGroup.add(this.firstColorPlayerRed);
@@ -87,61 +151,67 @@ public class ParametersDefaultPlayerView extends AbstractView {
         firstColorGroup.add(this.firstColorPlayerGreen);
         firstColorGroup.add(this.firstColorPlayerYellow);
 
+        this.constraints.anchor = GridBagConstraints.CENTER;
+
+        this.secondPlayerLabel = new CustomLabel("Player 2");
+        this.secondPlayerLabel.setFont(this.secondPlayerLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 4;
+        this.constraints.gridwidth = 2;
+        this.add(this.secondPlayerLabel, this.constraints);
+
+        this.constraints.anchor = GridBagConstraints.WEST;
+
+        this.constraints.gridwidth = 1;
+        this.constraints.gridy = 5;
+
+        this.constraints.gridx = 0;
+        this.add(this.secondIconSuperman, this.constraints);
+        this.constraints.gridx = 1;
+        this.add(this.secondIconBatman, this.constraints);
+        this.constraints.gridx = 2;
+        this.add(this.secondIconFlash, this.constraints);
+        this.constraints.gridx = 3;
+        this.add(this.secondIconAquaman, this.constraints);
+
+        ButtonGroup secondIconGroup = new ButtonGroup();
+        secondIconGroup.add(this.secondIconSuperman);
+        secondIconGroup.add(this.secondIconBatman);
+        secondIconGroup.add(this.secondIconFlash);
+        secondIconGroup.add(this.secondIconAquaman);
+
+        this.constraints.gridy = 6;
+
+        this.constraints.gridx = 0;
+        this.add(this.secondColorPlayerRed, this.constraints);
+        this.constraints.gridx = 1;
+        this.add(this.secondColorPlayerBlue, this.constraints);
+        this.constraints.gridx = 2;
+        this.add(this.secondColorPlayerGreen, this.constraints);
+        this.constraints.gridx = 3;
+        this.add(this.secondColorPlayerYellow, this.constraints);
+
         ButtonGroup secondColorGroup = new ButtonGroup();
         secondColorGroup.add(this.secondColorPlayerRed);
         secondColorGroup.add(this.secondColorPlayerBlue);
         secondColorGroup.add(this.secondColorPlayerGreen);
         secondColorGroup.add(this.secondColorPlayerYellow);
 
+        this.constraints.anchor = GridBagConstraints.CENTER;
+
+        this.backButton = new CustomButton("Back");
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 7;
+        this.constraints.gridwidth = 2;
+        this.add(this.backButton, this.constraints);
+
+        this.warningLabel = new WarningLabel("");
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 8;
+        this.constraints.gridwidth = 4;
+        this.add(this.warningLabel, this.constraints);
+
         this.initButtonsActionListeners();
-
-        constraints.gridy = 0;
-        constraints.gridx = 0;
-        this.add(this.firstIconSuperman, constraints);
-        constraints.gridx = 1;
-        this.add(this.firstIconBatman, constraints);
-        constraints.gridx = 2;
-        this.add(this.firstIconFlash, constraints);
-        constraints.gridx = 3;
-        this.add(this.firstIconAquaman, constraints);
-
-        constraints.gridy = 1;
-        constraints.gridx = 0;
-        this.add(this.secondIconSuperman, constraints);
-        constraints.gridx = 1;
-        this.add(this.secondIconBatman, constraints);
-        constraints.gridx = 2;
-        this.add(this.secondIconFlash, constraints);
-        constraints.gridx = 3;
-        this.add(this.secondIconAquaman, constraints);
-
-        constraints.gridy = 2;
-        constraints.gridx = 0;
-        this.add(this.firstColorPlayerRed, constraints);
-        constraints.gridx = 1;
-        this.add(this.firstColorPlayerBlue, constraints);
-        constraints.gridx = 2;
-        this.add(this.firstColorPlayerGreen, constraints);
-        constraints.gridx = 3;
-        this.add(this.firstColorPlayerYellow, constraints);
-
-        constraints.gridy = 3;
-        constraints.gridx = 0;
-        this.add(this.secondColorPlayerRed, constraints);
-        constraints.gridx = 1;
-        this.add(this.secondColorPlayerBlue, constraints);
-        constraints.gridx = 2;
-        this.add(this.secondColorPlayerGreen, constraints);
-        constraints.gridx = 3;
-        this.add(this.secondColorPlayerYellow, constraints);
-
-        constraints.gridy = 4;
-        constraints.gridx = 0;
-        this.add(this.backButton, constraints);
-        constraints.gridy = 5;
-        constraints.gridx = 0;
-        constraints.gridwidth = 4;
-        this.add(this.warningLabel, constraints);
     }
 
     private void initButtonsActionListeners() {
