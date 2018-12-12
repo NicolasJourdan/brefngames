@@ -42,15 +42,12 @@ public class StatisticPlayerView extends AbstractView {
         this.c.fill = GridBagConstraints.CENTER;
 
         this.playerSettings = new CustomLabel("Player Statistic");
-
         this.playerSettings.setFont(playerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-
-        this.c.gridx = 0;
-        this.c.gridy = 0;
+        this.c.gridx = 1;
         this.add(this.playerSettings, c);
 
         this.jcb  = new CustomComboBox();
-        this.c.gridx = 0;
+        this.c.gridx = 1;
         this.c.gridy = 1;
         this.add(jcb, c);
 
@@ -100,7 +97,6 @@ public class StatisticPlayerView extends AbstractView {
         this.c.gridy = 2;
         this.add(this.tableau, c);
         this.tableau.setTableHeader(null);
-        this.c.gridwidth = 1;
     }
 
     public void updateJCBView(String[] players){

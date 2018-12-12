@@ -37,10 +37,9 @@ public class StatisticConnectFourView extends AbstractView {
 
         this.connectFourSettings = new CustomLabel("Connect Four Statistic");
         this.connectFourSettings.setHorizontalAlignment(JLabel.CENTER);
-        this.connectFourSettings.setFont(this.connectFourSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_TITLE));
+        this.connectFourSettings.setFont(this.connectFourSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
-        this.c.gridwidth = 4;
         this.add(this.connectFourSettings, c);
 
         this.updateTableView();
@@ -75,7 +74,6 @@ public class StatisticConnectFourView extends AbstractView {
         this.tableau = new JTable(this.model);
         this.c.gridx = 0;
         this.c.gridy = 2;
-        this.c.gridwidth = 4;
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.add(this.tableau, c);
         this.tableau.setTableHeader(null);

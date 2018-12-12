@@ -2,6 +2,9 @@ package Statistic.View;
 
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
+import Utils.UI.CustomButton;
+import Utils.UI.CustomLabel;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -11,7 +14,9 @@ import java.awt.event.ActionListener;
 
 public class StatisticRunnerView extends AbstractView {
 
-    private JButton backButton;
+    private CustomButton backButton;
+
+    private CustomLabel runnerSettings;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -25,14 +30,24 @@ public class StatisticRunnerView extends AbstractView {
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
 
-        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.c.insets = new Insets(5, 2, 5, 2);
+        this.c.gridwidth = GridBagConstraints.REMAINDER;
+
+        this.c.fill = GridBagConstraints.CENTER;
+
+        this.runnerSettings = new CustomLabel("Runner Statistic");
+        this.runnerSettings.setHorizontalAlignment(JLabel.CENTER);
+        this.runnerSettings.setFont(this.runnerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.c.gridx = 0;
+        this.c.gridy = 0;
+        this.add(this.runnerSettings, c);
 
         this.updateTableView();
 
-        this.backButton = new JButton("Back");
+        this.backButton = new CustomButton("Back");
+        this.c.fill = GridBagConstraints.CENTER;
         this.c.gridx = 1;
         this.c.gridy = 5;
-        this.c.gridwidth = 2;   // largeur 2 colonne
         this.add(this.backButton, c);
 
         this.initButtonsActionListeners();
@@ -59,7 +74,7 @@ public class StatisticRunnerView extends AbstractView {
         this.tableau = new JTable(this.model);
         this.c.gridx = 0;
         this.c.gridy = 2;
-        this.c.gridwidth = 4;   // largeur 4 colonne
+        this.c.fill = GridBagConstraints.HORIZONTAL;
         this.add(this.tableau, c);
         this.tableau.setTableHeader(null);
     }
