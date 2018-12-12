@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class StatisticTicTacToeView extends AbstractView {
 
     private CustomButton backButton;
-    private CustomLabel ticTacToeSettings;
+    private CustomLabel ticTacToeSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -29,20 +29,20 @@ public class StatisticTicTacToeView extends AbstractView {
         this.c = new GridBagConstraints();
 
         this.c.insets = new Insets(
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE,
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE);
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.CENTER;
 
-        this.ticTacToeSettings = new CustomLabel("Tic Tac Toe Statistic");
-        this.ticTacToeSettings.setHorizontalAlignment(JLabel.CENTER);
-        this.ticTacToeSettings.setFont(this.ticTacToeSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.ticTacToeSettingsLabel = new CustomLabel("Tic Tac Toe Statistic");
+        this.ticTacToeSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.ticTacToeSettingsLabel.setFont(this.ticTacToeSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
-        this.add(this.ticTacToeSettings, c);
+        this.add(this.ticTacToeSettingsLabel, c);
 
         this.updateTableView();
 

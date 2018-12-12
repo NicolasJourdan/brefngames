@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class StatisticConnectFourView extends AbstractView {
 
     private CustomButton backButton;
-    private CustomLabel connectFourSettings;
+    private CustomLabel connectFourSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -29,20 +29,20 @@ public class StatisticConnectFourView extends AbstractView {
         this.c = new GridBagConstraints();
 
         this.c.insets = new Insets(
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE,
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE);
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.CENTER;
 
-        this.connectFourSettings = new CustomLabel("Connect Four Statistic");
-        this.connectFourSettings.setHorizontalAlignment(JLabel.CENTER);
-        this.connectFourSettings.setFont(this.connectFourSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.connectFourSettingsLabel = new CustomLabel("Connect Four Statistic");
+        this.connectFourSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.connectFourSettingsLabel.setFont(this.connectFourSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
-        this.add(this.connectFourSettings, c);
+        this.add(this.connectFourSettingsLabel, c);
 
         this.updateTableView();
 

@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class StatisticRunnerView extends AbstractView {
 
     private CustomButton backButton;
-    private CustomLabel runnerSettings;
+    private CustomLabel runnerSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -29,20 +29,20 @@ public class StatisticRunnerView extends AbstractView {
         this.c = new GridBagConstraints();
 
         this.c.insets = new Insets(
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE,
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE);
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.CENTER;
 
-        this.runnerSettings = new CustomLabel("Runner Statistic");
-        this.runnerSettings.setHorizontalAlignment(JLabel.CENTER);
-        this.runnerSettings.setFont(this.runnerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.runnerSettingsLabel = new CustomLabel("Runner Statistic");
+        this.runnerSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.runnerSettingsLabel.setFont(this.runnerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
-        this.add(this.runnerSettings, c);
+        this.add(this.runnerSettingsLabel, c);
 
         this.updateTableView();
 

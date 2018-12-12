@@ -19,7 +19,7 @@ public class StatisticMenuView extends AbstractView {
     private CustomButton runnerStatistic;
     private CustomButton coockieStatistic;
     private CustomButton connectStatistic;
-    private CustomLabel globalSettings;
+    private CustomLabel globalSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -34,21 +34,21 @@ public class StatisticMenuView extends AbstractView {
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
         this.c.insets = new Insets(
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE,
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE);
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
 
-        this.globalSettings = new CustomLabel("Global Statistic");
-        this.globalSettings.setHorizontalAlignment(JLabel.CENTER);
-        this.globalSettings.setFont(this.globalSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.globalSettingsLabel = new CustomLabel("Global Statistic");
+        this.globalSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.globalSettingsLabel.setFont(this.globalSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
         this.c.gridwidth = 4;   // largeur 2 colonne
-        this.add(this.globalSettings, c);
+        this.add(this.globalSettingsLabel, c);
 
         this.updateTableView();
 

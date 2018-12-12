@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class StatisticCookieClickerView extends AbstractView {
 
     private CustomButton backButton;
-    private CustomLabel cookieClickerSettings;
+    private CustomLabel cookieClickerSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -29,20 +29,20 @@ public class StatisticCookieClickerView extends AbstractView {
         this.c = new GridBagConstraints();
 
         this.c.insets = new Insets(
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE,
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
-                Utils.DEFAULT_BUTTON_PADDING_SIDE);
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
         this.c.gridwidth = GridBagConstraints.REMAINDER;
 
         this.c.fill = GridBagConstraints.CENTER;
 
-        this.cookieClickerSettings = new CustomLabel("Cookie Clicker Statistic");
-        this.cookieClickerSettings.setHorizontalAlignment(JLabel.CENTER);
-        this.cookieClickerSettings.setFont(this.cookieClickerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.cookieClickerSettingsLabel = new CustomLabel("Cookie Clicker Statistic");
+        this.cookieClickerSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
+        this.cookieClickerSettingsLabel.setFont(this.cookieClickerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
         this.c.gridy = 0;
-        this.add(this.cookieClickerSettings, c);
+        this.add(this.cookieClickerSettingsLabel, c);
 
         this.updateTableView();
 

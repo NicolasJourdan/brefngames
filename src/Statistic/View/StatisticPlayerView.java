@@ -17,7 +17,7 @@ public class StatisticPlayerView extends AbstractView {
 
     private CustomButton backButton;
     private CustomComboBox jcb;
-    private CustomLabel playerSettings;
+    private CustomLabel playerSettingsLabel;
 
     private JTable tableau;
     private DefaultTableModel model;
@@ -35,17 +35,17 @@ public class StatisticPlayerView extends AbstractView {
         this.setLayout(new GridBagLayout());
         this.c = new GridBagConstraints();
         this.c.insets = new Insets(
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                Utils.DEFAULT_BUTTON_PADDING_TOP,
                 0,
-                Utils.DEFAULT_BUTTON_PADDING_HEADER,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
                 0);
 
         this.c.fill = GridBagConstraints.CENTER;
 
-        this.playerSettings = new CustomLabel("Player Statistic");
-        this.playerSettings.setFont(this.playerSettings.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.playerSettingsLabel = new CustomLabel("Player Statistic");
+        this.playerSettingsLabel.setFont(this.playerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 1;
-        this.add(this.playerSettings, c);
+        this.add(this.playerSettingsLabel, c);
 
         this.jcb  = new CustomComboBox();
         this.c.gridx = 1;
