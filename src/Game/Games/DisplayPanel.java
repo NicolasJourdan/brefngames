@@ -25,11 +25,7 @@ public class DisplayPanel extends JLayeredPane {
         this.name = new CustomLabel(text);
         this.name.setHorizontalAlignment(JLabel.CENTER);
         this.name.setVerticalAlignment(JLabel.CENTER);
-        if (visible) {
-            this.color = this.player.getColor();
-        } else {
-            this.color = this.defColor;
-        }
+        this.setColor(visible);
         this.icon = new JLabel(ImageResizer.resizeImage(playerIcon, 100));
         this.add(this.name);
         this.add(this.icon);
@@ -39,13 +35,17 @@ public class DisplayPanel extends JLayeredPane {
     }
 
     public void setFocus(boolean visible) {
+        this.setColor(visible);
+        this.setBorder(BorderFactory.createLineBorder(this.color, 5, true));
+        this.revalidate();
+        this.repaint();
+    }
+
+    private void setColor(boolean visible){
         if (visible) {
             this.color = this.player.getColor();
         } else {
             this.color = this.defColor;
         }
-        this.setBorder(BorderFactory.createLineBorder(this.color, 5, true));
-        this.revalidate();
-        this.repaint();
     }
 }
