@@ -12,6 +12,7 @@ import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
 import Structure.AbstractView;
 import Utils.UI.CustomCheckBox;
+import Utils.UI.WarningLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -272,8 +273,7 @@ public class ContestSettingsView extends AbstractView {
         constraint.gridx = 0;
         constraint.gridy = 7;
         constraint.gridwidth = 2;
-        this.warningLabel = new JLabel("");
-        this.warningLabel.setForeground(Color.RED);
+        this.warningLabel = new WarningLabel("");
         this.add(this.warningLabel, constraint);
     }
 

@@ -41,7 +41,7 @@ public class ParametersDefaultPlayerModel extends AbstractModel {
      * @return boolean
      */
     public boolean validateParametersData() {
-        if (this.configurations.get(ParameterEnum.PLAYER_1_COLOR).getValue() == this.configurations.get(ParameterEnum.PLAYER_2_COLOR).getValue()) {
+        if (this.configurations.get(ParameterEnum.PLAYER_1_COLOR).getValue().equals(this.configurations.get(ParameterEnum.PLAYER_2_COLOR).getValue())) {
             this.invalidDataObjectText = "Both default players can't have the same color";
             return false;
         }

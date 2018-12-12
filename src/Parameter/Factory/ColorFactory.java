@@ -10,22 +10,22 @@ public class ColorFactory {
             case "COLOR_FIRST_PLAYER_BLUE":
             case "COLOR_SECOND_PLAYER_BLUE":
             case "BLUE":
-                return Color.BLUE;
+                return Color.decode("#1EA7E1");
             case "FIRST_COLOR_RED":
             case "COLOR_FIRST_PLAYER_RED":
             case "COLOR_SECOND_PLAYER_RED":
             case "RED":
-                return Color.RED;
+                return Color.decode("#E86A17");
             case "FIRST_COLOR_YELLOW":
             case "COLOR_FIRST_PLAYER_YELLOW":
             case "COLOR_SECOND_PLAYER_YELLOW":
             case "YELLOW":
-                return Color.YELLOW;
+                return Color.decode("#FFCC00");
             case "FIRST_COLOR_GREEN":
             case "COLOR_FIRST_PLAYER_GREEN":
             case "COLOR_SECOND_PLAYER_GREEN":
             case "GREEN":
-                return Color.GREEN;
+                return Color.decode("#73CD4B");
             case "SECOND_COLOR_WHITE":
                 return Color.WHITE;
             case "SECOND_COLOR_LIGHT_GRAY":
@@ -40,13 +40,13 @@ public class ColorFactory {
     }
     public static String getStringColor(Color color) {
 
-        if (color.equals(Color.BLUE)) {
+        if (color.equals(Color.decode("#1EA7E1"))) {
             return "BLUE";
-        } else if (color.equals(Color.RED)) {
+        } else if (color.equals(Color.decode("#E86A17"))) {
             return "RED";
-        } else if (color.equals(Color.YELLOW)) {
+        } else if (color.equals(Color.decode("#FFCC00"))) {
             return "YELLOW";
-        } else if (color.equals(Color.GREEN)) {
+        } else if (color.equals(Color.decode("#73CD4B"))) {
             return "GREEN";
         } else {
             throw new RuntimeException("The string : " + color + " corresponding with no color");
