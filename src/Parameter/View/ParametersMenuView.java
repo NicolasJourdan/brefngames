@@ -19,52 +19,51 @@ public class ParametersMenuView extends AbstractView {
 
     private final CustomLabel globalSettingsLabel;
 
-    private GridBagConstraints c;
-
     public ParametersMenuView() {
         super();
         this.setLayout(new GridBagLayout());
-        this.c = new GridBagConstraints();
+        GridBagConstraints constraints = new GridBagConstraints();
 
-        this.c.gridwidth = GridBagConstraints.REMAINDER;
+        constraints.gridwidth = GridBagConstraints.REMAINDER;
 
         this.globalSettingsLabel = new CustomLabel("Global Parameters");
         this.globalSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.globalSettingsLabel.setFont(this.globalSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.c.gridx = 0;
-        this.c.gridy = 0;
-        this.c.insets = new Insets(
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.insets = new Insets(
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM + 85,
                 Utils.DEFAULT_BUTTON_PADDING_RIGHT);
-        this.add(this.globalSettingsLabel, c);
+        this.add(this.globalSettingsLabel, constraints);
 
-        this.c.insets = new Insets(
+        constraints.insets = new Insets(
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
-                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT
+        );
 
         this.themeAndSoundButton = new CustomButton("Theme personalisation and sound effect", Utils.DEFAULT_BUTTON_SIZE);
-        this.c.gridx = 0;
-        this.c.gridy = 1;
-        this.add(this.themeAndSoundButton, c);
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        this.add(this.themeAndSoundButton, constraints);
 
         this.defaultPlayerButton = new CustomButton("Player personalisation", Utils.DEFAULT_BUTTON_SIZE);
-        this.c.gridx = 0;
-        this.c.gridy = 2;
-        this.add(this.defaultPlayerButton, c);
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        this.add(this.defaultPlayerButton, constraints);
 
         this.resetButton = new CustomButton("Reset Parameters", Utils.DEFAULT_BUTTON_SIZE);
-        this.c.gridx = 0;
-        this.c.gridy = 3;
-        this.add(this.resetButton, c);
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        this.add(this.resetButton, constraints);
 
         this.backButton = new CustomButton("Back", Utils.DEFAULT_BUTTON_SIZE);
-        this.c.gridx = 0;
-        this.c.gridy = 4;
-        this.add(this.backButton, c);
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        this.add(this.backButton, constraints);
 
         this.initButtonsActionListeners();
     }

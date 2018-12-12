@@ -33,8 +33,6 @@ public class ParametersThemeSoundView extends AbstractView {
     private CustomRadioButton secondColorDarkGray;
     private CustomRadioButton secondColorBlack;
 
-    private GridBagConstraints constraints;
-
     private CustomLabel firstColorLabel;
     private CustomLabel secondColorLabel;
     private CustomLabel parametersSound;
@@ -43,57 +41,58 @@ public class ParametersThemeSoundView extends AbstractView {
     public ParametersThemeSoundView() {
         super();
         this.setLayout(new GridBagLayout());
-        this.constraints = new GridBagConstraints();
+        GridBagConstraints constraints = new GridBagConstraints();
 
-        this.constraints.insets = new Insets(
+        constraints.insets = new Insets(
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
-                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT
+        );
 
-        this.constraints.anchor = GridBagConstraints.CENTER;
+        constraints.anchor = GridBagConstraints.CENTER;
 
         this.parametersThemeSound = new CustomLabel("Theme and Sound Parameters");
         this.parametersThemeSound.setHorizontalAlignment(JLabel.CENTER);
         this.parametersThemeSound.setFont(this.parametersThemeSound.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.constraints.gridx = 1;
-        this.constraints.gridy = 0;
-        this.constraints.gridwidth = 2;
-        this.add(this.parametersThemeSound, this.constraints);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridwidth = 4;
+        this.add(this.parametersThemeSound, constraints);
 
-        this.constraints.anchor = GridBagConstraints.CENTER;
+        constraints.anchor = GridBagConstraints.CENTER;
 
         this.firstColorLabel = new CustomLabel("Main Color");
         this.firstColorLabel.setFont(this.firstColorLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
-        this.constraints.gridx = 1;
-        this.constraints.gridy = 1;
-        this.constraints.gridwidth = 2;
-        this.add(this.firstColorLabel, this.constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.gridwidth = 2;
+        this.add(this.firstColorLabel, constraints);
 
-        this.constraints.anchor = GridBagConstraints.WEST;
-        this.constraints.gridwidth = 1;
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.gridwidth = 1;
 
-        this.constraints.gridy = 2;
+        constraints.gridy = 2;
 
-        this.constraints.gridx = 0;
+        constraints.gridx = 0;
         this.firstColorRed = new CustomRadioButton(Utils.COLOR_RED);
         this.firstColorRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
-        this.add(this.firstColorRed, this.constraints);
+        this.add(this.firstColorRed, constraints);
 
-        this.constraints.gridx = 1;
+        constraints.gridx = 1;
         this.firstColorBlue = new CustomRadioButton(Utils.COLOR_BLUE);
         this.firstColorBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
-        this.add(this.firstColorBlue, this.constraints);
+        this.add(this.firstColorBlue, constraints);
 
-        this.constraints.gridx = 2;
+        constraints.gridx = 2;
         this.firstColorGreen = new CustomRadioButton(Utils.COLOR_GREEN);
         this.firstColorGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
-        this.add(this.firstColorGreen, this.constraints);
+        this.add(this.firstColorGreen, constraints);
 
-        this.constraints.gridx = 3;
+        constraints.gridx = 3;
         this.firstColorYellow = new CustomRadioButton(Utils.COLOR_YELLOW);
         this.firstColorYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
-        this.add(this.firstColorYellow, this.constraints);
+        this.add(this.firstColorYellow, constraints);
 
         ButtonGroup firstColorGroup = new ButtonGroup();
         firstColorGroup.add(this.firstColorRed);
@@ -101,19 +100,19 @@ public class ParametersThemeSoundView extends AbstractView {
         firstColorGroup.add(this.firstColorGreen);
         firstColorGroup.add(this.firstColorYellow);
 
-        this.constraints.anchor = GridBagConstraints.CENTER;
+        constraints.anchor = GridBagConstraints.CENTER;
 
         this.secondColorLabel = new CustomLabel("Second Color");
         this.secondColorLabel.setFont(this.secondColorLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
-        this.constraints.gridx = 1;
-        this.constraints.gridy = 3;
-        this.constraints.gridwidth = 2;
-        this.add(this.secondColorLabel, this.constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 3;
+        constraints.gridwidth = 2;
+        this.add(this.secondColorLabel, constraints);
 
-        this.constraints.anchor = GridBagConstraints.WEST;
-        this.constraints.gridwidth = 1;
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.gridwidth = 1;
 
-        this.constraints.gridy = 4;
+        constraints.gridy = 4;
 
         this.secondColorWhite = new CustomRadioButton(Utils.COLOR_WHITE);
         this.secondColorWhite.setForeground(ColorFactory.getColor(Utils.COLOR_WHITE));
@@ -125,17 +124,17 @@ public class ParametersThemeSoundView extends AbstractView {
         this.secondColorBlack.setForeground(ColorFactory.getColor(Utils.COLOR_BLACK));
 
 
-        this.constraints.gridx = 0;
-        this.add(this.secondColorWhite, this.constraints);
+        constraints.gridx = 0;
+        this.add(this.secondColorWhite, constraints);
 
-        this.constraints.gridx = 1;
-        this.add(this.secondColorLightGray, this.constraints);
+        constraints.gridx = 1;
+        this.add(this.secondColorLightGray, constraints);
 
-        this.constraints.gridx = 2;
-        this.add(this.secondColorDarkGray, this.constraints);
+        constraints.gridx = 2;
+        this.add(this.secondColorDarkGray, constraints);
 
-        this.constraints.gridx = 3;
-        this.add(this.secondColorBlack, this.constraints);
+        constraints.gridx = 3;
+        this.add(this.secondColorBlack, constraints);
 
         ButtonGroup secondColorGroup = new ButtonGroup();
         secondColorGroup.add(this.secondColorWhite);
@@ -143,19 +142,19 @@ public class ParametersThemeSoundView extends AbstractView {
         secondColorGroup.add(this.secondColorDarkGray);
         secondColorGroup.add(this.secondColorBlack);
 
-        this.constraints.anchor = GridBagConstraints.CENTER;
+        constraints.anchor = GridBagConstraints.CENTER;
 
         this.parametersSound = new CustomLabel("Sound");
         this.parametersSound.setFont(this.parametersSound.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
-        this.constraints.gridx = 1;
-        this.constraints.gridy = 5;
-        this.constraints.gridwidth = 2;
-        this.add(this.parametersSound, this.constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 5;
+        constraints.gridwidth = 2;
+        this.add(this.parametersSound, constraints);
 
-        this.constraints.anchor = GridBagConstraints.CENTER;
-        this.constraints.gridwidth = 2;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.gridwidth = 2;
 
-        this.constraints.gridy = 6;
+        constraints.gridy = 6;
 
 
         this.soundOff = new CustomRadioButton("Off");
@@ -165,20 +164,20 @@ public class ParametersThemeSoundView extends AbstractView {
         soundGroup.add(this.soundOff);
         soundGroup.add(this.soundOn);
 
-        this.constraints.gridx = 0;
-        this.constraints.gridwidth = 2;
-        this.add(this.soundOff, this.constraints);
-        this.constraints.gridx = 2;
-        this.constraints.gridwidth = 2;
-        this.add(this.soundOn, this.constraints);
+        constraints.gridx = 0;
+        constraints.gridwidth = 2;
+        this.add(this.soundOff, constraints);
+        constraints.gridx = 2;
+        constraints.gridwidth = 2;
+        this.add(this.soundOn, constraints);
 
-        this.constraints.anchor = GridBagConstraints.CENTER;
+        constraints.anchor = GridBagConstraints.CENTER;
 
         this.backButton = new CustomButton("Back");
-        this.constraints.gridy = 7;
-        this.constraints.gridx = 1;
-        this.constraints.gridwidth = 2;
-        this.add(this.backButton, this.constraints);
+        constraints.gridy = 7;
+        constraints.gridx = 1;
+        constraints.gridwidth = 2;
+        this.add(this.backButton, constraints);
 
         this.initButtonsActionListeners();
     }
