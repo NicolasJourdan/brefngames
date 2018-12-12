@@ -16,7 +16,7 @@ public class Board extends JLayeredPane {
         super();
         this.map = new HashMap<Coord, Box>();
         this.parent = parent;
-        this.setLayout(new GridLayout(rows, columns, 3, 3));
+        this.setLayout(new GridLayout(rows, columns));
         Box box = null;
         for (int j = 0; j < rows; j++) {
             for (int i = 0; i < columns; i++) {
