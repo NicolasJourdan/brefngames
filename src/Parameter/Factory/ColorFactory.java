@@ -1,5 +1,7 @@
 package Parameter.Factory;
 
+import Parameter.Model.ColorEnum;
+
 import java.awt.*;
 
 public class ColorFactory {
@@ -38,12 +40,19 @@ public class ColorFactory {
             case "BLACK":
             case "SECOND_COLOR_BLACK":
                 return Color.BLACK;
+            case "BLUE_BACKGROUND":
+                return Color.decode("#95C7F0");
+            case "RED_BACKGROUND":
+                return Color.decode("#DAAB94");
+            case "YELLOW_BACKGROUND":
+                return Color.decode("#F5E096");
+            case "GREEN_BACKGROUND":
+                return Color.decode("#BFFB9B");
             default:
                 throw new RuntimeException("The color : " + color + " is unknown");
         }
     }
     public static String getStringColor(Color color) {
-
         if (color.equals(Color.decode("#1EA7E1"))) {
             return "BLUE";
         } else if (color.equals(Color.decode("#E86A17"))) {
@@ -55,5 +64,25 @@ public class ColorFactory {
         } else {
             throw new RuntimeException("The string : " + color + " corresponding with no color");
         }
+    }
+
+    public static Color getBackgroundColor(Color color) {
+        if (color.equals(Color.decode("#1EA7E1"))) {
+            return ColorFactory.getColor(ColorEnum.BLUE_BACKGROUND.toString());
+        }
+
+        if (color.equals(Color.decode("#E86A17"))) {
+            return ColorFactory.getColor(ColorEnum.RED_BACKGROUND.toString());
+        }
+
+        if (color.equals(Color.decode("#FFCC00"))) {
+            return ColorFactory.getColor(ColorEnum.YELLOW_BACKGROUND.toString());
+        }
+
+        if (color.equals(Color.decode("#73CD4B"))) {
+            return ColorFactory.getColor(ColorEnum.GREEN_BACKGROUND.toString());
+        }
+
+        throw new RuntimeException("Color : " + color.toString() + " is unknown");
     }
 }
