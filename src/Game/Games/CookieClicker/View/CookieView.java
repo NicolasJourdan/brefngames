@@ -130,7 +130,7 @@ public class CookieView extends AbstractGameView {
         Dimension dimCookie = new Dimension(WIDTH_COOKIE, HEIGHT_COOKIE);
 
         this.goalScreen = new CustomLabel("GOAL");
-        this.goalScreen.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue());
+        this.goalScreen.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
         this.goalScreen.setFont(goalScreen.getFont().deriveFont(Utils.DEFAULT_GOAL_SIZE_LABEL));
 
         this.firstPlayerButton = new JButton(DEFAULT_BIG_COOKIE);
