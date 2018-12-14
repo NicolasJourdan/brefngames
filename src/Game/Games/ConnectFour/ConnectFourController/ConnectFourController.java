@@ -80,6 +80,7 @@ public class ConnectFourController extends AbstractGameController {
                     return;
                 }
                 ((ConnectFourModel) this.model).changePlayer();
+                ((ConnectFourView) this.view).changePlayer();
             }
         }
     }
