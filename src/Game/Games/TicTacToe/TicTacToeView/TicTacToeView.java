@@ -9,6 +9,7 @@ import Structure.ProxyObservable;
 import java.awt.*;
 
 public class TicTacToeView extends AbstractGameView {
+    private static int INSET_SIZE = 10;
     private DisplayPanel firstPlayerDisplay;
     private Board board;
     private DisplayPanel secondPlayerDisplay;
@@ -28,7 +29,7 @@ public class TicTacToeView extends AbstractGameView {
         constraint.gridx = 0;
         constraint.gridwidth = 1;
         constraint.gridheight = 1;
-        constraint.insets = new Insets(10,10,10,10);
+        constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
         this.add(this.firstPlayerDisplay, constraint);
         constraint.gridy = 0;
         constraint.gridx = 1;
@@ -39,7 +40,7 @@ public class TicTacToeView extends AbstractGameView {
         constraint.gridx = 4;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
-        constraint.insets = new Insets(10,10,10,10);
+        constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
         this.add(this.secondPlayerDisplay, constraint);
         this.currentPlayer = this.firstPlayerDisplay;
         this.otherPlayer = this.secondPlayerDisplay;

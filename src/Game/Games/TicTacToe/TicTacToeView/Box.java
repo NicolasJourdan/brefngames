@@ -10,6 +10,7 @@ import java.awt.*;
 
 public class Box extends JButton {
 
+    private static int BOX_SIZE = 100;
     private static final int FONT_SIZE = 170;
     private final Coord coord;
     private Color color;
@@ -20,7 +21,7 @@ public class Box extends JButton {
 
     public Box(Coord coord) {
         this.coord = coord;
-        this.setPreferredSize(new Dimension(100, 100));
+        this.setPreferredSize(new Dimension(BOX_SIZE, BOX_SIZE));
         this.setLayout(new BorderLayout());
         this.setFont(new Font("myFont", Font.PLAIN, FONT_SIZE));
         setOpaque(true);

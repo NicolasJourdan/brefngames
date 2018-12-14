@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DisplayPanel extends JLayeredPane {
+    private static int ICON_SIZE = 100;
+    private static int BORDER_SIZE = 5;
     private Player player;
     private JLabel name;
     private JLabel icon;
@@ -19,24 +21,24 @@ public class DisplayPanel extends JLayeredPane {
         super();
         this.defColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
         this.player = player;
-        this.setLayout(new GridLayout(2, 1, 0, 0));
+        this.setLayout(new GridLayout(2, 1));
         String text = player.getName();
         ImageIcon playerIcon = player.getIcon();
         this.name = new CustomLabel(text);
         this.name.setHorizontalAlignment(JLabel.CENTER);
         this.name.setVerticalAlignment(JLabel.CENTER);
         this.setColor(visible);
-        this.icon = new JLabel(ImageResizer.resizeImage(playerIcon, 100));
+        this.icon = new JLabel(ImageResizer.resizeImage(playerIcon, ICON_SIZE));
         this.add(this.name);
         this.add(this.icon);
-        this.setBorder(BorderFactory.createLineBorder(this.color, 5, true));
+        this.setBorder(BorderFactory.createLineBorder(this.color, BORDER_SIZE, true));
         this.revalidate();
         this.repaint();
     }
 
     public void setFocus(boolean visible) {
         this.setColor(visible);
-        this.setBorder(BorderFactory.createLineBorder(this.color, 5, true));
+        this.setBorder(BorderFactory.createLineBorder(this.color, BORDER_SIZE, true));
         this.revalidate();
         this.repaint();
     }
