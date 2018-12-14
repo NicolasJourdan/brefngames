@@ -1,6 +1,9 @@
 package Parameter.View;
 
 import Parameter.Factory.ColorFactory;
+import Parameter.Model.ParameterEnum;
+import Parameter.Model.Parameters;
+import Parameter.Parameters.ColorParameter;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
@@ -41,6 +44,15 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
     public ParametersThemeSoundView() {
         super();
         this.setLayout(new GridBagLayout());
+
+        this.createOrUpdateButtons();
+    }
+
+    /**
+     * Create buttons on the first display of this view
+     * Update buttons on each setting change
+     */
+    private void createOrUpdateButtons() {
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.insets = new Insets(
@@ -200,6 +212,16 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
         constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         this.initButtonsActionListeners();
+
+        String firstColor = ((ColorParameter) Parameters.getConfiguration().get(ParameterEnum.THEME_FIRST_COLOR)).getStringColor();
+        this.initFirstColorButtons(ActionEnum.valueOf(firstColor));
+
+        String secondColor = ((ColorParameter) Parameters.getConfiguration().get(ParameterEnum.THEME_SECOND_COLOR)).getStringColor();
+        this.initSecondColorButtons(ActionEnum.valueOf(secondColor));
+
+        boolean isOn = (boolean) Parameters.getConfiguration().get(ParameterEnum.SOUND).getValue();
+        this.initSoundButtons(isOn ? ActionEnum.SOUND_ON : ActionEnum.SOUND_OFF);
+
     }
 
     private void initButtonsActionListeners() {
@@ -337,5 +359,12 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
             default:
                 throw new RuntimeException("The action : " + actionEnum + "is not acceptable here");
         }
+    }
+
+    public void revalidateView() {
+        this.removeAll();
+        this.createOrUpdateButtons();
+        this.revalidate();
+        this.repaint();
     }
 }
