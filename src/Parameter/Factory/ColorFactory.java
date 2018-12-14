@@ -26,12 +26,16 @@ public class ColorFactory {
             case "COLOR_SECOND_PLAYER_GREEN":
             case "GREEN":
                 return Color.decode("#73CD4B");
+            case "WHITE":
             case "SECOND_COLOR_WHITE":
                 return Color.WHITE;
+            case "LIGHT GRAY":
             case "SECOND_COLOR_LIGHT_GRAY":
                 return Color.LIGHT_GRAY;
+            case "DARK GRAY":
             case "SECOND_COLOR_DARK_GRAY":
                 return Color.DARK_GRAY;
+            case "BLACK":
             case "SECOND_COLOR_BLACK":
                 return Color.BLACK;
             default:
