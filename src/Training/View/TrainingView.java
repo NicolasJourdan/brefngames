@@ -1,6 +1,6 @@
 package Training.View;
 
-import Scene.View.AbstractSceneManagerView;
+import Utils.UI.CustomPanel.CustomSceneManagerBackgroundPanel;
 
-public class TrainingView extends AbstractSceneManagerView {
+public class TrainingView extends CustomSceneManagerBackgroundPanel {
 }

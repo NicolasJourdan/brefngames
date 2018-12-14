@@ -3,15 +3,15 @@ package Training.View;
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.*;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TrainingMenuView extends AbstractView {
+public class TrainingMenuView extends CustomBackgroundPanel {
     private final JButton backButton;
     private final JButton ticTacToeButton;
     private final JButton runnerButton;

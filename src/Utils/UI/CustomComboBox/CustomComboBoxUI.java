@@ -1,4 +1,4 @@
-package Utils.UI.CustomeComboBox;
+package Utils.UI.CustomComboBox;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;

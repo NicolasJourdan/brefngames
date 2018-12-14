@@ -1,15 +1,15 @@
 package Game.Games.Runner.RunnerView;
 
-import Game.View.AbstractGameView;
 import Player.Player;
 import Scene.Model.ActionEnum;
+import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-public class RunnerView extends AbstractGameView {
+public class RunnerView extends CustomGameBackgroundPanel {
 
     private final static String ACTION_PRESS_Q = "ACTION_PRESS_Q";
     private final static String ACTION_PRESS_S = "ACTION_PRESS_S";

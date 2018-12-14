@@ -1,9 +1,9 @@
 package Statistic.View;
 
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.CustomTable.CustomTable;
-import Utils.UI.CustomeComboBox.CustomComboBox;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
+import Utils.UI.CustomComboBox.CustomComboBox;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
 import Utils.UI.Utils;
@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static Scene.Model.ActionEnum.STATISTIC_PLAYER_CHANGE;
 
-public class StatisticPlayerView extends AbstractView {
+public class StatisticPlayerView extends CustomBackgroundPanel {
 
     private CustomButton backButton;
     private CustomComboBox jcb;

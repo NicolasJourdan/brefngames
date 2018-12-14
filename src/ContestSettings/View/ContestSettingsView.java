@@ -10,8 +10,8 @@ import Scene.Model.ActionEnum;
 import Parameter.Model.ParameterEnum;
 import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
-import Structure.AbstractView;
 import Utils.UI.CustomCheckBox;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 import Utils.UI.CustomSpinner.CustomSpinner;
 import Utils.UI.WarningLabel;
 
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ContestSettingsView extends AbstractView {
+public class ContestSettingsView extends CustomBackgroundPanel {
 
     public final static int NB_MAX_GAMES = 7;
     public final static int NB_MIN_GAMES = 1;

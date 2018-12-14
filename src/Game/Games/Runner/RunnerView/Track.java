@@ -27,6 +27,7 @@ public class Track extends JPanel
         this.firstPlayerImage = ImageResizer.resizeImage(players[0].getIcon(), Track.ICON_SIZE);
         this.secondPlayerImage = ImageResizer.resizeImage(players[1].getIcon(), Track.ICON_SIZE);
 
+        this.setOpaque(false);
         this.setPreferredSize(
             new Dimension(Track.WIDTH, Track.HEIGHT)
         );

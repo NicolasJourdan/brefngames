@@ -1,5 +1,6 @@
 package Parameter.Controller;
 
+import Launcher.LauncherWindow;
 import Parameter.Model.ParameterEnum;
 import Parameter.Model.Parameters;
 import Parameter.Model.ParametersThemeSoundModel;
@@ -75,5 +76,7 @@ public class ParametersThemeSoundController extends AbstractSceneController {
             default:
                 throw new RuntimeException("The action : " + arg + " is not acceptable here");
         }
+        LauncherWindow launcherWindow = LauncherWindow.getInstance();
+        launcherWindow.revalidateWindow();
     }
 }

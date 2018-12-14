@@ -21,7 +21,7 @@ public class PlayerControls extends JPanel {
 
         // reusable GridBagConstraint to place every needed components
         GridBagConstraints constraint = new GridBagConstraints();
-
+        this.setOpaque(false);
         // player icon
         constraint.gridy = 0;
         constraint.gridx = 0;

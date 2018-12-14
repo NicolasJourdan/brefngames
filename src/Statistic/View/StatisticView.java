@@ -1,6 +1,6 @@
 package Statistic.View;
 
-import Scene.View.AbstractSceneManagerView;
+import Utils.UI.CustomPanel.CustomSceneManagerBackgroundPanel;
 
-public class StatisticView extends AbstractSceneManagerView {
+public class StatisticView extends CustomSceneManagerBackgroundPanel {
 }

@@ -1,5 +1,6 @@
 package Parameter.Controller;
 
+import Launcher.LauncherWindow;
 import Parameter.Factory.ParameterSceneFactory;
 import Parameter.Model.Parameters;
 import Scene.Controller.AbstractSceneManagerController;
@@ -30,6 +31,8 @@ public class ParametersController extends AbstractSceneManagerController {
             case PLAYER_PARAMETERS:
                 return SceneEnum.PLAYER_PARAMETERS;
             case RESET_PARAMETERS:
+                LauncherWindow launcherWindow = LauncherWindow.getInstance();
+                launcherWindow.revalidateWindow();
                 Parameters.reset();
             case PARAMETERS_MENU:
                 return SceneEnum.PARAMETERS_MENU;

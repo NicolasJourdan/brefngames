@@ -1,16 +1,16 @@
 package Map.View;
 
-import Game.View.AbstractGameView;
 import Player.Player;
 import Scene.Model.ActionEnum;
 import Utils.Image.ImageResizer;
+import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MapView extends AbstractGameView {
+public class MapView extends CustomGameBackgroundPanel {
 
     private JPanel gameListView;
     private JPanel score;

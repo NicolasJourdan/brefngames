@@ -2,9 +2,9 @@ package Parameter.View;
 
 import Parameter.Factory.ColorFactory;
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 import Utils.UI.CustomRadioButton;
 import Utils.UI.Utils;
 
@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ParametersThemeSoundView extends AbstractView {
+public class ParametersThemeSoundView extends CustomBackgroundPanel {
 
     private CustomButton backButton;
 
@@ -67,7 +67,12 @@ public class ParametersThemeSoundView extends AbstractView {
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.firstColorLabel, constraints);
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         constraints.anchor = GridBagConstraints.WEST;
         constraints.gridwidth = 1;
@@ -107,7 +112,12 @@ public class ParametersThemeSoundView extends AbstractView {
         constraints.gridx = 1;
         constraints.gridy = 3;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.secondColorLabel, constraints);
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         constraints.anchor = GridBagConstraints.WEST;
         constraints.gridwidth = 1;
@@ -149,7 +159,12 @@ public class ParametersThemeSoundView extends AbstractView {
         constraints.gridx = 1;
         constraints.gridy = 5;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.parametersSound, constraints);
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridwidth = 2;
@@ -164,11 +179,11 @@ public class ParametersThemeSoundView extends AbstractView {
         soundGroup.add(this.soundOff);
         soundGroup.add(this.soundOn);
 
-        constraints.gridx = 0;
-        constraints.gridwidth = 2;
+        constraints.gridx = 1;
+        constraints.gridwidth = 1;
         this.add(this.soundOff, constraints);
         constraints.gridx = 2;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 1;
         this.add(this.soundOn, constraints);
 
         constraints.anchor = GridBagConstraints.CENTER;
@@ -177,7 +192,12 @@ public class ParametersThemeSoundView extends AbstractView {
         constraints.gridy = 7;
         constraints.gridx = 1;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.backButton, constraints);
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         this.initButtonsActionListeners();
     }

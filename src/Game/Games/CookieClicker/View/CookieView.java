@@ -1,10 +1,10 @@
 package Game.Games.CookieClicker.View;
 
-import Game.View.AbstractGameView;
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomLabel;
+import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
 import Utils.UI.Utils;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-public class CookieView extends AbstractGameView {
+public class CookieView extends CustomGameBackgroundPanel {
 
     private static String ACTION_PRESS_Q = "ACTION_PRESS_Q";
     private static String ACTION_RELEASE_Q = "ACTION_RELEASE_Q";
