@@ -2,6 +2,7 @@ package Statistic.View;
 
 import Scene.Model.ActionEnum;
 import Structure.AbstractView;
+import Utils.UI.CustomTable.CustomTable;
 import Utils.UI.CustomeComboBox.CustomComboBox;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
@@ -91,7 +92,7 @@ public class StatisticPlayerView extends AbstractView {
     public void updateTableView(){
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
-        this.tableau = new JTable(this.model);
+        this.tableau = new CustomTable(this.model);
         this.c.gridx = 0;
         this.c.gridwidth = 3;
         this.c.gridy = 2;

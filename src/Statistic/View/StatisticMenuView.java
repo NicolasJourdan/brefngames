@@ -4,6 +4,7 @@ import Scene.Model.ActionEnum;
 import Structure.AbstractView;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
+import Utils.UI.CustomTable.CustomTable;
 import Utils.UI.Utils;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -137,7 +138,7 @@ public class StatisticMenuView extends AbstractView {
 
     public void updateTableView(){
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
-        this.tableau = new JTable(this.model);
+        this.tableau = new CustomTable(this.model);
         this.c.gridx = 0;
         this.c.gridy = 2;
         this.c.gridwidth = 4;   // largeur 4 colonne
