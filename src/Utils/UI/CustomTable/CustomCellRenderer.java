@@ -10,7 +10,6 @@ import java.awt.*;
 
 public class CustomCellRenderer extends JLabel implements TableCellRenderer {
 
-
     private static final int MARGIN = 10;
     public static final int BORDER_THICKNESS = 2;
 
