@@ -11,7 +11,7 @@ public class TicTacToeScene extends GameScene {
 
     public TicTacToeScene(Player[] listPlayers, boolean isTraining) {
         this.model = new TicTacToeModel(listPlayers, DEFAULT_SIZE);
-        this.view = new TicTacToeView(DEFAULT_SIZE);
+        this.view = new TicTacToeView(DEFAULT_SIZE, listPlayers);
         this.controller = new TicTacToeController((TicTacToeModel) this.model, (TicTacToeView) this.view, DEFAULT_SIZE, isTraining);
         this.controller.addObserver(this);
     }

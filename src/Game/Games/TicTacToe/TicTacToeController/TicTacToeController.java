@@ -77,6 +77,7 @@ public class TicTacToeController extends AbstractGameController {
                 return;
             }
             ((TicTacToeModel) this.model).changePlayer();
+            ((TicTacToeView) this.view).changePlayer();
         }
     }
 
