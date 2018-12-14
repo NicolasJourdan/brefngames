@@ -52,8 +52,8 @@ public class ParametersDefaultPlayerView extends AbstractView {
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
-                Utils.DEFAULT_BUTTON_PADDING_RIGHT)
-        ;
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT
+        );
 
         constraints.anchor = GridBagConstraints.CENTER;
 

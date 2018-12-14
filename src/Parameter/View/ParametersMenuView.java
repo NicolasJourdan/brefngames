@@ -35,7 +35,8 @@ public class ParametersMenuView extends AbstractView {
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM + 85,
-                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT
+        );
         this.add(this.globalSettingsLabel, constraints);
 
         constraints.insets = new Insets(
