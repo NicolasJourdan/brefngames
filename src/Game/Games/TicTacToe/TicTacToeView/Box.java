@@ -11,7 +11,7 @@ import java.awt.*;
 public class Box extends JButton {
 
     private static int BOX_SIZE = 100;
-    private static final int FONT_SIZE = 170;
+    private static final int FONT_SIZE = 140;
     private final Coord coord;
     private Color color;
     private Color backgroundColor;
@@ -54,7 +54,7 @@ public class Box extends JButton {
         FontMetrics fm = g2d.getFontMetrics();
         String text = this.getText();
         int x = (d.width - fm.stringWidth(text)) / 2;
-        int y = (d.height + fm.getAscent()) / 2 - ((int) (0.22 * FONT_SIZE));
+        int y = (d.height + fm.getAscent()) / 2 - ((int) (0.20 * FONT_SIZE));
         g2d.drawString(text, x, y);
         g2d.setColor(color);
         x = x - 5;
