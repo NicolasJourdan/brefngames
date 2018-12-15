@@ -1,16 +1,16 @@
 package Parameter.View;
 
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 import Utils.UI.Utils;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ParametersMenuView extends AbstractView {
+public class ParametersMenuView extends CustomBackgroundPanel {
 
     private final CustomButton backButton;
     private final CustomButton themeAndSoundButton;

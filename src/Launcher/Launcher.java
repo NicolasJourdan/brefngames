@@ -11,7 +11,7 @@ public class Launcher {
         LauncherModel launcherModel = new LauncherModel();
         LauncherController launcherController = new LauncherController(launcherModel, launcherView);
 
-        LauncherWindow window = new LauncherWindow();
+        LauncherWindow window = LauncherWindow.getInstance();
         window.add(launcherView);
 
         // manually repaint the window because we just added a panel

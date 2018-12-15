@@ -1,4 +1,4 @@
-package Utils.UI.CustomeComboBox;
+package Utils.UI.CustomComboBox;
 
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;

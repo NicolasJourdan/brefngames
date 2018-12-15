@@ -2,15 +2,15 @@ package Parameter.View;
 
 import Parameter.Factory.ColorFactory;
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.*;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ParametersDefaultPlayerView extends AbstractView {
+public class ParametersDefaultPlayerView extends CustomBackgroundPanel {
 
     private CustomButton backButton;
 
@@ -89,7 +89,12 @@ public class ParametersDefaultPlayerView extends AbstractView {
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.firstPlayerLabel, constraints);
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         constraints.anchor = GridBagConstraints.WEST;
 
@@ -152,7 +157,12 @@ public class ParametersDefaultPlayerView extends AbstractView {
         constraints.gridx = 1;
         constraints.gridy = 4;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.secondPlayerLabel, constraints);
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_TOP);
 
         constraints.anchor = GridBagConstraints.WEST;
 
@@ -197,6 +207,9 @@ public class ParametersDefaultPlayerView extends AbstractView {
         constraints.gridx = 1;
         constraints.gridy = 7;
         constraints.gridwidth = 2;
+
+        constraints.insets = Utils.getCustomTopInsets(Utils.DEFAULT_BUTTON_PADDING_CUSTOM_TOP);
+
         this.add(this.backButton, constraints);
 
         this.warningLabel = new WarningLabel("");

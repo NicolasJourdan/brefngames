@@ -1,9 +1,9 @@
 package Parameter.Controller;
 
+import Launcher.LauncherWindow;
 import Parameter.Model.ParameterEnum;
 import Parameter.Model.Parameters;
 import Parameter.Model.ParametersThemeSoundModel;
-import Parameter.Parameters.ColorParameter;
 import Parameter.Parameters.Configurable;
 import Parameter.View.ParametersThemeSoundView;
 import Scene.Controller.AbstractSceneController;
@@ -19,14 +19,6 @@ public class ParametersThemeSoundController extends AbstractSceneController {
     public ParametersThemeSoundController(AbstractModel model, AbstractView view) {
         super(model, view);
         Map<ParameterEnum, Configurable> conf = ((ParametersThemeSoundModel) this.model).getConfigurations();
-        boolean isOn = (boolean) conf.get(ParameterEnum.SOUND).getValue();
-        ((ParametersThemeSoundView) this.view).initSoundButtons(isOn ? ActionEnum.SOUND_ON : ActionEnum.SOUND_OFF);
-
-        String firstColor = ((ColorParameter) conf.get(ParameterEnum.THEME_FIRST_COLOR)).getStringColor();
-        ((ParametersThemeSoundView) this.view).initFirstColorButtons(ActionEnum.valueOf(firstColor));
-
-        String secondColor = ((ColorParameter) conf.get(ParameterEnum.THEME_SECOND_COLOR)).getStringColor();
-        ((ParametersThemeSoundView) this.view).initSecondColorButtons(ActionEnum.valueOf(secondColor));
     }
 
     @Override
@@ -68,12 +60,15 @@ public class ParametersThemeSoundController extends AbstractSceneController {
                 ((ParametersThemeSoundModel) this.model).setSecondColor(ActionEnum.SECOND_COLOR_BLACK.toString());
                 break;
             case PARAMETERS_MENU:
-                Parameters.save(((ParametersThemeSoundModel) this.model).getConfigurations());
                 this.setChanged();
                 this.notifyObservers(arg);
                 break;
             default:
                 throw new RuntimeException("The action : " + arg + " is not acceptable here");
         }
+        Parameters.save(((ParametersThemeSoundModel) this.model).getConfigurations());
+        ((ParametersThemeSoundView) this.view).revalidateView();
+        LauncherWindow launcherWindow = LauncherWindow.getInstance();
+        launcherWindow.revalidateWindow();
     }
 }

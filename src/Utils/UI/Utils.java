@@ -1,5 +1,7 @@
 package Utils.UI;
 
+import java.awt.*;
+
 public class Utils {
     public final static float DEFAULT_SIZE_LABEL = 15f;
     public final static float DEFAULT_SIZE_LABEL_PLAYER = 23f;
@@ -11,6 +13,8 @@ public class Utils {
     public final static int DEFAULT_BUTTON_PADDING_BOTTOM = 5;
     public final static int DEFAULT_BUTTON_PADDING_LEFT = 2;
     public final static int DEFAULT_BUTTON_PADDING_RIGHT = 2;
+
+    public final static int DEFAULT_BUTTON_PADDING_CUSTOM_TOP = 27;
 
     public final static int DEFAULT_BUTTON_SIZE = 500;
 
@@ -31,4 +35,13 @@ public class Utils {
 
 
     public final static String DEFAULT_CLICK_SOUND = "click1.wav";
+
+    public static Insets getCustomTopInsets(int padding) {
+        return new Insets(
+                padding,
+                Utils.DEFAULT_BUTTON_PADDING_LEFT,
+                Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT
+        );
+    }
 }

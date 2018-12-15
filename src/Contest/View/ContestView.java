@@ -1,6 +1,6 @@
 package Contest.View;
 
-import Scene.View.AbstractSceneManagerView;
+import Utils.UI.CustomPanel.CustomSceneManagerBackgroundPanel;
 
-public class ContestView extends AbstractSceneManagerView {
+public class ContestView extends CustomSceneManagerBackgroundPanel {
 }

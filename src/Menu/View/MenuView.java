@@ -2,15 +2,15 @@ package Menu.View;
 
 import Launcher.LauncherWindow;
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.CustomButton;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuView extends AbstractView {
+public class MenuView extends CustomBackgroundPanel {
 
     private final JButton trainingButton;
     private final JButton contestButton;

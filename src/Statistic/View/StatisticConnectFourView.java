@@ -1,10 +1,10 @@
 package Statistic.View;
 
 import Scene.Model.ActionEnum;
-import Structure.AbstractView;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
 import Utils.UI.CustomTable.CustomTable;
+import Utils.UI.CustomPanel.CustomBackgroundPanel;
 import Utils.UI.Utils;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StatisticConnectFourView extends AbstractView {
+public class StatisticConnectFourView extends CustomBackgroundPanel {
 
     private CustomButton backButton;
     private CustomLabel connectFourSettingsLabel;

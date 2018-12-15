@@ -1,6 +1,6 @@
 package Parameter.View;
 
-import Scene.View.AbstractSceneManagerView;
+import Utils.UI.CustomPanel.CustomSceneManagerBackgroundPanel;
 
-public class ParametersView extends AbstractSceneManagerView {
+public class ParametersView extends CustomSceneManagerBackgroundPanel {
 }

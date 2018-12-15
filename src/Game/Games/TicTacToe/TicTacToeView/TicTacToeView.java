@@ -2,13 +2,14 @@ package Game.Games.TicTacToe.TicTacToeView;
 
 import Game.Games.Coord;
 import Game.Games.DisplayPanel;
-import Game.View.AbstractGameView;
 import Player.Player;
 import Structure.ProxyObservable;
+import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
 
 import java.awt.*;
 
-public class TicTacToeView extends AbstractGameView {
+public class TicTacToeView extends CustomGameBackgroundPanel {
+
     private static int INSET_SIZE = 10;
     private DisplayPanel firstPlayerDisplay;
     private Board board;
