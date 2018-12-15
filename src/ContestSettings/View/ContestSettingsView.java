@@ -10,10 +10,9 @@ import Scene.Model.ActionEnum;
 import Parameter.Model.ParameterEnum;
 import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
-import Utils.UI.CustomCheckBox;
+import Utils.UI.*;
 import Utils.UI.CustomPanel.CustomBackgroundPanel;
 import Utils.UI.CustomSpinner.CustomSpinner;
-import Utils.UI.WarningLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +28,6 @@ public class ContestSettingsView extends CustomBackgroundPanel {
     public final static int NB_MIN_GAMES = 1;
     public final static int NB_DEFAULT_GAMES = 4;
     public final static int NB_STEP_GAMES = 1;
-    public final static int COLUMNS_PLAYER_NAME_TEXTFIELD = 15;
 
     public final static String DEFAULT_FIRST_PLAYER_NAME = "Player 1";
     public final static String DEFAULT_SECOND_PLAYER_NAME = "Player 2";
@@ -84,8 +82,10 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
+        CustomLabel titleLabel = new CustomLabel("Contest customization");
+        titleLabel.setFont(titleLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.add(titleLabel, constraint);
 
-        this.add(new JLabel("Contest customization"), constraint);
 
         // Game checkboxes
         constraint.gridy = 1;
@@ -114,7 +114,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         JPanel nbGamesPanel = new JPanel();
         nbGamesPanel.setLayout(new FlowLayout());
 
-        JLabel nbGamesLabel = new JLabel("Number of matches");
+        JLabel nbGamesLabel = new CustomLabel("Number of matches");
         nbGamesPanel.add(nbGamesLabel);
         this.spinnerNbGames = new CustomSpinner(
             new SpinnerNumberModel(
@@ -140,21 +140,21 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         firstPlayerPanel.setLayout(new GridBagLayout());
         firstPlayerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        firstPlayerPanel.add(new JLabel("Player 1"), constraintPlayerPanel);
+        firstPlayerPanel.add(new CustomLabel("Player 1"), constraintPlayerPanel);
 
-        constraintPlayerPanel.gridx = 1;
-        this.firstPlayerName = new JTextField(ContestSettingsView.DEFAULT_FIRST_PLAYER_NAME, COLUMNS_PLAYER_NAME_TEXTFIELD);
+        constraintPlayerPanel.gridy = 1;
+        this.firstPlayerName = new CustomTextField(ContestSettingsView.DEFAULT_FIRST_PLAYER_NAME);
         firstPlayerPanel.add(this.firstPlayerName, constraintPlayerPanel);
 
-        this.firstIconSuperman = new JRadioButton("Superman_1");
-        this.firstIconBatman = new JRadioButton("Batman_1");
-        this.firstIconFlash = new JRadioButton("Flash_1");
-        this.firstIconAquaman = new JRadioButton("Aquaman_1");
+        this.firstIconSuperman = new CustomRadioButton("Superman");
+        this.firstIconBatman = new CustomRadioButton("Batman");
+        this.firstIconFlash = new CustomRadioButton("Flash");
+        this.firstIconAquaman = new CustomRadioButton("Aquaman");
 
-        this.firstColorPlayerRed = new JRadioButton("Red_1");
-        this.firstColorPlayerBlue = new JRadioButton("Blue_1");
-        this.firstColorPlayerGreen = new JRadioButton("Green_1");
-        this.firstColorPlayerYellow = new JRadioButton("Yellow_1");
+        this.firstColorPlayerRed = new CustomRadioButton("Red");
+        this.firstColorPlayerBlue = new CustomRadioButton("Blue");
+        this.firstColorPlayerGreen = new CustomRadioButton("Green");
+        this.firstColorPlayerYellow = new CustomRadioButton("Yellow");
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -195,21 +195,21 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         constraintPlayerPanel.gridx = 0;
         constraintPlayerPanel.gridy = 0;
-        secondPlayerPanel.add(new JLabel("Player 2"), constraintPlayerPanel);
+        secondPlayerPanel.add(new CustomLabel("Player 2"), constraintPlayerPanel);
 
-        constraintPlayerPanel.gridx = 1;
-        this.secondPlayerName = new JTextField(ContestSettingsView.DEFAULT_SECOND_PLAYER_NAME, COLUMNS_PLAYER_NAME_TEXTFIELD);
+        constraintPlayerPanel.gridy = 1;
+        this.secondPlayerName = new CustomTextField(ContestSettingsView.DEFAULT_SECOND_PLAYER_NAME);
         secondPlayerPanel.add(this.secondPlayerName, constraintPlayerPanel);
 
-        this.secondColorPlayerRed = new JRadioButton("Red_2");
-        this.secondColorPlayerBlue = new JRadioButton("Blue_2");
-        this.secondColorPlayerGreen = new JRadioButton("Green_2");
-        this.secondColorPlayerYellow = new JRadioButton("Yellow_2");
+        this.secondColorPlayerRed = new CustomRadioButton("Red");
+        this.secondColorPlayerBlue = new CustomRadioButton("Blue");
+        this.secondColorPlayerGreen = new CustomRadioButton("Green");
+        this.secondColorPlayerYellow = new CustomRadioButton("Yellow");
 
-        this.secondIconSuperman = new JRadioButton("Superman_2");
-        this.secondIconBatman = new JRadioButton("Batman_2");
-        this.secondIconFlash = new JRadioButton("Flash_2");
-        this.secondIconAquaman = new JRadioButton("Aquaman_2");
+        this.secondIconSuperman = new CustomRadioButton("Superman");
+        this.secondIconBatman = new CustomRadioButton("Batman");
+        this.secondIconFlash = new CustomRadioButton("Flash");
+        this.secondIconAquaman = new CustomRadioButton("Aquaman");
 
         ButtonGroup secondIconGroup = new ButtonGroup();
         secondIconGroup.add(this.secondIconSuperman);
@@ -247,7 +247,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         // Start button
         constraint.gridy = 5;
         constraint.gridheight = 1;
-        this.startButton = new JButton("Start");
+        this.startButton = new CustomButton("Start");
         this.add(this.startButton, constraint);
 
         this.startButton.addActionListener(new ActionListener() {
@@ -260,7 +260,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         // Back button
         constraint.gridy = 6;
         constraint.gridheight = 1;
-        this.backButton = new JButton("Back");
+        this.backButton = new CustomButton("Back");
         this.add(this.backButton, constraint);
 
         this.backButton.addActionListener(new ActionListener() {
