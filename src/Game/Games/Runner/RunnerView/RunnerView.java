@@ -3,6 +3,8 @@ package Game.Games.Runner.RunnerView;
 import Player.Player;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
+import Utils.UI.SoundPlayer;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +17,9 @@ public class RunnerView extends CustomGameBackgroundPanel {
     private final static String ACTION_PRESS_S = "ACTION_PRESS_S";
     private final static String ACTION_PRESS_L = "ACTION_PRESS_L";
     private final static String ACTION_PRESS_M = "ACTION_PRESS_M";
+
+    private static final int TRACK_INSETS_DIMENSION = 20;
+    private static final int CONTROLS_INSETS_DIMENSION = 40;
 
     private final Track track;
     private final PlayerControls firstPlayerControls;
@@ -33,6 +38,8 @@ public class RunnerView extends CustomGameBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
+        constraint.insets.top = RunnerView.TRACK_INSETS_DIMENSION;
+        constraint.insets.bottom = RunnerView.TRACK_INSETS_DIMENSION;
         this.track = new Track(players);
         this.add(track, constraint);
 
@@ -40,6 +47,9 @@ public class RunnerView extends CustomGameBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridy = 1;
         constraint.gridwidth = 1;
+        constraint.insets.top = RunnerView.CONTROLS_INSETS_DIMENSION;
+        constraint.insets.left = RunnerView.CONTROLS_INSETS_DIMENSION;
+        constraint.insets.right = RunnerView.CONTROLS_INSETS_DIMENSION;
         this.firstPlayerControls = new PlayerControls(ControlsTypeEnum.Q_S, players[0]);
         this.add(this.firstPlayerControls, constraint);
 
@@ -120,9 +130,15 @@ public class RunnerView extends CustomGameBackgroundPanel {
 
     public void updateFirstPlayerNextKey(boolean isNextKeyLeft) {
         this.firstPlayerControls.updateNextKey(isNextKeyLeft);
+        this.playSound();
     }
 
     public void updateSecondPlayerNextKey(boolean isNextKeyLeft) {
         this.secondPlayerControls.updateNextKey(isNextKeyLeft);
+        this.playSound();
+    }
+
+    private void playSound() {
+        SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
 }

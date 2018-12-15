@@ -24,8 +24,7 @@ public class PlayerControls extends JPanel {
         this.setOpaque(false);
         // player icon
         constraint.gridy = 0;
-        constraint.gridx = 0;
-        constraint.gridwidth = 2;
+        constraint.gridx = 1;
         constraint.gridheight = 1;
         this.playerIcon = new JLabel(
             ImageResizer.resizeImage(player.getIcon(), PlayerControls.PLAYER_ICON_SIZE)
@@ -33,6 +32,7 @@ public class PlayerControls extends JPanel {
         this.add(this.playerIcon, constraint);
 
         // controls display
+        constraint.gridx = 0;
         constraint.gridy = 1;
         constraint.gridwidth = 1;
         this.leftKey = new VirtualKey(
