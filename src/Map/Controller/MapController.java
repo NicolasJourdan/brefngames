@@ -17,9 +17,7 @@ public class MapController extends AbstractGameController {
 
         this.history = history;
 
-        if (!this.isTraining) {
-            ((MapView) this.view).addCurrentScore(this.history.getPlayers(), ((MapModel) this.model).getCurrentScore(this.history));
-        } else {
+        if (this.isTraining) {
             ((MapView) this.view).addTrainingTitle();
         }
 

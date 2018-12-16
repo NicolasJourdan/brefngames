@@ -1,5 +1,10 @@
 package Utils.UI.CustomPanel;
 
-public class CustomColoredPanel extends AbstractCustomPanel{
+import Utils.UI.FileGetter;
 
+public class CustomColoredPanel extends AbstractCustomPanel{
+    public CustomColoredPanel() {
+        super();
+        this.setBackgroundImage(FileGetter.getImage("_panel.png"));
+    }
 }

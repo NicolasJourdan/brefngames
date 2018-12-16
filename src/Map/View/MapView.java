@@ -2,8 +2,10 @@ package Map.View;
 
 import Player.Player;
 import Scene.Model.ActionEnum;
-import Utils.Image.ImageResizer;
+import Utils.UI.CustomButton;
+import Utils.UI.CustomLabel;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,23 +14,35 @@ import java.awt.event.ActionListener;
 
 public class MapView extends CustomGameBackgroundPanel {
 
+    public static final int DEFAULT_GAME_IMAGE_WIDTH = 96;
+    public static final int DEFAULT_GAME_IMAGE_HEIGHT = 113;
+    public static final int DEFAULT_PLAYER_ICON_SIZE = 32;
+
     private JPanel gameListView;
-    private JPanel score;
     private JButton button;
+    private JLabel title;
+    private GridBagConstraints constraints;
 
     public MapView() {
         super();
-        this.setLayout(new GridLayout(3, 1));
+        this.setLayout(new GridBagLayout());
+        this.constraints = new GridBagConstraints();
 
-        this.score = new JPanel();
-        this.score.setLayout(new GridLayout(1, 1));
-        this.add(this.score);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 0;
 
-        this.gameListView = new JPanel();
-        this.gameListView.setLayout(new GridLayout(1, 7));
-        this.add(this.gameListView);
+        this.title = new CustomLabel("Contest");
+        this.title.setFont(this.title.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
+        this.add(this.title, this.constraints);
 
-        this.button = new JButton("Next");
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 1;
+        this.gameListView = new CardList();
+        this.add(this.gameListView, this.constraints);
+
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 2;
+        this.button = new CustomButton("Next");
         this.button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,66 +50,33 @@ public class MapView extends CustomGameBackgroundPanel {
             }
         });
 
-        this.add(this.button);
+        this.constraints.insets = new Insets(
+                Utils.DEFAULT_COMPONENT_PADDING_TOP_MAP,
+                Utils.DEFAULT_COMPONENT_PADDING_LEFT_MAP,
+                Utils.DEFAULT_COMPONENT_PADDING_BOTTOM_MAP,
+                Utils.DEFAULT_COMPONENT_PADDING_RIGHT_MAP
+        );
+
+        this.add(this.button, this.constraints);
 
         revalidate();
         repaint();
     }
 
     public void addGame(Player winner, String gameName) {
-        JPanel current = new JPanel();
-        current.setLayout(new GridLayout(3, 1));
-        if (null == winner) {
-            current.add(new JLabel("Draw"));
-            current.add(new JLabel("Draw"));
-        } else {
-            current.add(new JLabel(ImageResizer.resizeImage(winner.getIcon(), 64, 64)));
-            current.add(new JLabel(winner.getName()));
-        }
-
-        current.add(new JLabel(gameName));
-
-        this.gameListView.add(current);
+        this.gameListView.add(new Card(winner, gameName), this.constraints);
         revalidate();
         repaint();
     }
 
     public void addNextGame() {
-        JPanel currentPanel = new JPanel();
-        currentPanel.setLayout(new GridLayout(3, 1));
-        currentPanel.add(new JLabel("???"));
-        currentPanel.add(new JLabel("???"));
-        currentPanel.add(new JLabel("???"));
-        this.gameListView.add(currentPanel);
-        revalidate();
-        repaint();
-    }
-
-    public void addCurrentScore(Player[] players, int[] scores) {
-        JPanel scorePanel = new JPanel();
-        scorePanel.setLayout(new GridLayout(1, 3));
-
-        JPanel firstPlayerPanel = new JPanel();
-        firstPlayerPanel.setLayout(new GridLayout(2, 1));
-        firstPlayerPanel.add(new JLabel(ImageResizer.resizeImage(players[0].getIcon(), 64)));
-        firstPlayerPanel.add(new JLabel(players[0].getName()));
-        scorePanel.add(firstPlayerPanel);
-
-        scorePanel.add(new JLabel(String.valueOf(scores[0]) + " - " + String.valueOf(scores[1])));
-
-        JPanel secondPlayerPanel = new JPanel();
-        secondPlayerPanel.setLayout(new GridLayout(2, 1));
-        secondPlayerPanel.add(new JLabel(ImageResizer.resizeImage(players[1].getIcon(), 64)));
-        secondPlayerPanel.add(new JLabel(players[1].getName()));
-        scorePanel.add(secondPlayerPanel);
-
-        this.score.add(scorePanel);
+        this.gameListView.add(new Card(), this.constraints);
         revalidate();
         repaint();
     }
 
     public void addTrainingTitle() {
-        this.score.add(new JLabel("Training"));
+        this.title.setText("Training");
         revalidate();
         repaint();
     }

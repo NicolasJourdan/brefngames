@@ -8,12 +8,18 @@ public class Utils {
     public final static float DEFAULT_SIZE_TITLE_LABEL = 25f;
     public final static float DEFAULT_GOAL_SIZE_LABEL = 45f;
     public final static float DEFAULT_SIZE_BUTTON_TEXT = 18f;
+    public final static float DEFAULT_SIZE_LABEL_CARD = 11f;
     public final static float DEFAULT_SIZE_SMALL_CONTEST = 13f;
 
     public final static int DEFAULT_BUTTON_PADDING_TOP = 5;
     public final static int DEFAULT_BUTTON_PADDING_BOTTOM = 5;
     public final static int DEFAULT_BUTTON_PADDING_LEFT = 2;
     public final static int DEFAULT_BUTTON_PADDING_RIGHT = 2;
+
+    public final static int DEFAULT_COMPONENT_PADDING_TOP_MAP = 15;
+    public final static int DEFAULT_COMPONENT_PADDING_BOTTOM_MAP = 15;
+    public final static int DEFAULT_COMPONENT_PADDING_LEFT_MAP = 4;
+    public final static int DEFAULT_COMPONENT_PADDING_RIGHT_MAP = 4;
 
     public final static int DEFAULT_BUTTON_PADDING_CUSTOM_TOP = 27;
 
