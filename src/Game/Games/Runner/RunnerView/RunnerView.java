@@ -1,5 +1,8 @@
 package Game.Games.Runner.RunnerView;
 
+import Game.Games.ScoreDisplay;
+import Game.View.AbstractGameView;
+import Map.Model.History;
 import Player.Player;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
@@ -24,19 +27,24 @@ public class RunnerView extends CustomGameBackgroundPanel {
     private final Track track;
     private final PlayerControls firstPlayerControls;
     private final PlayerControls secondPlayerControls;
+    private ScoreDisplay scoreDisplay;
 
-    public RunnerView(Player[] players) {
+    public RunnerView(Player[] players, History history) {
         this.setLayout(
             new GridBagLayout()
         );
 
         // reusable GridBagConstraint to place every needed components
         GridBagConstraints constraint = new GridBagConstraints();
-
-        // track
+        this.scoreDisplay = new ScoreDisplay(players, history);
         constraint.gridy = 0;
         constraint.gridx = 0;
         constraint.gridwidth = 2;
+        constraint.insets = new Insets(0,0,10,0);
+        this.add(this.scoreDisplay, constraint);
+
+        // track
+        constraint.gridy = 1;
         constraint.gridheight = 1;
         constraint.insets.top = RunnerView.TRACK_INSETS_DIMENSION;
         constraint.insets.bottom = RunnerView.TRACK_INSETS_DIMENSION;
@@ -45,7 +53,7 @@ public class RunnerView extends CustomGameBackgroundPanel {
 
         // first player controls
         constraint.gridx = 0;
-        constraint.gridy = 1;
+        constraint.gridy = 2;
         constraint.gridwidth = 1;
         constraint.insets.top = RunnerView.CONTROLS_INSETS_DIMENSION;
         constraint.insets.left = RunnerView.CONTROLS_INSETS_DIMENSION;

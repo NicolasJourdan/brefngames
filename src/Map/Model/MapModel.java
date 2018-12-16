@@ -10,21 +10,7 @@ public class MapModel extends AbstractGameModel {
     }
 
     public int[] getCurrentScore(History history) {
-        Player[] players = history.getPlayers();
-        int firstPlayerScore = 0;
-        int secondPlayerScore = 0;
-        for(GameHistory current : history.getGameHistories()) {
-            if (null == current.getWinner()) {
-                firstPlayerScore++;
-                secondPlayerScore++;
-            } else if (current.getWinner().equals(players[0])) {
-                firstPlayerScore++;
-            } else {
-                secondPlayerScore++;
-            }
-        }
-
-        return new int[]{firstPlayerScore, secondPlayerScore};
+        return history.getCurrentScore();
     }
 
     public boolean isFinish(History history) {

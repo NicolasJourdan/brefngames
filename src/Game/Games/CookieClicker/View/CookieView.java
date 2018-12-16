@@ -1,6 +1,10 @@
 package Game.Games.CookieClicker.View;
 
+import Game.Games.ScoreDisplay;
+import Game.View.AbstractGameView;
+import Map.Model.History;
 import Parameter.Model.ThemeEnum;
+import Player.Player;
 import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomLabel;
@@ -33,12 +37,13 @@ public class CookieView extends CustomGameBackgroundPanel {
     private CustomLabel secondPlayerCheck;
     private CustomLabel commandFirstPlayer;
     private CustomLabel commandSecondPlayer;
-
+    private ScoreDisplay scoreDisplay;
     private CustomLabel goalScreen;
 
-    public CookieView(){
+    public CookieView(Player[] players, History history){
         super();
         this.setLayout(new GridBagLayout());
+        this.scoreDisplay = new ScoreDisplay(players, history);
         this.setFocusable(true);
         this.requestFocus();
         this.initComposant();
@@ -157,29 +162,35 @@ public class CookieView extends CustomGameBackgroundPanel {
 
         constraint.gridy = 0;
         constraint.gridx = 2;
+        constraint.gridwidth = 2;
+        this.add(this.scoreDisplay, constraint);
+
+        constraint.gridy = 1;
+        constraint.gridx = 2;
+        constraint.gridwidth = 1;
         this.add(firstPlayerButton, constraint);
 
-        constraint.gridy = 0;
+        constraint.gridy = 1;
         constraint.gridx = 3;
         this.add(secondPlayerButton, constraint);
 
-        constraint.gridy = 1;
+        constraint.gridy = 2;
         constraint.gridx = 2;
         this.add(commandFirstPlayer, constraint);
 
-        constraint.gridy = 1;
+        constraint.gridy = 2;
         constraint.gridx = 3;
         this.add(commandSecondPlayer, constraint);
 
-        constraint.gridy = 2;
+        constraint.gridy = 3;
         constraint.gridx = 2;
         this.add(firstPlayerCheck, constraint);
 
-        constraint.gridy = 2;
+        constraint.gridy = 3;
         constraint.gridx = 3;
         this.add(secondPlayerCheck, constraint);
 
-        constraint.gridy = 3;
+        constraint.gridy = 4;
         constraint.gridx = 2;
         constraint.gridwidth = 2;
         this.add(goalScreen, constraint);

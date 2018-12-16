@@ -6,6 +6,7 @@ import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Games.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
+import Map.Model.History;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
 import java.awt.*;
@@ -15,6 +16,7 @@ import java.util.Observable;
 
 public class TicTacToeController extends AbstractGameController {
     private int size;
+    private History history;
     private int round;
     private long initTime;
     private long finalTime;
@@ -24,9 +26,10 @@ public class TicTacToeController extends AbstractGameController {
     private Map<PlayerStatsEnum, String> statsSecondPlayer;
 
 
-    public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size, boolean isTraining) {
+    public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size, boolean isTraining, History history) {
         super(m, v, isTraining);
         this.size = size;
+        this.history = history;
         this.round = 0;
         this.initStats();
         this.initTime = System.currentTimeMillis();

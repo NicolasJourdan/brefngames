@@ -35,6 +35,7 @@ public class Box extends JButton {
     private static int PAWN_MIDDLE_Y = 13;
     private static int PAWN_MIDDLE_DX = 29;
     private static int PAWN_MIDDLE_DY = 29;
+    private static int PAWN_SIZE = 70;
     private final Coord coord;
     private Color backgroundColor;
     private Color emptyColor;
@@ -44,7 +45,7 @@ public class Box extends JButton {
 
     public Box(Coord coord) {
         this.coord = coord;
-        this.setPreferredSize(new Dimension(75, 75));
+        this.setPreferredSize(new Dimension(PAWN_SIZE, PAWN_SIZE));
         this.setLayout(new BorderLayout());
         setOpaque(true);
         backgroundColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue();
