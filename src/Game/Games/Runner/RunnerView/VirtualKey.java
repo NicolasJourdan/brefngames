@@ -11,6 +11,8 @@ public class VirtualKey extends JLabel
     private final static Color INACTIVE_CONTROL_BACKGROUND = Color.LIGHT_GRAY;
     private final static Color INACTIVE_CONTROL_TEXT_COLOR = Color.BLACK;
 
+    private static final int BORDER = 10;
+
     public VirtualKey(String text, boolean highlight) {
         super(text);
 
@@ -24,7 +26,12 @@ public class VirtualKey extends JLabel
             )
         );
         this.setBorder(
-            new EmptyBorder(10, 10, 10, 10)
+            new EmptyBorder(
+                    VirtualKey.BORDER,
+                    VirtualKey.BORDER,
+                    VirtualKey.BORDER,
+                    VirtualKey.BORDER
+                )
         );
     }
 
