@@ -41,7 +41,7 @@ public class ContestSettingsModel extends AbstractModel {
         if (!this.validatePlayerNameLength(settingsDataObject.getFirstPlayerName()) ||
             !this.validatePlayerNameLength(settingsDataObject.getSecondPlayerName())) {
             this.invalidDataObjectText += "Player name must have between " + ContestSettingsModel.PLAYER_NAME_MIN_LENGTH +
-                    " and " + ContestSettingsModel.PLAYER_NAME_MAX_LENGTH + "characters<br>";
+                    " and " + ContestSettingsModel.PLAYER_NAME_MAX_LENGTH + " characters<br>";
         }
 
         if (settingsDataObject.getFirstPlayerName().equals(settingsDataObject.getSecondPlayerName())) {
