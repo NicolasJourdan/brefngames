@@ -1,24 +1,20 @@
 package Parameter.Controller;
 
 import Launcher.LauncherWindow;
-import Parameter.Model.ParameterEnum;
 import Parameter.Model.Parameters;
 import Parameter.Model.ParametersThemeSoundModel;
-import Parameter.Parameters.Configurable;
 import Parameter.View.ParametersThemeSoundView;
 import Scene.Controller.AbstractSceneController;
 import Scene.Model.ActionEnum;
 import Structure.AbstractModel;
 import Structure.AbstractView;
 
-import java.util.Map;
 import java.util.Observable;
 
 public class ParametersThemeSoundController extends AbstractSceneController {
 
     public ParametersThemeSoundController(AbstractModel model, AbstractView view) {
         super(model, view);
-        Map<ParameterEnum, Configurable> conf = ((ParametersThemeSoundModel) this.model).getConfigurations();
     }
 
     @Override
