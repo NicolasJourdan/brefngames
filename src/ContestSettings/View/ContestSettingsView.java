@@ -12,6 +12,7 @@ import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
 import Utils.UI.*;
 import Utils.UI.CustomPanel.CustomBackgroundPanel;
+import Utils.UI.CustomPanel.CustomGreyPanel;
 import Utils.UI.CustomSpinner.CustomSpinner;
 
 import javax.swing.*;
@@ -31,6 +32,9 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
     public final static String DEFAULT_FIRST_PLAYER_NAME = "Player 1";
     public final static String DEFAULT_SECOND_PLAYER_NAME = "Player 2";
+
+    private static final int PANEL_BORDER = 5;
+    private static final int PLAYER_TOP_INSET = 10;
 
     private final JCheckBox ticTacToeCheckbox;
     private final JCheckBox connectFourCheckbox;
@@ -88,7 +92,15 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
 
         // Game checkboxes
-        JPanel gameSelectionPanel = new JPanel();
+        JPanel gameSelectionPanel = new CustomGreyPanel();
+        gameSelectionPanel.setBorder(
+                BorderFactory.createEmptyBorder(
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER
+                )
+        );
         gameSelectionPanel.setLayout(new GridLayout(4, 1));
 
         this.ticTacToeCheckbox = new CustomCheckBox("Tic Tac Toe");
@@ -122,7 +134,15 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         // number of matches
         constraint.gridy = 3;
         constraint.gridheight = 1;
-        JPanel nbGamesPanel = new JPanel();
+        JPanel nbGamesPanel = new CustomGreyPanel();
+        nbGamesPanel.setBorder(
+                BorderFactory.createEmptyBorder(
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER
+                )
+        );
         nbGamesPanel.setLayout(new FlowLayout());
 
         JLabel nbGamesLabel = new CustomLabel("Number of matches");
@@ -144,10 +164,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         GridBagConstraints constraintPlayerPanel = new GridBagConstraints();
 
         // Player 1
-        JPanel firstPlayerPanel = new JPanel();
+        JPanel firstPlayerPanel = new CustomGreyPanel();
         firstPlayerPanel.setLayout(new GridBagLayout());
-        firstPlayerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+        firstPlayerPanel.setBorder(
+                BorderFactory.createEmptyBorder(
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER
+                )
+        );
         firstPlayerPanel.add(new CustomLabel("Player 1"), constraintPlayerPanel);
 
         constraintPlayerPanel.gridy = 1;
@@ -208,9 +234,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         this.add(firstPlayerPanel, constraint);
 
         // Player 2
-        JPanel secondPlayerPanel = new JPanel();
+        JPanel secondPlayerPanel = new CustomGreyPanel();
+        secondPlayerPanel.setBorder(
+                BorderFactory.createEmptyBorder(
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER,
+                        ContestSettingsView.PANEL_BORDER
+                )
+        );
         secondPlayerPanel.setLayout(new GridBagLayout());
-        secondPlayerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         constraintPlayerPanel.gridx = 0;
         constraintPlayerPanel.gridy = 0;
@@ -269,7 +302,9 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         secondPlayerPanel.add(secondColorGroupPanel, constraintPlayerPanel);
 
         constraint.gridy = 2;
+        constraint.insets.top = ContestSettingsView.PLAYER_TOP_INSET;
         this.add(secondPlayerPanel, constraint);
+        constraint.insets.top = 0;
 
         // Start button
         constraint.gridy = 3;
