@@ -5,6 +5,8 @@ import Game.Games.DisplayPanel;
 import Player.Player;
 import Structure.ProxyObservable;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
+import Utils.UI.SoundPlayer;
+import Utils.UI.Utils;
 
 import java.awt.*;
 
@@ -53,6 +55,7 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
         this.board.setPawnBoard(text, color, coord);
         this.revalidate();
         this.repaint();
+        SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
 
     public void changePlayer(){

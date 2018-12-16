@@ -3,6 +3,8 @@ package Game.Games.ConnectFour.ConnectFourView;
 import Game.Games.Coord;
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;
+import Utils.UI.SoundPlayer;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -86,6 +88,7 @@ public class Box extends JButton {
         this.borderColor = opositeColor;
         this.revalidate();
         this.repaint();
+        SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
 
     public Coord getCoord() {
