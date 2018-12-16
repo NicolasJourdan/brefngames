@@ -36,6 +36,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
     private static final int PANEL_BORDER = 5;
     private static final int TOP_INSET = 8;
     private static final int VERTICAL_INSET = 5;
+    private static final int BUTTONS_VERTICAL_INSET = 50;
 
     private final JCheckBox ticTacToeCheckbox;
     private final JCheckBox connectFourCheckbox;
@@ -83,6 +84,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         // reusable GridBagConstraint to place every needed components
         GridBagConstraints constraint = new GridBagConstraints();
 
+        constraint.fill = GridBagConstraints.BOTH;
         constraint.gridy = 0;
         constraint.gridx = 0;
         constraint.gridwidth = 2;
@@ -91,6 +93,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraint.insets.right = ContestSettingsView.VERTICAL_INSET;
 
         CustomLabel titleLabel = new CustomLabel("Contest customization");
+        titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setFont(titleLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.add(titleLabel, constraint);
 
@@ -203,12 +206,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         this.firstColorPlayerRed = new CustomRadioButton("Red");
         this.firstColorPlayerRed.setFont(this.firstColorPlayerRed.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
         this.firstColorPlayerBlue = new CustomRadioButton("Blue");
         this.firstColorPlayerBlue.setFont(this.firstColorPlayerBlue.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
         this.firstColorPlayerGreen = new CustomRadioButton("Green");
         this.firstColorPlayerGreen.setFont(this.firstColorPlayerGreen.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
         this.firstColorPlayerYellow = new CustomRadioButton("Yellow");
         this.firstColorPlayerYellow.setFont(this.firstColorPlayerYellow.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -267,12 +274,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         this.secondColorPlayerRed = new CustomRadioButton("Red");
         this.secondColorPlayerRed.setFont(this.secondColorPlayerRed.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
         this.secondColorPlayerBlue = new CustomRadioButton("Blue");
         this.secondColorPlayerBlue.setFont(this.secondColorPlayerBlue.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
         this.secondColorPlayerGreen = new CustomRadioButton("Green");
         this.secondColorPlayerGreen.setFont(this.secondColorPlayerGreen.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
         this.secondColorPlayerYellow = new CustomRadioButton("Yellow");
         this.secondColorPlayerYellow.setFont(this.secondColorPlayerYellow.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
 
         this.secondIconSuperman = new CustomRadioButton("Superman");
         this.secondIconSuperman.setFont(this.secondIconSuperman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
@@ -317,25 +328,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraint.gridheight = 2;
         this.add(secondPlayerPanel, constraint);
 
-        // Start button
-        constraint.gridy = 4;
-        constraint.gridx = 1;
-        constraint.gridheight = 1;
-        constraint.gridwidth = 1;
-        this.startButton = new CustomButton("Start");
-        this.add(this.startButton, constraint);
-
-        this.startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ContestSettingsView.this.observable.notifyObservers(ActionEnum.START_CONTEST);
-            }
-        });
+        // buttons
+        JPanel buttonsPanel = new CustomBackgroundPanel();
+        buttonsPanel.setLayout(new GridBagLayout());
+        GridBagConstraints buttonsGridBagConstraints = new GridBagConstraints();
+        buttonsGridBagConstraints.insets.right = ContestSettingsView.BUTTONS_VERTICAL_INSET;
+        buttonsGridBagConstraints.insets.left = ContestSettingsView.BUTTONS_VERTICAL_INSET;
 
         // Back button
-        constraint.gridx = 0;
         this.backButton = new CustomButton("Back");
-        this.add(this.backButton, constraint);
+        buttonsPanel.add(this.backButton, buttonsGridBagConstraints);
 
         this.backButton.addActionListener(new ActionListener() {
             @Override
@@ -344,11 +346,29 @@ public class ContestSettingsView extends CustomBackgroundPanel {
             }
         });
 
+        // Start button
+        this.startButton = new CustomButton("Start");
+        buttonsPanel.add(this.startButton, buttonsGridBagConstraints);
+
+        this.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ContestSettingsView.this.observable.notifyObservers(ActionEnum.START_CONTEST);
+            }
+        });
+
+        constraint.gridx = 0;
+        constraint.gridy = 4;
+        constraint.gridheight = 1;
+        constraint.gridwidth = 2;
+        this.add(buttonsPanel, constraint);
+
         // Warning label
         constraint.gridx = 0;
         constraint.gridy = 5;
         constraint.gridwidth = 2;
         this.warningLabel = new WarningLabel("");
+        this.warningLabel.setHorizontalAlignment(JLabel.CENTER);
         this.add(this.warningLabel, constraint);
     }
 
