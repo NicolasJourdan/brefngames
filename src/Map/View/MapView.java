@@ -36,13 +36,18 @@ public class MapView extends CustomGameBackgroundPanel {
         this.title.setFont(this.title.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.add(this.title, this.constraints);
 
-        this.constraints.gridx = 0;
         this.constraints.gridy = 1;
+        this.constraints.gridwidth = 2;
+        this.add(this.scoreDisplay, constraints);
+
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 2;
+        this.constraints.gridwidth = 1;
         this.gameListView = new CardList();
         this.add(this.gameListView, this.constraints);
 
         this.constraints.gridx = 0;
-        this.constraints.gridy = 2;
+        this.constraints.gridy = 3;
         this.button = new CustomButton("Next");
         this.button.addActionListener(new ActionListener() {
             @Override

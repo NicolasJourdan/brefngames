@@ -22,7 +22,7 @@ public class RunnerView extends CustomGameBackgroundPanel {
     private final static String ACTION_PRESS_M = "ACTION_PRESS_M";
 
     private static final int TRACK_INSETS_DIMENSION = 20;
-    private static final int CONTROLS_INSETS_DIMENSION = 40;
+    private static final int CONTROLS_INSETS_DIMENSION = 10;
 
     private final Track track;
     private final PlayerControls firstPlayerControls;
