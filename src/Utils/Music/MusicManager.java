@@ -10,7 +10,10 @@ public class MusicManager {
 
     static MusicManager instance;
 
+    // set the gain (between 0.0 and 1.0)
+    private static final double GAIN = 0.15;
     private final static String MUSIC_LIBRARY_PATH = "/data/Musics/";
+
     private Clip clip;
     private List<File> musicList;
     private File lastMusic;
@@ -81,6 +84,11 @@ public class MusicManager {
             this.clip = AudioSystem.getClip();
 
             this.clip.open(AudioSystem.getAudioInputStream(this.getNextSound()));
+
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float dB = (float) (Math.log(MusicManager.GAIN) / Math.log(10.0) * 20.0);
+            gainControl.setValue(dB);
+
             this.clip.start();
 
             this.clip.addLineListener(new LineListener() {
