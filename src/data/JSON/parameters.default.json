@@ -1,5 +1,6 @@
 {
     "sound": true,
+    "music": true,
     "defaultPlayers": {
         "player1": {
             "color": "COLOR_FIRST_PLAYER_BLUE",

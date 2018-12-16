@@ -33,6 +33,10 @@ public enum ActionEnum {
     SOUND_ON("SOUND_ON"),
     SOUND_OFF("SOUND_OFF"),
 
+    // Music sound
+    MUSIC_ON("MUSIC_ON"),
+    MUSIC_OFF("MUSIC_OFF"),
+
     FIRST_COLOR_RED("FIRST_COLOR_RED"),
     FIRST_COLOR_BLUE("FIRST_COLOR_BLUE"),
     FIRST_COLOR_GREEN("FIRST_COLOR_GREEN"),

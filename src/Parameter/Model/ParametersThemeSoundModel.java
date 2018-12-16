@@ -22,6 +22,11 @@ public class ParametersThemeSoundModel extends AbstractModel {
         this.configurations.get(ParameterEnum.SOUND).setValue(isOn);
     }
 
+    // Set music in the configuration
+    public void setMusic(boolean isOn) {
+        this.configurations.get(ParameterEnum.MUSIC).setValue(isOn);
+    }
+
     // Set first color in the configuration
     public void setFirstColor(String color) {
         ColorParameter colorParameter = new ColorParameter(ColorFactory.getColor(color), color);
@@ -37,5 +42,4 @@ public class ParametersThemeSoundModel extends AbstractModel {
     public Map<ParameterEnum, Configurable> getConfigurations() {
         return this.configurations;
     }
-
 }

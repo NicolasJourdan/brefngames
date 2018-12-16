@@ -6,8 +6,10 @@ import Parameter.Parameters.Configurable;
 import Parameter.Parameters.IconParameter;
 import Repository.ModifyFiles;
 import Repository.Parameter.DefaultPlayerParameterRepository;
+import Repository.Parameter.MusicParameterRepository;
 import Repository.Parameter.SoundParameterRepository;
 import Repository.Parameter.ThemeParameterRepository;
+import Utils.Music.MusicManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,6 +29,8 @@ public class Parameters {
         configuration.put(ParameterEnum.PLAYER_2_ICON, DefaultPlayerParameterRepository.getIconFromPlayer(DefaultPlayerParameterEnum.PLAYER_2));
         // Added sound configuration
         configuration.put(ParameterEnum.SOUND, SoundParameterRepository.getSound());
+        // Added music configuration
+        configuration.put(ParameterEnum.MUSIC, MusicParameterRepository.getMusic());
         // Added theme configuration
         configuration.put(ParameterEnum.THEME_FIRST_COLOR, ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR));
         configuration.put(ParameterEnum.THEME_SECOND_COLOR, ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR));
@@ -72,12 +76,22 @@ public class Parameters {
         SoundParameterRepository.save(
                 (boolean) configuration.get(ParameterEnum.SOUND).getValue()
         );
+
+        MusicParameterRepository.save(
+                (boolean) configuration.get(ParameterEnum.MUSIC).getValue()
+        );
     }
 
     public static void reset() {
         try {
             ModifyFiles.copyFile(Parameters.DEFAULT_PARAMETER_FILE_JSON, Parameters.PARAMETERS_JSON_FILE);
             LauncherController.reloadConfiguration();
+
+            // music manager
+            MusicManager.getInstance().stop();
+            if ((Boolean) MusicParameterRepository.getMusic().getValue()) {
+                MusicManager.getInstance().start();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

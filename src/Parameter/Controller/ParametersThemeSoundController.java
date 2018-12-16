@@ -8,6 +8,7 @@ import Scene.Controller.AbstractSceneController;
 import Scene.Model.ActionEnum;
 import Structure.AbstractModel;
 import Structure.AbstractView;
+import Utils.Music.MusicManager;
 
 import java.util.Observable;
 
@@ -26,6 +27,16 @@ public class ParametersThemeSoundController extends AbstractSceneController {
                 break;
             case SOUND_OFF:
                 ((ParametersThemeSoundModel) this.model).setSound(false);
+                break;
+
+            // Music cases
+            case MUSIC_ON:
+                ((ParametersThemeSoundModel) this.model).setMusic(true);
+                MusicManager.getInstance().start();
+                break;
+            case MUSIC_OFF:
+                ((ParametersThemeSoundModel) this.model).setMusic(false);
+                MusicManager.getInstance().stop();
                 break;
 
             // First color cases
@@ -62,6 +73,7 @@ public class ParametersThemeSoundController extends AbstractSceneController {
             default:
                 throw new RuntimeException("The action : " + arg + " is not acceptable here");
         }
+
         Parameters.save(((ParametersThemeSoundModel) this.model).getConfigurations());
         ((ParametersThemeSoundView) this.view).revalidateView();
         LauncherWindow launcherWindow = LauncherWindow.getInstance();
