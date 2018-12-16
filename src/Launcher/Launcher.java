@@ -3,6 +3,7 @@ package Launcher;
 import Launcher.Controller.LauncherController;
 import Launcher.Model.LauncherModel;
 import Launcher.View.LauncherView;
+import Utils.Music.MusicManager;
 
 public class Launcher {
 
@@ -18,5 +19,7 @@ public class Launcher {
         launcherView.revalidate();
         launcherView.repaint();
 
+        // music manager
+        MusicManager.getInstance().start();
     }
 }
