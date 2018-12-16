@@ -80,7 +80,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         constraint.gridy = 0;
         constraint.gridx = 0;
-        constraint.gridwidth = 2;
+        constraint.gridwidth = 3;
         constraint.gridheight = 1;
         CustomLabel titleLabel = new CustomLabel("Contest customization");
         titleLabel.setFont(titleLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
@@ -88,33 +88,40 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
 
         // Game checkboxes
-        constraint.gridy = 1;
-        constraint.gridwidth = 1;
+        JPanel gameSelectionPanel = new JPanel();
+        gameSelectionPanel.setLayout(new GridLayout(4, 1));
+
         this.ticTacToeCheckbox = new CustomCheckBox("Tic Tac Toe");
         this.ticTacToeCheckbox.setFont(this.ticTacToeCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.ticTacToeCheckbox.setSelected(true);
-        this.add(this.ticTacToeCheckbox, constraint);
+        gameSelectionPanel.add(this.ticTacToeCheckbox);
 
         constraint.gridy = 2;
         this.connectFourCheckbox = new CustomCheckBox("Connect Four");
         this.connectFourCheckbox.setFont(this.connectFourCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.connectFourCheckbox.setSelected(true);
-        this.add(this.connectFourCheckbox, constraint);
+        gameSelectionPanel.add(this.connectFourCheckbox);
 
         constraint.gridy = 3;
         this.cookieClickerCheckbox = new CustomCheckBox("Cookie Clicker");
         this.cookieClickerCheckbox.setFont(this.cookieClickerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.cookieClickerCheckbox.setSelected(true);
-        this.add(this.cookieClickerCheckbox, constraint);
+        gameSelectionPanel.add(this.cookieClickerCheckbox);
 
         constraint.gridy = 4;
         this.runnerCheckbox = new CustomCheckBox("Runner");
         this.runnerCheckbox.setFont(this.runnerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.runnerCheckbox.setSelected(true);
-        this.add(this.runnerCheckbox, constraint);
+        gameSelectionPanel.add(this.runnerCheckbox);
+
+        constraint.gridy = 1;
+        constraint.gridwidth = 1;
+        constraint.gridheight = 2;
+        this.add(gameSelectionPanel, constraint);
 
         // number of matches
-        constraint.gridy = 5;
+        constraint.gridy = 3;
+        constraint.gridheight = 1;
         JPanel nbGamesPanel = new JPanel();
         nbGamesPanel.setLayout(new FlowLayout());
 
@@ -134,10 +141,6 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         this.add(nbGamesPanel, constraint);
 
         // players
-        constraint.gridx = 1;
-        constraint.gridy = 1;
-        constraint.gridheight = 2;
-
         GridBagConstraints constraintPlayerPanel = new GridBagConstraints();
 
         // Player 1
@@ -199,6 +202,9 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraintPlayerPanel.gridy = 3;
         firstPlayerPanel.add(firstColorGroupPanel, constraintPlayerPanel);
 
+        constraint.gridx = 1;
+        constraint.gridy = 1;
+        constraint.gridwidth = 2;
         this.add(firstPlayerPanel, constraint);
 
         // Player 2
@@ -262,12 +268,13 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraintPlayerPanel.gridy = 3;
         secondPlayerPanel.add(secondColorGroupPanel, constraintPlayerPanel);
 
-        constraint.gridy = 3;
+        constraint.gridy = 2;
         this.add(secondPlayerPanel, constraint);
 
         // Start button
-        constraint.gridy = 5;
+        constraint.gridy = 3;
         constraint.gridheight = 1;
+        constraint.gridwidth = 1;
         this.startButton = new CustomButton("Start");
         this.add(this.startButton, constraint);
 
@@ -279,8 +286,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         });
 
         // Back button
-        constraint.gridy = 6;
-        constraint.gridheight = 1;
+        constraint.gridx = 2;
         this.backButton = new CustomButton("Back");
         this.add(this.backButton, constraint);
 
@@ -293,7 +299,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         // Warning label
         constraint.gridx = 0;
-        constraint.gridy = 7;
+        constraint.gridy = 5;
         constraint.gridwidth = 2;
         this.warningLabel = new WarningLabel("");
         this.add(this.warningLabel, constraint);
