@@ -206,12 +206,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         this.firstColorPlayerRed = new CustomRadioButton("Red");
         this.firstColorPlayerRed.setFont(this.firstColorPlayerRed.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
         this.firstColorPlayerBlue = new CustomRadioButton("Blue");
         this.firstColorPlayerBlue.setFont(this.firstColorPlayerBlue.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
         this.firstColorPlayerGreen = new CustomRadioButton("Green");
         this.firstColorPlayerGreen.setFont(this.firstColorPlayerGreen.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
         this.firstColorPlayerYellow = new CustomRadioButton("Yellow");
         this.firstColorPlayerYellow.setFont(this.firstColorPlayerYellow.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.firstColorPlayerYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -270,12 +274,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         this.secondColorPlayerRed = new CustomRadioButton("Red");
         this.secondColorPlayerRed.setFont(this.secondColorPlayerRed.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerRed.setForeground(ColorFactory.getColor(Utils.COLOR_RED));
         this.secondColorPlayerBlue = new CustomRadioButton("Blue");
         this.secondColorPlayerBlue.setFont(this.secondColorPlayerBlue.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerBlue.setForeground(ColorFactory.getColor(Utils.COLOR_BLUE));
         this.secondColorPlayerGreen = new CustomRadioButton("Green");
         this.secondColorPlayerGreen.setFont(this.secondColorPlayerGreen.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerGreen.setForeground(ColorFactory.getColor(Utils.COLOR_GREEN));
         this.secondColorPlayerYellow = new CustomRadioButton("Yellow");
         this.secondColorPlayerYellow.setFont(this.secondColorPlayerYellow.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondColorPlayerYellow.setForeground(ColorFactory.getColor(Utils.COLOR_YELLOW));
 
         this.secondIconSuperman = new CustomRadioButton("Superman");
         this.secondIconSuperman.setFont(this.secondIconSuperman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
