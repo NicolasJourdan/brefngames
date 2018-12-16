@@ -36,17 +36,24 @@ public class MenuView extends CustomBackgroundPanel {
         GridBagConstraints constraint = new GridBagConstraints();
         constraint.fill = GridBagConstraints.VERTICAL;
 
-        int verticalPadding = (LauncherWindow.JFRAME_HEIGHT / 6) / 4;
-        constraint.insets = new Insets(verticalPadding,0,verticalPadding,0);
+        constraint.gridy = 0;
+        this.add(new JLabel(new ImageIcon(ImageIcon.class.getResource("/data/Images/logo.png"))), constraint);
 
-        this.add(this.trainingButton, constraint);
+        constraint.insets.top = 5;
+
         constraint.gridy = 1;
-        this.add(this.contestButton, constraint);
+        this.add(this.trainingButton, constraint);
+
         constraint.gridy = 2;
-        this.add(this.parametersButton, constraint);
+        this.add(this.contestButton, constraint);
+
         constraint.gridy = 3;
-        this.add(this.statisticsButton, constraint);
+        this.add(this.parametersButton, constraint);
+
         constraint.gridy = 4;
+        this.add(this.statisticsButton, constraint);
+
+        constraint.gridy = 5;
         this.add(this.quitButton, constraint);
     }
 
