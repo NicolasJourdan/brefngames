@@ -43,7 +43,7 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
 
         this.c.fill = GridBagConstraints.CENTER;
 
-        this.playerSettingsLabel = new CustomLabel("Player Statistic");
+        this.playerSettingsLabel = new CustomLabel("Player Statistics");
         this.playerSettingsLabel.setFont(this.playerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 1;
         this.add(this.playerSettingsLabel, c);

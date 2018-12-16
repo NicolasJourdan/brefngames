@@ -43,7 +43,7 @@ public class StatisticMenuView extends CustomBackgroundPanel {
 
         this.c.fill = GridBagConstraints.HORIZONTAL;
 
-        this.globalSettingsLabel = new CustomLabel("Global Statistic");
+        this.globalSettingsLabel = new CustomLabel("Global Statistics");
         this.globalSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.globalSettingsLabel.setFont(this.globalSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.c.gridx = 0;
@@ -53,7 +53,7 @@ public class StatisticMenuView extends CustomBackgroundPanel {
 
         this.updateTableView();
 
-        this.playerStatistic = new CustomButton("Statistic by Player");
+        this.playerStatistic = new CustomButton("Statistics by Player");
         this.c.gridx = 1;
         this.c.gridy = 3;
         this.c.gridwidth = 2;   // largeur 2 colonne
