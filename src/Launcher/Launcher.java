@@ -3,6 +3,7 @@ package Launcher;
 import Launcher.Controller.LauncherController;
 import Launcher.Model.LauncherModel;
 import Launcher.View.LauncherView;
+import Repository.Parameter.MusicParameterRepository;
 import Utils.Music.MusicManager;
 
 public class Launcher {
@@ -20,6 +21,8 @@ public class Launcher {
         launcherView.repaint();
 
         // music manager
-        MusicManager.getInstance().start();
+        if ((Boolean) MusicParameterRepository.getMusic().getValue()) {
+            MusicManager.getInstance().start();
+        }
     }
 }

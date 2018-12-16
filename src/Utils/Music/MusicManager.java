@@ -15,6 +15,7 @@ public class MusicManager {
     private final static String MUSIC_LIBRARY_PATH = "/data/Musics/";
 
     private Clip clip;
+    private LineListener lineListener;
     private List<File> musicList;
     private File lastMusic;
 
@@ -44,6 +45,7 @@ public class MusicManager {
     }
 
     public void stop() {
+        this.clip.removeLineListener(this.lineListener);
         this.clip.stop();
         System.out.println("MusicManager: stop playing");
     }
@@ -91,7 +93,7 @@ public class MusicManager {
 
             this.clip.start();
 
-            this.clip.addLineListener(new LineListener() {
+            this.lineListener = new LineListener() {
                 @Override
                 public void update(LineEvent event) {
                     if (LineEvent.Type.STOP == event.getType()) {
@@ -99,7 +101,9 @@ public class MusicManager {
                         MusicManager.this.playNextSound();
                     }
                 }
-            });
+            };
+
+            this.clip.addLineListener(this.lineListener);
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }

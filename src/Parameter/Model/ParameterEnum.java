@@ -11,9 +11,10 @@ public enum ParameterEnum {
     PLAYER_2_COLOR("PLAYER_2_COLOR"),
 
     /*
-     * Sound
+     * Sound & Music
      */
     SOUND("SOUND"),
+    MUSIC("MUSIC"),
 
     /*
      * Theme

@@ -1,13 +1,14 @@
 {
     "sound": true,
+    "music": true,
     "defaultPlayers": {
         "player1": {
-            "color": "COLOR_FIRST_PLAYER_YELLOW",
-            "icon": "AQUAMAN_1"
+            "color": "COLOR_FIRST_PLAYER_BLUE",
+            "icon": "FLASH_1"
         },
         "player2": {
             "color": "COLOR_SECOND_PLAYER_YELLOW",
-            "icon": "AQUAMAN_2"
+            "icon": "BATMAN_2"
         }
     },
     "theme": {

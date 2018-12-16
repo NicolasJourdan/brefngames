@@ -13,7 +13,7 @@ public class SoundParameter extends AbstractParameter {
             case "FALSE":
                 return false;
             default:
-                throw new RuntimeException("The image : " + soundIsOn + " is unknown");
+                throw new RuntimeException("The sound : " + soundIsOn + " is unknown");
         }
     }
 
