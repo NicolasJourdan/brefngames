@@ -34,7 +34,8 @@ public class ContestSettingsView extends CustomBackgroundPanel {
     public final static String DEFAULT_SECOND_PLAYER_NAME = "Player 2";
 
     private static final int PANEL_BORDER = 5;
-    private static final int PLAYER_TOP_INSET = 10;
+    private static final int TOP_INSET = 8;
+    private static final int VERTICAL_INSET = 5;
 
     private final JCheckBox ticTacToeCheckbox;
     private final JCheckBox connectFourCheckbox;
@@ -84,8 +85,11 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         constraint.gridy = 0;
         constraint.gridx = 0;
-        constraint.gridwidth = 3;
+        constraint.gridwidth = 2;
         constraint.gridheight = 1;
+        constraint.insets.left = ContestSettingsView.VERTICAL_INSET;
+        constraint.insets.right = ContestSettingsView.VERTICAL_INSET;
+
         CustomLabel titleLabel = new CustomLabel("Contest customization");
         titleLabel.setFont(titleLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.add(titleLabel, constraint);
@@ -101,34 +105,41 @@ public class ContestSettingsView extends CustomBackgroundPanel {
                         ContestSettingsView.PANEL_BORDER
                 )
         );
-        gameSelectionPanel.setLayout(new GridLayout(4, 1));
+        gameSelectionPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gameSelectionConstraints = new GridBagConstraints();
 
+        gameSelectionConstraints.anchor = GridBagConstraints.CENTER;
+        gameSelectionPanel.add(new CustomLabel("Game type selection"), gameSelectionConstraints);
+
+        gameSelectionConstraints.anchor = GridBagConstraints.WEST;
+        gameSelectionConstraints.gridy = 1;
         this.ticTacToeCheckbox = new CustomCheckBox("Tic Tac Toe");
         this.ticTacToeCheckbox.setFont(this.ticTacToeCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.ticTacToeCheckbox.setSelected(true);
-        gameSelectionPanel.add(this.ticTacToeCheckbox);
+        gameSelectionPanel.add(this.ticTacToeCheckbox, gameSelectionConstraints);
 
-        constraint.gridy = 2;
+        gameSelectionConstraints.gridy = 2;
         this.connectFourCheckbox = new CustomCheckBox("Connect Four");
         this.connectFourCheckbox.setFont(this.connectFourCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.connectFourCheckbox.setSelected(true);
-        gameSelectionPanel.add(this.connectFourCheckbox);
+        gameSelectionPanel.add(this.connectFourCheckbox, gameSelectionConstraints);
 
-        constraint.gridy = 3;
+        gameSelectionConstraints.gridy = 3;
         this.cookieClickerCheckbox = new CustomCheckBox("Cookie Clicker");
         this.cookieClickerCheckbox.setFont(this.cookieClickerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.cookieClickerCheckbox.setSelected(true);
-        gameSelectionPanel.add(this.cookieClickerCheckbox);
+        gameSelectionPanel.add(this.cookieClickerCheckbox, gameSelectionConstraints);
 
-        constraint.gridy = 4;
+        gameSelectionConstraints.gridy = 4;
         this.runnerCheckbox = new CustomCheckBox("Runner");
         this.runnerCheckbox.setFont(this.runnerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.runnerCheckbox.setSelected(true);
-        gameSelectionPanel.add(this.runnerCheckbox);
+        gameSelectionPanel.add(this.runnerCheckbox, gameSelectionConstraints);
 
         constraint.gridy = 1;
         constraint.gridwidth = 1;
         constraint.gridheight = 2;
+        constraint.insets.top = ContestSettingsView.TOP_INSET;
         this.add(gameSelectionPanel, constraint);
 
         // number of matches
@@ -143,9 +154,10 @@ public class ContestSettingsView extends CustomBackgroundPanel {
                         ContestSettingsView.PANEL_BORDER
                 )
         );
-        nbGamesPanel.setLayout(new FlowLayout());
+        nbGamesPanel.setLayout(new GridLayout(2, 1));
 
         JLabel nbGamesLabel = new CustomLabel("Number of matches");
+        nbGamesLabel.setHorizontalAlignment(JLabel.CENTER);
         nbGamesLabel.setFont(nbGamesLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         nbGamesPanel.add(nbGamesLabel);
         this.spinnerNbGames = new CustomSpinner(
@@ -230,7 +242,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         constraint.gridx = 1;
         constraint.gridy = 1;
-        constraint.gridwidth = 2;
+        constraint.gridwidth = 1;
         this.add(firstPlayerPanel, constraint);
 
         // Player 2
@@ -302,12 +314,12 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         secondPlayerPanel.add(secondColorGroupPanel, constraintPlayerPanel);
 
         constraint.gridy = 2;
-        constraint.insets.top = ContestSettingsView.PLAYER_TOP_INSET;
+        constraint.gridheight = 2;
         this.add(secondPlayerPanel, constraint);
-        constraint.insets.top = 0;
 
         // Start button
-        constraint.gridy = 3;
+        constraint.gridy = 4;
+        constraint.gridx = 1;
         constraint.gridheight = 1;
         constraint.gridwidth = 1;
         this.startButton = new CustomButton("Start");
@@ -321,7 +333,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         });
 
         // Back button
-        constraint.gridx = 2;
+        constraint.gridx = 0;
         this.backButton = new CustomButton("Back");
         this.add(this.backButton, constraint);
 
