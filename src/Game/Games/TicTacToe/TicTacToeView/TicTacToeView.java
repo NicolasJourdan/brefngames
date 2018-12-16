@@ -22,13 +22,12 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
     private int size;
     private DisplayPanel currentPlayer;
     private DisplayPanel otherPlayer;
-    private ScoreDisplay scoreDisplay;
 
 
     public TicTacToeView(int size, Player[] players, History history) {
+        super(players, history);
         this.size = size;
         this.setLayout(new GridBagLayout());
-        this.scoreDisplay = new ScoreDisplay(players, history);
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
         this.board = new Board(this.size, this);
         this.secondPlayerDisplay = new DisplayPanel(players[1], false);

@@ -27,16 +27,15 @@ public class RunnerView extends CustomGameBackgroundPanel {
     private final Track track;
     private final PlayerControls firstPlayerControls;
     private final PlayerControls secondPlayerControls;
-    private ScoreDisplay scoreDisplay;
 
     public RunnerView(Player[] players, History history) {
+        super(players, history);
         this.setLayout(
             new GridBagLayout()
         );
 
         // reusable GridBagConstraint to place every needed components
         GridBagConstraints constraint = new GridBagConstraints();
-        this.scoreDisplay = new ScoreDisplay(players, history);
         constraint.gridy = 0;
         constraint.gridx = 0;
         constraint.gridwidth = 2;

@@ -1,5 +1,6 @@
 package Map.View;
 
+import Map.Model.History;
 import Player.Player;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomButton;
@@ -23,8 +24,8 @@ public class MapView extends CustomGameBackgroundPanel {
     private JLabel title;
     private GridBagConstraints constraints;
 
-    public MapView() {
-        super();
+    public MapView(Player[] players, History history) {
+        super(players, history);
         this.setLayout(new GridBagLayout());
         this.constraints = new GridBagConstraints();
 
