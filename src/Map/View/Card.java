@@ -1,6 +1,8 @@
 package Map.View;
 
+import Parameter.Model.ThemeEnum;
 import Player.Player;
+import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.SceneEnum;
 import Utils.Image.ImageResizer;
 import Utils.UI.CustomLabel;
@@ -28,7 +30,7 @@ public class Card extends CustomGreyPanel {
         WinnerPanel winnerPanel = new WinnerPanel(Card.DEFAULT_CARD_WIDTH, MapView.DEFAULT_PLAYER_ICON_SIZE);
         CustomLabel winnerNameLabel = new CustomLabel("");
         winnerNameLabel.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_CARD));
-        winnerNameLabel.setForeground(Color.BLACK);
+        winnerNameLabel.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
 
         if (null == winner) {
             // Add draw icon
