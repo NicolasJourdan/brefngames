@@ -91,21 +91,25 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraint.gridy = 1;
         constraint.gridwidth = 1;
         this.ticTacToeCheckbox = new CustomCheckBox("Tic Tac Toe");
+        this.ticTacToeCheckbox.setFont(this.ticTacToeCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.ticTacToeCheckbox.setSelected(true);
         this.add(this.ticTacToeCheckbox, constraint);
 
         constraint.gridy = 2;
         this.connectFourCheckbox = new CustomCheckBox("Connect Four");
+        this.connectFourCheckbox.setFont(this.connectFourCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.connectFourCheckbox.setSelected(true);
         this.add(this.connectFourCheckbox, constraint);
 
         constraint.gridy = 3;
         this.cookieClickerCheckbox = new CustomCheckBox("Cookie Clicker");
+        this.cookieClickerCheckbox.setFont(this.cookieClickerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.cookieClickerCheckbox.setSelected(true);
         this.add(this.cookieClickerCheckbox, constraint);
 
         constraint.gridy = 4;
         this.runnerCheckbox = new CustomCheckBox("Runner");
+        this.runnerCheckbox.setFont(this.runnerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.runnerCheckbox.setSelected(true);
         this.add(this.runnerCheckbox, constraint);
 
@@ -115,6 +119,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         nbGamesPanel.setLayout(new FlowLayout());
 
         JLabel nbGamesLabel = new CustomLabel("Number of matches");
+        nbGamesLabel.setFont(nbGamesLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         nbGamesPanel.add(nbGamesLabel);
         this.spinnerNbGames = new CustomSpinner(
             new SpinnerNumberModel(
@@ -147,14 +152,22 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         firstPlayerPanel.add(this.firstPlayerName, constraintPlayerPanel);
 
         this.firstIconSuperman = new CustomRadioButton("Superman");
+        this.firstIconSuperman.setFont(this.firstIconSuperman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstIconBatman = new CustomRadioButton("Batman");
+        this.firstIconBatman.setFont(this.firstIconBatman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstIconFlash = new CustomRadioButton("Flash");
+        this.firstIconFlash.setFont(this.firstIconFlash.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstIconAquaman = new CustomRadioButton("Aquaman");
+        this.firstIconAquaman.setFont(this.firstIconAquaman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
 
         this.firstColorPlayerRed = new CustomRadioButton("Red");
+        this.firstColorPlayerRed.setFont(this.firstColorPlayerRed.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstColorPlayerBlue = new CustomRadioButton("Blue");
+        this.firstColorPlayerBlue.setFont(this.firstColorPlayerBlue.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstColorPlayerGreen = new CustomRadioButton("Green");
+        this.firstColorPlayerGreen.setFont(this.firstColorPlayerGreen.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstColorPlayerYellow = new CustomRadioButton("Yellow");
+        this.firstColorPlayerYellow.setFont(this.firstColorPlayerYellow.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
 
         ButtonGroup firstIconGroup = new ButtonGroup();
         firstIconGroup.add(this.firstIconSuperman);
@@ -202,14 +215,22 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         secondPlayerPanel.add(this.secondPlayerName, constraintPlayerPanel);
 
         this.secondColorPlayerRed = new CustomRadioButton("Red");
+        this.secondColorPlayerRed.setFont(this.secondColorPlayerRed.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.secondColorPlayerBlue = new CustomRadioButton("Blue");
+        this.secondColorPlayerBlue.setFont(this.secondColorPlayerBlue.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.secondColorPlayerGreen = new CustomRadioButton("Green");
+        this.secondColorPlayerGreen.setFont(this.secondColorPlayerGreen.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.secondColorPlayerYellow = new CustomRadioButton("Yellow");
+        this.secondColorPlayerYellow.setFont(this.secondColorPlayerYellow.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
 
         this.secondIconSuperman = new CustomRadioButton("Superman");
+        this.secondIconSuperman.setFont(this.secondIconSuperman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.secondIconBatman = new CustomRadioButton("Batman");
+        this.secondIconBatman.setFont(this.secondIconBatman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.secondIconFlash = new CustomRadioButton("Flash");
+        this.secondIconFlash.setFont(this.secondIconFlash.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.secondIconAquaman = new CustomRadioButton("Aquaman");
+        this.secondIconAquaman.setFont(this.secondIconAquaman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
 
         ButtonGroup secondIconGroup = new ButtonGroup();
         secondIconGroup.add(this.secondIconSuperman);
