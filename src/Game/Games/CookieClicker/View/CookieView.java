@@ -39,8 +39,8 @@ public class CookieView extends CustomGameBackgroundPanel {
     private CustomLabel commandSecondPlayer;
     private CustomLabel goalScreen;
 
-    public CookieView(Player[] players, History history){
-        super(players, history);
+    public CookieView(Player[] players, int[] scores){
+        super(players, scores);
         this.setLayout(new GridBagLayout());
         this.setFocusable(true);
         this.requestFocus();

@@ -10,8 +10,8 @@ import Structure.AbstractView;
  */
 public abstract class AbstractGameView extends AbstractView {
     protected ScoreDisplay scoreDisplay;
-    public AbstractGameView(Player[] players, History history){
-        this.scoreDisplay = new ScoreDisplay(players, history);
+    public AbstractGameView(Player[] players, int[] scores){
+        this.scoreDisplay = new ScoreDisplay(players, scores);
     }
 
     public void setScoreDisplay(boolean visible) {

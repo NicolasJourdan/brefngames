@@ -24,8 +24,8 @@ public class MapView extends CustomGameBackgroundPanel {
     private JLabel title;
     private GridBagConstraints constraints;
 
-    public MapView(Player[] players, History history) {
-        super(players, history);
+    public MapView(Player[] players, int[] scores) {
+        super(players, scores);
         this.setLayout(new GridBagLayout());
         this.constraints = new GridBagConstraints();
 

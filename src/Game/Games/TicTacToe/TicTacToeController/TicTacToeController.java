@@ -16,7 +16,6 @@ import java.util.Observable;
 
 public class TicTacToeController extends AbstractGameController {
     private int size;
-    private History history;
     private int round;
     private long initTime;
     private long finalTime;
@@ -26,10 +25,9 @@ public class TicTacToeController extends AbstractGameController {
     private Map<PlayerStatsEnum, String> statsSecondPlayer;
 
 
-    public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size, boolean isTraining, History history) {
+    public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size, boolean isTraining) {
         super(m, v, isTraining);
         this.size = size;
-        this.history = history;
         this.round = 0;
         this.initStats();
         this.initTime = System.currentTimeMillis();

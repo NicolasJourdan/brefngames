@@ -9,9 +9,9 @@ import Player.Player;
 
 public class RunnerScene extends GameScene {
 
-    public RunnerScene(Player[] listPlayers, boolean isTraining, History history) {
+    public RunnerScene(Player[] listPlayers, boolean isTraining, int[] scores) {
         this.model = new RunnerModel(listPlayers);
-        this.view = new RunnerView(listPlayers, history);
+        this.view = new RunnerView(listPlayers, scores);
         this.controller = new RunnerController((RunnerModel) this.model, (RunnerView) this.view, isTraining);
         this.controller.addObserver(this);
     }

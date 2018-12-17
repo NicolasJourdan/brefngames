@@ -23,13 +23,14 @@ public class RunnerView extends CustomGameBackgroundPanel {
 
     private static final int TRACK_INSETS_DIMENSION = 20;
     private static final int CONTROLS_INSETS_DIMENSION = 10;
+    private static final int SCORE_INSETS_DIMENSION = 10;
 
     private final Track track;
     private final PlayerControls firstPlayerControls;
     private final PlayerControls secondPlayerControls;
 
-    public RunnerView(Player[] players, History history) {
-        super(players, history);
+    public RunnerView(Player[] players, int[] scores) {
+        super(players, scores);
         this.setLayout(
             new GridBagLayout()
         );
@@ -39,7 +40,7 @@ public class RunnerView extends CustomGameBackgroundPanel {
         constraint.gridy = 0;
         constraint.gridx = 0;
         constraint.gridwidth = 2;
-        constraint.insets = new Insets(0,0,10,0);
+        constraint.insets = new Insets(0,0,SCORE_INSETS_DIMENSION,0);
         this.add(this.scoreDisplay, constraint);
 
         // track

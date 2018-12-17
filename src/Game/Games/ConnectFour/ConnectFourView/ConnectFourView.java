@@ -19,8 +19,8 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
     private DisplayPanel currentPlayer;
     private DisplayPanel otherPlayer;
 
-    public ConnectFourView(int rows, int columns, Player[] players, History history) {
-        super(players, history);
+    public ConnectFourView(int rows, int columns, Player[] players, int[] scores) {
+        super(players, scores);
         this.setLayout(new GridBagLayout());
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
         this.board = new Board(rows, columns, this);

@@ -11,9 +11,9 @@ public class ConnectFourScene extends GameScene {
     private final static int DEFAULT_ROW = 6;
     private final static int DEFAULT_COLUMN = 7;
 
-    public ConnectFourScene(Player[] listPlayers, boolean isTraining, History history) {
+    public ConnectFourScene(Player[] listPlayers, boolean isTraining, int[] scores) {
         this.model = new ConnectFourModel(listPlayers, DEFAULT_ROW, DEFAULT_COLUMN);
-        this.view = new ConnectFourView(DEFAULT_ROW, DEFAULT_COLUMN, listPlayers, history);
+        this.view = new ConnectFourView(DEFAULT_ROW, DEFAULT_COLUMN, listPlayers, scores);
         this.controller = new ConnectFourController((ConnectFourModel) this.model, (ConnectFourView) this.view, DEFAULT_ROW, DEFAULT_COLUMN, isTraining);
         this.controller.addObserver(this);
     }
