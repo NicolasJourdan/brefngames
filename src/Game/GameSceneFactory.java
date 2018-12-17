@@ -32,13 +32,13 @@ public class GameSceneFactory implements SceneFactoryInterface {
             case MAP:
                 return new MapScene(this.history);
             case TIC_TAC_TOE:
-                return new TicTacToeScene(this.playersList, this.isTraining);
+                return new TicTacToeScene(this.playersList, this.isTraining, this.history.getCurrentScore());
             case RUNNER:
-                return new RunnerScene(this.playersList, this.isTraining);
+                return new RunnerScene(this.playersList, this.isTraining, this.history.getCurrentScore());
             case CONNECT_FOUR:
-                return new ConnectFourScene(this.playersList, this.isTraining);
+                return new ConnectFourScene(this.playersList, this.isTraining, this.history.getCurrentScore());
             case COOKIE_CLICKER:
-                return new CookieClickerScene(this.playersList, isTraining);
+                return new CookieClickerScene(this.playersList, this.isTraining, this.history.getCurrentScore());
             case TRAINING_MENU:
                 return new TrainingMenuScene();
             case CONTEST_MENU:

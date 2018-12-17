@@ -1,5 +1,6 @@
 package Map.View;
 
+import Map.Model.History;
 import Player.Player;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomButton;
@@ -23,8 +24,8 @@ public class MapView extends CustomGameBackgroundPanel {
     private JLabel title;
     private GridBagConstraints constraints;
 
-    public MapView() {
-        super();
+    public MapView(Player[] players, int[] scores) {
+        super(players, scores);
         this.setLayout(new GridBagLayout());
         this.constraints = new GridBagConstraints();
 
@@ -35,13 +36,18 @@ public class MapView extends CustomGameBackgroundPanel {
         this.title.setFont(this.title.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.add(this.title, this.constraints);
 
-        this.constraints.gridx = 0;
         this.constraints.gridy = 1;
+        this.constraints.gridwidth = 2;
+        this.add(this.scoreDisplay, constraints);
+
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 2;
+        this.constraints.gridwidth = 1;
         this.gameListView = new CardList();
         this.add(this.gameListView, this.constraints);
 
         this.constraints.gridx = 0;
-        this.constraints.gridy = 2;
+        this.constraints.gridy = 3;
         this.button = new CustomButton("Next");
         this.button.addActionListener(new ActionListener() {
             @Override

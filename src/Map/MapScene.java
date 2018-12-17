@@ -12,7 +12,7 @@ public class MapScene extends GameScene {
 
     public MapScene(History history) {
         this.model = new MapModel(history.getPlayers());
-        this.view = new MapView();
+        this.view = new MapView(history.getPlayers(), history.getCurrentScore());
         this.controller = new MapController((AbstractGameModel) this.model, (AbstractGameView) this.view, history);
         this.controller.addObserver(this);
     }

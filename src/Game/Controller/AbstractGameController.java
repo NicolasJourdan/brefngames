@@ -13,5 +13,8 @@ public abstract class AbstractGameController extends AbstractSceneController {
     public AbstractGameController(AbstractGameModel model, AbstractGameView view, boolean isTraining) {
         super(model, view);
         this.isTraining = isTraining;
+        if (this.isTraining){
+            ((AbstractGameView) this.view).setScoreDisplay(false);
+        }
     }
 }

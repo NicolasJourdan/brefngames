@@ -2,6 +2,9 @@ package Game.Games.TicTacToe.TicTacToeView;
 
 import Game.Games.Coord;
 import Game.Games.DisplayPanel;
+import Game.Games.ScoreDisplay;
+import Game.View.AbstractGameView;
+import Map.Model.History;
 import Player.Player;
 import Structure.ProxyObservable;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
@@ -21,25 +24,31 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
     private DisplayPanel otherPlayer;
 
 
-    public TicTacToeView(int size, Player[] players) {
+    public TicTacToeView(int size, Player[] players, int[] scores) {
+        super(players, scores);
         this.size = size;
         this.setLayout(new GridBagLayout());
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
         this.board = new Board(this.size, this);
         this.secondPlayerDisplay = new DisplayPanel(players[1], false);
         GridBagConstraints constraint = new GridBagConstraints();
-        constraint.gridy = 2;
+        constraint.gridy = 0;
+        constraint.gridx = 2;
+        constraint.gridwidth = 2;
+        constraint.gridheight = 1;
+        this.add(this.scoreDisplay, constraint);
+        constraint.gridy = 3;
         constraint.gridx = 0;
         constraint.gridwidth = 1;
         constraint.gridheight = 1;
         constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
         this.add(this.firstPlayerDisplay, constraint);
-        constraint.gridy = 0;
+        constraint.gridy = 3;
         constraint.gridx = 1;
         constraint.gridwidth = 3;
         constraint.gridheight = 3;
         this.add(this.board, constraint);
-        constraint.gridy = 2;
+        constraint.gridy = 3;
         constraint.gridx = 4;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;

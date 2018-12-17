@@ -6,6 +6,7 @@ import Game.Games.TicTacToe.TicTacToeModel.*;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Games.Coord;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
+import Map.Model.History;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
 import java.awt.*;

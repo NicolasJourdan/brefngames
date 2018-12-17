@@ -45,4 +45,21 @@ public class History {
     public int getNbRemainingGames() {
         return this.nbRemainingGames;
     }
+
+    public int[] getCurrentScore() {
+        int firstPlayerScore = 0;
+        int secondPlayerScore = 0;
+        for(GameHistory current : this.getGameHistories()) {
+            if (null == current.getWinner()) {
+                firstPlayerScore++;
+                secondPlayerScore++;
+            } else if (current.getWinner().equals(this.players[0])) {
+                firstPlayerScore++;
+            } else {
+                secondPlayerScore++;
+            }
+        }
+
+        return new int[]{firstPlayerScore, secondPlayerScore};
+    }
 }
