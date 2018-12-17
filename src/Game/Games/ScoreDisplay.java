@@ -1,6 +1,5 @@
 package Game.Games;
 
-import Map.Model.History;
 import Parameter.Model.ThemeEnum;
 import Player.Player;
 import Repository.Parameter.ThemeParameterRepository;
@@ -34,5 +33,9 @@ public class ScoreDisplay extends JLayeredPane {
         this.add(this.secondIcon);
         this.revalidate();
         this.repaint();
+    }
+
+    public void hideScore() {
+        this.setPreferredSize(new Dimension(0, ICON_SIZE + (BORDER_SIZE * 2)));
     }
 }

@@ -1,8 +1,5 @@
 package Game.Games.CookieClicker.View;
 
-import Game.Games.ScoreDisplay;
-import Game.View.AbstractGameView;
-import Map.Model.History;
 import Parameter.Model.ThemeEnum;
 import Player.Player;
 import Repository.Parameter.ThemeParameterRepository;
