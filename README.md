@@ -17,6 +17,11 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 
 ## Screens
 
+## Git History
+Visual representation of the git repository history
+
+[![Git History](https://img.youtube.com/vi/5eXdmkSbQG4/0.jpg)](https://youtu.be/5eXdmkSbQG4)
+
 ## Developers 👨‍💻
 - Florian Merle
 - Bastien Plaza
