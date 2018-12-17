@@ -1,11 +1,11 @@
 package Statistic.View;
 
 import Scene.Model.ActionEnum;
-import Utils.UI.CustomTable.CustomTable;
 import Utils.UI.CustomPanel.CustomBackgroundPanel;
 import Utils.UI.CustomComboBox.CustomComboBox;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomLabel;
+import Utils.UI.CustomTable.CustomTable;
 import Utils.UI.Utils;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -20,9 +20,10 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
     private CustomComboBox jcb;
     private CustomLabel playerSettingsLabel;
 
-    private JTable tableau;
+    private JTable leftTable;
+    private JTable rightTable;
     private DefaultTableModel model;
-    private GridBagConstraints c;
+    private GridBagConstraints constraints;
     private Object[][] dataTable;
 
     private String currentPlayer;
@@ -34,31 +35,37 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
         this.dataTable = new Object[][]{};
 
         this.setLayout(new GridBagLayout());
-        this.c = new GridBagConstraints();
-        this.c.insets = new Insets(
+        this.constraints = new GridBagConstraints();
+        this.constraints.insets = new Insets(
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 0,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
-                0);
-
-        this.c.fill = GridBagConstraints.CENTER;
+                0
+        );
 
         this.playerSettingsLabel = new CustomLabel("Player Statistics");
         this.playerSettingsLabel.setFont(this.playerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.c.gridx = 1;
-        this.add(this.playerSettingsLabel, c);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 0;
+        this.constraints.gridwidth = 2;
+        this.add(this.playerSettingsLabel, this.constraints);
+        this.constraints.gridwidth = 1;
 
         this.jcb  = new CustomComboBox();
-        this.c.gridx = 1;
-        this.c.gridy = 1;
-        this.add(jcb, c);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 1;
+        this.constraints.gridwidth = 2;
+        this.add(this.jcb, this.constraints);
+        this.constraints.gridwidth = 1;
 
         this.updateTableView();
 
         this.backButton = new CustomButton("Back");
-        this.c.gridx = 1;
-        this.c.gridy = 5;
-        this.add(this.backButton, c);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 3;
+        this.constraints.gridwidth = 2;
+        this.add(this.backButton, this.constraints);
+        this.constraints.gridwidth = 1;
 
         this.initButtonsActionListeners();
 
@@ -85,19 +92,35 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
     public void updateGlobalStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
-        this.tableau.revalidate();
-        this.tableau.repaint();
+        this.leftTable.revalidate();
+        this.leftTable.repaint();
+        this.rightTable.revalidate();
+        this.rightTable.repaint();
     }
 
     public void updateTableView(){
-        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.constraints.fill = GridBagConstraints.HORIZONTAL;
+        this.constraints.anchor = GridBagConstraints.NORTH;
+
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
-        this.tableau = new CustomTable(this.model);
-        this.c.gridx = 0;
-        this.c.gridwidth = 3;
-        this.c.gridy = 2;
-        this.add(this.tableau, c);
-        this.tableau.setTableHeader(null);
+
+        // left table
+        this.leftTable = new CustomTable(this.model, 0);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 2;
+        this.constraints.insets.right = 5;
+        this.add(this.leftTable, this.constraints);
+        this.leftTable.setTableHeader(null);
+
+        // right table
+        this.rightTable = new CustomTable(this.model, 1);
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 2;
+        this.add(this.rightTable, this.constraints);
+        this.rightTable.setTableHeader(null);
+
+        this.constraints.fill = GridBagConstraints.CENTER;
+        this.constraints.anchor = GridBagConstraints.CENTER;
     }
 
     public void updateJCBView(String[] players){
