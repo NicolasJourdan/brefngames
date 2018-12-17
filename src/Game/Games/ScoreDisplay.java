@@ -16,12 +16,11 @@ public class ScoreDisplay extends JLayeredPane {
     private JLabel firstIcon;
     private JLabel secondIcon;
 
-    public ScoreDisplay(Player[] players, int[] s) {
+    public ScoreDisplay(Player[] players, int[] scores) {
         super();
         Color color = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
         this.setBorder(BorderFactory.createLineBorder(color, BORDER_SIZE, true));
         this.setLayout(new GridLayout(1, 5));
-        int[] scores = s;
         ImageIcon playerIcon = players[0].getIcon();
         this.firstIcon = new JLabel(ImageResizer.resizeImage(playerIcon, ICON_SIZE));
         String text = String.valueOf(scores[0]) + " - " + String.valueOf(scores[1]);

@@ -40,7 +40,7 @@ public class RunnerView extends CustomGameBackgroundPanel {
         constraint.gridy = 0;
         constraint.gridx = 0;
         constraint.gridwidth = 2;
-        constraint.insets = new Insets(0,0,SCORE_INSETS_DIMENSION,0);
+        constraint.insets = new Insets(0, 0, SCORE_INSETS_DIMENSION, 0);
         this.add(this.scoreDisplay, constraint);
 
         // track
