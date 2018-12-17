@@ -17,9 +17,9 @@ public class StatisticRunnerView extends CustomBackgroundPanel {
     private CustomButton backButton;
     private CustomLabel runnerSettingsLabel;
 
-    private JTable tableau;
+    private JTable table;
     private DefaultTableModel model;
-    private GridBagConstraints c;
+    private GridBagConstraints constraints;
     private Object[][] dataTable;
 
     public StatisticRunnerView() {
@@ -27,31 +27,31 @@ public class StatisticRunnerView extends CustomBackgroundPanel {
 
         this.dataTable = new Object[][]{};
         this.setLayout(new GridBagLayout());
-        this.c = new GridBagConstraints();
+        this.constraints = new GridBagConstraints();
 
-        this.c.insets = new Insets(
+        this.constraints.insets = new Insets(
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
                 Utils.DEFAULT_BUTTON_PADDING_RIGHT);
-        this.c.gridwidth = GridBagConstraints.REMAINDER;
+        this.constraints.gridwidth = GridBagConstraints.REMAINDER;
 
-        this.c.fill = GridBagConstraints.CENTER;
+        this.constraints.fill = GridBagConstraints.CENTER;
 
         this.runnerSettingsLabel = new CustomLabel("Runner Statistic");
         this.runnerSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.runnerSettingsLabel.setFont(this.runnerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.c.gridx = 0;
-        this.c.gridy = 0;
-        this.add(this.runnerSettingsLabel, c);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 0;
+        this.add(this.runnerSettingsLabel, this.constraints);
 
         this.updateTableView();
 
         this.backButton = new CustomButton("Back");
-        this.c.fill = GridBagConstraints.CENTER;
-        this.c.gridx = 1;
-        this.c.gridy = 5;
-        this.add(this.backButton, c);
+        this.constraints.fill = GridBagConstraints.CENTER;
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 5;
+        this.add(this.backButton, this.constraints);
 
         this.initButtonsActionListeners();
     }
@@ -68,17 +68,17 @@ public class StatisticRunnerView extends CustomBackgroundPanel {
     public void updateRunnerStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
-        this.tableau.revalidate();
-        this.tableau.repaint();
+        this.table.revalidate();
+        this.table.repaint();
     }
 
     public void updateTableView(){
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
-        this.tableau = new CustomTable(this.model);
-        this.c.gridx = 0;
-        this.c.gridy = 2;
-        this.c.fill = GridBagConstraints.HORIZONTAL;
-        this.add(this.tableau, c);
-        this.tableau.setTableHeader(null);
+        this.table = new CustomTable(this.model);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 2;
+        this.constraints.fill = GridBagConstraints.HORIZONTAL;
+        this.add(this.table, this.constraints);
+        this.table.setTableHeader(null);
     }
 }
