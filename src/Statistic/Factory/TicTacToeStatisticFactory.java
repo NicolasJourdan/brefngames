@@ -6,23 +6,23 @@ public class TicTacToeStatisticFactory {
     public static String getStringStat(TicTacToeStatsEnum stat) {
         switch (stat) {
             case TIC_TAC_TOE_NB_GAMES:
-                return "TicTacToe Number of games";
+                return "Tic tac toe number of games";
             case TIC_TAC_TOE_NB_DRAW:
-                return "TicTacToe Number of draw";
+                return "Tic tac toe number of draws";
             case TIC_TAC_TOE_NB_PERFECT:
-                return "TicTacToe Number of perfect";
+                return "Tic tac toe number of perfects";
             case TIC_TAC_TOE_NB_CROSS:
-                return "TicTacToe Number Cross";
+                return "Tic tac toe number of cross";
             case TIC_TAC_TOE_NB_CIRCLE:
-                return "TicTacToe Number of circle";
+                return "Tic tac toe number of circles";
             case TIC_TAC_TOE_NB_ALL_SIGNS:
-                return "TicTacToe Number all signs";
+                return "Tic tac toe number all signs";
             case TIC_TAC_TOE_AVERAGE_TIME:
-                return "TicTacToe average tile";
+                return "Tic tac toe average time";
             case TIC_TAC_TOE_TOTAL_TIME:
-                return "TicTacToe total time";
+                return "Tic tac toe total time";
             case TIC_TAC_TOE_BEST_PLAYER:
-                return "TicTacToe best player";
+                return "Tic tac toe best player";
             default:
                 throw new RuntimeException("The statistic : " + stat.toString() + " is unknown");
         }

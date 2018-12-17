@@ -6,9 +6,9 @@ public class RunnerStatisticFactory {
     public static String getStringStat(RunnerStatsEnum stat) {
         switch (stat) {
             case RUNNER_NB_GAMES:
-                return "Runner Number of games";
+                return "Runner number of games";
             case RUNNER_NB_CLICKS:
-                return "Runner Number of click";
+                return "Runner number of click";
             case RUNNER_AVERAGE_SPEED:
                 return "Runner average speed";
             case RUNNER_AVERAGE_TIME:

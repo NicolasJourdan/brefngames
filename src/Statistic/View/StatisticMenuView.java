@@ -18,7 +18,7 @@ public class StatisticMenuView extends CustomBackgroundPanel {
     private CustomButton playerStatistic;
     private CustomButton tttStatistic;
     private CustomButton runnerStatistic;
-    private CustomButton coockieStatistic;
+    private CustomButton cookieStatistic;
     private CustomButton connectStatistic;
     private CustomLabel globalSettingsLabel;
 
@@ -70,10 +70,10 @@ public class StatisticMenuView extends CustomBackgroundPanel {
         this.constraints.gridy = 4;
         this.add(this.runnerStatistic, this.constraints);
 
-        this.coockieStatistic = new CustomButton("Coockie Clicker");
+        this.cookieStatistic = new CustomButton("Cookie Clicker");
         this.constraints.gridx = 2;
         this.constraints.gridy = 4;
-        this.add(this.coockieStatistic, this.constraints);
+        this.add(this.cookieStatistic, this.constraints);
 
         this.connectStatistic = new CustomButton("Connect Four");
         this.constraints.gridx = 3;
@@ -113,10 +113,10 @@ public class StatisticMenuView extends CustomBackgroundPanel {
                 StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_RUNNER);
             }
         });
-        this.coockieStatistic.addActionListener(new ActionListener() {
+        this.cookieStatistic.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_COOCKIE_CLICKER);
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_COOKIE_CLICKER);
             }
         });
         this.connectStatistic.addActionListener(new ActionListener() {

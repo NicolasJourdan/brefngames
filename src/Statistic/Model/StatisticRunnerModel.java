@@ -26,7 +26,7 @@ public class StatisticRunnerModel extends AbstractModel {
         index = 0;
         for (Map.Entry<RunnerStatsEnum, String> s : stat.entrySet()) {
             this.donnees[index][0] = RunnerStatisticFactory.getStringStat(s.getKey());
-            this.donnees[index][1] = s.getValue();
+            this.donnees[index][1] = s.getValue().replace("_", " ");
             index++;
         }
         return this.donnees;

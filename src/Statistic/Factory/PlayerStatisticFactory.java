@@ -6,39 +6,39 @@ public class PlayerStatisticFactory {
     public static String getStringStat(PlayerStatsEnum stat) {
         switch (stat) {
             case TIC_TAC_TOE_NB_GAME:
-                return "TicTacToe Number of games";
+                return "Tic Tac Toe number of games";
             case TIC_TAC_TOE_NB_WIN:
-                return "TicTacToe Number of win";
+                return "Tic Tac Toe number of wins";
             case TIC_TAC_TOE_WIN_RATE:
-                return "TicTacToe pourcent of win";
+                return "Tic Tac Toe percent of wins";
             case CONNECT_FOUR_NB_GAME:
-                return "Connect Four Number of games";
+                return "Connect Four number of games";
             case CONNECT_FOUR_NB_WIN:
-                return "Connect Four Number of win";
+                return "Connect Four number of wins";
             case CONNECT_FOUR_WIN_RATE:
-                return "Connect Four pourcent of win";
+                return "Connect Four percent of wins";
             case RUNNER_NB_GAME:
-                return "Runner Number of games";
+                return "Runner number of games";
             case RUNNER_NB_WIN:
-                return "Runner Number of wins";
+                return "Runner number of wins";
             case RUNNER_WIN_RATE:
-                return "Runner pourcent of win";
+                return "Runner percent of wins";
             case COOKIE_CLICKER_NB_GAME:
-                return "Cookie Clicker Number of games";
+                return "Cookie Clicker number of games";
             case COOKIE_CLICKER_NB_WIN:
-                return "Cookie Clicker Number of win";
+                return "Cookie Clicker number of wins";
             case COOKIE_CLICKER_WIN_RATE:
-                return "Cookie Clicker pourcent of win";
+                return "Cookie Clicker percent of wins";
             case MOST_PLAYED_GAME:
-                return "Most played Game";
+                return "Most played game";
             case TOTAL_NB_GAME:
-                return "Number total of game";
+                return "Number total of games";
             case TOTAL_NB_WIN:
-                return "Number of win game";
+                return "Number of win games";
             case TOTAL_NB_LOOSE:
-                return "Number of loose game";
+                return "Number of loose games";
             case WIN_RATE:
-                return "Win Rate";
+                return "Win rate";
             default:
                 throw new RuntimeException("The statistic : " + stat.toString() + " is unknown");
         }
