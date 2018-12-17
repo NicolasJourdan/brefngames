@@ -22,10 +22,10 @@ public class StatisticMenuView extends CustomBackgroundPanel {
     private CustomButton connectStatistic;
     private CustomLabel globalSettingsLabel;
 
-    private JTable tableau;
+    private JTable table;
     private DefaultTableModel model;
     private Object[][] dataTable;
-    private GridBagConstraints c;
+    private GridBagConstraints constraints;
 
 
     public StatisticMenuView() {
@@ -33,58 +33,58 @@ public class StatisticMenuView extends CustomBackgroundPanel {
         this.dataTable = new Object[][]{};
 
         this.setLayout(new GridBagLayout());
-        this.c = new GridBagConstraints();
-        this.c.insets = new Insets(
+        this.constraints = new GridBagConstraints();
+        this.constraints.insets = new Insets(
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
                 Utils.DEFAULT_BUTTON_PADDING_RIGHT);
-        this.c.gridwidth = GridBagConstraints.REMAINDER;
+        this.constraints.gridwidth = GridBagConstraints.REMAINDER;
 
-        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.constraints.fill = GridBagConstraints.HORIZONTAL;
 
         this.globalSettingsLabel = new CustomLabel("Global Statistics");
         this.globalSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.globalSettingsLabel.setFont(this.globalSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.c.gridx = 0;
-        this.c.gridy = 0;
-        this.c.gridwidth = 4;   // largeur 2 colonne
-        this.add(this.globalSettingsLabel, c);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 0;
+        this.constraints.gridwidth = 4;   // largeur 2 colonne
+        this.add(this.globalSettingsLabel, this.constraints);
 
         this.updateTableView();
 
         this.playerStatistic = new CustomButton("Statistics by Player");
-        this.c.gridx = 1;
-        this.c.gridy = 3;
-        this.c.gridwidth = 2;   // largeur 2 colonne
-        this.add(this.playerStatistic, c);
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 3;
+        this.constraints.gridwidth = 2;   // largeur 2 colonne
+        this.add(this.playerStatistic, this.constraints);
 
         this.tttStatistic = new CustomButton("Tic Tac Toe");
-        this.c.gridwidth = 1;   // Re init
-        this.c.gridx = 0;
-        this.c.gridy = 4;
-        this.add(this.tttStatistic, c);
+        this.constraints.gridwidth = 1;   // Re init
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 4;
+        this.add(this.tttStatistic, this.constraints);
 
         this.runnerStatistic = new CustomButton("Runner");
-        this.c.gridx = 1;
-        this.c.gridy = 4;
-        this.add(this.runnerStatistic, c);
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 4;
+        this.add(this.runnerStatistic, this.constraints);
 
         this.coockieStatistic = new CustomButton("Coockie Clicker");
-        this.c.gridx = 2;
-        this.c.gridy = 4;
-        this.add(this.coockieStatistic, c);
+        this.constraints.gridx = 2;
+        this.constraints.gridy = 4;
+        this.add(this.coockieStatistic, this.constraints);
 
         this.connectStatistic = new CustomButton("Connect Four");
-        this.c.gridx = 3;
-        this.c.gridy = 4;
-        this.add(this.connectStatistic, c);
+        this.constraints.gridx = 3;
+        this.constraints.gridy = 4;
+        this.add(this.connectStatistic, this.constraints);
 
         this.backButton = new CustomButton("Back");
-        this.c.gridx = 1;
-        this.c.gridy = 5;
-        this.c.gridwidth = 2;   // largeur 2 colonne
-        this.add(this.backButton, c);
+        this.constraints.gridx = 1;
+        this.constraints.gridy = 5;
+        this.constraints.gridwidth = 2;   // largeur 2 colonne
+        this.add(this.backButton, this.constraints);
 
         this.initButtonsActionListeners();
     }
@@ -130,18 +130,18 @@ public class StatisticMenuView extends CustomBackgroundPanel {
     public void updateGlobalStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.updateTableView();
-        this.tableau.revalidate();
-        this.tableau.repaint();
+        this.table.revalidate();
+        this.table.repaint();
         this.revalidate();
         this.repaint();
     }
 
     public void updateTableView(){
         this.model = new DefaultTableModel(this.dataTable, new String[]{"statistic", "numbers"});
-        this.tableau = new CustomTable(this.model);
-        this.c.gridx = 0;
-        this.c.gridy = 2;
-        this.c.gridwidth = 4;   // largeur 4 colonne
-        this.add(tableau, c);
+        this.table = new CustomTable(this.model);
+        this.constraints.gridx = 0;
+        this.constraints.gridy = 2;
+        this.constraints.gridwidth = 4;   // largeur 4 colonne
+        this.add(this.table, this.constraints);
     }
 }
