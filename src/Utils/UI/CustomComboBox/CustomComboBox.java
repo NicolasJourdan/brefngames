@@ -17,11 +17,14 @@ public class CustomComboBox extends JComboBox {
 
     private static final int MAXIMUM_ROW_COUNT = 5;
 
+    private boolean loaded;
+
     public CustomComboBox() {
         super();
         this.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_BUTTON_TEXT));
         this.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
         this.setUI(new CustomComboBoxUI());
+        this.loaded = false;
 
         // Remove arrow
         this.remove(this.getComponent(0));
@@ -32,6 +35,10 @@ public class CustomComboBox extends JComboBox {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (!CustomComboBox.this.loaded) {
+                    CustomComboBox.this.loaded = true;
+                    return;
+                }
                 CustomComboBox.this.playSound();
             }
         });
