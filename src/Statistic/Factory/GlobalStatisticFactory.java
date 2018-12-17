@@ -8,7 +8,7 @@ public class GlobalStatisticFactory {
             case MOST_PLAYED_GAME:
                 return "Most played game";
             case MOST_ADDICT_PLAYER:
-                return "Most addited player";
+                return "Most addicted player";
             case NB_TOTAL_GAMES:
                 return "Number total of games";
             case BEST_PLAYER:

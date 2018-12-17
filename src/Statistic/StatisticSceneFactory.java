@@ -16,7 +16,7 @@ public class StatisticSceneFactory implements SceneFactoryInterface {
                 return new StatisticTicTacToeScene();
             case STATISTIC_RUNNER:
                 return new StatisticRunnerScene();
-            case STATISTIC_COOCKIE_CLICKER:
+            case STATISTIC_COOKIE_CLICKER:
                 return new StatisticCookieClickerScene();
             case STATISTIC_CONNECT_FOUR:
                 return new StatisticConnectFourScene();

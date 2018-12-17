@@ -42,7 +42,7 @@ public class StatisticPlayerModel extends AbstractModel {
         index = 0;
         for (Map.Entry<PlayerStatsEnum, String> s : stat.entrySet()) {
             this.donnees[index][0] = PlayerStatisticFactory.getStringStat(s.getKey());
-            this.donnees[index][1] = s.getValue();
+            this.donnees[index][1] = s.getValue().replace("_", " ");
             index++;
         }
         return this.donnees;

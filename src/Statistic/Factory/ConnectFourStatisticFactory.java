@@ -6,23 +6,23 @@ public class ConnectFourStatisticFactory {
     public static String getStringStat(ConnectFourStatsEnum stat) {
         switch (stat) {
             case CONNECT_FOUR_NB_GAMES:
-                return "Connect Four Number of games";
+                return "Connect Four number of games";
             case CONNECT_FOUR_NB_DRAW:
-                return "Connect Four Number of draw";
+                return "Connect Four number of draws";
             case CONNECT_FOUR_NB_YELLOW_PAWNS:
-                return "Connect Four Number of yellow pawns";
+                return "Connect Four number of yellow pawns";
             case CONNECT_FOUR_NB_RED_PAWNS:
-                return "Connect Four Number of red pawns";
+                return "Connect Four number of red pawns";
             case CONNECT_FOUR_NB_ALL_PAWNS:
-                return "Connect Four Number of all pawns";
+                return "Connect Four number of all pawns";
             case CONNECT_FOUR_NB_WIN_VERTICAL:
-                return "Connect Four Number of vertical win";
+                return "Connect Four number of vertical wins";
             case CONNECT_FOUR_NB_WIN_LANDSCAPE:
-                return "Connect Four Number of landscape win";
+                return "Connect Four number of landscape wins";
             case CONNECT_FOUR_NB_WIN_DIAG:
-                return "Connect Four Number of diagonal win";
+                return "Connect Four number of diagonal wins";
             case CONNECT_FOUR_AVERAGE_TIME:
-                return "Connect Four average tile";
+                return "Connect Four average time";
             case CONNECT_FOUR_TOTAL_TIME:
                 return "Connect Four total time";
             case CONNECT_FOUR_BEST_PLAYER:
