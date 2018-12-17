@@ -36,10 +36,13 @@ public class LauncherController extends AbstractSceneManagerController {
                 return SceneEnum.STATISTICS;
             case PARAMETERS:
                 return SceneEnum.PARAMETERS;
+            case CREDITS:
+                return SceneEnum.CREDITS;
             case END_STATISTIC:
             case END_PARAMETERS:
             case END_CONTEST:
             case END_TRAINING:
+            case END_CREDITS:
                 return SceneEnum.MENU;
             case QUIT:
                 return SceneEnum.QUIT;

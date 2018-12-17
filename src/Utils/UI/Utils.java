@@ -11,6 +11,9 @@ public class Utils {
     public final static float DEFAULT_SIZE_LABEL_CARD = 11f;
     public final static float DEFAULT_SIZE_SMALL_CONTEST = 13f;
 
+    public final static float CREDIT_TITLE_LABEL = 22f;
+    public final static float CREDIT_SIZE_LABEL = 17f;
+
     public final static int DEFAULT_BUTTON_PADDING_TOP = 5;
     public final static int DEFAULT_BUTTON_PADDING_BOTTOM = 5;
     public final static int DEFAULT_BUTTON_PADDING_LEFT = 2;
@@ -41,6 +44,7 @@ public class Utils {
     public final static String FLASH = "FLASH";
     public final static String AQUAMAN = "AQUAMAN";
 
+    public final static String BREFNGAMES = "BREF'N'Games";
 
     public final static String DEFAULT_CLICK_SOUND = "click1.wav";
 

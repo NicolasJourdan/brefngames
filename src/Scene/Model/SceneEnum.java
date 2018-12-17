@@ -37,6 +37,7 @@ public enum SceneEnum {
     CONTEST("CONTEST"),
     STATISTICS("STATISTICS"),
     PARAMETERS("PARAMETERS"),
+    CREDITS("CREDITS"),
     QUIT("QUIT"),
 
     /*

@@ -1,6 +1,7 @@
 package Launcher;
 
 import Contest.ContestScene;
+import Credit.CreditScene;
 import Menu.MenuScene;
 import Parameter.Scenes.ParametersScene;
 import Scene.Model.Scene;
@@ -24,6 +25,8 @@ public class LauncherFactory implements SceneFactoryInterface {
                 return new StatisticScene();
             case PARAMETERS:
                 return new ParametersScene();
+            case CREDITS:
+                return new CreditScene();
             case QUIT:
                 System.exit(0);
             default:
