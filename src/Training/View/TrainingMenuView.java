@@ -32,7 +32,7 @@ public class TrainingMenuView extends CustomBackgroundPanel {
 
         this.title = new CustomLabel("Training");
         this.title.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.title.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
+        this.title.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue());
 
         this.initButtonsActionListeners();
 
