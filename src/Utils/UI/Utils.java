@@ -24,7 +24,7 @@ public class Utils {
     public final static int DEFAULT_COMPONENT_PADDING_LEFT_MAP = 4;
     public final static int DEFAULT_COMPONENT_PADDING_RIGHT_MAP = 4;
 
-    public final static int DEFAULT_BUTTON_PADDING_CUSTOM_TOP = 27;
+    public final static int DEFAULT_BUTTON_PADDING_CUSTOM_TOP = 24;
     public final static int DEFAULT_BUTTON_PADDING_CUSTOM_SMALL_TOP = 12;
 
     public final static int DEFAULT_BUTTON_SIZE = 500;
