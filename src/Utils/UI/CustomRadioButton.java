@@ -18,6 +18,8 @@ public class CustomRadioButton extends JRadioButton {
         this.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
         this.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_BUTTON_TEXT));
 
+        this.setOpaque(false);
+
         this.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {

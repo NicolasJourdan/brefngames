@@ -12,6 +12,7 @@ import java.awt.event.ItemListener;
 
 public class CustomCheckBox extends JCheckBox {
 
+    private static final String BACKGROUND_COLOR = "#EEEEEE";
     private final static int WIDTH = 49;
     private final static int HEIGHT = 49;
     private final static int TEXT_GAP = 10;
@@ -73,6 +74,10 @@ public class CustomCheckBox extends JCheckBox {
     @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+
+        // clear background
+        g2d.setColor(Color.decode(CustomCheckBox.BACKGROUND_COLOR));
+        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         // checkbox image
         g2d.drawImage(

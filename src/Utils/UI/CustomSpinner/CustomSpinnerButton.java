@@ -1,5 +1,7 @@
 package Utils.UI.CustomSpinner;
 
+import Parameter.Model.ThemeEnum;
+import Repository.Parameter.ThemeParameterRepository;
 import Utils.UI.FileGetter;
 import Utils.UI.SoundPlayer;
 import Utils.UI.Utils;
@@ -45,6 +47,16 @@ public class CustomSpinnerButton extends JButton {
         // background image
         g2d.drawImage(this.backgroundImage, 0, 0, this);
 
-        super.paintComponent(g);
+        // text
+        g2d.setFont(this.getFont());
+        g2d.setColor((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
+        FontMetrics fontMetrics = g.getFontMetrics(this.getFont());
+        g2d.drawString(
+                this.getText(),
+                (CustomSpinnerButton.WIDTH - fontMetrics.stringWidth(this.getText())) / 2,
+                ((CustomSpinnerButton.HEIGHT- fontMetrics.getHeight()) / 2) + fontMetrics.getAscent()
+        );
+
+        g2d.finalize();
     }
 }
