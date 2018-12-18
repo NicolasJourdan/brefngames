@@ -196,12 +196,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         firstPlayerPanel.add(this.firstPlayerName, constraintPlayerPanel);
 
         this.firstIconSuperman = new CustomRadioButton("Superman");
+        this.firstIconSuperman.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.firstIconSuperman.setFont(this.firstIconSuperman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstIconBatman = new CustomRadioButton("Batman");
+        this.firstIconBatman.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.firstIconBatman.setFont(this.firstIconBatman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstIconFlash = new CustomRadioButton("Flash");
+        this.firstIconFlash.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.firstIconFlash.setFont(this.firstIconFlash.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.firstIconAquaman = new CustomRadioButton("Aquaman");
+        this.firstIconAquaman.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.firstIconAquaman.setFont(this.firstIconAquaman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
 
         this.firstColorPlayerRed = new CustomRadioButton("Red");
@@ -287,12 +291,16 @@ public class ContestSettingsView extends CustomBackgroundPanel {
 
         this.secondIconSuperman = new CustomRadioButton("Superman");
         this.secondIconSuperman.setFont(this.secondIconSuperman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondIconSuperman.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.secondIconBatman = new CustomRadioButton("Batman");
         this.secondIconBatman.setFont(this.secondIconBatman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondIconBatman.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.secondIconFlash = new CustomRadioButton("Flash");
         this.secondIconFlash.setFont(this.secondIconFlash.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondIconFlash.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
         this.secondIconAquaman = new CustomRadioButton("Aquaman");
         this.secondIconAquaman.setFont(this.secondIconAquaman.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.secondIconAquaman.setForeground(ColorFactory.getDarkerSecondColorColorVersion());
 
         ButtonGroup secondIconGroup = new ButtonGroup();
         secondIconGroup.add(this.secondIconSuperman);

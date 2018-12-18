@@ -1,7 +1,5 @@
 package Utils.UI.CustomSpinner;
 
-import Parameter.Model.ThemeEnum;
-import Repository.Parameter.ThemeParameterRepository;
 import Utils.UI.FileGetter;
 import Utils.UI.SoundPlayer;
 import Utils.UI.Utils;
@@ -26,7 +24,6 @@ public class CustomSpinnerEditor extends JTextField {
     public CustomSpinnerEditor(String text) {
         super(text, CustomSpinnerEditor.COLUMNS);
 
-        this.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
         this.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL));
         this.setBorder(new EmptyBorder(0, CustomSpinnerEditor.BORDER, 0, CustomSpinnerEditor.BORDER));
         this.setOpaque(false);

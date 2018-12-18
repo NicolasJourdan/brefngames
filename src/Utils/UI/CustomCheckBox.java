@@ -27,6 +27,7 @@ public class CustomCheckBox extends JCheckBox {
         Font font = FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_BUTTON_TEXT);
         this.setFont(font);
         FontMetrics fontMetrics = this.getFontMetrics(font);
+        this.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
 
         this.setPreferredSize(
                 new Dimension(
@@ -90,7 +91,7 @@ public class CustomCheckBox extends JCheckBox {
 
         // text
         g2d.setFont(this.getFont());
-        g2d.setColor((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
+        g2d.setColor(this.getForeground());
         FontMetrics fontMetrics = g.getFontMetrics();
         g2d.drawString(
                 this.getText(),
