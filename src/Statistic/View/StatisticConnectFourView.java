@@ -38,7 +38,7 @@ public class StatisticConnectFourView extends CustomBackgroundPanel {
 
         this.constraints.fill = GridBagConstraints.CENTER;
 
-        this.connectFourSettingsLabel = new CustomLabel("Connect Four Statistic");
+        this.connectFourSettingsLabel = new CustomLabel("Connect Four Statistics");
         this.connectFourSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.connectFourSettingsLabel.setFont(this.connectFourSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 0;

@@ -38,7 +38,7 @@ public class StatisticRunnerView extends CustomBackgroundPanel {
 
         this.constraints.fill = GridBagConstraints.CENTER;
 
-        this.runnerSettingsLabel = new CustomLabel("Runner Statistic");
+        this.runnerSettingsLabel = new CustomLabel("Runner Statistics");
         this.runnerSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.runnerSettingsLabel.setFont(this.runnerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 0;
