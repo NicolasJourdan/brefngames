@@ -20,7 +20,7 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 ## Git History
 Visual representation of the git repository history
 
-[![Git History](https://img.youtube.com/vi/5eXdmkSbQG4/0.jpg)](https://youtu.be/5eXdmkSbQG4)
+[![Git History](https://img.youtube.com/vi/6LCyB9z3E8c/0.jpg)](https://youtu.be/6LCyB9z3E8c)
 
 ## Developers 👨‍💻
 - Florian Merle
