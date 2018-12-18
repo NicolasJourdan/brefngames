@@ -1,8 +1,5 @@
 package Game.Games.Runner.RunnerView;
 
-import Game.Games.ScoreDisplay;
-import Game.View.AbstractGameView;
-import Map.Model.History;
 import Player.Player;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;

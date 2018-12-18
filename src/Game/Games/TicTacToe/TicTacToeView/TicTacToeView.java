@@ -2,9 +2,6 @@ package Game.Games.TicTacToe.TicTacToeView;
 
 import Game.Games.Coord;
 import Game.Games.DisplayPanel;
-import Game.Games.ScoreDisplay;
-import Game.View.AbstractGameView;
-import Map.Model.History;
 import Player.Player;
 import Structure.ProxyObservable;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;

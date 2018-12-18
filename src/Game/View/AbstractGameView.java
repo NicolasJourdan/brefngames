@@ -1,7 +1,6 @@
 package Game.View;
 
 import Game.Games.ScoreDisplay;
-import Map.Model.History;
 import Player.Player;
 import Structure.AbstractView;
 
@@ -15,6 +14,10 @@ public abstract class AbstractGameView extends AbstractView {
     }
 
     public void setScoreDisplay(boolean visible) {
-        this.scoreDisplay.setVisible(visible);
+        if (visible) {
+            this.scoreDisplay.setVisible(true);
+        } else {
+            this.scoreDisplay.hideScore();
+        }
     }
 }
