@@ -6,6 +6,7 @@ import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
 import Utils.UI.CustomLabel;
 import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
+import Utils.UI.SoundPlayer;
 import Utils.UI.Utils;
 
 import javax.swing.*;
@@ -77,6 +78,7 @@ public class CookieView extends CustomGameBackgroundPanel {
                 CookieView.this.firstPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
                 repaint();
                 revalidate();
+                SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
             }
         });
 
@@ -96,6 +98,7 @@ public class CookieView extends CustomGameBackgroundPanel {
                 CookieView.this.secondPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
                 repaint();
                 revalidate();
+                SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
             }
         });
 
