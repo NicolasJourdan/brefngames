@@ -1,5 +1,7 @@
 package Game.Games.Runner.RunnerView;
 
+import Utils.UI.FileGetter;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -12,6 +14,7 @@ public class VirtualKey extends JLabel
     private final static Color INACTIVE_CONTROL_TEXT_COLOR = Color.BLACK;
 
     private static final int BORDER = 10;
+    public static final float DEFAULT_FONT_SIZE = 14f;
 
     public VirtualKey(String text, boolean highlight) {
         super(text);
@@ -19,11 +22,7 @@ public class VirtualKey extends JLabel
         this.setOpaque(true);
         this.highlight(highlight);
         this.setFont(
-            new Font(
-                this.getFont().getName(),
-                Font.PLAIN,
-                14
-            )
+                FileGetter.getFont().deriveFont(VirtualKey.DEFAULT_FONT_SIZE)
         );
         this.setBorder(
             new EmptyBorder(

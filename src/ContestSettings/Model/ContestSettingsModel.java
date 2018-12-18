@@ -35,29 +35,24 @@ public class ContestSettingsModel extends AbstractModel {
         this.invalidDataObjectText = "";
 
         if (settingsDataObject.getSelectedGameTypes().isEmpty()) {
-            this.invalidDataObjectText += "At least one game type has to be selected<br>";
+            this.invalidDataObjectText = "At least one game type has to be selected";
         }
 
         if (!this.validatePlayerNameLength(settingsDataObject.getFirstPlayerName()) ||
             !this.validatePlayerNameLength(settingsDataObject.getSecondPlayerName())) {
-            this.invalidDataObjectText += "Player name must have between " + ContestSettingsModel.PLAYER_NAME_MIN_LENGTH +
-                    " and " + ContestSettingsModel.PLAYER_NAME_MAX_LENGTH + " characters<br>";
+            this.invalidDataObjectText = "Player name must have between " + ContestSettingsModel.PLAYER_NAME_MIN_LENGTH +
+                    " and " + ContestSettingsModel.PLAYER_NAME_MAX_LENGTH + " characters";
         }
 
         if (settingsDataObject.getFirstPlayerName().equals(settingsDataObject.getSecondPlayerName())) {
-            this.invalidDataObjectText += "Both player can't have the same name<br>";
+            this.invalidDataObjectText = "Both player can't have the same name";
         }
 
         if (settingsDataObject.getFirstPlayerColor().equals(settingsDataObject.getSecondPlayerColor())) {
-            this.invalidDataObjectText += "Both players can't choose the same color<br>";
+            this.invalidDataObjectText = "Both players can't choose the same color";
         }
 
-        if (!this.invalidDataObjectText.equals("")) {
-            this.invalidDataObjectText = "<html>" + this.invalidDataObjectText + "</html>";
-            return false;
-        }
-
-        return true;
+        return this.invalidDataObjectText.equals("");
     }
 
     private boolean validatePlayerNameLength(String name) {
