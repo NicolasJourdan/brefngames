@@ -22,21 +22,33 @@ public class Music extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 1;
-        CustomLabel zeldaShop = new CustomLabel("Zelda - Shop");
-        zeldaShop.setFont(zeldaShop.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
-        this.add(zeldaShop, constraints);
+        CustomLabel patrickLabel = new CustomLabel("Produced by Patrick de Arteaga");
+        patrickLabel.setFont(patrickLabel.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
+        this.add(patrickLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        CustomLabel zeldaDragon = new CustomLabel("Zelda - Dragon Roost Island");
-        zeldaDragon.setFont(zeldaDragon.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
-        this.add(zeldaDragon, constraints);
+        CustomLabel humbleMatch = new CustomLabel("Humble Match");
+        humbleMatch.setFont(humbleMatch.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
+        this.add(humbleMatch, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 3;
-        CustomLabel zeldaOutset = new CustomLabel("Zelda - Outset Island");
-        zeldaOutset.setFont(zeldaOutset.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
-        this.add(zeldaOutset, constraints);
+        CustomLabel prorrogaDeTiempoC = new CustomLabel("Prorroga de Tiempo C");
+        prorrogaDeTiempoC.setFont(prorrogaDeTiempoC.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
+        this.add(prorrogaDeTiempoC, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        CustomLabel solveThePuzzle = new CustomLabel("Solve The Puzzle");
+        solveThePuzzle.setFont(solveThePuzzle.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
+        this.add(solveThePuzzle, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        CustomLabel suTurno = new CustomLabel("Su Turno");
+        suTurno.setFont(suTurno.getFont().deriveFont(Utils.CREDIT_SIZE_LABEL));
+        this.add(suTurno, constraints);
 
 
     }
