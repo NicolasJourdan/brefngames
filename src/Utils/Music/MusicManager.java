@@ -36,9 +36,10 @@ public class MusicManager {
 
     private MusicManager() {
         this.musicList = new ArrayList<>();
-        this.musicList.add(this.getSound("Zelda-OOT-Shop.wav"));
-        this.musicList.add(this.getSound("Zelda-Wind-Waker-Dragon-Roost-Island.wav"));
-        this.musicList.add(this.getSound("Zelda-Wind-Waker-Outset-Island.wav"));
+        this.musicList.add(this.getSound("Humble-Match.wav"));
+        this.musicList.add(this.getSound("Prorroga-de-Tiempo-C.wav"));
+        this.musicList.add(this.getSound("Solve-The-Puzzle.wav"));
+        this.musicList.add(this.getSound("Su-Turno.wav"));
         this.lastMusic = null;
     }
 
