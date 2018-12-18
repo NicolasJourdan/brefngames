@@ -34,35 +34,10 @@
     },
     {
       "name": "TIC_TAC_TOE_BEST_PLAYER",
-      "value": "Bastos"
+      "value": "NONE"
     }
   ],
-  "players": [
-    {
-      "color": "BLUE",
-      "name": "j2",
-      "icon": "BATMAN",
-      "statistics": {
-        "TIC_TAC_TOE_NB_GAME":"0",
-        "TIC_TAC_TOE_NB_WIN":"0",
-        "TIC_TAC_TOE_WIN_RATE":"0",
-        "RUNNER_NB_GAME":"0",
-        "RUNNER_NB_WIN":"0",
-        "RUNNER_WIN_RATE":"0",
-        "CONNECT_FOUR_NB_GAME":"0",
-        "CONNECT_FOUR_NB_WIN":"0",
-        "CONNECT_FOUR_WIN_RATE":"0",
-        "COOKIE_CLICKER_NB_GAME":"0",
-        "COOKIE_CLICKER_NB_WIN":"0",
-        "COOKIE_CLICKER_WIN_RATE":"0",
-        "MOST_PLAYED_GAME":"NONE",
-        "TOTAL_NB_GAME":"0",
-        "TOTAL_NB_WIN":"0",
-        "TOTAL_NB_LOOSE":"0",
-        "WIN_RATE":"0"
-      }
-    }
-  ],
+  "players": [],
   "cookieClicker": [
     {
       "name": "COOKIE_CLICKER_NB_GAMES",
@@ -74,7 +49,7 @@
     },
     {
       "name": "COOKIE_CLICKER_BEST_PLAYER",
-      "value": "EliasZER"
+      "value": "NONE"
     },
     {
       "name": "COOKIE_CLICKER_NB_PERFECT",
@@ -112,7 +87,7 @@
     },
     {
       "name": "CONNECT_FOUR_BEST_PLAYER",
-      "value": "RayaneLeMarco1"
+      "value": "NONE"
     },
     {
       "name": "CONNECT_FOUR_NB_YELLOW_PAWNS",
@@ -170,7 +145,7 @@
     },
     {
       "name": "RUNNER_BEST_PLAYER",
-      "value": "Floflax"
+      "value": "NONE"
     }
   ]
 }
