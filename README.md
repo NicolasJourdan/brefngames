@@ -1,28 +1,36 @@
 # BREF'N'Games
-This Java application is an application to play and to customize mini games with your friend. It is possible to compare your stats thanks to the statistics menu.
+This Java application gathers several mini games you can play with a friend.
 
-## UML
-It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames/).
+Two modes are included:
+- Training mode
+- Contest
 
-## Mini Games
+The contest mode will save statistics related to each game and to each player.
+
+Differents aspects of the game can be configured like:
+- Color theme
+- Music
+- Default configuration
+
+## Mini Games Included
 - Tic Tac Toe
 - Cookie Clicker
 - Runner
 - Connect Four
 
-## Functionnalities
-- Customize games
-- Customize themes
-- Statistics
+## Screenshots
 
-## Screens
+## Useful Links
+It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames/).
+
+[Wiki](https://github.com/NicolasJourdan/brefngames/wiki) with all guidelines.
 
 ## Git History
 Visual representation of the git repository history
 
 [![Git History](https://img.youtube.com/vi/6LCyB9z3E8c/0.jpg)](https://youtu.be/6LCyB9z3E8c)
 
-## Developers 👨‍💻
+## Team Members 👨‍💻
 - Florian Merle
 - Bastien Plaza
 - Elias Boulharts
