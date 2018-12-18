@@ -38,7 +38,7 @@ public class StatisticTicTacToeView extends CustomBackgroundPanel {
 
         this.constraints.fill = GridBagConstraints.CENTER;
 
-        this.ticTacToeSettingsLabel = new CustomLabel("Tic Tac Toe Statistic");
+        this.ticTacToeSettingsLabel = new CustomLabel("Tic Tac Toe Statistics");
         this.ticTacToeSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.ticTacToeSettingsLabel.setFont(this.ticTacToeSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 0;

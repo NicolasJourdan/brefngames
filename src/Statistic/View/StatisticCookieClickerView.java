@@ -38,7 +38,7 @@ public class StatisticCookieClickerView extends CustomBackgroundPanel {
 
         this.constraints.fill = GridBagConstraints.CENTER;
 
-        this.cookieClickerSettingsLabel = new CustomLabel("Cookie Clicker Statistic");
+        this.cookieClickerSettingsLabel = new CustomLabel("Cookie Clicker Statistics");
         this.cookieClickerSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.cookieClickerSettingsLabel.setFont(this.cookieClickerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 0;
