@@ -18,6 +18,8 @@ public class CustomSpinner extends JSpinner {
             }
         });
 
+        this.setBorder(BorderFactory.createEmptyBorder());
+
         this.setUI(new CustomSpinnerUI());
     }
 }

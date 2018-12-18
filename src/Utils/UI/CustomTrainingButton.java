@@ -1,5 +1,8 @@
 package Utils.UI;
 
+import Parameter.Factory.ColorFactory;
+import Parameter.Model.ThemeEnum;
+import Repository.Parameter.ThemeParameterRepository;
 import Utils.Image.ImageResizer;
 
 import javax.swing.*;
@@ -64,6 +67,10 @@ public class CustomTrainingButton extends JButton
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
+
+        // clear background
+        g2d.setColor(ColorFactory.getBackgroundColor((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue()));
+        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         // background image
         g2d.drawImage(

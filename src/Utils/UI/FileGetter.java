@@ -7,10 +7,9 @@ import Repository.Parameter.ThemeParameterRepository;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.net.URL;
 
 public class FileGetter {
-    private final static String UI_PATH = "/data/UIpack/";
+    private final static String UI_PATH = "/src/data/UIpack/";
 
     /**
      * Get a resource from the UIpack
@@ -18,8 +17,8 @@ public class FileGetter {
      * @param resourcePath
      * @return
      */
-    public static URL getResource(String resourcePath) {
-        return FileGetter.class.getResource(FileGetter.UI_PATH + '/' + resourcePath);
+    public static String getResource(String resourcePath) {
+        return new File(".").getAbsolutePath() + FileGetter.UI_PATH + resourcePath;
     }
 
     /**
@@ -56,7 +55,7 @@ public class FileGetter {
     public static Font getFont() {
 
         try {
-            return Font.createFont(Font.TRUETYPE_FONT, new File("src" + FileGetter.UI_PATH + "/Font/kenvector_future_thin.ttf"));
+            return Font.createFont(Font.TRUETYPE_FONT, new File(new File(".").getAbsolutePath() + FileGetter.UI_PATH + "/Font/kenvector_future_thin.ttf"));
         } catch (FontFormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -73,7 +72,7 @@ public class FileGetter {
      * @return
      */
     public static File getSound(String sound) {
-        return new File("src" + FileGetter.UI_PATH + "Bonus/" + sound);
+        return new File(new File(".").getAbsolutePath() + FileGetter.UI_PATH + "Bonus/" + sound);
     }
 
     /**

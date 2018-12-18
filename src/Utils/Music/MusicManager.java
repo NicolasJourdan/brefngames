@@ -2,6 +2,7 @@ package Utils.Music;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +13,7 @@ public class MusicManager {
 
     // set the gain (between 0.0 and 1.0)
     private static final double GAIN = 0.15;
+    private static final double VOLUME_PERCENT = 0.25;
     private final static String MUSIC_LIBRARY_PATH = "/data/Musics/";
 
     private Clip clip;
@@ -83,14 +85,28 @@ public class MusicManager {
      */
     private void playNextSound() {
         try {
-            this.clip = AudioSystem.getClip();
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(this.getNextSound());
+            DataLine.Info info = new DataLine.Info(Clip.class, inputStream.getFormat());
+            this.clip = (Clip) AudioSystem.getLine(info);
+            this.clip.open(inputStream);
 
-            this.clip.open(AudioSystem.getAudioInputStream(this.getNextSound()));
-
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float dB = (float) (Math.log(MusicManager.GAIN) / Math.log(10.0) * 20.0);
-            gainControl.setValue(dB);
-
+            try {
+                FloatControl gainControl = (FloatControl) this.clip.getControl(FloatControl.Type.MASTER_GAIN);
+                float dB = (float) (Math.log(MusicManager.GAIN) / Math.log(10.0) * 20.0);
+                gainControl.setValue(dB);
+            }
+            catch (IllegalArgumentException masterGainException) {
+                System.out.println("Could not change the gain, trying with volume");
+                try {
+                    FloatControl volumeControl = (FloatControl) this.clip.getControl(FloatControl.Type.VOLUME);
+                    volumeControl.setValue(
+                            (float) (volumeControl.getMaximum() * MusicManager.VOLUME_PERCENT)
+                    );
+                }
+                catch (IllegalArgumentException volumeException) {
+                    System.out.println("Neither volume nor gain could be changed");
+                }
+            }
             this.clip.start();
 
             this.lineListener = new LineListener() {
@@ -104,7 +120,7 @@ public class MusicManager {
             };
 
             this.clip.addLineListener(this.lineListener);
-        } catch (Exception e) {
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
             e.printStackTrace(System.out);
         }
     }
