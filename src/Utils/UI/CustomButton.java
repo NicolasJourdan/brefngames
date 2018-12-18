@@ -10,7 +10,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 public class CustomButton extends JButton {
@@ -168,5 +170,13 @@ public class CustomButton extends JButton {
     private void setBackgroundPressed() {
         this.yOffset = CustomButton.Y_OFFSET;
         this.backgroundImage = FileGetter.getImage("_button01.png");
+    }
+
+    public void setBackgroundGrey() {
+        for (MouseListener current : this.getMouseListeners()) {
+            this.removeMouseListener(current);
+        }
+
+        this.backgroundImage = FileGetter.getGreyImage("_button00.png");
     }
 }

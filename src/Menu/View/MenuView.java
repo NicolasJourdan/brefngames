@@ -1,15 +1,19 @@
 package Menu.View;
 
 import Launcher.LauncherWindow;
+import Player.Player;
+import Repository.Player.PlayerRepository;
 import Scene.Model.ActionEnum;
 import Utils.Image.ImageResizer;
 import Utils.UI.CustomButton;
 import Utils.UI.CustomPanel.CustomBackgroundPanel;
+import Utils.UI.FileGetter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MenuView extends CustomBackgroundPanel {
 
@@ -63,6 +67,11 @@ public class MenuView extends CustomBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridy = 3;
         constraint.gridwidth = 2;
+        List<Player> players = PlayerRepository.getAll();
+        if (players.isEmpty()) {
+            this.statisticsButton.setEnabled(false);
+            ((CustomButton) this.statisticsButton).setBackgroundGrey();
+        }
         this.add(this.statisticsButton, constraint);
         constraint.gridwidth = 1;
 
