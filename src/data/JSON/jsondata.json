@@ -1,0 +1,151 @@
+{
+  "ticTacToe": [
+    {
+      "name": "TIC_TAC_TOE_NB_GAMES",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_DRAW",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_PERFECT",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_CROSS",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_CIRCLE",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_NB_ALL_SIGNS",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_AVERAGE_TIME",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_TOTAL_TIME",
+      "value": "0"
+    },
+    {
+      "name": "TIC_TAC_TOE_BEST_PLAYER",
+      "value": "NONE"
+    }
+  ],
+  "players": [],
+  "cookieClicker": [
+    {
+      "name": "COOKIE_CLICKER_NB_GAMES",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_NB_CLICKS",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_BEST_PLAYER",
+      "value": "NONE"
+    },
+    {
+      "name": "COOKIE_CLICKER_NB_PERFECT",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_TOTAL_REQUIRED_CLICKS",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_AVERAGE_REQUIRED_CLICKS",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_TOTAL_FAULT",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_AVERAGE_FAULT",
+      "value": "0"
+    },
+    {
+      "name": "COOKIE_CLICKER_TOTAL_TIME",
+      "value": "0"
+    }
+  ],
+  "connectFour": [
+    {
+      "name": "CONNECT_FOUR_NB_GAMES",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_DRAW",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_BEST_PLAYER",
+      "value": "NONE"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_YELLOW_PAWNS",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_RED_PAWNS",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_ALL_PAWNS",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_WIN_VERTICAL",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_WIN_LANDSCAPE",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_NB_WIN_DIAG",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_AVERAGE_TIME",
+      "value": "0"
+    },
+    {
+      "name": "CONNECT_FOUR_TOTAL_TIME",
+      "value": "0"
+    }
+  ],
+  "runner": [
+    {
+      "name": "RUNNER_NB_GAMES",
+      "value": "0"
+    },
+    {
+      "name": "RUNNER_NB_CLICKS",
+      "value": "0"
+    },
+    {
+      "name": "RUNNER_AVERAGE_TIME",
+      "value": "0"
+    },
+    {
+      "name": "RUNNER_AVERAGE_SPEED",
+      "value": "0"
+    },
+    {
+      "name": "RUNNER_TOTAL_TIME",
+      "value": "0"
+    },
+    {
+      "name": "RUNNER_BEST_PLAYER",
+      "value": "NONE"
+    }
+  ]
+}

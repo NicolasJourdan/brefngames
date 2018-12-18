@@ -1,0 +1,18 @@
+{
+    "sound": true,
+    "music": true,
+    "defaultPlayers": {
+        "player1": {
+            "color": "COLOR_FIRST_PLAYER_BLUE",
+            "icon": "BATMAN_1"
+        },
+        "player2": {
+            "color": "COLOR_SECOND_PLAYER_RED",
+            "icon": "SUPERMAN_2"
+        }
+    },
+    "theme": {
+        "secondColor": "SECOND_COLOR_BLACK",
+        "firstColor": "FIRST_COLOR_RED"
+    }
+}
