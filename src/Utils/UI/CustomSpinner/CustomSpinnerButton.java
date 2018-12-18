@@ -57,7 +57,7 @@ public class CustomSpinnerButton extends JButton {
 
         // text
         g2d.setFont(this.getFont());
-        g2d.setColor((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
+        g2d.setColor(this.getForeground());
         FontMetrics fontMetrics = g.getFontMetrics(this.getFont());
         g2d.drawString(
                 this.getText(),

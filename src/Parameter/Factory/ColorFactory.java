@@ -1,6 +1,8 @@
 package Parameter.Factory;
 
 import Parameter.Model.ColorEnum;
+import Parameter.Model.ThemeEnum;
+import Repository.Parameter.ThemeParameterRepository;
 
 import java.awt.*;
 
@@ -81,6 +83,29 @@ public class ColorFactory {
 
         if (color.equals(Color.decode("#73CD4B"))) {
             return ColorFactory.getColor(ColorEnum.GREEN_BACKGROUND.toString());
+        }
+
+        throw new RuntimeException("Color : " + color.toString() + " is unknown");
+    }
+
+    /**
+     * Change color if too light so it's visible
+     *
+     * @return
+     */
+    public static Color getDarkerSecondColorColorVersion() {
+        Color color = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
+
+        if (color.equals(ColorFactory.getColor("BLACK")) || color.equals(ColorFactory.getColor("DARK GRAY"))) {
+            return color;
+        }
+
+        if (color.equals(ColorFactory.getColor("WHITE"))) {
+            return ColorFactory.getColor("BLACK");
+        }
+
+        if (color.equals(ColorFactory.getColor("LIGHT GRAY"))) {
+            return ColorFactory.getColor("DARK GRAY");
         }
 
         throw new RuntimeException("Color : " + color.toString() + " is unknown");

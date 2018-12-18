@@ -3,6 +3,7 @@ package Utils.UI.CustomSpinner;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
 
 public class CustomSpinner extends JSpinner {
 
@@ -21,5 +22,17 @@ public class CustomSpinner extends JSpinner {
         this.setBorder(BorderFactory.createEmptyBorder());
 
         this.setUI(new CustomSpinnerUI());
+    }
+
+    @Override
+    public void setForeground(Color fg) {
+        super.setForeground(fg);
+
+
+        int n = this.getComponentCount();
+        for (int i = 0; i < n; i++) {
+            Component c = this.getComponent(i);
+            c.setForeground(fg);
+        }
     }
 }
