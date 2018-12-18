@@ -1,7 +1,9 @@
 package Utils.UI.CustomSpinner;
 
+import Parameter.Factory.ColorFactory;
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;
+import Utils.UI.CustomCheckBox;
 import Utils.UI.FileGetter;
 import Utils.UI.SoundPlayer;
 import Utils.UI.Utils;
@@ -12,6 +14,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class CustomSpinnerButton extends JButton {
+
+    private static final String BACKGROUND_COLOR = "#EEEEEE";
 
     public final static int WIDTH = 36;
     public final static int HEIGHT = 36;
@@ -43,6 +47,10 @@ public class CustomSpinnerButton extends JButton {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+
+        // clear background
+        g2d.setColor(Color.decode(CustomSpinnerButton.BACKGROUND_COLOR));
+        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         // background image
         g2d.drawImage(this.backgroundImage, 0, 0, this);
