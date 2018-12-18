@@ -91,6 +91,8 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
 
     public void updateGlobalStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
+        this.remove(this.leftTable);
+        this.remove(this.rightTable);
         this.updateTableView();
         this.leftTable.revalidate();
         this.leftTable.repaint();
