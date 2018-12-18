@@ -80,7 +80,7 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
         constraints.anchor = GridBagConstraints.CENTER;
 
         this.firstColorLabel = new CustomLabel("Main Color");
-        this.firstColorLabel.setFont(this.firstColorLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
+        this.firstColorLabel.setFont(this.firstColorLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_MEDIUM_TITLE));
         constraints.gridx = 1;
         constraints.gridy = 1;
         constraints.gridwidth = 2;
@@ -125,7 +125,7 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
         constraints.anchor = GridBagConstraints.CENTER;
 
         this.secondColorLabel = new CustomLabel("Second Color");
-        this.secondColorLabel.setFont(this.secondColorLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
+        this.secondColorLabel.setFont(this.secondColorLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_MEDIUM_TITLE));
         constraints.gridx = 1;
         constraints.gridy = 3;
         constraints.gridwidth = 2;
@@ -173,7 +173,7 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
 
         // sound
         this.parametersSound = new CustomLabel("Sound");
-        this.parametersSound.setFont(this.parametersSound.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
+        this.parametersSound.setFont(this.parametersSound.getFont().deriveFont(Utils.DEFAULT_SIZE_MEDIUM_TITLE));
         constraints.gridx = 1;
         constraints.gridy = 5;
         constraints.gridwidth = 2;
@@ -207,7 +207,7 @@ public class ParametersThemeSoundView extends CustomBackgroundPanel {
 
         // music
         this.parametersMusic = new CustomLabel("Music");
-        this.parametersMusic.setFont(this.parametersMusic.getFont().deriveFont(Utils.DEFAULT_SIZE_LABEL_PLAYER));
+        this.parametersMusic.setFont(this.parametersMusic.getFont().deriveFont(Utils.DEFAULT_SIZE_MEDIUM_TITLE));
         constraints.gridx = 1;
         constraints.gridy = 7;
         constraints.gridwidth = 2;
