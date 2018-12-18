@@ -367,6 +367,7 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridy = 5;
         constraint.gridwidth = 2;
+        constraint.insets.top = 0;
         this.warningLabel = new WarningLabel("");
         this.warningLabel.setHorizontalAlignment(JLabel.CENTER);
         this.add(this.warningLabel, constraint);
