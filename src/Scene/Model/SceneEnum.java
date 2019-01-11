@@ -30,11 +30,17 @@ public enum SceneEnum {
     CONTEST_FINISHED("CONTEST_FINISHED"),
 
     /*
+     * Online Contest
+     */
+    ONLINE_CONTEST_MENU("ONLINE_CONTEST_MENU"),
+
+    /*
      * Screens
      */
     MENU("MENU"),
     TRAINING("TRAINING"),
     CONTEST("CONTEST"),
+    ONLINE_CONTEST("ONLINE_CONTEST"),
     STATISTICS("STATISTICS"),
     PARAMETERS("PARAMETERS"),
     CREDITS("CREDITS"),

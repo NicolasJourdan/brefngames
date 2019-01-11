@@ -7,6 +7,7 @@ import Game.Games.TicTacToe.TicTacToeScene;
 import Map.MapScene;
 import Map.Model.History;
 import ContestSettings.ContestSettingsScene;
+import OnlineContestMenu.OnlineContestMenuScene;
 import Player.Player;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
@@ -43,6 +44,8 @@ public class GameSceneFactory implements SceneFactoryInterface {
                 return new TrainingMenuScene();
             case CONTEST_MENU:
                 return new ContestSettingsScene();
+            case ONLINE_CONTEST_MENU:
+                return new OnlineContestMenuScene();
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }
