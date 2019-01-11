@@ -33,6 +33,8 @@ public enum SceneEnum {
      * Online Contest
      */
     ONLINE_CONTEST_MENU("ONLINE_CONTEST_MENU"),
+    CREATE_SERVER_SCENE("CREATE_SERVER_SCENE"),
+    JOIN_SERVER_SCENE("JOIN_SERVER_SCENE"),
 
     /*
      * Screens

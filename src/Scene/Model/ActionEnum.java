@@ -22,6 +22,13 @@ public enum ActionEnum {
     START_CONTEST("START_CONTEST"),
 
     /*
+     * Online Contest
+     */
+    CREATE_SERVER("CREATE_SERVER"),
+    JOIN_SERVER("JOIN_SERVER"),
+    END_ONLINE_CONTEST("END_ONLINE_CONTEST"),
+
+    /*
      * Parameters
      */
     PARAMETERS_MENU("PARAMETERS_MENU"),

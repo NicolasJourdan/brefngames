@@ -9,6 +9,7 @@ import Scene.Model.SceneEnum;
 import Scene.View.AbstractSceneManagerView;
 
 public class OnlineContestController extends AbstractSceneManagerController {
+
     /**
      * @param model
      * @param view
@@ -20,7 +21,30 @@ public class OnlineContestController extends AbstractSceneManagerController {
     }
 
     @Override
-    protected SceneEnum getNextScene(ActionEnum arg) {
-        return null;
+    protected SceneEnum getNextScene(ActionEnum actionEnum) {
+        switch (actionEnum) {
+            /**
+             * Create server
+             */
+            case CREATE_SERVER:
+                return SceneEnum.CREATE_SERVER_SCENE;
+
+            /**
+             * Join server
+             */
+            case JOIN_SERVER:
+                return SceneEnum.JOIN_SERVER_SCENE;
+
+            /**
+             * Quit
+             */
+            case END_ONLINE_CONTEST:
+                this.setChanged();
+                this.notifyObservers(actionEnum);
+                return SceneEnum.END_SCENE;
+
+            default:
+                throw new RuntimeException("Unable to find : " + actionEnum);
+        }
     }
 }

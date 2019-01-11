@@ -1,19 +1,12 @@
 package OnlineContestMenu.Controller;
 
-import Structure.AbstractController;
+import Scene.Controller.AbstractSceneController;
 import Structure.AbstractModel;
 import Structure.AbstractView;
 
-import java.util.Observable;
-
-public class OnlineContestMenuController extends AbstractController {
+public class OnlineContestMenuController extends AbstractSceneController {
 
     public OnlineContestMenuController(AbstractModel model, AbstractView view) {
         super(model, view);
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-
     }
 }
