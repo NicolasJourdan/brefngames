@@ -9,6 +9,7 @@ public class SocketEmissionService {
 
     private final Socket socket;
     private SocketEmissionRunnable runnable;
+    private Thread thread;
 
     public SocketEmissionService(Socket socket) {
         this.socket = socket;
@@ -18,7 +19,8 @@ public class SocketEmissionService {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(this.socket.getOutputStream());
 
         this.runnable = new SocketEmissionRunnable(objectOutputStream);
-        (new Thread(this.runnable)).start();
+        this.thread = new Thread(this.runnable);
+        this.thread.start();
     }
 
     public void emit(Serializable message) {

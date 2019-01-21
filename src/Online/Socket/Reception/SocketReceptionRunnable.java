@@ -1,5 +1,6 @@
 package Online.Socket.Reception;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
@@ -20,8 +21,11 @@ public class SocketReceptionRunnable extends Observable implements Runnable {
                 Serializable message = (Serializable) this.objectInputStream.readObject();
                 this.setChanged();
                 this.notifyObservers(message);
+            } catch (EOFException e) {
+                break;
             } catch (IOException e) {
                 e.printStackTrace();
+                break;
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }

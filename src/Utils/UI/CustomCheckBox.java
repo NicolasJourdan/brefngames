@@ -54,6 +54,12 @@ public class CustomCheckBox extends JCheckBox {
         });
     }
 
+    @Override
+    public void setEnabled(boolean b) {
+        super.setEnabled(b);
+        this.updateBackground();
+    }
+
     private void playSound() {
         SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
@@ -61,11 +67,13 @@ public class CustomCheckBox extends JCheckBox {
     private void updateBackground() {
         if (this.isSelected()) {
             this.yOffset = CustomCheckBox.Y_OFFSET;
-            this.backgroundImage = FileGetter.getImage("_button10.png");
+            this.backgroundImage = this.isEnabled() ? FileGetter.getImage("_button10.png") :
+                    FileGetter.getGreyImage("_button10.png");
         }
         else {
             this.yOffset = 0;
-            this.backgroundImage = FileGetter.getImage("_button06.png");
+            this.backgroundImage = this.isEnabled() ? FileGetter.getImage("_button06.png") :
+                    FileGetter.getGreyImage("_button06.png");
         }
 
         this.revalidate();
@@ -91,7 +99,7 @@ public class CustomCheckBox extends JCheckBox {
 
         // text
         g2d.setFont(this.getFont());
-        g2d.setColor(this.getForeground());
+        g2d.setColor(this.isEnabled() ? this.getForeground() : Color.GRAY);
         FontMetrics fontMetrics = g.getFontMetrics();
         g2d.drawString(
                 this.getText(),

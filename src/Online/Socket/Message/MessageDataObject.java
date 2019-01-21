@@ -12,6 +12,11 @@ public class MessageDataObject implements Serializable {
         this.data = data;
     }
 
+    public MessageDataObject(MessageType type) {
+        this.type = type;
+        this.data = null;
+    }
+
     public MessageType getType() {
         return this.type;
     }
