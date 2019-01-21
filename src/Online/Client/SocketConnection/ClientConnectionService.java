@@ -25,6 +25,6 @@ public class ClientConnectionService extends Observable implements Observer {
     }
 
     public Socket getSocket() {
-        return socket;
+        return this.socket;
     }
 }

@@ -23,6 +23,7 @@ public class ServerSocketGeneratorService {
 
         // find available port
         for (int port = MIN_PORT; port <= MAX_PORT; port++) {
+            // try to create a socket using an available port, if the port is unusable, then an error is thrown
             try {
                 serverSocket = new ServerSocket(port, 1, InetAddress.getByName(InetAddress.getLocalHost().getHostAddress()));
                 break;

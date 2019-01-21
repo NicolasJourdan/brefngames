@@ -15,7 +15,7 @@ public class SocketEmissionRunnable implements Runnable {
 
     public SocketEmissionRunnable(ObjectOutputStream objectOutputStream) {
         this.objectOutputStream = objectOutputStream;
-        this.stack = new ArrayBlockingQueue<>(STACK_CAPACITY);
+        this.stack = new ArrayBlockingQueue<>(SocketEmissionRunnable.STACK_CAPACITY);
     }
 
     @Override

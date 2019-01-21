@@ -11,10 +11,10 @@ public class AddressDataObject {
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public String getPort() {
-        return port;
+        return this.port;
     }
 }

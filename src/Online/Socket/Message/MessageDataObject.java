@@ -13,10 +13,10 @@ public class MessageDataObject implements Serializable {
     }
 
     public MessageType getType() {
-        return type;
+        return this.type;
     }
 
     public Object getData() {
-        return data;
+        return this.data;
     }
 }
