@@ -9,9 +9,9 @@ import Scene.Model.ActionEnum;
 import Scene.Model.SceneEnum;
 import Scene.View.AbstractSceneManagerView;
 
-public class ContestController extends AbstractSceneManagerController {
+public class LocalContestController extends AbstractSceneManagerController {
 
-    public ContestController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
+    public LocalContestController(AbstractSceneManagerModel model, AbstractSceneManagerView view) {
         super(model, view, new GameSceneFactory(((AbstractContest) model).getPlayersList(), false));
 
         this.switchScene(SceneEnum.CONTEST_MENU);

@@ -1,6 +1,7 @@
 package Launcher;
 
-import Contest.ContestScene;
+import Contest.LocalContestScene;
+import Contest.OnlineContestScene;
 import Credit.CreditScene;
 import Menu.MenuScene;
 import Parameter.Scenes.ParametersScene;
@@ -20,7 +21,9 @@ public class LauncherFactory implements SceneFactoryInterface {
             case TRAINING:
                 return new TrainingScene();
             case CONTEST:
-                return new ContestScene();
+                return new LocalContestScene();
+            case ONLINE_CONTEST:
+                return new OnlineContestScene();
             case STATISTICS:
                 return new StatisticScene();
             case PARAMETERS:
