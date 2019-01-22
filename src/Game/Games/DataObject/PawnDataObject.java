@@ -1,4 +1,4 @@
-package Game.Games.TicTacToe.DataObject;
+package Game.Games.DataObject;
 
 import Game.Games.Coord;
 

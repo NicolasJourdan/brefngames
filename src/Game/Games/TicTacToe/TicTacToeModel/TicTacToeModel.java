@@ -2,7 +2,7 @@ package Game.Games.TicTacToe.TicTacToeModel;
 
 import Contest.Model.ContestDataPersistor;
 import Game.Games.Coord;
-import Game.Games.TicTacToe.DataObject.PawnDataObject;
+import Game.Games.DataObject.PawnDataObject;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Model.AbstractGameModel;
 import Game.Model.Pawn;

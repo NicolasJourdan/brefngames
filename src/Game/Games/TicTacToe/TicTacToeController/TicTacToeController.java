@@ -2,7 +2,7 @@ package Game.Games.TicTacToe.TicTacToeController;
 
 import Game.Controller.AbstractGameController;
 import Game.Games.Coord;
-import Game.Games.TicTacToe.DataObject.PawnDataObject;
+import Game.Games.DataObject.PawnDataObject;
 import Game.Games.TicTacToe.TicTacToeModel.TicTacToeModel;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
 import Player.Player;
