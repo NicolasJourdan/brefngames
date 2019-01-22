@@ -8,28 +8,31 @@ import java.nio.channels.FileChannel;
 public class ModifyFiles {
 
     // Copy the JSON file to save it if there is an error
-    public static String saveJSONFile(String linkJSONFile) {
-        String extensionRemoved = linkJSONFile.split("\\.")[0];
-        String newFile = extensionRemoved + ".copy.json";
+    public static void saveJSONFile(String linkJSONFile) {
+
+        String newFile = ModifyFiles.getFileCopy(linkJSONFile);
         try {
             ModifyFiles.copyFile(linkJSONFile, newFile);
-            return newFile;
         } catch (IOException e) {
             e.printStackTrace();
-            return "";
         }
+    }
+
+    public static String getFileCopy(String linkJSONFile) {
+        String extensionRemoved = linkJSONFile.split("\\.")[0];
+        return extensionRemoved + ".copy.json";
     }
 
     // remove the JSON file when it was a copy
     public static void removeCopyJSONFile(String linkJSONFile) {
-        String extensionRemoved = linkJSONFile.split("\\.")[0];
-        String newFile = extensionRemoved + ".copy.json";
+        String newFile = ModifyFiles.getFileCopy(linkJSONFile);
         ModifyFiles.removeFile(newFile);
     }
 
     // Put the copy of the file on the default path
     public static void reputOriginalJsonFile(String linkJSONFile) {
-        String newFile = ModifyFiles.saveJSONFile(linkJSONFile);
+        ModifyFiles.saveJSONFile(linkJSONFile);
+        String newFile = ModifyFiles.getFileCopy(linkJSONFile);
         ModifyFiles.removeFile(newFile);
     }
 

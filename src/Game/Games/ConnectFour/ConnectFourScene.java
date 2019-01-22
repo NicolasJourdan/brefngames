@@ -4,7 +4,6 @@ import Game.GameScene;
 import Game.Games.ConnectFour.ConnectFourController.ConnectFourController;
 import Game.Games.ConnectFour.ConnectFourModel.ConnectFourModel;
 import Game.Games.ConnectFour.ConnectFourView.ConnectFourView;
-import Map.Model.History;
 import Player.Player;
 
 public class ConnectFourScene extends GameScene {

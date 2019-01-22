@@ -8,13 +8,14 @@ import Player.Player;
 import java.util.Random;
 
 public class ConnectFourModel extends AbstractGameModel {
+    private static int DEFAULT_NB_PLAYERS = 2;
     private Board board;
     private Player currentPlayer;
 
     public ConnectFourModel(Player[] listPlayers, int rows, int columns) {
         super(listPlayers);
         Random random = new Random();
-        this.currentPlayer = listPlayers[random.nextInt(2)];
+        this.currentPlayer = listPlayers[random.nextInt(ConnectFourModel.DEFAULT_NB_PLAYERS)];
         this.board = new Board(rows, columns);
     }
 
@@ -44,7 +45,7 @@ public class ConnectFourModel extends AbstractGameModel {
         }
     }
 
-    public boolean isDraw(){
+    public boolean isDraw() {
         return this.board.isFill();
     }
 }

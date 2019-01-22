@@ -13,5 +13,4 @@ public class HangmanScene extends GameScene {
         this.controller = new HangmanController((HangmanModel) this.model, (HangmanView) this.view, isTraining);
         this.controller.addObserver(this);
     }
-
 }

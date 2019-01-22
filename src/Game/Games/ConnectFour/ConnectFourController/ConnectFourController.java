@@ -88,7 +88,7 @@ public class ConnectFourController extends AbstractGameController {
         }
     }
 
-    private void initStats(){
+    private void initStats() {
         //Game Stats
         this.gameStats = new HashMap<>();
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS, "0");
@@ -116,28 +116,26 @@ public class ConnectFourController extends AbstractGameController {
         this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
-    private void sendStats(String orient){
+    private void sendStats(String orient) {
         if (this.isTraining) {
             return;
         }
         if (orient.equals("vertical")) {
             this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_VERTICAL, "1");
-        }
-        else if (orient.equals("landscape")) {
+        } else if (orient.equals("landscape")) {
             this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_LANDSCAPE, "1");
-        }
-        else if (orient.equals("diagonal")) {
+        } else if (orient.equals("diagonal")) {
             this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_DIAG, "1");
         }
 
         this.finalTime = System.currentTimeMillis();
-        this.totalTime = Long.toString((finalTime - initTime)/1000);
+        this.totalTime = Long.toString((finalTime - initTime) / 1000);
         int yellowNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_YELLOW_PAWNS));
         int redNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME, totalTime);
-        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[0].getName(),this.firstPlayerStats);
-        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[1].getName(),this.secondPlayerStats);
+        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[0].getName(), this.firstPlayerStats);
+        ContestDataPersistor.updateDataPlayer(((ConnectFourModel) this.model).getPlayers()[1].getName(), this.secondPlayerStats);
         ContestDataPersistor.updateConnectFour(this.gameStats);
     }
 }

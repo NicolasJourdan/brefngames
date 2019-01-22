@@ -35,6 +35,7 @@ public class CookieClickerRepository extends AbstractDataRepository {
 
     /**
      * Save ALL the cookie clicker stats
+     *
      * @param stats Map with ALL keys
      */
     public static void saveAll(Map<CookieClickerStatsEnum, String> stats) {

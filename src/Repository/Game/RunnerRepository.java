@@ -35,6 +35,7 @@ public class RunnerRepository extends AbstractDataRepository {
 
     /**
      * Save ALL the runner stats
+     *
      * @param stats Map with ALL keys
      */
     public static void saveAll(Map<RunnerStatsEnum, String> stats) {

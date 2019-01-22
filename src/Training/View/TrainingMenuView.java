@@ -1,7 +1,5 @@
 package Training.View;
 
-import Parameter.Model.ThemeEnum;
-import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
 import Utils.UI.*;
 import Utils.UI.CustomPanel.CustomBackgroundPanel;
@@ -39,7 +37,7 @@ public class TrainingMenuView extends CustomBackgroundPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 4;
         this.add(this.title, constraints);
         constraints.gridx = 0;
         constraints.gridy = 1;

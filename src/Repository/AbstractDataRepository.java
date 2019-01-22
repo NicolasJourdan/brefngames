@@ -1,6 +1,5 @@
 package Repository;
 
-import Repository.AbstractRepository;
 import org.json.simple.JSONObject;
 
 public abstract class AbstractDataRepository extends AbstractRepository {
@@ -9,11 +8,10 @@ public abstract class AbstractDataRepository extends AbstractRepository {
     protected static final String WORDS_JSON_FILE = "src/data/JSON/secretwords.json";
 
     protected static JSONObject getDataFile() {
-        return getFile(DATA_JSON_FILE);
+        return getFile(AbstractDataRepository.DATA_JSON_FILE);
     }
 
     protected static JSONObject getWordsFile() {
-        return getFile(WORDS_JSON_FILE);
+        return getFile(AbstractDataRepository.WORDS_JSON_FILE);
     }
-
 }

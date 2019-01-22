@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class Box extends JButton {
 
-    private static int BOX_SIZE = 100;
     private static final int FONT_SIZE = 140;
+    private static int BOX_SIZE = 100;
     private final Coord coord;
     private Color color;
     private Color backgroundColor;
@@ -28,7 +28,7 @@ public class Box extends JButton {
         this.borderColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue();
         this.backgroundColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
         this.color = this.backgroundColor;
-        if(ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue().equals(Color.BLACK)){
+        if (ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue().equals(Color.BLACK)) {
             this.opositeColor = Color.WHITE;
             this.gradientColor = Color.DARK_GRAY;
         } else {
@@ -38,7 +38,7 @@ public class Box extends JButton {
     }
 
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         g.setColor(this.borderColor);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         Graphics2D g2d = (Graphics2D) g;
@@ -46,7 +46,7 @@ public class Box extends JButton {
         g.setColor(this.backgroundColor);
         GradientPaint gradient = new GradientPaint(50, 50, this.backgroundColor, this.getWidth(), this.getHeight(), this.gradientColor);
         ((Graphics2D) g).setPaint(gradient);
-        g.fillRect(5, 5, this.getWidth()-10, this.getHeight()-10);
+        g.fillRect(5, 5, this.getWidth() - 10, this.getHeight() - 10);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Dimension d = this.getSize();
         g2d.setColor(this.opositeColor);

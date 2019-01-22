@@ -8,6 +8,7 @@ import Player.Player;
 import java.util.Random;
 
 public class TicTacToeModel extends AbstractGameModel {
+    private static int DEFAULT_NB_PLAYERS = 2;
     private Board board;
     private int size;
     private Player currentPlayer;
@@ -15,7 +16,7 @@ public class TicTacToeModel extends AbstractGameModel {
     public TicTacToeModel(Player[] listPlayers, int size) {
         super(listPlayers);
         Random random = new Random();
-        this.currentPlayer = listPlayers[random.nextInt(2)];
+        this.currentPlayer = listPlayers[random.nextInt(TicTacToeModel.DEFAULT_NB_PLAYERS)];
         this.size = size;
         this.board = new Board(this.size);
     }
@@ -57,10 +58,7 @@ public class TicTacToeModel extends AbstractGameModel {
             val = getVal(i, this.size - 1 - i);
             sumDiagonalRL += val;
         }
-        if (sumColumns == toWin || sumRows == toWin || sumDiagonalLR == toWin || sumDiagonalRL == toWin) {
-            return true;
-        }
-        return false;
+        return sumColumns == toWin || sumRows == toWin || sumDiagonalLR == toWin || sumDiagonalRL == toWin;
     }
 
     private int getVal(int i, int j) {
@@ -93,7 +91,7 @@ public class TicTacToeModel extends AbstractGameModel {
         }
     }
 
-    public boolean isDraw(){
+    public boolean isDraw() {
         return this.board.isFill();
     }
 }

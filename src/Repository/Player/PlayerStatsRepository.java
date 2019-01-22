@@ -41,9 +41,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
     /**
      * Save a statistic
      *
-     * @param playerId The player on which the statistic will be saved
+     * @param playerId   The player on which the statistic will be saved
      * @param playerStat The statistics which will be saved
-     * @param value The value of the statistic
+     * @param value      The value of the statistic
      */
     public static void saveStat(String playerId, PlayerStatsEnum playerStat, String value) {
         JSONObject jsonPlayer = PlayerRepository.getJSONPlayerById(playerId);
@@ -65,7 +65,7 @@ public class PlayerStatsRepository extends AbstractDataRepository {
      * Save all the statistics present in the map
      *
      * @param playerId The player on which the statistics will be saved
-     * @param statMap The map with the statistics
+     * @param statMap  The map with the statistics
      */
     public static void saveAll(String playerId, Map<PlayerStatsEnum, String> statMap) {
         for (Map.Entry<PlayerStatsEnum, String> entry : statMap.entrySet()) {

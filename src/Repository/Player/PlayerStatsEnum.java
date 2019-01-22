@@ -41,14 +41,12 @@ public enum PlayerStatsEnum {
 
     private String name = "";
 
-    PlayerStatsEnum(String s)
-    {
+    PlayerStatsEnum(String s) {
         this.name = s;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 }
