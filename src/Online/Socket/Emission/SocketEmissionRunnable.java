@@ -28,6 +28,7 @@ public class SocketEmissionRunnable implements Runnable {
                     this.objectOutputStream.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    break;
                 }
             }
         }

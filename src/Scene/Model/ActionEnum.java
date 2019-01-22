@@ -21,6 +21,7 @@ public enum ActionEnum {
      * Contest
      */
     START_CONTEST("START_CONTEST"),
+    SETTINGS_CHANGED("SETTINGS_CHANGED"),
 
     /*
      * Online Contest

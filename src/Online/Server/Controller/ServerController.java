@@ -28,6 +28,9 @@ public class ServerController extends AbstractSceneController {
             case CLIENT_CONNECTED:
                 this.socket = this.serverConnectionService.getSocket();
                 System.out.println("Server: client is " + this.socket.getInetAddress() + " " + this.socket.getPort());
+
+                this.setChanged();
+                this.notifyObservers(ActionEnum.CLIENT_CONNECTED);
                 break;
 
             default:
@@ -39,5 +42,9 @@ public class ServerController extends AbstractSceneController {
         this.serverConnectionService = new ServerConnectionService();
         this.serverConnectionService.addObserver(this);
         this.serverConnectionService.startConnection();
+    }
+
+    public Socket getSocket() {
+        return this.socket;
     }
 }

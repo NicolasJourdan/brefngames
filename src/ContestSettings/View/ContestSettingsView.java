@@ -16,6 +16,10 @@ import Utils.UI.CustomPanel.CustomGreyPanel;
 import Utils.UI.CustomSpinner.CustomSpinner;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +41,9 @@ public class ContestSettingsView extends CustomBackgroundPanel {
     private static final int TOP_INSET = 8;
     private static final int VERTICAL_INSET = 5;
     private static final int BUTTONS_VERTICAL_INSET = 50;
+
+    private static final String READY = "Ready";
+    private static final String WAITING = "Waiting ...";
 
     private final JCheckBox ticTacToeCheckbox;
     private final JCheckBox connectFourCheckbox;
@@ -470,42 +477,57 @@ public class ContestSettingsView extends CustomBackgroundPanel {
                 this.gameSelectedGameTypes(),
                 this.firstPlayerName.getText(),
                 this.getFirstPlayerIcon(),
+                this.getFirstPlayerIconName(),
                 this.getFirstPlayerColor(),
                 this.secondPlayerName.getText(),
                 this.getSecondPlayerIcon(),
+                this.getSecondPlayerIconName(),
                 this.getSecondPlayerColor()
-        );
+            );
     }
 
     private ImageIcon getFirstPlayerIcon() {
+        String name = this.getFirstPlayerIconName();
+
+        return !name.isEmpty() ? IconFactory.getIcon(name) : null;
+    }
+
+    private String getFirstPlayerIconName() {
         if (this.firstIconAquaman.isSelected()) {
-            return IconFactory.getIcon("AQUAMAN");
+            return "AQUAMAN";
         }
         if (this.firstIconBatman.isSelected()) {
-            return IconFactory.getIcon("BATMAN");
+            return "BATMAN";
         }
         if (this.firstIconFlash.isSelected()) {
-            return IconFactory.getIcon("FLASH");
+            return "FLASH";
         }
         if (this.firstIconSuperman.isSelected()) {
-            return IconFactory.getIcon("SUPERMAN");
+            return "SUPERMAN";
         }
 
         return null;
     }
 
     private ImageIcon getSecondPlayerIcon() {
+        String name = this.getSecondPlayerIconName();
+
+        return !name.isEmpty() ? IconFactory.getIcon(name) : null;
+    }
+
+
+    private String getSecondPlayerIconName() {
         if (this.secondIconAquaman.isSelected()) {
-            return IconFactory.getIcon("AQUAMAN");
+            return "AQUAMAN";
         }
         if (this.secondIconBatman.isSelected()) {
-            return IconFactory.getIcon("BATMAN");
+            return "BATMAN";
         }
         if (this.secondIconFlash.isSelected()) {
-            return IconFactory.getIcon("FLASH");
+            return "FLASH";
         }
         if (this.secondIconSuperman.isSelected()) {
-            return IconFactory.getIcon("SUPERMAN");
+            return "SUPERMAN";
         }
 
         return null;
@@ -576,5 +598,192 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         this.warningLabel.setText(invalidDataObjectText);
         this.revalidate();
         this.repaint();
+    }
+
+    /**
+     * Disable all first player controls
+     */
+    public void setOnlineMode(Boolean isFirstPlayer) {
+        if (isFirstPlayer) {
+            this.secondPlayerName.setEnabled(false);
+
+            this.secondIconSuperman.setEnabled(false);
+            this.secondIconBatman.setEnabled(false);
+            this.secondIconFlash.setEnabled(false);
+            this.secondIconAquaman.setEnabled(false);
+
+            this.secondColorPlayerRed.setEnabled(false);
+            this.secondColorPlayerBlue.setEnabled(false);
+            this.secondColorPlayerGreen.setEnabled(false);
+            this.secondColorPlayerYellow.setEnabled(false);
+        } else {
+            this.ticTacToeCheckbox.setEnabled(false);
+            this.connectFourCheckbox.setEnabled(false);
+            this.cookieClickerCheckbox.setEnabled(false);
+            this.runnerCheckbox.setEnabled(false);
+            this.spinnerNbGames.setEnabled(false);
+
+            this.firstPlayerName.setEnabled(false);
+
+            this.firstIconSuperman.setEnabled(false);
+            this.firstIconBatman.setEnabled(false);
+            this.firstIconFlash.setEnabled(false);
+            this.firstIconAquaman.setEnabled(false);
+
+            this.firstColorPlayerRed.setEnabled(false);
+            this.firstColorPlayerBlue.setEnabled(false);
+            this.firstColorPlayerGreen.setEnabled(false);
+            this.firstColorPlayerYellow.setEnabled(false);
+        }
+
+        this.backButton.setText("Quit");
+        this.startButton.setText(READY);
+    }
+
+    public void resetReadyButton() {
+        this.startButton.setText(READY);
+    }
+
+    public void readyButtonSetWaiting() {
+        this.startButton.setText(WAITING);
+    }
+
+    public void setFirstPlayerConfiguration(ContestSettingsDataObject settingsDataObject) {
+        this.ticTacToeCheckbox.setSelected(
+                settingsDataObject.getSelectedGameTypes().contains(GameEnum.TIC_TAC_TOE)
+        );
+        this.runnerCheckbox.setSelected(
+                settingsDataObject.getSelectedGameTypes().contains(GameEnum.RUNNER)
+        );
+        this.cookieClickerCheckbox.setSelected(
+                settingsDataObject.getSelectedGameTypes().contains(GameEnum.COOKIE_CLICKER)
+        );
+        this.connectFourCheckbox.setSelected(
+                settingsDataObject.getSelectedGameTypes().contains(GameEnum.CONNECT_FOUR)
+        );
+
+        this.spinnerNbGames.setValue(settingsDataObject.getNumberOfMatches());
+
+        this.firstPlayerName.setText(settingsDataObject.getFirstPlayerName());
+
+        this.firstColorPlayerRed.setSelected(
+                settingsDataObject.getFirstPlayerColor().equals(ColorFactory.getColor("RED"))
+        );
+        this.firstColorPlayerYellow.setSelected(
+                settingsDataObject.getFirstPlayerColor().equals(ColorFactory.getColor("YELLOW"))
+        );
+        this.firstColorPlayerGreen.setSelected(
+                settingsDataObject.getFirstPlayerColor().equals(ColorFactory.getColor("GREEN"))
+        );
+        this.firstColorPlayerBlue.setSelected(
+                settingsDataObject.getFirstPlayerColor().equals(ColorFactory.getColor("BLUE"))
+        );
+
+        this.firstIconSuperman.setSelected(
+                settingsDataObject.getFirstPlayerIconName().equals("SUPERMAN")
+        );
+        this.firstIconFlash.setSelected(
+                settingsDataObject.getFirstPlayerIconName().equals("FLASH")
+        );
+        this.firstIconBatman.setSelected(
+                settingsDataObject.getFirstPlayerIconName().equals("BATMAN")
+        );
+        this.firstIconAquaman.setSelected(
+                settingsDataObject.getFirstPlayerIconName().equals("AQUAMAN")
+        );
+    }
+
+    public void setSecondPlayerConfiguration(ContestSettingsDataObject settingsDataObject) {
+        this.secondPlayerName.setText(settingsDataObject.getSecondPlayerName());
+
+        this.secondColorPlayerRed.setSelected(
+                settingsDataObject.getSecondPlayerColor().equals(ColorFactory.getColor("RED"))
+        );
+        this.secondColorPlayerYellow.setSelected(
+                settingsDataObject.getSecondPlayerColor().equals(ColorFactory.getColor("YELLOW"))
+        );
+        this.secondColorPlayerGreen.setSelected(
+                settingsDataObject.getSecondPlayerColor().equals(ColorFactory.getColor("GREEN"))
+        );
+        this.secondColorPlayerBlue.setSelected(
+                settingsDataObject.getSecondPlayerColor().equals(ColorFactory.getColor("BLUE"))
+        );
+
+        this.secondIconSuperman.setSelected(
+                settingsDataObject.getSecondPlayerIconName().equals("SUPERMAN")
+        );
+        this.secondIconFlash.setSelected(
+                settingsDataObject.getSecondPlayerIconName().equals("FLASH")
+        );
+        this.secondIconBatman.setSelected(
+                settingsDataObject.getSecondPlayerIconName().equals("BATMAN")
+        );
+        this.secondIconAquaman.setSelected(
+                settingsDataObject.getSecondPlayerIconName().equals("AQUAMAN")
+        );
+    }
+
+    public void registerDataChangeListener(boolean isFirstPlayer) {
+        ActionListener actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ContestSettingsView.this.observable.notifyObservers(ActionEnum.SETTINGS_CHANGED);
+            }
+        };
+
+        DocumentListener documentListener = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                this.changedUpdate(e);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                this.changedUpdate(e);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                ContestSettingsView.this.observable.notifyObservers(ActionEnum.SETTINGS_CHANGED);
+            }
+        };
+
+        if (isFirstPlayer) {
+            this.ticTacToeCheckbox.addActionListener(actionListener);
+            this.connectFourCheckbox.addActionListener(actionListener);
+            this.cookieClickerCheckbox.addActionListener(actionListener);
+            this.runnerCheckbox.addActionListener(actionListener);
+
+            this.spinnerNbGames.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    ContestSettingsView.this.observable.notifyObservers(ActionEnum.SETTINGS_CHANGED);
+                }
+            });
+
+            this.firstPlayerName.getDocument().addDocumentListener(documentListener);
+
+            this.firstIconSuperman.addActionListener(actionListener);
+            this.firstIconBatman.addActionListener(actionListener);
+            this.firstIconFlash.addActionListener(actionListener);
+            this.firstIconAquaman.addActionListener(actionListener);
+
+            this.firstColorPlayerRed.addActionListener(actionListener);
+            this.firstColorPlayerBlue.addActionListener(actionListener);
+            this.firstColorPlayerGreen.addActionListener(actionListener);
+            this.firstColorPlayerYellow.addActionListener(actionListener);
+        } else {
+            this.secondPlayerName.getDocument().addDocumentListener(documentListener);
+
+            this.secondColorPlayerRed.addActionListener(actionListener);
+            this.secondColorPlayerBlue.addActionListener(actionListener);
+            this.secondColorPlayerGreen.addActionListener(actionListener);
+            this.secondColorPlayerYellow.addActionListener(actionListener);
+
+            this.secondIconSuperman.addActionListener(actionListener);
+            this.secondIconBatman.addActionListener(actionListener);
+            this.secondIconFlash.addActionListener(actionListener);
+            this.secondIconAquaman.addActionListener(actionListener);
+        }
     }
 }

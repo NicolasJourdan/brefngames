@@ -9,6 +9,7 @@ import java.util.Observer;
 public class SocketReceptionService extends Observable implements Observer {
 
     private final Socket socket;
+    private Thread thread;
 
     public SocketReceptionService(Socket socket) {
         this.socket = socket;
@@ -19,7 +20,8 @@ public class SocketReceptionService extends Observable implements Observer {
 
         SocketReceptionRunnable runnable = new SocketReceptionRunnable(objectInputStream);
         runnable.addObserver(this);
-        (new Thread(runnable)).start();
+        this.thread = (new Thread(runnable));
+        this.thread.start();
     }
 
     @Override

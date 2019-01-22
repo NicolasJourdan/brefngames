@@ -10,10 +10,14 @@ import java.util.Observer;
 
 public class SocketCommunicatorService {
 
+    private final Socket socket;
+
     private SocketEmissionService socketEmissionService;
     private SocketReceptionService socketReceptionService;
 
     public SocketCommunicatorService(Socket socket, Observer observer) {
+        this.socket = socket;
+
         try {
             this.socketEmissionService = new SocketEmissionService(socket);
             this.socketEmissionService.start();

@@ -4,17 +4,20 @@ import Game.Model.GameEnum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.List;
 
-public class ContestSettingsDataObject {
+public class ContestSettingsDataObject implements Serializable {
 
     private final int numberOfMatches;
     private final List<GameEnum> selectedGameTypes;
     private final String firstPlayerName;
     private final ImageIcon firstPlayerIcon;
+    private final String firstPlayerIconName;
     private final Color firstPlayerColor;
     private final String secondPlayerName;
     private final ImageIcon secondPlayerIcon;
+    private final String secondPlayerIconName;
     private final Color secondPlayerColor;
 
     public ContestSettingsDataObject(
@@ -22,18 +25,22 @@ public class ContestSettingsDataObject {
             List<GameEnum> selectedGameTypes,
             String firstPlayerName,
             ImageIcon firstPlayerIcon,
+            String firstPlayerIconName,
             Color firstPlayerColor,
             String secondPlayerName,
             ImageIcon secondPlayerIcon,
+            String secondPlayerIconName,
             Color secondPlayerColor
     ) {
         this.numberOfMatches = numberOfMatches;
         this.selectedGameTypes = selectedGameTypes;
         this.firstPlayerName = firstPlayerName;
         this.firstPlayerIcon = firstPlayerIcon;
+        this.firstPlayerIconName = firstPlayerIconName;
         this.firstPlayerColor = firstPlayerColor;
         this.secondPlayerName = secondPlayerName;
         this.secondPlayerIcon = secondPlayerIcon;
+        this.secondPlayerIconName = secondPlayerIconName;
         this.secondPlayerColor = secondPlayerColor;
     }
 
@@ -46,27 +53,35 @@ public class ContestSettingsDataObject {
     }
 
     public String getFirstPlayerName() {
-        return firstPlayerName;
+        return this.firstPlayerName;
     }
 
     public ImageIcon getFirstPlayerIcon() {
-        return firstPlayerIcon;
+        return this.firstPlayerIcon;
+    }
+
+    public String getFirstPlayerIconName() {
+        return this.firstPlayerIconName;
     }
 
     public Color getFirstPlayerColor() {
-        return firstPlayerColor;
+        return this.firstPlayerColor;
     }
 
     public String getSecondPlayerName() {
-        return secondPlayerName;
+        return this.secondPlayerName;
     }
 
     public ImageIcon getSecondPlayerIcon() {
-        return secondPlayerIcon;
+        return this.secondPlayerIcon;
     }
 
     public Color getSecondPlayerColor() {
-        return secondPlayerColor;
+        return this.secondPlayerColor;
+    }
+
+    public String getSecondPlayerIconName() {
+        return this.secondPlayerIconName;
     }
 
     @Override
@@ -76,9 +91,11 @@ public class ContestSettingsDataObject {
                 ", selectedGameTypes=" + selectedGameTypes +
                 ", firstPlayerName='" + firstPlayerName + '\'' +
                 ", firstPlayerIcon=" + firstPlayerIcon +
+                ", firstPlayerIconName='" + firstPlayerIconName + '\'' +
                 ", firstPlayerColor=" + firstPlayerColor +
                 ", secondPlayerName='" + secondPlayerName + '\'' +
                 ", secondPlayerIcon=" + secondPlayerIcon +
+                ", secondPlayerIconName='" + secondPlayerIconName + '\'' +
                 ", secondPlayerColor=" + secondPlayerColor +
                 '}';
     }

@@ -19,7 +19,7 @@ public class CustomSpinnerEditor extends JTextField {
 
     private final static int COLUMNS = 2;
 
-    private final Image backgroundImage;
+    private Image backgroundImage;
 
     public CustomSpinnerEditor(String text) {
         super(text, CustomSpinnerEditor.COLUMNS);
@@ -43,6 +43,15 @@ public class CustomSpinnerEditor extends JTextField {
                 CustomSpinnerEditor.this.playSound();
             }
         });
+    }
+
+    @Override
+    public void setEnabled(boolean b) {
+        super.setEnabled(b);
+        this.backgroundImage = b ? FileGetter.getImageIcon("_button13.png").getImage() :
+                FileGetter.getGreyImageIcon("_button13.png").getImage();
+        this.revalidate();
+        this.repaint();
     }
 
     @Override
