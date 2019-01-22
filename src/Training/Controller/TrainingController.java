@@ -76,6 +76,9 @@ public class TrainingController extends AbstractSceneManagerController {
             case HANGMAN:
                 this.setHistoryToGameFactory(SceneEnum.HANGMAN);
                 return SceneEnum.HANGMAN;
+            case FIFTEEN_VAINC:
+                this.setHistoryToGameFactory(SceneEnum.FIFTEEN_VAINC);
+                return SceneEnum.FIFTEEN_VAINC;
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
         }

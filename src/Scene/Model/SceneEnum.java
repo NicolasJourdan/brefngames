@@ -11,6 +11,7 @@ public enum SceneEnum {
     RUNNER("RUNNER"),
     COOKIE_CLICKER("COOKIE_CLICKER"),
     TRAINING_MENU("TRAINING_MENU"),
+    FIFTEEN_VAINC("FIFTEEN_VAINC"),
 
     /*
      * Map
