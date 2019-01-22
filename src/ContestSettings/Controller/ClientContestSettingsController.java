@@ -72,10 +72,6 @@ public class ClientContestSettingsController extends AbstractController {
                     );
                     ((ContestSettingsView) ClientContestSettingsController.this.view).resetReadyButton();
                     break;
-                case SETTINGS_START_CONTEST:
-                    ClientContestSettingsController.this.setChanged();
-                    ClientContestSettingsController.this.notifyObservers(ActionEnum.START_CONTEST);
-                    break;
             }
         }
     }

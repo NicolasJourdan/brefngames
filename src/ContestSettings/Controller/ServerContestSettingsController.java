@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerContestSettingsController extends AbstractController {
+public class ServerContestSettingsController extends AbstractController implements SettingsDataObjectGetterInterface {
 
     private final SocketCommunicatorService socketCommunicatorService;
     private ContestSettingsDataObject settingsDataObject;
@@ -56,6 +56,11 @@ public class ServerContestSettingsController extends AbstractController {
                 this.startContest();
                 break;
         }
+    }
+
+    @Override
+    public ContestSettingsDataObject getSettingsDataObject() {
+        return this.settingsDataObject;
     }
 
     private class SocketReceptionObserver implements Observer {
@@ -97,10 +102,6 @@ public class ServerContestSettingsController extends AbstractController {
 
                 return;
             }
-
-            this.socketCommunicatorService.emit(new MessageDataObject(
-                MessageType.SETTINGS_START_CONTEST
-            ));
 
             this.setChanged();
             this.notifyObservers(ActionEnum.START_CONTEST);

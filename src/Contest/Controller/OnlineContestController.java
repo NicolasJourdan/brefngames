@@ -1,9 +1,12 @@
 package Contest.Controller;
 
 import Contest.Model.AbstractContest;
+import ContestSettings.ContestSettingsScene;
 import Game.OnlineGameSceneFactory;
 import Online.Client.ClientScene;
 import Online.Server.ServerScene;
+import Online.Socket.Message.MessageDataObject;
+import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
@@ -66,6 +69,28 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 return SceneEnum.CONTEST_MENU;
 
             /**
+             * Start contest (only received by the server)
+             */
+            case START_CONTEST:
+                ((AbstractContest) this.model).setUpContest(
+                        ((ContestSettingsScene) this.currentScene).getSettingsDataObject()
+                );
+
+                // update gameSceneFactory values
+                ((OnlineGameSceneFactory) this.sceneFactory).updatePlayersList(((AbstractContest) this.model).getPlayersList());
+                ((OnlineGameSceneFactory) this.sceneFactory).updateHistory(((AbstractContest) this.model).getHistory());
+
+                SceneEnum nextGameScene = ((AbstractContest) this.model).getNextGameScene();
+
+                // communicate the next scene to the client before returning it
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.CONTEST_NEXT_SCENE,
+                        nextGameScene
+                ));
+
+                return nextGameScene;
+
+            /**
              * Quit
              */
             case END_ONLINE_CONTEST:
@@ -91,7 +116,14 @@ public class OnlineContestController extends AbstractSceneManagerController {
     private class ReceptionObserver implements Observer {
         @Override
         public void update(Observable o, Object arg) {
+            MessageDataObject messageDataObject = (MessageDataObject) arg;
 
+            switch (messageDataObject.getType()) {
+                case CONTEST_NEXT_SCENE:
+                    // next scene received from the server, update current one
+                    OnlineContestController.this.switchScene((SceneEnum) messageDataObject.getData());
+                    break;
+            }
         }
     }
 }
