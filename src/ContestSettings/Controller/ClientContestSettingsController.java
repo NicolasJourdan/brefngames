@@ -12,7 +12,6 @@ import Structure.AbstractController;
 import Structure.AbstractModel;
 import Structure.AbstractView;
 
-import java.net.Socket;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -21,10 +20,12 @@ public class ClientContestSettingsController extends AbstractController {
 
     private final SocketCommunicatorService socketCommunicatorService;
 
-    public ClientContestSettingsController(AbstractModel model, AbstractView view, Socket socket) {
+    public ClientContestSettingsController(AbstractModel model, AbstractView view, SocketCommunicatorService socketCommunicatorService) {
         super(model, view);
 
-        this.socketCommunicatorService = new SocketCommunicatorService(socket, new SocketReceptionObserver());
+        this.socketCommunicatorService = socketCommunicatorService;
+        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+
         ((ContestSettingsView) this.view).setOnlineMode(false);
         ((ContestSettingsView) this.view).registerDataChangeListener(false);
     }
@@ -70,10 +71,6 @@ public class ClientContestSettingsController extends AbstractController {
                             (String) messageDataObject.getData()
                     );
                     ((ContestSettingsView) ClientContestSettingsController.this.view).resetReadyButton();
-                    break;
-                case SETTINGS_START_CONTEST:
-                    ClientContestSettingsController.this.setChanged();
-                    ClientContestSettingsController.this.notifyObservers(ActionEnum.START_CONTEST);
                     break;
             }
         }

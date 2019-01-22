@@ -10,24 +10,23 @@ import java.util.Observer;
 
 public class SocketCommunicatorService {
 
-    private final Socket socket;
-
     private SocketEmissionService socketEmissionService;
     private SocketReceptionService socketReceptionService;
 
-    public SocketCommunicatorService(Socket socket, Observer observer) {
-        this.socket = socket;
-
+    public SocketCommunicatorService(Socket socket) {
         try {
             this.socketEmissionService = new SocketEmissionService(socket);
             this.socketEmissionService.start();
 
             this.socketReceptionService = new SocketReceptionService(socket);
-            this.socketReceptionService.addObserver(observer);
             this.socketReceptionService.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addReceptionObserver(Observer observer) {
+        this.socketReceptionService.addObserver(observer);
     }
 
     public void emit(Serializable message) {

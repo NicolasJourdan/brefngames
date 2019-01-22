@@ -3,16 +3,15 @@ package Game;
 import ContestSettings.ContestSettingsScene;
 import Online.Client.ClientScene;
 import Online.Server.ServerScene;
+import Online.Socket.SocketCommunicatorService;
 import OnlineContestMenu.OnlineContestMenuScene;
 import Player.Player;
 import Scene.Model.SceneEnum;
 
-import java.net.Socket;
-
 public class OnlineGameSceneFactory extends GameSceneFactory {
 
     private boolean isServer;
-    private Socket socket;
+    private SocketCommunicatorService socketCommunicatorService;
 
     public OnlineGameSceneFactory(Player[] listPlayers, boolean isTraining) {
         super(listPlayers, isTraining);
@@ -28,7 +27,7 @@ public class OnlineGameSceneFactory extends GameSceneFactory {
             case ONLINE_CONTEST_MENU:
                 return new OnlineContestMenuScene();
             case CONTEST_MENU:
-                return new ContestSettingsScene(this.isServer, this.socket);
+                return new ContestSettingsScene(this.isServer, this.socketCommunicatorService);
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }
@@ -38,7 +37,7 @@ public class OnlineGameSceneFactory extends GameSceneFactory {
         this.isServer = isServer;
     }
 
-    public void setSocket(Socket socket) {
-        this.socket = socket;
+    public void setSocketCommunicatorService(SocketCommunicatorService socketCommunicatorService) {
+        this.socketCommunicatorService = socketCommunicatorService;
     }
 }
