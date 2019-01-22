@@ -9,18 +9,20 @@ import Utils.UI.CustomPanel.CustomGameBackgroundPanel;
 import java.awt.*;
 
 public class ConnectFourView extends CustomGameBackgroundPanel {
-    private static int INSET_SIZE = 10;
+    private final static int INSET_SIZE = 10;
+    private final static int DEFAULT_ROW = 6;
+    private final static int DEFAULT_COLUMN = 7;
     private DisplayPanel firstPlayerDisplay;
     private Board board;
     private DisplayPanel secondPlayerDisplay;
     private DisplayPanel currentPlayerPanel;
     private DisplayPanel otherPlayerPanel;
 
-    public ConnectFourView(int rows, int columns, Player[] players, int[] scores) {
+    public ConnectFourView(Player[] players, int[] scores) {
         super(players, scores);
         this.setLayout(new GridBagLayout());
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
-        this.board = new Board(rows, columns, this);
+        this.board = new Board(ConnectFourView.DEFAULT_ROW, ConnectFourView.DEFAULT_COLUMN, this);
         this.secondPlayerDisplay = new DisplayPanel(players[1], false);
         GridBagConstraints constraint = new GridBagConstraints();
         constraint.gridy = 0;
