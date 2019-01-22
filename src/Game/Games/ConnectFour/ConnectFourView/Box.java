@@ -53,13 +53,13 @@ public class Box extends JButton {
         this.color = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
         this.borderColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
         this.opositeColor = Color.BLACK;
-        if(ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue().equals(Color.BLACK)){
+        if (ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue().equals(Color.BLACK)) {
             this.opositeColor = Color.WHITE;
         }
     }
 
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         g.setColor(this.backgroundColor);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         //board shadow

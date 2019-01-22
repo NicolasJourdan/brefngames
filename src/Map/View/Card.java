@@ -114,6 +114,8 @@ public class Card extends CustomGreyPanel {
                 return new ImageIcon(ImageIcon.class.getResource("/data/Images/connect_four.png"));
             case TIC_TAC_TOE:
                 return new ImageIcon(ImageIcon.class.getResource("/data/Images/tic_tac_toe.png"));
+            case HANGMAN:
+                return new ImageIcon(ImageIcon.class.getResource("/data/Images/hang0.gif"));
             default:
                 throw new RuntimeException("Game : " + game + " is unknown");
         }

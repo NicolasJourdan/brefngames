@@ -14,19 +14,16 @@ public enum ConnectFourStatsEnum {
     CONNECT_FOUR_NB_WIN_LANDSCAPE("CONNECT_FOUR_NB_WIN_LANDSCAPE"),
     CONNECT_FOUR_NB_WIN_DIAG("CONNECT_FOUR_NB_WIN_DIAG"),
     CONNECT_FOUR_AVERAGE_TIME("CONNECT_FOUR_AVERAGE_TIME"),
-    CONNECT_FOUR_TOTAL_TIME("CONNECT_FOUR_TOTAL_TIME")
-    ;
+    CONNECT_FOUR_TOTAL_TIME("CONNECT_FOUR_TOTAL_TIME");
 
     private String name = "";
 
-    ConnectFourStatsEnum(String s)
-    {
+    ConnectFourStatsEnum(String s) {
         this.name = s;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 

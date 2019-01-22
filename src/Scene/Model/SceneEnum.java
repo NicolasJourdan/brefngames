@@ -6,6 +6,7 @@ public enum SceneEnum {
      * Games
      */
     TIC_TAC_TOE("TIC_TAC_TOE"),
+    HANGMAN("HANGMAN"),
     CONNECT_FOUR("CONNECT_FOUR"),
     RUNNER("RUNNER"),
     COOKIE_CLICKER("COOKIE_CLICKER"),

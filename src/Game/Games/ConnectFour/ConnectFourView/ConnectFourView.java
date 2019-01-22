@@ -13,8 +13,8 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
     private DisplayPanel firstPlayerDisplay;
     private Board board;
     private DisplayPanel secondPlayerDisplay;
-    private DisplayPanel currentPlayer;
-    private DisplayPanel otherPlayer;
+    private DisplayPanel currentPlayerPanel;
+    private DisplayPanel otherPlayerPanel;
 
     public ConnectFourView(int rows, int columns, Player[] players, int[] scores) {
         super(players, scores);
@@ -31,7 +31,7 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridwidth = 1;
         constraint.gridheight = 1;
-        constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
+        constraint.insets = new Insets(INSET_SIZE, INSET_SIZE, INSET_SIZE, INSET_SIZE);
         this.add(this.firstPlayerDisplay, constraint);
         constraint.gridy = 1;
         constraint.gridx = 1;
@@ -42,10 +42,10 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
         constraint.gridx = 4;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
-        constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
+        constraint.insets = new Insets(INSET_SIZE, INSET_SIZE, INSET_SIZE, INSET_SIZE);
         this.add(this.secondPlayerDisplay, constraint);
-        this.currentPlayer = this.firstPlayerDisplay;
-        this.otherPlayer = this.secondPlayerDisplay;
+        this.currentPlayerPanel = this.firstPlayerDisplay;
+        this.otherPlayerPanel = this.secondPlayerDisplay;
     }
 
     public void setPawnView(Color color, Coord coord) {
@@ -54,12 +54,18 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
         this.repaint();
     }
 
-    public void changePlayer(){
-        DisplayPanel tmp = this.currentPlayer;
-        this.currentPlayer = this.otherPlayer;
-        this.otherPlayer = tmp;
-        this.currentPlayer.setFocus(true);
-        this.otherPlayer.setFocus(false);
+    public void updateCurrentPlayer(Player currentPlayer) {
+        if (currentPlayer != this.currentPlayerPanel.getPlayer()) {
+            changePlayer();
+        }
+    }
+
+    public void changePlayer() {
+        DisplayPanel tmp = this.currentPlayerPanel;
+        this.currentPlayerPanel = this.otherPlayerPanel;
+        this.otherPlayerPanel = tmp;
+        this.currentPlayerPanel.setFocus(true);
+        this.otherPlayerPanel.setFocus(false);
     }
 
     public ProxyObservable getObservable() {

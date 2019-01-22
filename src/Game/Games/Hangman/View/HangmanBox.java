@@ -1,33 +1,34 @@
-package Game.Games.TicTacToe.TicTacToeView;
+package Game.Games.Hangman.View;
 
-import Game.Games.Coord;
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;
+import Utils.UI.FileGetter;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public class Box extends JButton {
+public class HangmanBox extends JButton {
 
-    private static final int FONT_SIZE = 140;
-    private static int BOX_SIZE = 100;
-    private final Coord coord;
+    private static int BOX_SIZE = 50;
     private Color color;
     private Color backgroundColor;
     private Color borderColor;
     private Color opositeColor;
     private Color gradientColor;
+    private String text;
+    private Font font;
 
-    public Box(Coord coord) {
-        this.coord = coord;
-        this.setPreferredSize(new Dimension(BOX_SIZE, BOX_SIZE));
+    public HangmanBox(String text, Dimension size) {
+        this.text = text;
+        this.setPreferredSize(size);
         this.setLayout(new BorderLayout());
-        this.setFont(new Font("myFont", Font.PLAIN, FONT_SIZE));
+        this.font = FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL);
         setOpaque(true);
         this.borderColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue();
         this.backgroundColor = (Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue();
-        this.color = this.backgroundColor;
+        this.color = this.borderColor;
         if (ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue().equals(Color.BLACK)) {
             this.opositeColor = Color.WHITE;
             this.gradientColor = Color.DARK_GRAY;
@@ -50,26 +51,27 @@ public class Box extends JButton {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Dimension d = this.getSize();
         g2d.setColor(this.opositeColor);
-        g2d.setFont(this.getFont());
+        g2d.setFont(this.font);
         FontMetrics fm = g2d.getFontMetrics();
-        String text = this.getText();
         int x = (d.width - fm.stringWidth(text)) / 2;
-        int y = (d.height + fm.getAscent()) / 2 - ((int) (0.20 * FONT_SIZE));
-        g2d.drawString(text, x, y);
+        int y = (d.height + fm.getAscent()) / 2 - ((int) (0.15 * Utils.DEFAULT_SIZE_TITLE_LABEL));
+        g2d.drawString(this.text, x, y);
         g2d.setColor(color);
-        x = x - 5;
-        y = y - 5;
-        g2d.drawString(text, x, y);
+        x = x - 1;
+        y = y - 1;
+        g2d.drawString(this.text, x, y);
     }
 
-    public void setPawn(String text, Color color) {
-        this.setText(text);
-        this.color = color;
+    public void setDisabled() {
+        this.color = this.backgroundColor;
+        this.borderColor = this.backgroundColor;
+        this.opositeColor = this.backgroundColor;
         this.revalidate();
         this.repaint();
     }
 
-    public Coord getCoord() {
-        return this.coord;
+    @Override
+    public String getText() {
+        return text;
     }
 }

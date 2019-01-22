@@ -2,10 +2,9 @@ package Game.Games.TicTacToe;
 
 import Game.GameScene;
 import Game.Games.TicTacToe.TicTacToeController.TicTacToeController;
-import Map.Model.History;
-import Player.Player;
 import Game.Games.TicTacToe.TicTacToeModel.TicTacToeModel;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
+import Player.Player;
 
 public class TicTacToeScene extends GameScene {
     private final static int DEFAULT_SIZE = 3;

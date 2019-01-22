@@ -73,6 +73,9 @@ public class TrainingController extends AbstractSceneManagerController {
             case COOKIE_CLICKER:
                 this.setHistoryToGameFactory(SceneEnum.COOKIE_CLICKER);
                 return SceneEnum.COOKIE_CLICKER;
+            case HANGMAN:
+                this.setHistoryToGameFactory(SceneEnum.HANGMAN);
+                return SceneEnum.HANGMAN;
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
         }

@@ -14,6 +14,7 @@ public enum ActionEnum {
     CONNECT_FOUR("CONNECT_FOUR"),
     RUNNER("RUNNER"),
     COOKIE_CLICKER("COOKIE_CLICKER"),
+    HANGMAN("HANGMAN"),
     TRAINING_MENU("TRAINING_MENU"),
 
     /*

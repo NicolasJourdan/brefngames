@@ -17,18 +17,18 @@ public class TicTacToeRepository extends AbstractDataRepository {
     private static final String VALUE = "value";
 
     public static Map<TicTacToeStatsEnum, String> getAll() {
-            Map<TicTacToeStatsEnum, String> stats = new HashMap<>();
+        Map<TicTacToeStatsEnum, String> stats = new HashMap<>();
 
-            JSONArray statsJSONArray = (JSONArray) getDataFile().get(DEFAULT_NODE);
-            Iterator<JSONObject> statsIterator = statsJSONArray.iterator();
+        JSONArray statsJSONArray = (JSONArray) getDataFile().get(DEFAULT_NODE);
+        Iterator<JSONObject> statsIterator = statsJSONArray.iterator();
 
-            while (statsIterator.hasNext()) {
-                JSONObject current = statsIterator.next();
-                stats.put(TicTacToeStatsEnum.valueOf((String) current.get(NAME)), (String) current.get(VALUE));
-            }
-
-            return stats;
+        while (statsIterator.hasNext()) {
+            JSONObject current = statsIterator.next();
+            stats.put(TicTacToeStatsEnum.valueOf((String) current.get(NAME)), (String) current.get(VALUE));
         }
+
+        return stats;
+    }
 
     public static String getById(TicTacToeStatsEnum statName) {
         return TicTacToeRepository.getAll().get(statName);
@@ -36,6 +36,7 @@ public class TicTacToeRepository extends AbstractDataRepository {
 
     /**
      * Save ALL the tic tac toe stats
+     *
      * @param stats Map with ALL keys
      */
     public static void saveAll(Map<TicTacToeStatsEnum, String> stats) {

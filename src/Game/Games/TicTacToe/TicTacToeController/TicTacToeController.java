@@ -2,13 +2,14 @@ package Game.Games.TicTacToe.TicTacToeController;
 
 import Contest.Model.ContestDataPersistor;
 import Game.Controller.AbstractGameController;
-import Game.Games.TicTacToe.TicTacToeModel.*;
-import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Games.Coord;
+import Game.Games.TicTacToe.TicTacToeModel.TicTacToeModel;
+import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
-import Map.Model.History;
+import Player.Player;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +28,8 @@ public class TicTacToeController extends AbstractGameController {
 
     public TicTacToeController(TicTacToeModel m, TicTacToeView v, int size, boolean isTraining) {
         super(m, v, isTraining);
+        Player currentPlayer = ((TicTacToeModel) this.model).getCurrentPlayer();
+        ((TicTacToeView) this.view).updateCurrentPlayer(currentPlayer);
         this.size = size;
         this.round = 0;
         this.initStats();
@@ -39,11 +42,10 @@ public class TicTacToeController extends AbstractGameController {
         String status = ((TicTacToeModel) this.model).setPawnModel(coord);
         if (!status.isEmpty()) {
             round += 1;
-            if (status.equals("x")){
+            if (status.equals("x")) {
                 int cross = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS)) + 1;
                 this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS, Integer.toString(cross));
-            }
-            else{
+            } else {
                 int circle = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE)) + 1;
                 this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE, Integer.toString(circle));
             }
@@ -51,7 +53,7 @@ public class TicTacToeController extends AbstractGameController {
             ((TicTacToeView) this.view).setPawnView(status, color, coord);
             if (((TicTacToeModel) this.model).isWinner()) {
                 this.setChanged();
-                if (round<=6){
+                if (round <= 6) {
                     this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_PERFECT, "1");
                 }
                 if (((TicTacToeModel) this.model).getCurrentPlayer().getName().equals(((TicTacToeModel) this.model).getPlayers()[0].getName())) {
@@ -82,7 +84,7 @@ public class TicTacToeController extends AbstractGameController {
         }
     }
 
-    private void initStats(){
+    private void initStats() {
         this.statsMap = new HashMap<>();
         this.statsFirstPlayer = new HashMap<>();
         this.statsSecondPlayer = new HashMap<>();
@@ -106,19 +108,19 @@ public class TicTacToeController extends AbstractGameController {
         this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
-    private void sendStats(){
+    private void sendStats() {
         if (this.isTraining) {
             return;
         }
 
         this.finalTime = System.currentTimeMillis();
-        this.totalTime = Long.toString((finalTime - initTime)/1000);
+        this.totalTime = Long.toString((finalTime - initTime) / 1000);
         int crossNb = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE));
         int circleNb = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS));
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS, Integer.toString(crossNb + circleNb));
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_TOTAL_TIME, totalTime);
         ContestDataPersistor.updateTicTacToe(this.statsMap);
-        ContestDataPersistor.updateDataPlayer(((TicTacToeModel) this.model).getPlayers()[0].getName(),this.statsFirstPlayer);
-        ContestDataPersistor.updateDataPlayer(((TicTacToeModel) this.model).getPlayers()[1].getName(),this.statsSecondPlayer);
+        ContestDataPersistor.updateDataPlayer(((TicTacToeModel) this.model).getPlayers()[0].getName(), this.statsFirstPlayer);
+        ContestDataPersistor.updateDataPlayer(((TicTacToeModel) this.model).getPlayers()[1].getName(), this.statsSecondPlayer);
     }
 }

@@ -12,19 +12,16 @@ public enum TicTacToeStatsEnum {
     TIC_TAC_TOE_NB_ALL_SIGNS("TIC_TAC_TOE_NB_ALL_SIGNS"),
     TIC_TAC_TOE_AVERAGE_TIME("TIC_TAC_TOE_AVERAGE_TIME"),
     TIC_TAC_TOE_TOTAL_TIME("TIC_TAC_TOE_TOTAL_TIME"),
-    TIC_TAC_TOE_BEST_PLAYER("TIC_TAC_TOE_BEST_PLAYER")
-    ;
+    TIC_TAC_TOE_BEST_PLAYER("TIC_TAC_TOE_BEST_PLAYER");
 
     private String name = "";
 
-    TicTacToeStatsEnum(String s)
-    {
+    TicTacToeStatsEnum(String s) {
         this.name = s;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 
