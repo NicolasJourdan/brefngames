@@ -13,6 +13,7 @@ import java.awt.*;
 public class TicTacToeView extends CustomGameBackgroundPanel {
 
     private static int INSET_SIZE = 10;
+    private static int DEFAULT_SIZE = 3;
     private DisplayPanel firstPlayerDisplay;
     private Board board;
     private DisplayPanel secondPlayerDisplay;
@@ -21,9 +22,9 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
     private DisplayPanel otherPlayerPanel;
 
 
-    public TicTacToeView(int size, Player[] players, int[] scores) {
+    public TicTacToeView(Player[] players, int[] scores) {
         super(players, scores);
-        this.size = size;
+        this.size = TicTacToeView.DEFAULT_SIZE;
         this.setLayout(new GridBagLayout());
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
         this.board = new Board(this.size, this);
