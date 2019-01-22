@@ -2,17 +2,17 @@ package Game.Games.TicTacToe.TicTacToeController;
 
 import Contest.Model.ContestDataPersistor;
 import Game.Games.Coord;
-import Game.Games.TicTacToe.DataObject.PawnDataObject;
-import Game.Games.TicTacToe.DataObject.PlayerStatsDataObject;
+import Game.Games.DataObject.PawnDataObject;
+import Game.Games.DataObject.PlayerStatsDataObject;
 import Game.Games.TicTacToe.TicTacToeModel.TicTacToeModel;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Games.TicTacToe.TicTacToeView.TicTacToeView;
 import Online.Socket.Message.MessageDataObject;
 import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
+import Player.Player;
 import Scene.Model.ActionEnum;
 
-import java.net.Socket;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -21,10 +21,11 @@ public class ClientTicTacToeController extends TicTacToeController {
 
     private final SocketCommunicatorService socketCommunicatorService;
 
-    public ClientTicTacToeController(TicTacToeModel model, TicTacToeView view, int size, boolean isTraining, Socket socket) {
-        super(model, view, size, isTraining);
+    public ClientTicTacToeController(TicTacToeModel model, TicTacToeView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
+        super(model, view, isTraining);
 
-        this.socketCommunicatorService = new SocketCommunicatorService(socket, new SocketReceptionObserver());
+        this.socketCommunicatorService = socketCommunicatorService;
+        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
     }
 
     @Override
@@ -51,17 +52,9 @@ public class ClientTicTacToeController extends TicTacToeController {
                 case TIC_TAC_TOE_CHANGE_PLAYER:
                     ((TicTacToeView) ClientTicTacToeController.this.view).changePlayer();
                     break;
-                case TIC_TAC_TOE_FIRST_PLAYER_WON:
+                case TIC_TAC_TOE_WINNER:
                     ClientTicTacToeController.this.setChanged();
-                    ClientTicTacToeController.this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
-                    break;
-                case TIC_TAC_TOE_SECOND_PLAYER_WON:
-                    ClientTicTacToeController.this.setChanged();
-                    ClientTicTacToeController.this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
-                    break;
-                case TIC_TAC_TOE_DRAW:
-                    ClientTicTacToeController.this.setChanged();
-                    ClientTicTacToeController.this.notifyObservers(ActionEnum.DRAW);
+                    ClientTicTacToeController.this.notifyObservers((ActionEnum) messageDataObject.getData());
                     break;
                 case TIC_TAC_TOE_SEND_GLOBAL_STATS:
                     ContestDataPersistor.updateTicTacToe((Map<TicTacToeStatsEnum, String>) messageDataObject.getData());
@@ -69,6 +62,11 @@ public class ClientTicTacToeController extends TicTacToeController {
                 case TIC_TAC_TOE_SEND_PLAYER_STATS:
                     PlayerStatsDataObject playerStatsDataObject = (PlayerStatsDataObject) messageDataObject.getData();
                     ContestDataPersistor.updateDataPlayer(playerStatsDataObject.getPlayerId(), playerStatsDataObject.getStats());
+                    break;
+                case TIC_TAC_TOE_SET_CURRENT_PLAYER:
+                    ((TicTacToeView) ClientTicTacToeController.this.view).updateCurrentPlayer(
+                            (Player) messageDataObject.getData()
+                    );
                     break;
             }
         }

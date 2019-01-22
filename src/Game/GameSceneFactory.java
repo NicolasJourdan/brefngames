@@ -8,9 +8,6 @@ import Game.Games.TicTacToe.TicTacToeScene;
 import Map.MapScene;
 import Map.Model.History;
 import ContestSettings.ContestSettingsScene;
-import Online.Client.ClientScene;
-import Online.Server.ServerScene;
-import OnlineContestMenu.OnlineContestMenuScene;
 import Player.Player;
 import Scene.Model.SceneEnum;
 import Scene.Model.SceneFactoryInterface;
@@ -18,9 +15,9 @@ import Training.TrainingMenuScene;
 
 public class GameSceneFactory implements SceneFactoryInterface {
 
-    private Player[] playersList;
-    private boolean isTraining;
-    private History history;
+    protected Player[] playersList;
+    protected boolean isTraining;
+    protected History history;
 
     public GameSceneFactory(Player[] listPlayers, boolean isTraining) {
         this.playersList = listPlayers;

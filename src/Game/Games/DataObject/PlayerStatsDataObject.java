@@ -2,9 +2,10 @@ package Game.Games.DataObject;
 
 import Repository.Player.PlayerStatsEnum;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class PlayerStatsDataObject {
+public class PlayerStatsDataObject implements Serializable {
 
     private String playerId;
     private Map<PlayerStatsEnum, String> stats;
