@@ -35,7 +35,7 @@ public class FifteenVaincRepository extends AbstractDataRepository {
     }
 
     /**
-     * Save ALL the tic tac toe stats
+     * Save ALL the fifteen vainc stats
      * @param stats Map with ALL keys
      */
     public static void saveAll(Map<FifteenVaincStatsEnum, String> stats) {

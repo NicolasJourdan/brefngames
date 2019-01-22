@@ -190,7 +190,7 @@ public class ContestDataPersistor {
         updateIntValueFifteenVainc(dataEntries, gameMap, FifteenVaincStatsEnum.FIFTEEN_VAINC_NB_PERFECT);
         updateIntValueFifteenVainc(dataEntries, gameMap, FifteenVaincStatsEnum.FIFTEEN_VAINC_TOTAL_TIME);
 
-        // The best player on tic tac toe
+        // The best player on fifteen vainc
         dataEntries.put(
                 FifteenVaincStatsEnum.FIFTEEN_VAINC_BEST_PLAYER,
                 GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.FIFTEEN_VAINC)

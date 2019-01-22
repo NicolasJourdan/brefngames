@@ -32,7 +32,6 @@ public class FifteenVaincController extends AbstractGameController {
         this.round = 0;
         this.initStats();
         this.initTime = System.currentTimeMillis();
-
     }
 
     @Override

@@ -1,6 +1,8 @@
 package Game.Games.FifteenVaincModel.FifteenVaincView;
 
 import Game.Games.Coord;
+import Utils.UI.SoundPlayer;
+import Utils.UI.Utils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +33,7 @@ public class Board extends JLayeredPane {
                 box.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
                         Board.this.parent.getObservable().notifyObservers(((Box) e.getSource()).getCoord());
                     }
                 });
