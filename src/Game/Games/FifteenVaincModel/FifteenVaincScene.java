@@ -13,7 +13,7 @@ public class FifteenVaincScene extends GameScene{
     public FifteenVaincScene(Player[] listPlayers, boolean isTraining, int[] scores) {
         this.model = new FifteenVaincModel(listPlayers);
         this.view = new FifteenVaincView(DEFAULT_SIZE_ROW, DEFAULT_SIZE_COLUMN, listPlayers, scores);
-        this.controller = new FifteenVaincController((FifteenVaincModel) this.model, (FifteenVaincView) this.view, DEFAULT_SIZE_ROW, DEFAULT_SIZE_COLUMN, isTraining);
+        this.controller = new FifteenVaincController((FifteenVaincModel) this.model, (FifteenVaincView) this.view, isTraining);
         this.controller.addObserver(this);
     }
 }

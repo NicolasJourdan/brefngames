@@ -8,6 +8,7 @@ import Game.Games.FifteenVaincModel.FifteenVaincStatsEnum;
 import Game.Games.FifteenVaincModel.FifteenVaincView.FifteenVaincView;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
+import Utils.Chronometer.Chronometer;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -15,23 +16,17 @@ import java.util.Map;
 import java.util.Observable;
 
 public class FifteenVaincController extends AbstractGameController {
-    private int row;
-    private int column;
     private int round;
-    private long initTime;
-    private long finalTime;
-    private String totalTime;
     private Map<FifteenVaincStatsEnum, String> statsMap;
     private Map<PlayerStatsEnum, String> statsFirstPlayer;
     private Map<PlayerStatsEnum, String> statsSecondPlayer;
+    private Chronometer chrono;
 
-    public FifteenVaincController(FifteenVaincModel m, FifteenVaincView v, int row, int column, boolean isTraining) {
+    public FifteenVaincController(FifteenVaincModel m, FifteenVaincView v, boolean isTraining) {
         super(m, v, isTraining);
-        this.row = row;
-        this.column = column;
         this.round = 0;
+        this.chrono = new Chronometer();
         this.initStats();
-        this.initTime = System.currentTimeMillis();
     }
 
     @Override
@@ -104,10 +99,7 @@ public class FifteenVaincController extends AbstractGameController {
         if (this.isTraining) {
             return;
         }
-
-        this.finalTime = System.currentTimeMillis();
-        this.totalTime = Long.toString((finalTime - initTime)/1000);
-        this.statsMap.put(FifteenVaincStatsEnum.FIFTEEN_VAINC_TOTAL_TIME, totalTime);
+        this.statsMap.put(FifteenVaincStatsEnum.FIFTEEN_VAINC_TOTAL_TIME, Long.toString(this.chrono.getDuration()));
         ContestDataPersistor.updateFifteenVainc(this.statsMap);
         ContestDataPersistor.updateDataPlayer(((FifteenVaincModel) this.model).getPlayers()[0].getName(),this.statsFirstPlayer);
         ContestDataPersistor.updateDataPlayer(((FifteenVaincModel) this.model).getPlayers()[1].getName(),this.statsSecondPlayer);
