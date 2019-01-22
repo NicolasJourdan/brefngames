@@ -7,6 +7,7 @@ import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.ConnectFour.ConnectFourView.ConnectFourView;
 import Game.Games.Coord;
 import Game.Model.Pawn;
+import Player.Player;
 import Repository.Player.PlayerStatsEnum;
 import Scene.Model.ActionEnum;
 
@@ -29,6 +30,8 @@ public class ConnectFourController extends AbstractGameController {
 
     public ConnectFourController(ConnectFourModel m, ConnectFourView v, int rows, int columns, boolean isTraining) {
         super(m, v, isTraining);
+        Player currentPlayer = ((ConnectFourModel) this.model).getCurrentPlayer();
+        ((ConnectFourView) this.view).updateCurrentPlayer(currentPlayer);
         this.rows = rows;
         this.columns = columns;
         this.round = 0;

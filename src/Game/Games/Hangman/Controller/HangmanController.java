@@ -3,6 +3,7 @@ package Game.Games.Hangman.Controller;
 import Game.Controller.AbstractGameController;
 import Game.Games.Hangman.Model.HangmanModel;
 import Game.Games.Hangman.View.HangmanView;
+import Scene.Model.ActionEnum;
 
 import javax.swing.JOptionPane;
 import java.util.Observable;
@@ -36,6 +37,7 @@ public class HangmanController extends AbstractGameController {
 		updateNumGuesses(model, view);
 		updateResultDisplay(INITIAL_STATUS, view);
 		updateHangmanImage(model, view);
+		((HangmanView) this.view).updateCurrentPlayer(((HangmanModel) this.model).getCurrentPlayer());
 		
 		view.setVisible(true);
 	}
@@ -162,14 +164,39 @@ public class HangmanController extends AbstractGameController {
 		
 		//alert if game is win
 		if(((HangmanModel) this.model).isWin()){
-			
-			int nUserInput = JOptionPane.showConfirmDialog(null, WINNING_MESSAGE, WINNING_HEADER, JOptionPane.YES_NO_OPTION);
-
+			this.setChanged();
+			if (((HangmanModel) this.model).getCurrentPlayer().getName().equals(((HangmanModel) this.model).getPlayers()[0].getName())) {
+				this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
+				System.out.println("First Player Won");
+				return;
+			}
+			else{
+				this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
+				System.out.println("Second Player Won");
+				return;
+			}
 		}//end if
+
+		else if (((HangmanModel) this.model).isLoss()){
+			this.setChanged();
+			if (((HangmanModel) this.model).getCurrentPlayer().getName().equals(((HangmanModel) this.model).getPlayers()[0].getName())) {
+				this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
+				System.out.println("Second Player Won");
+				return;
+			}
+			else{
+				this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
+				System.out.println("First Player Won");
+				return;
+			}
+		}
 
 		
 		//repaint
+		((HangmanModel) this.model).changePlayer();
+		((HangmanView) this.view).updateCurrentPlayer(((HangmanModel) this.model).getCurrentPlayer());
 		((HangmanView) this.view).repaint();
+
 		
 	}//end makeGuess
 

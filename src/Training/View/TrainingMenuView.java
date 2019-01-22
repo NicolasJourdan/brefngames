@@ -17,6 +17,7 @@ public class TrainingMenuView extends CustomBackgroundPanel {
     private final JButton runnerButton;
     private final JButton connectFourButton;
     private final JButton cookieClickerButton;
+    private final JButton hangmanButton;
     private final CustomLabel title;
 
     public TrainingMenuView() {
@@ -29,6 +30,7 @@ public class TrainingMenuView extends CustomBackgroundPanel {
         this.runnerButton = new CustomTrainingButton("runner.png");
         this.connectFourButton = new CustomTrainingButton("connect_four.png");
         this.cookieClickerButton = new CustomTrainingButton("cookie_clicker.png");
+        this.hangmanButton = new CustomTrainingButton("hang0.gif");
 
         this.title = new CustomLabel("Training");
         this.title.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
@@ -55,9 +57,13 @@ public class TrainingMenuView extends CustomBackgroundPanel {
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         this.add(this.runnerButton, constraints);
+        constraints.gridx = 3;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        this.add(this.hangmanButton, constraints);
         constraints.gridx = 0;
         constraints.gridy = 3;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 4;
         this.add(this.backButton, constraints);
     }
 
@@ -94,6 +100,13 @@ public class TrainingMenuView extends CustomBackgroundPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TrainingMenuView.this.observable.notifyObservers(ActionEnum.COOKIE_CLICKER);
+            }
+        });
+
+        this.hangmanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TrainingMenuView.this.observable.notifyObservers(ActionEnum.HANGMAN);
             }
         });
     }

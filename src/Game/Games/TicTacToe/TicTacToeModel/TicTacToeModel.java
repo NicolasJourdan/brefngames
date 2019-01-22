@@ -5,6 +5,8 @@ import Game.Model.AbstractGameModel;
 import Game.Model.Pawn;
 import Player.Player;
 
+import java.util.Random;
+
 public class TicTacToeModel extends AbstractGameModel {
     private Board board;
     private int size;
@@ -12,7 +14,8 @@ public class TicTacToeModel extends AbstractGameModel {
 
     public TicTacToeModel(Player[] listPlayers, int size) {
         super(listPlayers);
-        this.currentPlayer = listPlayers[0];
+        Random random = new Random();
+        this.currentPlayer = listPlayers[random.nextInt(2)];
         this.size = size;
         this.board = new Board(this.size);
     }

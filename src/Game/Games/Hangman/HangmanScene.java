@@ -8,7 +8,7 @@ import Player.Player;
 
 public class HangmanScene extends GameScene {
     public HangmanScene(Player[] listPlayers, boolean isTraining, int[] scores) {
-        this.model = new HangmanModel(listPlayers, "Anniversaire", 7);
+        this.model = new HangmanModel(listPlayers);
         this.view = new HangmanView(listPlayers, scores);
         this.controller = new HangmanController((HangmanModel) this.model, (HangmanView) this.view, isTraining);
         this.controller.addObserver(this);

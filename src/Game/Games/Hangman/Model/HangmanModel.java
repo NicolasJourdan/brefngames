@@ -1,9 +1,10 @@
 package Game.Games.Hangman.Model;
 
+import Repository.Game.HangmanWordsRepository;
 import Game.Model.AbstractGameModel;
 import Player.Player;
-
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -16,8 +17,10 @@ public class HangmanModel extends AbstractGameModel {
 	//===============================================================================================
 	//											GAME PROPERTIES
 	//===============================================================================================
-	
+
+	private Player currentPlayer;
 	private String strSecretWord; 					//the word to be guessed
+	private boolean wrongLetter; 					//the word to be guessed
 	private int nRemainingGuesses;					//number of guesses left
 	private int nLettersRemaining;					//number of letters the player needs to guess to solve the word
 	private char[] cCurrentWordChars;				//holds the current word, as guessed by the user
@@ -31,9 +34,12 @@ public class HangmanModel extends AbstractGameModel {
 	
 	private final int NUM_LEGAL_CHARS = 27;	//26 letters, each converted to uppercase and a '-' (hyphen) character
 	private final int PADDING = 5;	//additional space in the array, for safety
+	private final int GUESSES_NUMBER = 7;
 	private final String ALREADY_GUESSED_ALERT = "You already tried that letter!";
 	private final String SUCCESSFUL_GUESS_ALERT = "YES!";
 	private final String FAILED_GUESS_ALERT = "nope";
+
+	private static final String DATA_JSON_FILE = "src/data/JSON/jsondata.json";
 	
 	
 	
@@ -41,10 +47,14 @@ public class HangmanModel extends AbstractGameModel {
 	//===============================================================================================
 	//											GAME CONSTRUCTOR
 	//===============================================================================================
-	public HangmanModel(Player[] players, String strSecretWord, int nGuesses) {
+	public HangmanModel(Player[] players) {
 		super(players);
-		this.strSecretWord = strSecretWord.toUpperCase();
-		this.nRemainingGuesses = nGuesses;
+		Random random = new Random();
+		this.wrongLetter = false;
+		this.currentPlayer = listPlayers[random.nextInt(2)];
+		this.strSecretWord = this.genSecretWord();
+		this.strSecretWord = this.strSecretWord.toUpperCase();
+		this.nRemainingGuesses = GUESSES_NUMBER;
 		this.nLettersRemaining = strSecretWord.length();
 		this.cLettersGuessed = new ArrayList<Character>(NUM_LEGAL_CHARS + PADDING);
 		this.cCurrentWordChars = new char[strSecretWord.length()];
@@ -53,6 +63,25 @@ public class HangmanModel extends AbstractGameModel {
 		for (int nC= 0; nC < cCurrentWordChars.length; nC++) cCurrentWordChars[nC] = '_';
 		
 	}//end constructor
+
+	public Player getCurrentPlayer(){
+		return this.currentPlayer;
+	}
+
+	public void changePlayer() {
+		if (this.wrongLetter) {
+			if (this.currentPlayer.equals(this.listPlayers[0])) {
+				this.currentPlayer = this.listPlayers[1];
+			} else {
+				this.currentPlayer = this.listPlayers[0];
+			}
+		}
+		this.wrongLetter = false;
+	}
+
+	private String genSecretWord(){
+		return HangmanWordsRepository.getWord();
+	}
 	
 	
 	
@@ -96,6 +125,7 @@ public class HangmanModel extends AbstractGameModel {
 				this.nRemainingGuesses--;
 				updateLettersGuessed(cLetter);
 				strMessage = FAILED_GUESS_ALERT;
+				this.wrongLetter = true;
 			}//end inner if-else
 		}//end outer if-else
 		
@@ -117,7 +147,7 @@ public class HangmanModel extends AbstractGameModel {
 	 */
 	public boolean isLoss(){return this.nRemainingGuesses <= 0 && this.nLettersRemaining > 0;}
 
-	
+
 	//===============================================================================================
 	//											HELPER METHODS
 	//===============================================================================================

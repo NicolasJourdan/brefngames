@@ -70,4 +70,8 @@ public class DisplayPanel extends JLayeredPane {
             this.color = this.defColor;
         }
     }
+
+    public Player getPlayer(){
+        return this.player;
+    }
 }

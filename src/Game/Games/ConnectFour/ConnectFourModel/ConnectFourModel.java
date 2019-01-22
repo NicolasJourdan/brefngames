@@ -5,13 +5,16 @@ import Game.Model.AbstractGameModel;
 import Game.Model.Pawn;
 import Player.Player;
 
+import java.util.Random;
+
 public class ConnectFourModel extends AbstractGameModel {
     private Board board;
     private Player currentPlayer;
 
     public ConnectFourModel(Player[] listPlayers, int rows, int columns) {
         super(listPlayers);
-        this.currentPlayer = listPlayers[0];
+        Random random = new Random();
+        this.currentPlayer = listPlayers[random.nextInt(2)];
         this.board = new Board(rows, columns);
     }
 

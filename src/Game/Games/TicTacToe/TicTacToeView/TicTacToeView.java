@@ -64,6 +64,12 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
         SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
 
+    public void updateCurrentPlayer(Player currentPlayer){
+        if(currentPlayer != this.currentPlayer.getPlayer()){
+            changePlayer();
+        }
+    }
+
     public void changePlayer(){
         DisplayPanel tmp = this.currentPlayer;
         this.currentPlayer = this.otherPlayer;

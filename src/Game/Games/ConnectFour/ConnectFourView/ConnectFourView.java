@@ -54,6 +54,12 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
         this.repaint();
     }
 
+    public void updateCurrentPlayer(Player currentPlayer){
+        if(currentPlayer != this.currentPlayer.getPlayer()){
+            changePlayer();
+        }
+    }
+
     public void changePlayer(){
         DisplayPanel tmp = this.currentPlayer;
         this.currentPlayer = this.otherPlayer;
