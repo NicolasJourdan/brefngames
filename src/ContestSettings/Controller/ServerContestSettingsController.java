@@ -14,7 +14,6 @@ import Structure.AbstractController;
 import Structure.AbstractModel;
 import Structure.AbstractView;
 
-import java.net.Socket;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -24,10 +23,11 @@ public class ServerContestSettingsController extends AbstractController {
     private final SocketCommunicatorService socketCommunicatorService;
     private ContestSettingsDataObject settingsDataObject;
 
-    public ServerContestSettingsController(AbstractModel model, AbstractView view, Socket socket) {
+    public ServerContestSettingsController(AbstractModel model, AbstractView view, SocketCommunicatorService socketCommunicatorService) {
         super(model, view);
 
-        this.socketCommunicatorService = new SocketCommunicatorService(socket, new SocketReceptionObserver());
+        this.socketCommunicatorService = socketCommunicatorService;
+        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
 
         Map<ParameterEnum, Configurable> defaultConfiguration = ((ContestSettingsModel) this.model).getDefaultConfiguration();
         ((ContestSettingsView) this.view).setDefaultConfiguration(defaultConfiguration);
