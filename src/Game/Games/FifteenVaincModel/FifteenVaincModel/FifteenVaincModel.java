@@ -37,8 +37,6 @@ public class FifteenVaincModel extends AbstractGameModel {
         } else {
             player = "J2";
         }
-        //System.out.println(boxes);
-        //System.out.println(player);
         // Count number of boxes selected
         for (int i = 0; i < boxes.size(); i++) {
             if (boxes.get(i) != null && player == boxes.get(i).toString()) {
@@ -64,24 +62,20 @@ public class FifteenVaincModel extends AbstractGameModel {
         return false;
     }
 
-    public String setPawnModel(Coord coord) {
+    public String setBoxModel(Coord coord) {
         Pawn pawn;
         Pawn status;
         if (this.currentPlayer.equals(listPlayers[0])) {
-            pawn = new Circle(this.currentPlayer, coord, "J1");
+            pawn = new Box(this.currentPlayer, coord, "J1");
         } else { // listPlayers[1]
-            pawn = new Circle(this.currentPlayer, coord, "J2");
+            pawn = new Box(this.currentPlayer, coord, "J2");
         }
         status = board.setPawn(pawn);
         return status != null ? status.toString() : "";
     }
 
     public void changePlayer() {
-        if (this.currentPlayer.equals(this.listPlayers[0])) {
-            this.currentPlayer = this.listPlayers[1];
-        } else {
-            this.currentPlayer = this.listPlayers[0];
-        }
+        this.currentPlayer = this.currentPlayer.equals(this.listPlayers[0]) ? this.listPlayers[1] : this.listPlayers[0];
     }
 
     public boolean isDraw(){

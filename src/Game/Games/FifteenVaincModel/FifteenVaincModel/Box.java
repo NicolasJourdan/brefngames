@@ -4,11 +4,11 @@ import Game.Games.Coord;
 import Game.Model.Pawn;
 import Player.Player;
 
-public class Circle extends Pawn {
+public class Box extends Pawn {
     private Player player;
     private String joueur;
 
-    public Circle(Player player, Coord coord, String joueur) {
+    public Box(Player player, Coord coord, String joueur) {
         super(player, coord);
         this.player = player;
         this.joueur = joueur;

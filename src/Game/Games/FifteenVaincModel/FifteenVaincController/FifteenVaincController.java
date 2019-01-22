@@ -38,7 +38,7 @@ public class FifteenVaincController extends AbstractGameController {
     public void update(Observable o, Object arg) {
         Coord coord = (Coord) arg;
         // Return J1 or J2
-        String status = ((FifteenVaincModel) this.model).setPawnModel(coord);
+        String status = ((FifteenVaincModel) this.model).setBoxModel(coord);
         if (!status.isEmpty()) {
             round += 1;
             Color color = ((FifteenVaincModel) this.model).getCurrentPlayer().getColor();
