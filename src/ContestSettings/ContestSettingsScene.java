@@ -3,6 +3,7 @@ package ContestSettings;
 import ContestSettings.Controller.ClientContestSettingsController;
 import ContestSettings.Controller.ContestSettingsController;
 import ContestSettings.Controller.ServerContestSettingsController;
+import ContestSettings.Controller.SettingsDataObjectGetterInterface;
 import ContestSettings.DataObject.ContestSettingsDataObject;
 import ContestSettings.Model.ContestSettingsModel;
 import ContestSettings.Model.OnlineContestSettingsModel;
@@ -34,6 +35,6 @@ public class ContestSettingsScene extends GameScene {
      * @return ContestSettingsDataObject
      */
     public ContestSettingsDataObject getSettingsDataObject() {
-        return ((ContestSettingsController) this.controller).getSettingsDataObject();
+        return ((SettingsDataObjectGetterInterface) this.controller).getSettingsDataObject();
     }
 }
