@@ -6,6 +6,7 @@ import Game.Model.AbstractGameModel;
 import Player.Player;
 import Repository.Game.HangmanWordsRepository;
 import Repository.Player.PlayerStatsEnum;
+import Utils.Chronometer.Chronometer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,12 +43,10 @@ public class HangmanModel extends AbstractGameModel {
     private int nLettersRemaining;                    //number of letters the player needs to guess to solve the word
     private char[] cCurrentWordChars;                //holds the current word, as guessed by the user
     private ArrayList<Character> cLettersGuessed;    //linked list of characters
-    private long initTime;
-    private long finalTime;
-    private String totalTime;
     private Map<HangmanStatsEnum, String> gameStats;
     private Map<PlayerStatsEnum, String> firstPlayerStats;
     private Map<PlayerStatsEnum, String> secondPlayerStats;
+    private Chronometer chronometer;
 
 
     //===============================================================================================
@@ -68,7 +67,6 @@ public class HangmanModel extends AbstractGameModel {
         //set the current word to "_ _ _..."
         for (int nC = 0; nC < cCurrentWordChars.length; nC++) cCurrentWordChars[nC] = '_';
         this.initStats();
-        this.initTime = System.currentTimeMillis();
 
     }//end constructor
 
@@ -270,6 +268,9 @@ public class HangmanModel extends AbstractGameModel {
     }
 
     private void initStats() {
+
+        this.chronometer = new Chronometer();
+
         //Game Stats
         this.gameStats = new HashMap<>();
         this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS, "0");
@@ -296,12 +297,10 @@ public class HangmanModel extends AbstractGameModel {
     }
 
     public void sendStats(){
-        this.finalTime = System.currentTimeMillis();
-        this.totalTime = Long.toString((finalTime - initTime) / 1000);
         int wrongNb = Integer.parseInt(this.gameStats.get(HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS));
         int correctNb = Integer.parseInt(this.gameStats.get(HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS));
         this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_LETTERS, Integer.toString(wrongNb + correctNb));
-        this.gameStats.put(HangmanStatsEnum.HANGMAN_TOTAL_TIME, totalTime);
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_TOTAL_TIME, Integer.toString(this.chronometer.getDuration()));
         if ((this.isWin() && this.currentPlayer.equals(this.listPlayers[0])) || (this.isLoss() && this.currentPlayer.equals(this.listPlayers[1]))){
             this.firstPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_WIN, "1");
             this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");

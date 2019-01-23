@@ -218,6 +218,7 @@ public class ContestDataPersistor {
         updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS);
         updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_LETTERS);
         updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_PERFECT);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_TOTAL_TIME);
         // Average time per game
         dataEntries.put(
                 HangmanStatsEnum.HANGMAN_AVERAGE_TIME,
@@ -227,7 +228,7 @@ public class ContestDataPersistor {
                 )
         );
 
-        // The best player on connect four
+        // The best player on hangman
         dataEntries.put(
                 HangmanStatsEnum.HANGMAN_BEST_PLAYER,
                 GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.HANGMAN)
@@ -320,6 +321,14 @@ public class ContestDataPersistor {
                 ContestDataPersistor.getRate(
                         Integer.parseInt(dataEntries.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN)),
                         Integer.parseInt(dataEntries.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
+                PlayerStatsEnum.HANGMAN_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.HANGMAN_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.HANGMAN_NB_GAME))
                 )
         );
 
@@ -421,6 +430,10 @@ public class ContestDataPersistor {
         String fifteenVaincNbGameString = dataEntries.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME);
         int fifteenVaincNbGame = Integer.parseInt(fifteenVaincNbGameString);
         nbGamesMap.put(GameEnum.FIFTEEN_VAINC, fifteenVaincNbGame);
+
+        String hangmanNbGameString = dataEntries.get(PlayerStatsEnum.HANGMAN_NB_GAME);
+        int hangmanNbGame = Integer.parseInt(hangmanNbGameString);
+        nbGamesMap.put(GameEnum.HANGMAN, hangmanNbGame);
 
         return nbGamesMap;
     }

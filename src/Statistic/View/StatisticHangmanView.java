@@ -39,7 +39,7 @@ public class StatisticHangmanView extends CustomBackgroundPanel {
 
         this.constraints.fill = GridBagConstraints.CENTER;
 
-        this.hangmanSettingsLabel = new CustomLabel("Connect Four Statistics");
+        this.hangmanSettingsLabel = new CustomLabel("Hangman Statistics");
         this.hangmanSettingsLabel.setHorizontalAlignment(JLabel.CENTER);
         this.hangmanSettingsLabel.setFont(this.hangmanSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
         this.constraints.gridx = 0;
