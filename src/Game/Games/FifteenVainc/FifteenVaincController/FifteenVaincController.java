@@ -1,9 +1,9 @@
-package Game.Games.FifteenVaincModel.FifteenVaincController;
+package Game.Games.FifteenVainc.FifteenVaincController;
 
 import Game.Controller.AbstractGameController;
 import Game.Games.Coord;
-import Game.Games.FifteenVaincModel.FifteenVaincModel.FifteenVaincModel;
-import Game.Games.FifteenVaincModel.FifteenVaincView.FifteenVaincView;
+import Game.Games.FifteenVainc.FifteenVaincModel.FifteenVaincModel;
+import Game.Games.FifteenVainc.FifteenVaincView.FifteenVaincView;
 import Game.Games.DataObject.PawnDataObject;
 import Player.Player;
 

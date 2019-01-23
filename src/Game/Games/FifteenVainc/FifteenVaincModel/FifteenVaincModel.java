@@ -1,9 +1,9 @@
-package Game.Games.FifteenVaincModel.FifteenVaincModel;
+package Game.Games.FifteenVainc.FifteenVaincModel;
 
 import Contest.Model.ContestDataPersistor;
 import Game.Games.Coord;
 import Game.Games.DataObject.PawnDataObject;
-import Game.Games.FifteenVaincModel.FifteenVaincStatsEnum;
+import Game.Games.FifteenVainc.FifteenVaincStatsEnum;
 import Game.Model.AbstractGameModel;
 import Game.Model.Pawn;
 import Player.Player;

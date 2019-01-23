@@ -1,4 +1,4 @@
-package Game.Games.FifteenVaincModel.FifteenVaincView;
+package Game.Games.FifteenVainc.FifteenVaincView;
 
 import Game.Games.Coord;
 import Utils.UI.SoundPlayer;

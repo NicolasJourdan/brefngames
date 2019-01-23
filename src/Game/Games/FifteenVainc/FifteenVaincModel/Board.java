@@ -1,4 +1,4 @@
-package Game.Games.FifteenVaincModel.FifteenVaincModel;
+package Game.Games.FifteenVainc.FifteenVaincModel;
 
 import Game.Games.Coord;
 import Game.Model.AbstractBoard;

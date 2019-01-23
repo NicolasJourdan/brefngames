@@ -2,7 +2,7 @@ package Contest.Model;
 
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
-import Game.Games.FifteenVaincModel.FifteenVaincStatsEnum;
+import Game.Games.FifteenVainc.FifteenVaincStatsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Model.GameEnum;

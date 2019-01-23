@@ -1,4 +1,4 @@
-package Game.Games.FifteenVaincModel;
+package Game.Games.FifteenVainc;
 
 public enum FifteenVaincStatsEnum {
     /*

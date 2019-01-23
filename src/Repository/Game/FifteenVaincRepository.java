@@ -1,6 +1,6 @@
 package Repository.Game;
 
-import Game.Games.FifteenVaincModel.FifteenVaincStatsEnum;
+import Game.Games.FifteenVainc.FifteenVaincStatsEnum;
 import Repository.AbstractDataRepository;
 import Repository.ModifyFiles;
 import org.json.simple.JSONArray;

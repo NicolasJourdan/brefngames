@@ -1,9 +1,9 @@
-package Game.Games.FifteenVaincModel;
+package Game.Games.FifteenVainc;
 
 import Game.GameScene;
-import Game.Games.FifteenVaincModel.FifteenVaincController.FifteenVaincController;
-import Game.Games.FifteenVaincModel.FifteenVaincModel.FifteenVaincModel;
-import Game.Games.FifteenVaincModel.FifteenVaincView.FifteenVaincView;
+import Game.Games.FifteenVainc.FifteenVaincController.FifteenVaincController;
+import Game.Games.FifteenVainc.FifteenVaincModel.FifteenVaincModel;
+import Game.Games.FifteenVainc.FifteenVaincView.FifteenVaincView;
 import Player.Player;
 
 public class FifteenVaincScene extends GameScene{
