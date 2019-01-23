@@ -13,6 +13,8 @@ public enum MessageType {
     SETTINGS_VALUES_CHANGED,
     SETTINGS_IS_READY,
     SETTINGS_WARNING_MESSAGE,
+    SETTINGS_PLAYERS_LIST,
+    SETTINGS_HISTORY,
 
     /**
      * Tic Tac Toe

@@ -4,10 +4,11 @@ import Repository.Player.PlayerStatsEnum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractPlayer implements Player {
+public abstract class AbstractPlayer implements Player, Serializable {
     protected String name;
     protected Color color;
     protected ImageIcon icon;

@@ -2,10 +2,10 @@ package Map.Model;
 
 import Player.*;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
-public class History {
+public class History implements Serializable {
 
     private Player[] players;
 
