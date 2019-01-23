@@ -3,11 +3,13 @@ package Contest.Controller;
 import Contest.Model.AbstractContest;
 import ContestSettings.ContestSettingsScene;
 import Game.OnlineGameSceneFactory;
+import Map.Model.History;
 import Online.Client.ClientScene;
 import Online.Server.ServerScene;
 import Online.Socket.Message.MessageDataObject;
 import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
+import Player.Player;
 import Scene.Controller.AbstractSceneManagerController;
 import Scene.Model.AbstractSceneManagerModel;
 import Scene.Model.ActionEnum;
@@ -79,7 +81,14 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 // update gameSceneFactory values
                 ((OnlineGameSceneFactory) this.sceneFactory).updatePlayersList(((AbstractContest) this.model).getPlayersList());
                 ((OnlineGameSceneFactory) this.sceneFactory).updateHistory(((AbstractContest) this.model).getHistory());
-
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.SETTINGS_PLAYERS_LIST,
+                        ((AbstractContest) this.model).getPlayersList()
+                ));
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.SETTINGS_HISTORY,
+                        ((AbstractContest) this.model).getHistory()
+                ));
                 SceneEnum nextGameScene = ((AbstractContest) this.model).getNextGameScene();
 
                 // communicate the next scene to the client before returning it
@@ -122,6 +131,16 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 case CONTEST_NEXT_SCENE:
                     // next scene received from the server, update current one
                     OnlineContestController.this.switchScene((SceneEnum) messageDataObject.getData());
+                    break;
+                case SETTINGS_PLAYERS_LIST:
+                    ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updatePlayersList(
+                            (Player[]) messageDataObject.getData()
+                    );
+                    break;
+                case SETTINGS_HISTORY:
+                    ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updateHistory(
+                            (History) messageDataObject.getData()
+                    );
                     break;
             }
         }
