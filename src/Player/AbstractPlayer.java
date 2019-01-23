@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class AbstractPlayer implements Player, Serializable {
+public abstract class AbstractPlayer implements Player {
     protected String name;
     protected Color color;
     protected ImageIcon icon;

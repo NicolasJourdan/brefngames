@@ -3,6 +3,7 @@ package Contest.Controller;
 import Contest.Model.AbstractContest;
 import Contest.Model.OnlineContest;
 import ContestSettings.ContestSettingsScene;
+import Game.GameSceneFactory;
 import Game.OnlineGameSceneFactory;
 import Map.Model.History;
 import Online.Client.ClientScene;
@@ -103,6 +104,23 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 return SceneEnum.END_SCENE;
 
             /**
+             * Game finished
+             */
+            case FIRST_PLAYER_WON:
+            case SECOND_PLAYER_WON:
+            case DRAW:
+                if (this.isServer) {
+                    ((AbstractContest) this.model).setWinner(actionEnum);
+
+                    ((GameSceneFactory) this.sceneFactory).updateHistory(((AbstractContest) this.model).getHistory());
+
+                    this.socketCommunicatorService.emit(new MessageDataObject(
+                            MessageType.CONTEST_UPDATE_HISTORY,
+                            ((AbstractContest) this.model).getHistory()
+                    ));
+                }
+
+            /**
              * Map
              */
             case END_MAP:
@@ -145,6 +163,12 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 case CONTEST_NEXT_SCENE:
                     // next scene received from the server, update current one
                     OnlineContestController.this.switchScene((SceneEnum) messageDataObject.getData());
+                    break;
+                case CONTEST_UPDATE_HISTORY:
+                    // new history received from the server, it will be used when the map is displayed
+                    ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updateHistory(
+                            (History) messageDataObject.getData()
+                    );
                     break;
                 case SETTINGS_PLAYERS_LIST:
                     ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updatePlayersList(

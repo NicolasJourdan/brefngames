@@ -5,6 +5,7 @@ public enum MessageType {
      * Contest
      */
     CONTEST_NEXT_SCENE,
+    CONTEST_UPDATE_HISTORY,
 
     /**
      * Settings
