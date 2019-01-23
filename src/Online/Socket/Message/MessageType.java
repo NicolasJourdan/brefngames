@@ -15,6 +15,7 @@ public enum MessageType {
     SETTINGS_WARNING_MESSAGE,
     SETTINGS_PLAYERS_LIST,
     SETTINGS_HISTORY,
+    SETTINGS_SAVE_PLAYER,
 
     /**
      * Map
