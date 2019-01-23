@@ -18,6 +18,7 @@ public class MapView extends CustomGameBackgroundPanel {
     public static final int DEFAULT_GAME_IMAGE_WIDTH = 96;
     public static final int DEFAULT_GAME_IMAGE_HEIGHT = 113;
     public static final int DEFAULT_PLAYER_ICON_SIZE = 32;
+    private static final String WAITING = "Waiting...";
 
     private JPanel gameListView;
     private JButton button;
@@ -85,6 +86,10 @@ public class MapView extends CustomGameBackgroundPanel {
         this.title.setText("Training");
         revalidate();
         repaint();
+    }
+
+    public void setWaitingButton() {
+        this.button.setText(MapView.WAITING);
     }
 
     public void setBackButton() {

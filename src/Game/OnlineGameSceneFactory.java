@@ -2,6 +2,7 @@ package Game;
 
 import ContestSettings.ContestSettingsScene;
 import Game.Games.TicTacToe.TicTacToeScene;
+import Map.MapScene;
 import Online.Client.ClientScene;
 import Online.Server.ServerScene;
 import Online.Socket.SocketCommunicatorService;
@@ -29,6 +30,8 @@ public class OnlineGameSceneFactory extends GameSceneFactory {
                 return new OnlineContestMenuScene();
             case CONTEST_MENU:
                 return new ContestSettingsScene(this.isServer, this.socketCommunicatorService);
+            case MAP:
+                return new MapScene(this.history, this.isServer, this.socketCommunicatorService);
             case TIC_TAC_TOE:
                 return new TicTacToeScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
             default:
