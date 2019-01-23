@@ -37,6 +37,13 @@ public enum PlayerStatsEnum {
     FIFTEEN_VAINC_WIN_RATE("FIFTEEN_VAINC_WIN_RATE"),
 
     /*
+     * Hangman
+     */
+    HANGMAN_NB_GAME("HANGMAN_NB_GAME"),
+    HANGMAN_NB_WIN("HANGMAN_NB_WIN"),
+    HANGMAN_WIN_RATE("HANGMAN_WIN_RATE"),
+
+    /*
      * General stats
      */
     MOST_PLAYED_GAME("MOST_PLAYED_GAME"),

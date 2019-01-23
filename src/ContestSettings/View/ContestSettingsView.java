@@ -585,7 +585,6 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         if (this.runnerCheckbox.isSelected()) {
             gameTypes.add(GameEnum.RUNNER);
         }
-
         return gameTypes;
     }
 

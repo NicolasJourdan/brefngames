@@ -82,6 +82,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, (String) jsonStats.get("TIC_TAC_TOE_NB_GAME"));
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, (String) jsonStats.get("TIC_TAC_TOE_NB_WIN"));
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE, (String) jsonStats.get("TIC_TAC_TOE_WIN_RATE"));
+        statsMap.put(PlayerStatsEnum.HANGMAN_NB_GAME, (String) jsonStats.get("HANGMAN_NB_GAME"));
+        statsMap.put(PlayerStatsEnum.HANGMAN_NB_WIN, (String) jsonStats.get("HANGMAN_NB_WIN"));
+        statsMap.put(PlayerStatsEnum.HANGMAN_WIN_RATE, (String) jsonStats.get("HANGMAN_WIN_RATE"));
         statsMap.put(PlayerStatsEnum.RUNNER_NB_GAME, (String) jsonStats.get("RUNNER_NB_GAME"));
         statsMap.put(PlayerStatsEnum.RUNNER_NB_WIN, (String) jsonStats.get("RUNNER_NB_WIN"));
         statsMap.put(PlayerStatsEnum.RUNNER_WIN_RATE, (String) jsonStats.get("RUNNER_WIN_RATE"));
@@ -112,6 +115,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         jsonStats.put("TIC_TAC_TOE_NB_GAME", statsMap.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME));
         jsonStats.put("TIC_TAC_TOE_NB_WIN", statsMap.get(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN));
         jsonStats.put("TIC_TAC_TOE_WIN_RATE", statsMap.get(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE));
+        jsonStats.put("HANGMAN_NB_GAME", statsMap.get(PlayerStatsEnum.HANGMAN_NB_GAME));
+        jsonStats.put("HANGMAN_NB_WIN", statsMap.get(PlayerStatsEnum.HANGMAN_NB_WIN));
+        jsonStats.put("HANGMAN_WIN_RATE", statsMap.get(PlayerStatsEnum.HANGMAN_WIN_RATE));
         jsonStats.put("RUNNER_NB_GAME", statsMap.get(PlayerStatsEnum.RUNNER_NB_GAME));
         jsonStats.put("RUNNER_NB_WIN", statsMap.get(PlayerStatsEnum.RUNNER_NB_WIN));
         jsonStats.put("RUNNER_WIN_RATE", statsMap.get(PlayerStatsEnum.RUNNER_WIN_RATE));

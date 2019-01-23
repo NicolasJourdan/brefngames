@@ -169,6 +169,7 @@ public class HangmanController extends AbstractGameController {
         //alert if game is win
         if (((HangmanModel) this.model).isWin()) {
             this.setChanged();
+            this.sendStats();
             if (((HangmanModel) this.model).getCurrentPlayer().getName().equals(((HangmanModel) this.model).getPlayers()[0].getName())) {
                 this.notifyObservers(ActionEnum.FIRST_PLAYER_WON);
                 System.out.println("First Player Won");
@@ -182,6 +183,7 @@ public class HangmanController extends AbstractGameController {
 
         else if (((HangmanModel) this.model).isLoss()) {
             this.setChanged();
+            this.sendStats();
             if (((HangmanModel) this.model).getCurrentPlayer().getName().equals(((HangmanModel) this.model).getPlayers()[0].getName())) {
                 this.notifyObservers(ActionEnum.SECOND_PLAYER_WON);
                 System.out.println("Second Player Won");
@@ -205,5 +207,11 @@ public class HangmanController extends AbstractGameController {
     @Override
     public void update(Observable o, Object arg) {
         this.makeGuess((Character) arg);
+    }
+
+    private void sendStats() {
+        if (!this.isTraining) {
+            ((HangmanModel) this.model).sendStats();
+        }
     }
 }//end HangmanController

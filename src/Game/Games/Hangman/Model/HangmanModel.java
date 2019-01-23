@@ -1,10 +1,16 @@
 package Game.Games.Hangman.Model;
 
+import Contest.Model.ContestDataPersistor;
+import Game.Games.Hangman.HangmanStatsEnum;
 import Game.Model.AbstractGameModel;
 import Player.Player;
 import Repository.Game.HangmanWordsRepository;
+import Repository.Player.PlayerStatsEnum;
+import Utils.Chronometer.Chronometer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -37,6 +43,10 @@ public class HangmanModel extends AbstractGameModel {
     private int nLettersRemaining;                    //number of letters the player needs to guess to solve the word
     private char[] cCurrentWordChars;                //holds the current word, as guessed by the user
     private ArrayList<Character> cLettersGuessed;    //linked list of characters
+    private Map<HangmanStatsEnum, String> gameStats;
+    private Map<PlayerStatsEnum, String> firstPlayerStats;
+    private Map<PlayerStatsEnum, String> secondPlayerStats;
+    private Chronometer chronometer;
 
 
     //===============================================================================================
@@ -56,6 +66,7 @@ public class HangmanModel extends AbstractGameModel {
 
         //set the current word to "_ _ _..."
         for (int nC = 0; nC < cCurrentWordChars.length; nC++) cCurrentWordChars[nC] = '_';
+        this.initStats();
 
     }//end constructor
 
@@ -65,13 +76,21 @@ public class HangmanModel extends AbstractGameModel {
 
     public void changePlayer() {
         if (this.wrongLetter) {
+            int wrongNb = Integer.parseInt(this.gameStats.get(HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS)) + 1;
+            gameStats.put(HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS, Integer.toString(wrongNb));
+            gameStats.put(HangmanStatsEnum.HANGMAN_NB_PERFECT, "0");
             if (this.currentPlayer.equals(this.listPlayers[0])) {
                 this.currentPlayer = this.listPlayers[1];
             } else {
                 this.currentPlayer = this.listPlayers[0];
             }
         }
+        else{
+            int correctNb = Integer.parseInt(this.gameStats.get(HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS)) + 1;
+            gameStats.put(HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS, Integer.toString(correctNb));
+        }
         this.wrongLetter = false;
+
     }
 
     private String genSecretWord() {
@@ -246,6 +265,55 @@ public class HangmanModel extends AbstractGameModel {
      */
     public int getNumLettersRemaining() {
         return this.nLettersRemaining;
+    }
+
+    private void initStats() {
+
+        this.chronometer = new Chronometer();
+
+        //Game Stats
+        this.gameStats = new HashMap<>();
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS, "0");
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS, "0");
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_LETTERS, "0");
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_PERFECT, "1");
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_GAMES, "1");
+
+        //First Player Stats
+        this.firstPlayerStats = new HashMap<>();
+        this.firstPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_GAME, "1");
+        this.firstPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_WIN, "0");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
+
+        //Second Player Stats
+        this.secondPlayerStats = new HashMap<>();
+        this.secondPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_GAME, "1");
+        this.secondPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_WIN, "0");
+        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
+        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
+        this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
+    }
+
+    public void sendStats(){
+        int wrongNb = Integer.parseInt(this.gameStats.get(HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS));
+        int correctNb = Integer.parseInt(this.gameStats.get(HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS));
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_NB_LETTERS, Integer.toString(wrongNb + correctNb));
+        this.gameStats.put(HangmanStatsEnum.HANGMAN_TOTAL_TIME, Integer.toString(this.chronometer.getDuration()));
+        if ((this.isWin() && this.currentPlayer.equals(this.listPlayers[0])) || (this.isLoss() && this.currentPlayer.equals(this.listPlayers[1]))){
+            this.firstPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_WIN, "1");
+            this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+            this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
+        }
+        else if ((this.isWin() && this.currentPlayer.equals(this.listPlayers[1])) || (this.isLoss() && this.currentPlayer.equals(this.listPlayers[0]))){
+            this.secondPlayerStats.put(PlayerStatsEnum.HANGMAN_NB_WIN, "1");
+            this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_WIN, "1");
+            this.firstPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "1");
+        }
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(), this.firstPlayerStats);
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(), this.secondPlayerStats);
+        ContestDataPersistor.updateHangman(this.gameStats);
     }
 
 
