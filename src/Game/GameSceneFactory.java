@@ -1,5 +1,6 @@
 package Game;
 
+import Game.Games.FifteenVainc.FifteenVaincScene;
 import Game.Games.Hangman.HangmanScene;
 import Game.Games.Runner.RunnerScene;
 import Game.Games.ConnectFour.ConnectFourScene;
@@ -42,6 +43,8 @@ public class GameSceneFactory implements SceneFactoryInterface {
                 return new ConnectFourScene(this.playersList, this.isTraining, this.history.getCurrentScore());
             case COOKIE_CLICKER:
                 return new CookieClickerScene(this.playersList, this.isTraining, this.history.getCurrentScore());
+            case FIFTEEN_VAINC:
+                return new FifteenVaincScene(this.playersList, this.isTraining, this.history.getCurrentScore());
             case TRAINING_MENU:
                 return new TrainingMenuScene();
             case CONTEST_MENU:

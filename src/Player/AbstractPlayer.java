@@ -68,6 +68,9 @@ public abstract class AbstractPlayer implements Player, Serializable {
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN, "0");
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE, "0");
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME, "0");
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN, "0");
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE, "0");
         statsMap.put(PlayerStatsEnum.MOST_PLAYED_GAME, "NONE");
         statsMap.put(PlayerStatsEnum.TOTAL_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");

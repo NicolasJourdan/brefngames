@@ -147,5 +147,27 @@
       "name": "RUNNER_BEST_PLAYER",
       "value": "NONE"
     }
+  ],
+  "fifteenVainc": [
+    {
+      "name": "FIFTEEN_VAINC_NB_GAMES",
+      "value": "0"
+    },
+    {
+      "name": "FIFTEEN_VAINC_NB_DRAW",
+      "value": "0"
+    },
+    {
+      "name": "FIFTEEN_VAINC_NB_PERFECT",
+      "value": "0"
+    },
+    {
+      "name": "FIFTEEN_VAINC_TOTAL_TIME",
+      "value": "0"
+    },
+    {
+      "name": "FIFTEEN_VAINC_BEST_PLAYER",
+      "value": "NONE"
+    }
   ]
 }

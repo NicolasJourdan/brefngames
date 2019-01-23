@@ -30,6 +30,13 @@ public enum PlayerStatsEnum {
     COOKIE_CLICKER_WIN_RATE("COOKIE_CLICKER_WIN_RATE"),
 
     /*
+     * Fifteen Vainc
+     */
+    FIFTEEN_VAINC_NB_GAME("FIFTEEN_VAINC_NB_GAME"),
+    FIFTEEN_VAINC_NB_WIN("FIFTEEN_VAINC_NB_WIN"),
+    FIFTEEN_VAINC_WIN_RATE("FIFTEEN_VAINC_WIN_RATE"),
+
+    /*
      * General stats
      */
     MOST_PLAYED_GAME("MOST_PLAYED_GAME"),

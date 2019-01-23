@@ -2,6 +2,7 @@ package Repository.Game;
 
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
+import Game.Games.FifteenVainc.FifteenVaincStatsEnum;
 import Game.Games.GlobalStatisticsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
@@ -89,6 +90,8 @@ public class GlobalStatisticsRepository {
                 return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN);
             case CONNECT_FOUR:
                 return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.CONNECT_FOUR_NB_WIN);
+            case FIFTEEN_VAINC:
+                return GlobalStatisticsRepository.getBestPlayerByStat(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN);
             default:
                 throw new RuntimeException("GameEnum : " + gameEnum + " is unknown");
         }
@@ -150,6 +153,10 @@ public class GlobalStatisticsRepository {
         String cookieClickerNbGameString = CookieClickerRepository.getById(CookieClickerStatsEnum.COOKIE_CLICKER_NB_GAMES);
         int cookieClickerNbGame = Integer.parseInt(cookieClickerNbGameString);
         nbGamesMap.put(GameEnum.COOKIE_CLICKER, cookieClickerNbGame);
+
+        String fifteenVaincNbGameString = FifteenVaincRepository.getById(FifteenVaincStatsEnum.FIFTEEN_VAINC_NB_GAMES);
+        int fifteenVaincNbGame = Integer.parseInt(fifteenVaincNbGameString);
+        nbGamesMap.put(GameEnum.FIFTEEN_VAINC, fifteenVaincNbGame);
 
         return nbGamesMap;
     }

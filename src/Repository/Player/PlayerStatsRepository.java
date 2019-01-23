@@ -91,6 +91,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME, (String) jsonStats.get("COOKIE_CLICKER_NB_GAME"));
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN, (String) jsonStats.get("COOKIE_CLICKER_NB_WIN"));
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE, (String) jsonStats.get("COOKIE_CLICKER_WIN_RATE"));
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME, (String) jsonStats.get("FIFTEEN_VAINC_NB_GAME"));
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE, (String) jsonStats.get("FIFTEEN_VAINC_WIN_RATE"));
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN, (String) jsonStats.get("FIFTEEN_VAINC_NB_WIN"));
         statsMap.put(PlayerStatsEnum.MOST_PLAYED_GAME, (String) jsonStats.get("MOST_PLAYED_GAME"));
         statsMap.put(PlayerStatsEnum.TOTAL_NB_GAME, (String) jsonStats.get("TOTAL_NB_GAME"));
         statsMap.put(PlayerStatsEnum.TOTAL_NB_WIN, (String) jsonStats.get("TOTAL_NB_WIN"));
@@ -118,6 +121,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         jsonStats.put("COOKIE_CLICKER_NB_GAME", statsMap.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME));
         jsonStats.put("COOKIE_CLICKER_NB_WIN", statsMap.get(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN));
         jsonStats.put("COOKIE_CLICKER_WIN_RATE", statsMap.get(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE));
+        jsonStats.put("FIFTEEN_VAINC_NB_GAME", statsMap.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME));
+        jsonStats.put("FIFTEEN_VAINC_NB_WIN", statsMap.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN));
+        jsonStats.put("FIFTEEN_VAINC_WIN_RATE", statsMap.get(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE));
         jsonStats.put("MOST_PLAYED_GAME", statsMap.get(PlayerStatsEnum.MOST_PLAYED_GAME));
         jsonStats.put("TOTAL_NB_GAME", statsMap.get(PlayerStatsEnum.TOTAL_NB_GAME));
         jsonStats.put("TOTAL_NB_WIN", statsMap.get(PlayerStatsEnum.TOTAL_NB_WIN));
