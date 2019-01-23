@@ -72,6 +72,12 @@ public class FifteenVaincView extends CustomGameBackgroundPanel {
         this.otherPlayer.setFocus(false);
     }
 
+    public void updateCurrentPlayer(Player currentPlayer) {
+        if (currentPlayer != this.currentPlayer.getPlayer()) {
+            this.changePlayer();
+        }
+    }
+
     public ProxyObservable getObservable() {
         return this.observable;
     }
