@@ -174,5 +174,33 @@ public class FifteenVaincModel extends AbstractGameModel {
         ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(),this.statsFirstPlayer);
         ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(),this.statsSecondPlayer);
     }
+
+    public void updateGlobalStats() {
+        this.statsMap.put(FifteenVaincStatsEnum.FIFTEEN_VAINC_TOTAL_TIME, Integer.toString(this.chrono.getDuration()));
+    }
+
+    public void sendGlobalStats() {
+        ContestDataPersistor.updateFifteenVainc(this.getStatsMap());
+    }
+
+    public void sendFirstPlayerStats() {
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(), this.getStatsFirstPlayer());
+    }
+
+    public void sendSecondPlayerStats() {
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(), this.getStatsSecondPlayer());
+    }
+
+    public Map<FifteenVaincStatsEnum, String> getStatsMap() {
+        return this.statsMap;
+    }
+
+    public Map<PlayerStatsEnum, String> getStatsFirstPlayer() {
+        return this.statsFirstPlayer;
+    }
+
+    public Map<PlayerStatsEnum, String> getStatsSecondPlayer() {
+        return this.statsSecondPlayer;
+    }
 }
 
