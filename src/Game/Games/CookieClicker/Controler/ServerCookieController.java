@@ -33,19 +33,19 @@ public class ServerCookieController extends CookieController {
                 ((CookieModel) this.model).addPointSecondPlayer();
                 break;
             case COOKIE_PRESS_FIRST_PLAYER_KEY:
-                ((CookieView) this.view).pressFirstPlayerKey();
+                ((CookieView) this.view).updatePlayerKey(true, true);
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_PRESS_FIRST_PLAYER_KEY));
                 break;
             case COOKIE_RELEASE_FIRST_PLAYER_KEY:
-                ((CookieView) this.view).releaseFirstPlayerKey();
+                ((CookieView) this.view).updatePlayerKey(true, false);
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_RELEASE_FIRST_PLAYER_KEY));
                 break;
             case COOKIE_PRESS_SECOND_PLAYER_KEY:
-                ((CookieView) this.view).pressSecondPlayerKey();
+                ((CookieView) this.view).updatePlayerKey(false, true);
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_PRESS_SECOND_PLAYER_KEY));
                 break;
             case COOKIE_RELEASE_SECOND_PLAYER_KEY:
-                ((CookieView) this.view).releaseSecondPlayerKey();
+                ((CookieView) this.view).updatePlayerKey(false, false);
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_RELEASE_SECOND_PLAYER_KEY));
                 break;
             case CHECK:
@@ -91,7 +91,7 @@ public class ServerCookieController extends CookieController {
     private boolean validatePressedKey(ActionEnum actionEnum) {
         return
                 ActionEnum.COOKIE_PRESS_FIRST_PLAYER_KEY == actionEnum
-                ||ActionEnum.COOKIE_RELEASE_FIRST_PLAYER_KEY == actionEnum
+                || ActionEnum.COOKIE_RELEASE_FIRST_PLAYER_KEY == actionEnum
                 || ActionEnum.CHECK == actionEnum
                 || ActionEnum.ADD_COOKIE_FIRST_PLAYER == actionEnum
                 || ActionEnum.ADD_COOKIE_SECOND_PLAYER == actionEnum
@@ -102,7 +102,11 @@ public class ServerCookieController extends CookieController {
         @Override
         public void update(Observable o, Object arg) {
             MessageDataObject messageDataObject = (MessageDataObject) arg;
-            ServerCookieController.this.play((ActionEnum) messageDataObject.getData());
+            switch (messageDataObject.getType()) {
+                case COOKIE_ACTION:
+                    ServerCookieController.this.play((ActionEnum) messageDataObject.getData());
+                    break;
+            }
         }
     }
 }

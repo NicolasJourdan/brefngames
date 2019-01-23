@@ -38,7 +38,7 @@ public class ClientCookieController extends CookieController {
     private boolean validatePressedKey(ActionEnum actionEnum) {
         return
                 ActionEnum.COOKIE_PRESS_SECOND_PLAYER_KEY == actionEnum
-                ||ActionEnum.COOKIE_RELEASE_SECOND_PLAYER_KEY == actionEnum
+                || ActionEnum.COOKIE_RELEASE_SECOND_PLAYER_KEY == actionEnum
                 || ActionEnum.CHECK == actionEnum
         ;
     }
@@ -56,16 +56,16 @@ public class ClientCookieController extends CookieController {
                     ContestDataPersistor.updateDataPlayer(playerStatsDataObject.getPlayerId(), playerStatsDataObject.getStats());
                     break;
                 case COOKIE_PRESS_FIRST_PLAYER_KEY:
-                    ((CookieView) ClientCookieController.this.view).pressFirstPlayerKey();
+                    ((CookieView) ClientCookieController.this.view).updatePlayerKey(true, true);
                     break;
                 case COOKIE_RELEASE_FIRST_PLAYER_KEY:
-                    ((CookieView) ClientCookieController.this.view).releaseFirstPlayerKey();
+                    ((CookieView) ClientCookieController.this.view).updatePlayerKey(true, false);
                     break;
                 case COOKIE_PRESS_SECOND_PLAYER_KEY:
-                    ((CookieView) ClientCookieController.this.view).pressSecondPlayerKey();
+                    ((CookieView) ClientCookieController.this.view).updatePlayerKey(false, true);
                     break;
                 case COOKIE_RELEASE_SECOND_PLAYER_KEY:
-                    ((CookieView) ClientCookieController.this.view).releaseSecondPlayerKey();
+                    ((CookieView) ClientCookieController.this.view).updatePlayerKey(false, false);
                     break;
                 case COOKIE_CLICKER_SEND_GOAL:
                     ((CookieView) ClientCookieController.this.view).setGoalScreen((int) ((MessageDataObject) arg).getData());
