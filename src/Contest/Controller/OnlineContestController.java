@@ -89,16 +89,8 @@ public class OnlineContestController extends AbstractSceneManagerController {
                         MessageType.SETTINGS_HISTORY,
                         ((AbstractContest) this.model).getHistory()
                 ));
-                SceneEnum nextGameScene = ((AbstractContest) this.model).getNextGameScene();
 
-                // communicate the next scene to the client before returning it
-                this.socketCommunicatorService.emit(new MessageDataObject(
-                        MessageType.CONTEST_NEXT_SCENE,
-                        nextGameScene
-                ));
-
-                return nextGameScene;
-
+                return this.loadNextScene();
             /**
              * Quit
              */
@@ -110,6 +102,18 @@ public class OnlineContestController extends AbstractSceneManagerController {
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
         }
+    }
+
+    private SceneEnum loadNextScene() {
+        SceneEnum nextGameScene = ((AbstractContest) this.model).getNextGameScene();
+
+        // communicate the next scene to the client before returning it
+        this.socketCommunicatorService.emit(new MessageDataObject(
+                MessageType.CONTEST_NEXT_SCENE,
+                nextGameScene
+        ));
+
+        return nextGameScene;
     }
 
     private void setupContestConnection(boolean isServer, Socket socket) {
