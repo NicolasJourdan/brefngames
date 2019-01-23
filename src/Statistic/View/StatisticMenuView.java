@@ -21,6 +21,7 @@ public class StatisticMenuView extends CustomBackgroundPanel {
     private CustomButton cookieStatistic;
     private CustomButton connectStatistic;
     private CustomButton hangmanStatistic;
+    private CustomButton fifteenVaincStatistic;
     private CustomLabel globalSettingsLabel;
 
     private JTable table;
@@ -86,6 +87,11 @@ public class StatisticMenuView extends CustomBackgroundPanel {
         this.constraints.gridy = 5;
         this.add(this.hangmanStatistic, this.constraints);
 
+        this.fifteenVaincStatistic = new CustomButton("Fifteen Vainc");
+        this.constraints.gridx = 2;
+        this.constraints.gridy = 5;
+        this.add(this.fifteenVaincStatistic, this.constraints);
+
         this.backButton = new CustomButton("Back");
         this.constraints.gridx = 1;
         this.constraints.gridy = 6;
@@ -135,6 +141,12 @@ public class StatisticMenuView extends CustomBackgroundPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_HANGMAN);
+            }
+        });
+        this.fifteenVaincStatistic.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StatisticMenuView.this.observable.notifyObservers(ActionEnum.STATISTIC_FIFTEEN_VAINC);
             }
         });
     }
