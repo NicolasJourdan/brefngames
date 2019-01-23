@@ -11,6 +11,7 @@ public class StatisticFifteenVaincController extends AbstractSceneController {
         super(model, view);
         // Not observer observable because the view is not created yet
         ((StatisticFifteenVaincView) this.view).updateFifteenVaincStatistics(
-                ((StatisticFifteenVaincModel) this.model).getAllFifteenVaincStats());
+                ((StatisticFifteenVaincModel) this.model).getAllFifteenVaincStats()
+        );
     }
 }

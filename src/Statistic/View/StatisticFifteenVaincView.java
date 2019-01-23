@@ -34,7 +34,8 @@ public class StatisticFifteenVaincView extends CustomBackgroundPanel {
                 Utils.DEFAULT_BUTTON_PADDING_TOP,
                 Utils.DEFAULT_BUTTON_PADDING_LEFT,
                 Utils.DEFAULT_BUTTON_PADDING_BOTTOM,
-                Utils.DEFAULT_BUTTON_PADDING_RIGHT);
+                Utils.DEFAULT_BUTTON_PADDING_RIGHT
+        );
         this.constraints.gridwidth = GridBagConstraints.REMAINDER;
 
         this.constraints.fill = GridBagConstraints.CENTER;

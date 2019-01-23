@@ -8,26 +8,25 @@ import Structure.AbstractModel;
 import java.util.Map;
 
 public class StatisticFifteenVaincModel extends AbstractModel {
-    private Object[][] donnees;
+    private Object[][] data;
 
     public StatisticFifteenVaincModel() {
-        this.donnees = new Object[][]{};
+        this.data = new Object[][]{};
     }
 
     public Object[][] getAllStatisctic(){
-        return this.donnees;
+        return this.data;
     }
 
     public Object[][] getAllFifteenVaincStats(){
         Map<FifteenVaincStatsEnum, String> stat = FifteenVaincRepository.getAll();
-        int index = stat.size();
-        this.donnees = new Object[index][2];
-        index = 0;
+        this.data = new Object[stat.size()][2];
+        int index = 0;
         for (Map.Entry<FifteenVaincStatsEnum, String> s : stat.entrySet()) {
-            this.donnees[index][0] = FifteenVaincStatisticFactory.getStringStat(s.getKey());
-            this.donnees[index][1] = s.getValue().replace("_", " ");
+            this.data[index][0] = FifteenVaincStatisticFactory.getStringStat(s.getKey());
+            this.data[index][1] = s.getValue().replace("_", " ");
             index++;
         }
-        return this.donnees;
+        return this.data;
     }
 }
