@@ -17,6 +17,11 @@ public enum MessageType {
     SETTINGS_HISTORY,
 
     /**
+     * Map
+     */
+    MAP_NEXT,
+
+    /**
      * Tic Tac Toe
      */
     TIC_TAC_TOE_COORDINATES,

@@ -99,6 +99,12 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 this.notifyObservers(actionEnum);
                 return SceneEnum.END_SCENE;
 
+            /**
+             * Map
+             */
+            case END_MAP:
+                return this.loadNextScene();
+
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
         }
