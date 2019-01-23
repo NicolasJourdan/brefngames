@@ -105,5 +105,4 @@ public class ServerCookieController extends CookieController {
             ServerCookieController.this.play((ActionEnum) messageDataObject.getData());
         }
     }
-
 }

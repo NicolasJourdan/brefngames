@@ -211,6 +211,4 @@ public class CookieView extends CustomGameBackgroundPanel {
         revalidate();
         this.observable.notifyObservers(ActionEnum.ADD_COOKIE_SECOND_PLAYER);
     }
-
-
 }
