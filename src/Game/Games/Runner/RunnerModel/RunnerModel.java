@@ -76,7 +76,7 @@ public class RunnerModel extends AbstractGameModel {
         this.chronometer = new Chronometer();
     }
 
-    public Map<RunnerStatsEnum, String> gatherStatistics() {
+    protected Map<RunnerStatsEnum, String> gatherStatistics() {
         Map<RunnerStatsEnum, String> statisticsMap = new HashMap<>();
 
         statisticsMap.put(RunnerStatsEnum.RUNNER_NB_GAMES, "1");
@@ -89,7 +89,7 @@ public class RunnerModel extends AbstractGameModel {
         return statisticsMap;
     }
 
-    public Map gatherFirstPlayerStatistics() {
+    protected Map gatherFirstPlayerStatistics() {
         Map<PlayerStatsEnum, String> statisticsMap = new HashMap<>();
 
         statisticsMap.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
@@ -101,7 +101,7 @@ public class RunnerModel extends AbstractGameModel {
         return statisticsMap;
     }
 
-    private Map gatherSecondPlayerStatistics() {
+    protected Map gatherSecondPlayerStatistics() {
         Map<PlayerStatsEnum, String> statisticsMap = new HashMap<>();
 
         statisticsMap.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
