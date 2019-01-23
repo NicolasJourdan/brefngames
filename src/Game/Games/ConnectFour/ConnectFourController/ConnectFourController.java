@@ -30,11 +30,12 @@ public class ConnectFourController extends AbstractGameController {
 
             // Check if game is finished
             if (((ConnectFourModel) this.model).isFinished()) {
-                ((ConnectFourModel) this.model).updatePlayerStats();
                 if (!this.isTraining) {
-                    ((ConnectFourModel) this.model).sendStats(
-                            ((ConnectFourModel) this.model).getOrientation()
-                    );
+                    ((ConnectFourModel) this.model).updatePlayerStats();
+                    ((ConnectFourModel) this.model).updateGlobalStats();
+                    ((ConnectFourModel) this.model).sendGlobalStats();
+                    ((ConnectFourModel) this.model).sendFirstPlayerStats();
+                    ((ConnectFourModel) this.model).sendSecondPlayerStats();
                 }
                 this.setChanged();
                 this.notifyObservers(((ConnectFourModel) this.model).getWinner());

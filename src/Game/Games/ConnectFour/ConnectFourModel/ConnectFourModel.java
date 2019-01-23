@@ -142,7 +142,8 @@ public class ConnectFourModel extends AbstractGameModel {
         this.secondPlayerStats.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
     }
 
-    public void sendStats(String orient) {
+    public void updateGlobalStats() {
+        String orient = this.getOrientation();
         if (orient.equals("vertical")) {
             this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_WIN_VERTICAL, "1");
         } else if (orient.equals("landscape")) {
@@ -155,9 +156,6 @@ public class ConnectFourModel extends AbstractGameModel {
         int redNb = Integer.parseInt(this.gameStats.get(ConnectFourStatsEnum.CONNECT_FOUR_NB_RED_PAWNS));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_ALL_PAWNS, Integer.toString(yellowNb + redNb));
         this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_TOTAL_TIME, Integer.toString(this.chronometer.getDuration()));
-        ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(), this.firstPlayerStats);
-        ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(), this.secondPlayerStats);
-        ContestDataPersistor.updateConnectFour(this.gameStats);
     }
 
     public void updatePlayerStats() {
@@ -176,5 +174,29 @@ public class ConnectFourModel extends AbstractGameModel {
             // If no winner => Draw
             this.gameStats.put(ConnectFourStatsEnum.CONNECT_FOUR_NB_DRAW, "1");
         }
+    }
+
+    public void sendGlobalStats() {
+        ContestDataPersistor.updateConnectFour(this.getGameStats());
+    }
+
+    public void sendFirstPlayerStats() {
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(), this.getFirstPlayerStats());
+    }
+
+    public void sendSecondPlayerStats() {
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(), this.getSecondPlayerStats());
+    }
+
+    public Map<ConnectFourStatsEnum, String> getGameStats() {
+        return this.gameStats;
+    }
+
+    public Map<PlayerStatsEnum, String> getFirstPlayerStats() {
+        return this.firstPlayerStats;
+    }
+
+    public Map<PlayerStatsEnum, String> getSecondPlayerStats() {
+        return this.secondPlayerStats;
     }
 }
