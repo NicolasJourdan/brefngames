@@ -52,6 +52,7 @@ public class HangmanView extends CustomGameBackgroundPanel {
         if (currentPlayer != this.currentPlayerPanel.getPlayer()) {
             changePlayer();
         }
+        this.repaint();
     }
 
     public void changePlayer() {
