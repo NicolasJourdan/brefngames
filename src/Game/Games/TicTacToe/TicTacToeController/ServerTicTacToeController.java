@@ -45,10 +45,10 @@ public class ServerTicTacToeController extends TicTacToeController {
 
             // Check if game is finished
             if (((TicTacToeModel) this.model).isFinished()) {
-                ((TicTacToeModel) this.model).updatePlayerStats();
-                ((TicTacToeModel) this.model).updateGlobalStats();
                 // Send stats
                 if (!this.isTraining) {
+                    ((TicTacToeModel) this.model).updatePlayerStats();
+                    ((TicTacToeModel) this.model).updateGlobalStats();
                     ((TicTacToeModel) this.model).sendGlobalStats();
                     ((TicTacToeModel) this.model).sendFirstPlayerStats();
                     this.socketCommunicatorService.emit(
