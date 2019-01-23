@@ -52,23 +52,18 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
         this.constraints.gridy = 0;
         this.constraints.gridwidth = 1;
         this.add(this.playerSettingsLabel, this.constraints);
-        this.constraints.gridwidth = 1;
 
         this.jcb  = new CustomComboBox();
         this.constraints.gridx = 1;
         this.constraints.gridy = 1;
-        this.constraints.gridwidth = 1;
         this.add(this.jcb, this.constraints);
-        this.constraints.gridwidth = 1;
 
         this.updateTableView();
 
         this.backButton = new CustomButton("Back");
         this.constraints.gridx = 1;
         this.constraints.gridy = 3;
-        this.constraints.gridwidth = 1;
         this.add(this.backButton, this.constraints);
-        this.constraints.gridwidth = 1;
 
         this.initButtonsActionListeners();
 
