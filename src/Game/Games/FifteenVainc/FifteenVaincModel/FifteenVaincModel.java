@@ -155,14 +155,12 @@ public class FifteenVaincModel extends AbstractGameModel {
 
         this.statsFirstPlayer.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME, "1");
         this.statsFirstPlayer.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN, "0");
-        this.statsFirstPlayer.put(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE, "0");
         this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
         this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
         this.statsFirstPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");
 
         this.statsSecondPlayer.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME, "1");
         this.statsSecondPlayer.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN, "0");
-        this.statsSecondPlayer.put(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE, "0");
         this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_GAME, "1");
         this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");
         this.statsSecondPlayer.put(PlayerStatsEnum.TOTAL_NB_LOOSE, "0");

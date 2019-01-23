@@ -32,9 +32,12 @@ public class FifteenVaincController extends AbstractGameController {
 
             // Check if game is finished
             if (((FifteenVaincModel) this.model).isFinished()) {
-                ((FifteenVaincModel) this.model).updatePlayerStats();
                 if (!this.isTraining) {
-                    ((FifteenVaincModel) this.model).sendStats();
+                    ((FifteenVaincModel) this.model).updatePlayerStats();
+                    ((FifteenVaincModel) this.model).updateGlobalStats();
+                    ((FifteenVaincModel) this.model).sendGlobalStats();
+                    ((FifteenVaincModel) this.model).sendFirstPlayerStats();
+                    ((FifteenVaincModel) this.model).sendSecondPlayerStats();
                 }
                 this.setChanged();
                 this.notifyObservers(((FifteenVaincModel) this.model).getWinner());
