@@ -1,6 +1,7 @@
 package Game;
 
 import ContestSettings.ContestSettingsScene;
+import Game.Games.Runner.RunnerScene;
 import Game.Games.TicTacToe.TicTacToeScene;
 import Map.MapScene;
 import Online.Client.ClientScene;
@@ -34,6 +35,8 @@ public class OnlineGameSceneFactory extends GameSceneFactory {
                 return new MapScene(this.history, this.isServer, this.socketCommunicatorService);
             case TIC_TAC_TOE:
                 return new TicTacToeScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
+            case RUNNER:
+                return new RunnerScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }
