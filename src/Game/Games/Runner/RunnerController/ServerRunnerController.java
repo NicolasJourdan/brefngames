@@ -2,6 +2,7 @@ package Game.Games.Runner.RunnerController;
 
 import Game.Games.Runner.RunnerModel.RunnerControlsDataObject;
 import Game.Games.Runner.RunnerModel.RunnerModel;
+import Game.Games.Runner.RunnerModel.ServerRunnerModel;
 import Game.Games.Runner.RunnerView.RunnerView;
 import Game.Model.AbstractGameModel;
 import Game.View.AbstractGameView;
@@ -84,6 +85,30 @@ public class ServerRunnerController extends RunnerController {
                     MessageType.RUNNER_UPDATE_SECOND_PLAYER_CONTROLS,
                     new RunnerControlsDataObject(isNextKeyLeft, position)
             ));
+        }
+
+        // check winner
+        if (((RunnerModel) this.model).isGameFinished()) {
+            // save stats
+            if (!this.isTraining) {
+                ((ServerRunnerModel) this.model).saveLocalStatistics();
+
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.RUNNER_SEND_PLAYER_STATS,
+                        ((ServerRunnerModel) this.model).getOnlinePlayerStatistics()
+                ));
+
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.RUNNER_SEND_GLOBAL_STATS,
+                        ((ServerRunnerModel) this.model).getStatistics()
+                ));
+            }
+
+            // change scene
+            this.setChanged();
+            this.notifyObservers(
+                    ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.FIRST_PLAYER_WON : ActionEnum.SECOND_PLAYER_WON
+            );
         }
     }
 }

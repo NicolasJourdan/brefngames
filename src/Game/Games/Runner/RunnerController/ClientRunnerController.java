@@ -1,6 +1,9 @@
 package Game.Games.Runner.RunnerController;
 
+import Game.Games.Runner.RunnerModel.ClientRunnerModel;
 import Game.Games.Runner.RunnerModel.RunnerControlsDataObject;
+import Game.Games.Runner.RunnerModel.RunnerModel;
+import Game.Games.Runner.RunnerModel.ServerRunnerModel;
 import Game.Games.Runner.RunnerView.RunnerView;
 import Game.Model.AbstractGameModel;
 import Game.View.AbstractGameView;
@@ -9,6 +12,7 @@ import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
 import Scene.Model.ActionEnum;
 
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -68,6 +72,18 @@ public class ClientRunnerController extends RunnerController {
                     );
                     ((RunnerView) ClientRunnerController.this.view).updateSecondPlayerNextKey(
                             ((RunnerControlsDataObject) messageDataObject.getData()).isNextKeyLeft()
+                    );
+                    break;
+
+                case RUNNER_SEND_GLOBAL_STATS:
+                    ((ClientRunnerModel) ClientRunnerController.this.model).saveLocalStatistics(
+                            (Map) messageDataObject.getData()
+                    );
+                    break;
+
+                case RUNNER_SEND_PLAYER_STATS:
+                    ((ClientRunnerModel) ClientRunnerController.this.model).saveLocalPlayerStatistcs(
+                            (Map) messageDataObject.getData()
                     );
                     break;
             }
