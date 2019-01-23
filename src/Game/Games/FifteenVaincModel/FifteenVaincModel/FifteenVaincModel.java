@@ -24,7 +24,6 @@ public class FifteenVaincModel extends AbstractGameModel {
     private Board board;
     private Player currentPlayer;
 
-    private Chronometer chronometer;
     private int round;
     private Map<FifteenVaincStatsEnum, String> statsMap;
     private Map<PlayerStatsEnum, String> statsFirstPlayer;
@@ -144,6 +143,8 @@ public class FifteenVaincModel extends AbstractGameModel {
     }
 
     private void initStats(){
+        this.chrono = new Chronometer();
+
         this.statsMap = new HashMap<>();
         this.statsFirstPlayer = new HashMap<>();
         this.statsSecondPlayer = new HashMap<>();
