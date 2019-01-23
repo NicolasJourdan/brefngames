@@ -69,7 +69,6 @@ public class ServerTicTacToeController extends TicTacToeController {
                 }
                 this.setChanged();
                 this.notifyObservers(((TicTacToeModel) this.model).getWinner());
-                this.socketCommunicatorService.emit(new MessageDataObject(MessageType.TIC_TAC_TOE_WINNER, ((TicTacToeModel) this.model).getWinner()));
             } else {
                 ((TicTacToeModel) this.model).changePlayer();
                 ((TicTacToeView) this.view).changePlayer();

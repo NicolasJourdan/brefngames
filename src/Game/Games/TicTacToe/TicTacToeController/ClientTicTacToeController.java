@@ -52,10 +52,6 @@ public class ClientTicTacToeController extends TicTacToeController {
                 case TIC_TAC_TOE_CHANGE_PLAYER:
                     ((TicTacToeView) ClientTicTacToeController.this.view).changePlayer();
                     break;
-                case TIC_TAC_TOE_WINNER:
-                    ClientTicTacToeController.this.setChanged();
-                    ClientTicTacToeController.this.notifyObservers((ActionEnum) messageDataObject.getData());
-                    break;
                 case TIC_TAC_TOE_SEND_GLOBAL_STATS:
                     ContestDataPersistor.updateTicTacToe((Map<TicTacToeStatsEnum, String>) messageDataObject.getData());
                     break;
