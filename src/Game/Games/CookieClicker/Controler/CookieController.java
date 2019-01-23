@@ -23,6 +23,18 @@ public class CookieController extends AbstractGameController {
             case ADD_COOKIE_SECOND_PLAYER:
                 ((CookieModel) this.model).addPointSecondPlayer();
                 break;
+            case COOKIE_PRESS_FIRST_PLAYER_KEY:
+                ((CookieView) this.view).updatePlayerKey(true, true);
+                break;
+            case COOKIE_RELEASE_FIRST_PLAYER_KEY:
+                ((CookieView) this.view).updatePlayerKey(true, false);
+                break;
+            case COOKIE_PRESS_SECOND_PLAYER_KEY:
+                ((CookieView) this.view).updatePlayerKey(false, true);
+                break;
+            case COOKIE_RELEASE_SECOND_PLAYER_KEY:
+                ((CookieView) this.view).updatePlayerKey(false, false);
+                break;
             case CHECK:
                 ((CookieModel) this.model).check();
                 if (!this.isTraining) {

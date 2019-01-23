@@ -75,40 +75,28 @@ public class CookieView extends CustomGameBackgroundPanel {
         this.getActionMap().put(ACTION_PRESS_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CookieView.this.firstPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
-                repaint();
-                revalidate();
-                SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
+                CookieView.this.observable.notifyObservers(ActionEnum.COOKIE_PRESS_FIRST_PLAYER_KEY);
             }
         });
 
         this.getActionMap().put(ACTION_RELEASE_Q, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CookieView.this.firstPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
-                repaint();
-                revalidate();
-                CookieView.this.observable.notifyObservers(ActionEnum.ADD_COOKIE_FIRST_PLAYER);
+                CookieView.this.observable.notifyObservers(ActionEnum.COOKIE_RELEASE_FIRST_PLAYER_KEY);
             }
         });
 
         this.getActionMap().put(ACTION_PRESS_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CookieView.this.secondPlayerButton.setIcon(DEFAULT_SMALL_COOKIE);
-                repaint();
-                revalidate();
-                SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
+                CookieView.this.observable.notifyObservers(ActionEnum.COOKIE_PRESS_SECOND_PLAYER_KEY);
             }
         });
 
         this.getActionMap().put(ACTION_RELEASE_M, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CookieView.this.secondPlayerButton.setIcon(DEFAULT_BIG_COOKIE);
-                repaint();
-                revalidate();
-                CookieView.this.observable.notifyObservers(ActionEnum.ADD_COOKIE_SECOND_PLAYER);
+                CookieView.this.observable.notifyObservers(ActionEnum.COOKIE_RELEASE_SECOND_PLAYER_KEY);
             }
         });
 
@@ -194,5 +182,20 @@ public class CookieView extends CustomGameBackgroundPanel {
         this.goalScreen.setText("GOAL : " + goal);
         this.revalidate();
         this.repaint();
+    }
+
+    public void updatePlayerKey(boolean isFirstPlayer, boolean isPressed) {
+        JLabel currentButton = isFirstPlayer ? this.firstPlayerButton : this.secondPlayerButton;
+        if (isPressed) {
+            currentButton.setIcon(CookieView.DEFAULT_SMALL_COOKIE);
+            SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
+        } else {
+            currentButton.setIcon(CookieView.DEFAULT_BIG_COOKIE);
+            this.observable.notifyObservers(
+                    isFirstPlayer ? ActionEnum.ADD_COOKIE_FIRST_PLAYER : ActionEnum.ADD_COOKIE_SECOND_PLAYER
+            );
+        }
+        this.repaint();
+        this.revalidate();
     }
 }
