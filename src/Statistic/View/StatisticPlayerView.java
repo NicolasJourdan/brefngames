@@ -16,12 +16,15 @@ import static Scene.Model.ActionEnum.STATISTIC_PLAYER_CHANGE;
 
 public class StatisticPlayerView extends CustomBackgroundPanel {
 
+    private static final int TABLE_WIDTH = 60;
+
     private CustomButton backButton;
     private CustomComboBox jcb;
     private CustomLabel playerSettingsLabel;
 
     private JTable leftTable;
     private JTable rightTable;
+    private JTable middleTable;
     private DefaultTableModel model;
     private GridBagConstraints constraints;
     private Object[][] dataTable;
@@ -45,25 +48,25 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
 
         this.playerSettingsLabel = new CustomLabel("Player Statistics");
         this.playerSettingsLabel.setFont(this.playerSettingsLabel.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
-        this.constraints.gridx = 0;
+        this.constraints.gridx = 1;
         this.constraints.gridy = 0;
-        this.constraints.gridwidth = 2;
+        this.constraints.gridwidth = 1;
         this.add(this.playerSettingsLabel, this.constraints);
         this.constraints.gridwidth = 1;
 
         this.jcb  = new CustomComboBox();
-        this.constraints.gridx = 0;
+        this.constraints.gridx = 1;
         this.constraints.gridy = 1;
-        this.constraints.gridwidth = 2;
+        this.constraints.gridwidth = 1;
         this.add(this.jcb, this.constraints);
         this.constraints.gridwidth = 1;
 
         this.updateTableView();
 
         this.backButton = new CustomButton("Back");
-        this.constraints.gridx = 0;
+        this.constraints.gridx = 1;
         this.constraints.gridy = 3;
-        this.constraints.gridwidth = 2;
+        this.constraints.gridwidth = 1;
         this.add(this.backButton, this.constraints);
         this.constraints.gridwidth = 1;
 
@@ -92,10 +95,13 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
     public void updateGlobalStatistics(Object[][] dataTable){
         this.dataTable = dataTable;
         this.remove(this.leftTable);
+        this.remove(this.middleTable);
         this.remove(this.rightTable);
         this.updateTableView();
         this.leftTable.revalidate();
         this.leftTable.repaint();
+        this.middleTable.revalidate();
+        this.middleTable.repaint();
         this.rightTable.revalidate();
         this.rightTable.repaint();
     }
@@ -108,15 +114,26 @@ public class StatisticPlayerView extends CustomBackgroundPanel {
 
         // left table
         this.leftTable = new CustomTable(this.model, 0);
+        this.leftTable.getColumnModel().getColumn(1).setPreferredWidth(TABLE_WIDTH);
         this.constraints.gridx = 0;
         this.constraints.gridy = 2;
         this.constraints.insets.right = 5;
         this.add(this.leftTable, this.constraints);
         this.leftTable.setTableHeader(null);
 
-        // right table
-        this.rightTable = new CustomTable(this.model, 1);
+        // middel table
+        this.middleTable = new CustomTable(this.model, 1);
+        this.middleTable.getColumnModel().getColumn(1).setPreferredWidth(TABLE_WIDTH);
         this.constraints.gridx = 1;
+        this.constraints.gridy = 2;
+        this.constraints.insets.right = 5;
+        this.add(this.middleTable, this.constraints);
+        this.middleTable.setTableHeader(null);
+
+        // right table
+        this.rightTable = new CustomTable(this.model, 2);
+        this.rightTable.getColumnModel().getColumn(1).setPreferredWidth(TABLE_WIDTH);
+        this.constraints.gridx = 2;
         this.constraints.gridy = 2;
         this.add(this.rightTable, this.constraints);
         this.rightTable.setTableHeader(null);

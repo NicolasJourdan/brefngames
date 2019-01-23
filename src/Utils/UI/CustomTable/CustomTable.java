@@ -21,7 +21,8 @@ public class CustomTable extends JTable {
     private static final int DEFAULT_BORDER_SIZE = 10;
     public static final int FIRST_TABLE_INT = 0;
     public static final int SECOND_TABLE_INT = 1;
-    public static final int MAX_TABLE_ROWS = 9;
+    public static final int THIRD_TABLE_INT = 2;
+    public static final int MAX_TABLE_ROWS = 8;
     public static final float FONT_SIZE = 9f;
 
     private TableRowSorter<TableModel> sorter;
@@ -69,13 +70,13 @@ public class CustomTable extends JTable {
     public CustomTable(TableModel dm, final int tableIndex) {
         super(dm);
         this.sorter = new TableRowSorter<>(dm);
-
         // Filter to display 2 tables
         RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
             public boolean include(Entry entry) {
                 if (
-                        (FIRST_TABLE_INT == tableIndex && (int) entry.getIdentifier() < MAX_TABLE_ROWS) ||
-                        (SECOND_TABLE_INT == tableIndex && (int) entry.getIdentifier() >= MAX_TABLE_ROWS)
+                        (FIRST_TABLE_INT == tableIndex && (int) entry.getIdentifier() >= 0 && (int) entry.getIdentifier() < (MAX_TABLE_ROWS)) ||
+                        (SECOND_TABLE_INT == tableIndex && (int) entry.getIdentifier() >= (MAX_TABLE_ROWS) && (int) entry.getIdentifier() < (MAX_TABLE_ROWS)*2) ||
+                        (THIRD_TABLE_INT == tableIndex && (int) entry.getIdentifier() >= (MAX_TABLE_ROWS*2))
                 ) {
                     return true;
                 } else {
