@@ -169,5 +169,39 @@
       "name": "FIFTEEN_VAINC_BEST_PLAYER",
       "value": "NONE"
     }
+  ],
+  "hangman": [
+    {
+      "name": "HANGMAN_NB_CORRECT_LETTERS",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_NB_GAMES",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_TOTAL_TIME",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_NB_WRONG_LETTERS",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_NB_PERFECT",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_AVERAGE_TIME",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_NB_LETTERS",
+      "value": "0"
+    },
+    {
+      "name": "HANGMAN_BEST_PLAYER",
+      "value": "NONE"
+    }
   ]
 }

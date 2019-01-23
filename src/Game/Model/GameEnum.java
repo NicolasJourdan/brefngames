@@ -9,6 +9,7 @@ public enum GameEnum {
     COOKIE_CLICKER("COOKIE_CLICKER"),
     RUNNER("RUNNER"),
     FIFTEEN_VAINC("FIFTEEN_VAINC"),
+    HANGMAN("HANGMAN")
     ;
 
     private String name = "";

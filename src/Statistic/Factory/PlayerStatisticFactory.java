@@ -17,6 +17,12 @@ public class PlayerStatisticFactory {
                 return "Connect Four number of wins";
             case CONNECT_FOUR_WIN_RATE:
                 return "Connect Four percent of wins";
+            case HANGMAN_NB_GAME:
+                return "Hangman number of games";
+            case HANGMAN_NB_WIN:
+                return "Hangman number of wins";
+            case HANGMAN_WIN_RATE:
+                return "Hangman percent of wins";
             case RUNNER_NB_GAME:
                 return "Runner number of games";
             case RUNNER_NB_WIN:

@@ -585,6 +585,11 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         if (this.runnerCheckbox.isSelected()) {
             gameTypes.add(GameEnum.RUNNER);
         }
+        /*
+        if (this.hangmanCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.HANGMAN);
+        }
+        */
 
         return gameTypes;
     }

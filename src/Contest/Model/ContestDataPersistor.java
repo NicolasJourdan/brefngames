@@ -3,11 +3,13 @@ package Contest.Model;
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
 import Game.Games.FifteenVainc.FifteenVaincStatsEnum;
+import Game.Games.Hangman.HangmanStatsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Model.GameEnum;
 import Repository.Game.*;
 import Repository.Game.ConnectFourRepository;
+import Repository.Game.HangmanRepository;
 import Repository.Game.CookieClickerRepository;
 import Repository.Game.RunnerRepository;
 import Repository.Game.TicTacToeRepository;
@@ -209,6 +211,41 @@ public class ContestDataPersistor {
         );
     }
 
+    public static void updateHangman(Map<HangmanStatsEnum, String> gameMap) {
+        Map<HangmanStatsEnum, String> dataEntries = HangmanRepository.getAll();
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_GAMES);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_LETTERS);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_PERFECT);
+        // Average time per game
+        dataEntries.put(
+                HangmanStatsEnum.HANGMAN_AVERAGE_TIME,
+                String.valueOf(
+                        Integer.parseInt(dataEntries.get(HangmanStatsEnum.HANGMAN_TOTAL_TIME))
+                                / Integer.parseInt(dataEntries.get(HangmanStatsEnum.HANGMAN_NB_GAMES))
+                )
+        );
+
+        // The best player on connect four
+        dataEntries.put(
+                HangmanStatsEnum.HANGMAN_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.HANGMAN)
+        );
+
+        HangmanRepository.saveAll(dataEntries);
+    }
+
+    private static void updateIntValueHangman(Map<HangmanStatsEnum, String> dataEntries, Map<HangmanStatsEnum, String> gamesEntries, HangmanStatsEnum stats) {
+        dataEntries.put(
+                stats,
+                String.valueOf(
+                        Integer.parseInt(gamesEntries.get(stats))
+                                + Integer.parseInt(dataEntries.get(stats))
+                )
+        );
+    }
+
     public static void updateDataPlayer(String playerId, Map<PlayerStatsEnum, String> gameMap) {
 
         if (!ContestDataPersistor.validatePlayerStatsMap(gameMap)) {
@@ -329,6 +366,10 @@ public class ContestDataPersistor {
                         (
                                 statsMap.containsKey(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME) &&
                                 statsMap.containsKey(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN)
+                        ) ||
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.HANGMAN_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.HANGMAN_NB_WIN)
                         )
 
                 )
