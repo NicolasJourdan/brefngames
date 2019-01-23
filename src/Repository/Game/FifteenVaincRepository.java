@@ -31,7 +31,7 @@ public class FifteenVaincRepository extends AbstractDataRepository {
     }
 
     public static String getById(FifteenVaincStatsEnum statName) {
-        return TicTacToeRepository.getAll().get(statName);
+        return FifteenVaincRepository.getAll().get(statName);
     }
 
     /**
