@@ -95,4 +95,8 @@ public class MapView extends CustomGameBackgroundPanel {
     public void setBackButton() {
         this.button.setText("Back");
     }
+
+    public void setContinueButton() {
+        this.button.setText("Continue");
+    }
 }

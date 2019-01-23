@@ -18,6 +18,8 @@ public class ClientMapController extends MapController {
     public ClientMapController(AbstractGameModel model, AbstractGameView view, History history, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, history);
         this.socketCommunicatorService = socketCommunicatorService;
+
+        ((MapView) this.view).setContinueButton();
     }
 
     @Override

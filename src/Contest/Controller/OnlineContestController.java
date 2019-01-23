@@ -100,6 +100,7 @@ public class OnlineContestController extends AbstractSceneManagerController {
              * Quit
              */
             case END_ONLINE_CONTEST:
+                System.out.println("quit !");
                 this.setChanged();
                 this.notifyObservers(actionEnum);
                 return SceneEnum.END_SCENE;
@@ -126,6 +127,17 @@ public class OnlineContestController extends AbstractSceneManagerController {
              */
             case END_MAP:
                 return this.loadNextScene();
+
+            /**
+             * Start new contest
+             */
+            case ONLINE_ENDING_START_NEW_CONTEST:
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.CONTEST_NEXT_SCENE,
+                        SceneEnum.CONTEST_MENU
+                ));
+
+                return SceneEnum.CONTEST_MENU;
 
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);

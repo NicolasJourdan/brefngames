@@ -21,6 +21,8 @@ public class ServerMapController extends MapController implements SocketObserver
     public ServerMapController(AbstractGameModel model, AbstractGameView view, History history, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, history);
 
+        ((MapView) this.view).setContinueButton();
+
         this.socketCommunicatorService = socketCommunicatorService;
         this.socketReceptionService = new SocketReceptionService();
         this.socketCommunicatorService.addReceptionObserver(this.socketReceptionService);

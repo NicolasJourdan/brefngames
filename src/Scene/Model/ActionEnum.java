@@ -25,6 +25,12 @@ public enum ActionEnum {
     SETTINGS_CHANGED("SETTINGS_CHANGED"),
 
     /*
+     * Online ending
+     */
+    ONLINE_ENDING_CONTINUE("ONLINE_ENDING_CONTINUE"),
+    ONLINE_ENDING_START_NEW_CONTEST("ONLINE_ENDING_START_NEW_CONTEST"),
+
+    /*
      * Online Contest
      */
     CREATE_SERVER("CREATE_SERVER"),

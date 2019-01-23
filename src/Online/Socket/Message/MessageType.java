@@ -8,6 +8,11 @@ public enum MessageType {
     CONTEST_UPDATE_HISTORY,
 
     /**
+     * Contest ending
+     */
+    CONTEST_ENDING_NEXT,
+
+    /**
      * Settings
      */
     SETTINGS_DEFAULT_VALUES,

@@ -12,6 +12,7 @@ import Online.Client.ClientScene;
 import Online.Server.ServerScene;
 import Online.Socket.SocketCommunicatorService;
 import OnlineContestMenu.OnlineContestMenuScene;
+import OnlineEnding.OnlineEndingScene;
 import Player.Player;
 import Scene.Model.SceneEnum;
 
@@ -37,6 +38,8 @@ public class OnlineGameSceneFactory extends GameSceneFactory {
                 return new ContestSettingsScene(this.isServer, this.socketCommunicatorService);
             case MAP:
                 return new MapScene(this.history, this.isServer, this.socketCommunicatorService);
+            case CONTEST_FINISHED:
+                return new OnlineEndingScene(this.isServer, this.socketCommunicatorService);
             case TIC_TAC_TOE:
                 return new TicTacToeScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
             case RUNNER:
