@@ -191,13 +191,34 @@ public class TicTacToeModel extends AbstractGameModel {
         }
     }
 
-    public void sendStats() {
+    public void updateGlobalStats() {
         int crossNb = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CIRCLE));
         int circleNb = Integer.parseInt(this.statsMap.get(TicTacToeStatsEnum.TIC_TAC_TOE_NB_CROSS));
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_NB_ALL_SIGNS, Integer.toString(crossNb + circleNb));
         this.statsMap.put(TicTacToeStatsEnum.TIC_TAC_TOE_TOTAL_TIME, Integer.toString(this.chronometer.getDuration()));
-        ContestDataPersistor.updateTicTacToe(this.statsMap);
-        ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(), this.statsFirstPlayer);
-        ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(), this.statsSecondPlayer);
+    }
+
+    public void sendGlobalStats() {
+        ContestDataPersistor.updateTicTacToe(this.getStatsMap());
+    }
+
+    public void sendFirstPlayerStats() {
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[0].getName(), this.getStatsFirstPlayer());
+    }
+
+    public void sendSecondPlayerStats() {
+        ContestDataPersistor.updateDataPlayer(this.getPlayers()[1].getName(), this.getStatsSecondPlayer());
+    }
+
+    public Map<TicTacToeStatsEnum, String> getStatsMap() {
+        return this.statsMap;
+    }
+
+    public Map<PlayerStatsEnum, String> getStatsFirstPlayer() {
+        return this.statsFirstPlayer;
+    }
+
+    public Map<PlayerStatsEnum, String> getStatsSecondPlayer() {
+        return this.statsSecondPlayer;
     }
 }

@@ -32,9 +32,12 @@ public class TicTacToeController extends AbstractGameController {
 
             // Check if game is finished
             if (((TicTacToeModel) this.model).isFinished()) {
-                ((TicTacToeModel) this.model).updatePlayerStats();
                 if (!this.isTraining) {
-                    ((TicTacToeModel) this.model).sendStats();
+                    ((TicTacToeModel) this.model).updatePlayerStats();
+                    ((TicTacToeModel) this.model).updateGlobalStats();
+                    ((TicTacToeModel) this.model).sendGlobalStats();
+                    ((TicTacToeModel) this.model).sendFirstPlayerStats();
+                    ((TicTacToeModel) this.model).sendSecondPlayerStats();
                 }
                 this.setChanged();
                 this.notifyObservers(((TicTacToeModel) this.model).getWinner());

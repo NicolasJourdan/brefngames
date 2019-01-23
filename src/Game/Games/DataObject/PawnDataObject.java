@@ -3,8 +3,9 @@ package Game.Games.DataObject;
 import Game.Games.Coord;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class PawnDataObject {
+public class PawnDataObject implements Serializable {
 
     private String value;
     private Color color;
