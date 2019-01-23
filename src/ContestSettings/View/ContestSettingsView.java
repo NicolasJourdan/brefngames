@@ -641,6 +641,8 @@ public class ContestSettingsView extends CustomBackgroundPanel {
             this.connectFourCheckbox.setEnabled(false);
             this.cookieClickerCheckbox.setEnabled(false);
             this.runnerCheckbox.setEnabled(false);
+            this.hangmanCheckbox.setEnabled(false);
+            this.fifteenVaincCheckbox.setEnabled(false);
             this.spinnerNbGames.setEnabled(false);
 
             this.firstPlayerName.setEnabled(false);
@@ -680,6 +682,12 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         );
         this.connectFourCheckbox.setSelected(
                 settingsDataObject.getSelectedGameTypes().contains(GameEnum.CONNECT_FOUR)
+        );
+        this.hangmanCheckbox.setSelected(
+                settingsDataObject.getSelectedGameTypes().contains(GameEnum.HANGMAN)
+        );
+        this.fifteenVaincCheckbox.setSelected(
+                settingsDataObject.getSelectedGameTypes().contains(GameEnum.FIFTEEN_VAINC)
         );
 
         this.spinnerNbGames.setValue(settingsDataObject.getNumberOfMatches());
@@ -773,6 +781,8 @@ public class ContestSettingsView extends CustomBackgroundPanel {
             this.connectFourCheckbox.addActionListener(actionListener);
             this.cookieClickerCheckbox.addActionListener(actionListener);
             this.runnerCheckbox.addActionListener(actionListener);
+            this.hangmanCheckbox.addActionListener(actionListener);
+            this.fifteenVaincCheckbox.addActionListener(actionListener);
 
             this.spinnerNbGames.addChangeListener(new ChangeListener() {
                 @Override
