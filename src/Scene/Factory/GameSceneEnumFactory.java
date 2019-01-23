@@ -16,6 +16,8 @@ public class GameSceneEnumFactory {
                 return SceneEnum.TIC_TAC_TOE;
             case HANGMAN:
                 return SceneEnum.HANGMAN;
+            case FIFTEEN_VAINC:
+                return SceneEnum.FIFTEEN_VAINC;
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }

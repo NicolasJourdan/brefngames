@@ -49,6 +49,9 @@ public class ContestSettingsView extends CustomBackgroundPanel {
     private final JCheckBox connectFourCheckbox;
     private final JCheckBox cookieClickerCheckbox;
     private final JCheckBox runnerCheckbox;
+    private final JCheckBox hangmanCheckbox;
+    private final JCheckBox fifteenVaincCheckbox;
+
     private final JSpinner spinnerNbGames;
 
     private final JTextField firstPlayerName;
@@ -145,6 +148,18 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         this.runnerCheckbox.setFont(this.runnerCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
         this.runnerCheckbox.setSelected(true);
         gameSelectionPanel.add(this.runnerCheckbox, gameSelectionConstraints);
+
+        gameSelectionConstraints.gridy = 5;
+        this.hangmanCheckbox = new CustomCheckBox("Hangman");
+        this.hangmanCheckbox.setFont(this.hangmanCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.hangmanCheckbox.setSelected(true);
+        gameSelectionPanel.add(this.hangmanCheckbox, gameSelectionConstraints);
+
+        gameSelectionConstraints.gridy = 6;
+        this.fifteenVaincCheckbox = new CustomCheckBox("15 Vainc");
+        this.fifteenVaincCheckbox.setFont(this.fifteenVaincCheckbox.getFont().deriveFont(Utils.DEFAULT_SIZE_SMALL_CONTEST));
+        this.fifteenVaincCheckbox.setSelected(true);
+        gameSelectionPanel.add(this.fifteenVaincCheckbox, gameSelectionConstraints);
 
         constraint.gridy = 1;
         constraint.gridwidth = 1;
@@ -584,6 +599,12 @@ public class ContestSettingsView extends CustomBackgroundPanel {
         }
         if (this.runnerCheckbox.isSelected()) {
             gameTypes.add(GameEnum.RUNNER);
+        }
+        if (this.hangmanCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.HANGMAN);
+        }
+        if (this.fifteenVaincCheckbox.isSelected()) {
+            gameTypes.add(GameEnum.FIFTEEN_VAINC);
         }
         return gameTypes;
     }

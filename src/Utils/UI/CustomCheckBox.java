@@ -13,8 +13,8 @@ import java.awt.event.ItemListener;
 public class CustomCheckBox extends JCheckBox {
 
     private static final String BACKGROUND_COLOR = "#EEEEEE";
-    private final static int WIDTH = 49;
-    private final static int HEIGHT = 49;
+    private final static int WIDTH = 35;
+    private final static int HEIGHT = 35;
     private final static int TEXT_GAP = 10;
     private final static int Y_OFFSET = 4;
 
