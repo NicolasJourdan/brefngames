@@ -1,5 +1,6 @@
 package Game.Games.Runner.RunnerController;
 
+import Contest.Interface.SocketObserverController;
 import Game.Games.Runner.RunnerModel.RunnerControlsDataObject;
 import Game.Games.Runner.RunnerModel.RunnerModel;
 import Game.Games.Runner.RunnerModel.ServerRunnerModel;
@@ -14,15 +15,17 @@ import Scene.Model.ActionEnum;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerRunnerController extends RunnerController {
+public class ServerRunnerController extends RunnerController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ServerRunnerController(AbstractGameModel model, AbstractGameView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
     }
 
     @Override
@@ -43,6 +46,11 @@ public class ServerRunnerController extends RunnerController {
             default:
                 throw new RuntimeException("Unable to find : " + action);
         }
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     private class SocketReceptionObserver implements Observer {

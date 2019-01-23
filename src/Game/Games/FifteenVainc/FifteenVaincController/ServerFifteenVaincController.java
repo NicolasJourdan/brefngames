@@ -1,5 +1,6 @@
 package Game.Games.FifteenVainc.FifteenVaincController;
 
+import Contest.Interface.SocketObserverController;
 import Game.Games.Coord;
 import Game.Games.DataObject.PawnDataObject;
 import Game.Games.DataObject.PlayerStatsDataObject;
@@ -12,13 +13,15 @@ import Online.Socket.SocketCommunicatorService;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerFifteenVaincController extends FifteenVaincController {
+public class ServerFifteenVaincController extends FifteenVaincController implements SocketObserverController {
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ServerFifteenVaincController(FifteenVaincModel model, FifteenVaincView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
 
         // Send current player to update player display panel
         this.socketCommunicatorService.emit(new MessageDataObject(
@@ -94,6 +97,11 @@ public class ServerFifteenVaincController extends FifteenVaincController {
     public void update(Observable o, Object arg) {
         // The first player (server) played
         this.play((Coord) arg, true);
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     private class SocketReceptionObserver implements Observer {

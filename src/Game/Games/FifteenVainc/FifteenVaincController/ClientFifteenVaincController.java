@@ -1,5 +1,6 @@
 package Game.Games.FifteenVainc.FifteenVaincController;
 
+import Contest.Interface.SocketObserverController;
 import Contest.Model.ContestDataPersistor;
 import Game.Games.Coord;
 import Game.Games.DataObject.PawnDataObject;
@@ -17,19 +18,26 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ClientFifteenVaincController extends FifteenVaincController {
+public class ClientFifteenVaincController extends FifteenVaincController implements SocketObserverController {
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ClientFifteenVaincController(FifteenVaincModel model, FifteenVaincView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         this.socketCommunicatorService.emit(new MessageDataObject(MessageType.FIFTEEN_VAINC_COORDINATES, (Coord) arg));
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     /**

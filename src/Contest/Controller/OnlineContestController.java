@@ -1,5 +1,6 @@
 package Contest.Controller;
 
+import Contest.Interface.SocketObserverController;
 import Contest.Model.AbstractContest;
 import Contest.Model.OnlineContest;
 import ContestSettings.ContestSettingsScene;
@@ -185,5 +186,22 @@ public class OnlineContestController extends AbstractSceneManagerController {
                     break;
             }
         }
+    }
+
+    /**
+     * When changing the current scene, the old scene should stop observing the socket message receiver thread
+     *
+     * @param sceneEnum
+     */
+    @Override
+    protected void switchScene(SceneEnum sceneEnum) {
+        if (null != this.currentScene) {
+            Object currentController = this.currentScene.getController();
+            if (currentController instanceof SocketObserverController) {
+                ((SocketObserverController) currentController).stopObserver();
+            }
+        }
+
+        super.switchScene(sceneEnum);
     }
 }

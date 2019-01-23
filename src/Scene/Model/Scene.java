@@ -24,4 +24,8 @@ public abstract class Scene extends Observable implements Observer {
     public AbstractView getView() {
         return this.view;
     }
+
+    public Object getController() {
+        return this.controller;
+    }
 }

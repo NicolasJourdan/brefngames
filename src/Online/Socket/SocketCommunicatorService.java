@@ -29,6 +29,10 @@ public class SocketCommunicatorService {
         this.socketReceptionService.addObserver(observer);
     }
 
+    public void deleteReceptionObserver(Observer observer) {
+        this.socketReceptionService.deleteObserver(observer);
+    }
+
     public void emit(Serializable message) {
         this.socketEmissionService.emit(message);
     }

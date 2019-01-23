@@ -1,5 +1,6 @@
 package Game.Games.CookieClicker.Controler;
 
+import Contest.Interface.SocketObserverController;
 import Game.Games.CookieClicker.Model.CookieModel;
 import Game.Games.CookieClicker.View.CookieView;
 import Game.Games.DataObject.PlayerStatsDataObject;
@@ -11,15 +12,17 @@ import Scene.Model.ActionEnum;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerCookieController extends CookieController {
+public class ServerCookieController extends CookieController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ServerCookieController(CookieModel model, CookieView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
 
         this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_CLICKER_SEND_GOAL, ((CookieModel) this.model).getGoal()));
     }
@@ -96,6 +99,11 @@ public class ServerCookieController extends CookieController {
                 || ActionEnum.ADD_COOKIE_FIRST_PLAYER == actionEnum
                 || ActionEnum.ADD_COOKIE_SECOND_PLAYER == actionEnum
         ;
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     private class SocketReceptionObserver implements Observer {

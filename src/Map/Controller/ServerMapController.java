@@ -1,5 +1,6 @@
 package Map.Controller;
 
+import Contest.Interface.SocketObserverController;
 import Game.Model.AbstractGameModel;
 import Game.View.AbstractGameView;
 import Map.Model.History;
@@ -12,15 +13,17 @@ import Scene.Model.ActionEnum;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerMapController extends MapController {
+public class ServerMapController extends MapController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionService socketReceptionService;
 
     public ServerMapController(AbstractGameModel model, AbstractGameView view, History history, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, history);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionService());
+        this.socketReceptionService = new SocketReceptionService();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionService);
     }
 
     @Override
@@ -39,6 +42,11 @@ public class ServerMapController extends MapController {
             this.setChanged();
             this.notifyObservers(ActionEnum.END_MAP);
         }
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionService);
     }
 
     private class SocketReceptionService implements Observer {

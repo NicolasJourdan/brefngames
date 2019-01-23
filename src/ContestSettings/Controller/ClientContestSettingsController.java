@@ -1,5 +1,6 @@
 package ContestSettings.Controller;
 
+import Contest.Interface.SocketObserverController;
 import ContestSettings.DataObject.ContestSettingsDataObject;
 import ContestSettings.View.ContestSettingsView;
 import Online.Socket.Message.MessageDataObject;
@@ -16,15 +17,17 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ClientContestSettingsController extends AbstractController {
+public class ClientContestSettingsController extends AbstractController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ClientContestSettingsController(AbstractModel model, AbstractView view, SocketCommunicatorService socketCommunicatorService) {
         super(model, view);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
 
         ((ContestSettingsView) this.view).setOnlineMode(false);
         ((ContestSettingsView) this.view).registerDataChangeListener(false);
@@ -48,6 +51,11 @@ public class ClientContestSettingsController extends AbstractController {
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.SETTINGS_IS_READY));
                 break;
         }
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     private class SocketReceptionObserver implements Observer {
