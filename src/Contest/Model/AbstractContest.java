@@ -19,6 +19,11 @@ import java.util.*;
 public abstract class AbstractContest extends AbstractSceneManagerModel {
 
     /**
+     * Default number of player
+     */
+    protected static final int DEFAULT_NB_PLAYERS = 2;
+
+    /**
      * Total amount of matches
      */
     private int matchesAmount;
@@ -99,9 +104,6 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
             (null == secondPlayerStats) ? AbstractPlayer.initialStatsMap() : secondPlayerStats
         );
 
-        PlayerRepository.save(this.playersList[0]);
-        PlayerRepository.save(this.playersList[1]);
-
         this.history = new History(
             this.playersList,
             new ArrayList<GameHistory>(),
@@ -110,6 +112,16 @@ public abstract class AbstractContest extends AbstractSceneManagerModel {
         );
 
         this.nextSceneIsMap = true;
+    }
+
+    public void savePlayers(Player[] players) {
+        if (AbstractContest.DEFAULT_NB_PLAYERS != players.length) {
+            throw new RuntimeException("Exactly " + AbstractContest.DEFAULT_NB_PLAYERS + " are required");
+        }
+
+        for (Player player : players) {
+            PlayerRepository.save(player);
+        }
     }
 
     /**

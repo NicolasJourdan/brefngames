@@ -1,6 +1,7 @@
 package Contest.Controller;
 
 import Contest.Model.AbstractContest;
+import Contest.Model.OnlineContest;
 import ContestSettings.ContestSettingsScene;
 import Game.OnlineGameSceneFactory;
 import Map.Model.History;
@@ -77,6 +78,8 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 ((AbstractContest) this.model).setUpContest(
                         ((ContestSettingsScene) this.currentScene).getSettingsDataObject()
                 );
+                ((OnlineContest) this.model).savePlayers(((OnlineContest) this.model).getPlayersList());
+                this.socketCommunicatorService.emit(new MessageDataObject(MessageType.SETTINGS_SAVE_PLAYER, ((OnlineContest) this.model).getPlayersList()));
 
                 // update gameSceneFactory values
                 ((OnlineGameSceneFactory) this.sceneFactory).updatePlayersList(((AbstractContest) this.model).getPlayersList());
@@ -124,6 +127,7 @@ public class OnlineContestController extends AbstractSceneManagerController {
 
     private void setupContestConnection(boolean isServer, Socket socket) {
         this.isServer = isServer;
+        ((OnlineContest) this.model).setServer(this.isServer);
         this.socketCommunicatorService = new SocketCommunicatorService(socket);
 
         this.socketCommunicatorService.addReceptionObserver(new ReceptionObserver());
@@ -151,6 +155,9 @@ public class OnlineContestController extends AbstractSceneManagerController {
                     ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updateHistory(
                             (History) messageDataObject.getData()
                     );
+                    break;
+                case SETTINGS_SAVE_PLAYER:
+                    ((OnlineContest) OnlineContestController.this.model).savePlayers((Player[]) messageDataObject.getData());
                     break;
             }
         }

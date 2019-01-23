@@ -27,6 +27,7 @@ public class LocalContestController extends AbstractSceneManagerController {
                 ((AbstractContest) this.model).setUpContest(
                     ((ContestSettingsScene) this.currentScene).getSettingsDataObject()
                 );
+                ((AbstractContest) this.model).savePlayers(((AbstractContest) this.model).getPlayersList());
 
                 // update gameSceneFactory values
                 ((GameSceneFactory) this.sceneFactory).updatePlayersList(((AbstractContest) this.model).getPlayersList());
