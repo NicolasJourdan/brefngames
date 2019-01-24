@@ -37,6 +37,10 @@ public class StatisticController extends AbstractSceneManagerController {
                 return SceneEnum.STATISTIC_COOKIE_CLICKER;
             case STATISTIC_TICTACTOE:
                 return SceneEnum.STATISTIC_TICTACTOE;
+            case STATISTIC_HANGMAN:
+                return SceneEnum.STATISTIC_HANGMAN;
+            case STATISTIC_FIFTEEN_VAINC:
+                return SceneEnum.STATISTIC_FIFTEEN_VAINC;
             case STATISTIC_MENU:
                 return SceneEnum.STATISTIC_MENU;
             default:

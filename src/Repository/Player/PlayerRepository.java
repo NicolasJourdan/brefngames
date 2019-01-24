@@ -2,13 +2,16 @@ package Repository.Player;
 
 import Parameter.Factory.ColorFactory;
 import Parameter.Factory.IconFactory;
-import Player.*;
+import Player.LocalPlayer;
+import Player.Player;
 import Repository.AbstractDataRepository;
 import Repository.ModifyFiles;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class PlayerRepository extends AbstractDataRepository {
 
@@ -35,7 +38,7 @@ public class PlayerRepository extends AbstractDataRepository {
             listPlayers.add(
                     new LocalPlayer(
                             ((String) current.get(NAME)),
-                            ColorFactory.getColor((String)current.get(COLOR)),
+                            ColorFactory.getColor((String) current.get(COLOR)),
                             IconFactory.getIcon((String) current.get(ICON)),
                             PlayerStatsRepository.getStatsMap((JSONObject) current.get(STATS))
                     )
@@ -64,7 +67,7 @@ public class PlayerRepository extends AbstractDataRepository {
         ModifyFiles.saveJSONFile(DATA_JSON_FILE);
 
         // Test if the player already exist
-        if (PlayerRepository.getById(p.getName()) != null){
+        if (PlayerRepository.getById(p.getName()) != null) {
             ModifyFiles.removeCopyJSONFile(DATA_JSON_FILE);
         } else {
             JSONArray players = (JSONArray) getDataFile().get(DEFAULT_NODE);
@@ -113,11 +116,11 @@ public class PlayerRepository extends AbstractDataRepository {
     public static void updatePlayerByJSON(String playerId, JSONObject jsonPlayer) {
         JSONObject player = PlayerRepository.getJSONPlayerById(playerId);
         if (
-                null == (String) jsonPlayer.get(NAME)
-                || null == (String) jsonPlayer.get(COLOR)
-                || null == (String) jsonPlayer.get(ICON)
-                || null == (JSONObject) jsonPlayer.get(STATS)
-                || null == player
+                null == jsonPlayer.get(NAME)
+                        || null == jsonPlayer.get(COLOR)
+                        || null == jsonPlayer.get(ICON)
+                        || null == jsonPlayer.get(STATS)
+                        || null == player
         ) {
             return;
         }

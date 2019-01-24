@@ -36,6 +36,7 @@ public class ConnectFourRepository extends AbstractDataRepository {
 
     /**
      * Save ALL the connect four stats
+     *
      * @param stats Map with ALL keys
      */
     public static void saveAll(Map<ConnectFourStatsEnum, String> stats) {

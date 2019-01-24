@@ -2,11 +2,14 @@ package Contest.Model;
 
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
 import Game.Games.CookieClicker.CookieClickerStatsEnum;
+import Game.Games.FifteenVainc.FifteenVaincStatsEnum;
+import Game.Games.Hangman.HangmanStatsEnum;
 import Game.Games.Runner.RunnerStatsEnum;
 import Game.Games.TicTacToe.TicTacToeStatsEnum;
 import Game.Model.GameEnum;
 import Repository.Game.*;
 import Repository.Game.ConnectFourRepository;
+import Repository.Game.HangmanRepository;
 import Repository.Game.CookieClickerRepository;
 import Repository.Game.RunnerRepository;
 import Repository.Game.TicTacToeRepository;
@@ -182,6 +185,68 @@ public class ContestDataPersistor {
         );
     }
 
+    public static void updateFifteenVainc(Map<FifteenVaincStatsEnum, String> gameMap) {
+        Map<FifteenVaincStatsEnum, String> dataEntries = FifteenVaincRepository.getAll();
+        updateIntValueFifteenVainc(dataEntries, gameMap, FifteenVaincStatsEnum.FIFTEEN_VAINC_NB_GAMES);
+        updateIntValueFifteenVainc(dataEntries, gameMap, FifteenVaincStatsEnum.FIFTEEN_VAINC_NB_DRAW);
+        updateIntValueFifteenVainc(dataEntries, gameMap, FifteenVaincStatsEnum.FIFTEEN_VAINC_NB_PERFECT);
+        updateIntValueFifteenVainc(dataEntries, gameMap, FifteenVaincStatsEnum.FIFTEEN_VAINC_TOTAL_TIME);
+
+        // The best player on fifteen vainc
+        dataEntries.put(
+                FifteenVaincStatsEnum.FIFTEEN_VAINC_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.FIFTEEN_VAINC)
+        );
+
+        FifteenVaincRepository.saveAll(dataEntries);
+    }
+
+    private static void updateIntValueFifteenVainc(Map<FifteenVaincStatsEnum, String> dataEntries, Map<FifteenVaincStatsEnum, String> gamesEntries, FifteenVaincStatsEnum stats) {
+        dataEntries.put(
+                stats,
+                String.valueOf(
+                        Integer.parseInt(gamesEntries.get(stats))
+                                + Integer.parseInt(dataEntries.get(stats))
+                )
+        );
+    }
+
+    public static void updateHangman(Map<HangmanStatsEnum, String> gameMap) {
+        Map<HangmanStatsEnum, String> dataEntries = HangmanRepository.getAll();
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_GAMES);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_CORRECT_LETTERS);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_WRONG_LETTERS);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_LETTERS);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_NB_PERFECT);
+        updateIntValueHangman(dataEntries, gameMap, HangmanStatsEnum.HANGMAN_TOTAL_TIME);
+        // Average time per game
+        dataEntries.put(
+                HangmanStatsEnum.HANGMAN_AVERAGE_TIME,
+                String.valueOf(
+                        Integer.parseInt(dataEntries.get(HangmanStatsEnum.HANGMAN_TOTAL_TIME))
+                                / Integer.parseInt(dataEntries.get(HangmanStatsEnum.HANGMAN_NB_GAMES))
+                )
+        );
+
+        // The best player on hangman
+        dataEntries.put(
+                HangmanStatsEnum.HANGMAN_BEST_PLAYER,
+                GlobalStatisticsRepository.getBestPlayerByGame(GameEnum.HANGMAN)
+        );
+
+        HangmanRepository.saveAll(dataEntries);
+    }
+
+    private static void updateIntValueHangman(Map<HangmanStatsEnum, String> dataEntries, Map<HangmanStatsEnum, String> gamesEntries, HangmanStatsEnum stats) {
+        dataEntries.put(
+                stats,
+                String.valueOf(
+                        Integer.parseInt(gamesEntries.get(stats))
+                                + Integer.parseInt(dataEntries.get(stats))
+                )
+        );
+    }
+
     public static void updateDataPlayer(String playerId, Map<PlayerStatsEnum, String> gameMap) {
 
         if (!ContestDataPersistor.validatePlayerStatsMap(gameMap)) {
@@ -252,6 +317,22 @@ public class ContestDataPersistor {
         );
 
         dataEntries.put(
+                PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
+                PlayerStatsEnum.HANGMAN_WIN_RATE,
+                ContestDataPersistor.getRate(
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.HANGMAN_NB_WIN)),
+                        Integer.parseInt(dataEntries.get(PlayerStatsEnum.HANGMAN_NB_GAME))
+                )
+        );
+
+        dataEntries.put(
                 PlayerStatsEnum.WIN_RATE,
                 ContestDataPersistor.getRate(
                         Integer.parseInt(dataEntries.get(PlayerStatsEnum.TOTAL_NB_WIN)),
@@ -290,7 +371,16 @@ public class ContestDataPersistor {
                         (
                                 statsMap.containsKey(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME) &&
                                 statsMap.containsKey(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN)
+                        )||
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN)
+                        ) ||
+                        (
+                                statsMap.containsKey(PlayerStatsEnum.HANGMAN_NB_GAME) &&
+                                statsMap.containsKey(PlayerStatsEnum.HANGMAN_NB_WIN)
                         )
+
                 )
         ) {
             return false;
@@ -336,6 +426,14 @@ public class ContestDataPersistor {
         String cookieClickerNbGameString = dataEntries.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME);
         int cookieClickerNbGame = Integer.parseInt(cookieClickerNbGameString);
         nbGamesMap.put(GameEnum.COOKIE_CLICKER, cookieClickerNbGame);
+
+        String fifteenVaincNbGameString = dataEntries.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME);
+        int fifteenVaincNbGame = Integer.parseInt(fifteenVaincNbGameString);
+        nbGamesMap.put(GameEnum.FIFTEEN_VAINC, fifteenVaincNbGame);
+
+        String hangmanNbGameString = dataEntries.get(PlayerStatsEnum.HANGMAN_NB_GAME);
+        int hangmanNbGame = Integer.parseInt(hangmanNbGameString);
+        nbGamesMap.put(GameEnum.HANGMAN, hangmanNbGame);
 
         return nbGamesMap;
     }

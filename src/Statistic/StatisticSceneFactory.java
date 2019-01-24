@@ -20,6 +20,10 @@ public class StatisticSceneFactory implements SceneFactoryInterface {
                 return new StatisticCookieClickerScene();
             case STATISTIC_CONNECT_FOUR:
                 return new StatisticConnectFourScene();
+            case STATISTIC_HANGMAN:
+                return new StatisticHangmanScene();
+            case STATISTIC_FIFTEEN_VAINC:
+                return new StatisticFifteenVaincScene();
             default:
                 throw new RuntimeException("ParametersScene (" + sceneEnum + ") is unknown");
         }

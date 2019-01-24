@@ -4,9 +4,6 @@ import Game.Games.Coord;
 import Game.Model.AbstractBoard;
 import Game.Model.Pawn;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Board extends AbstractBoard {
 
     public Board(int size) {

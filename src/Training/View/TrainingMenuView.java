@@ -1,7 +1,5 @@
 package Training.View;
 
-import Parameter.Model.ThemeEnum;
-import Repository.Parameter.ThemeParameterRepository;
 import Scene.Model.ActionEnum;
 import Utils.UI.*;
 import Utils.UI.CustomPanel.CustomBackgroundPanel;
@@ -17,6 +15,8 @@ public class TrainingMenuView extends CustomBackgroundPanel {
     private final JButton runnerButton;
     private final JButton connectFourButton;
     private final JButton cookieClickerButton;
+    private final JButton hangmanButton;
+    private final JButton fifteenVaincButton;
     private final CustomLabel title;
 
     public TrainingMenuView() {
@@ -29,6 +29,8 @@ public class TrainingMenuView extends CustomBackgroundPanel {
         this.runnerButton = new CustomTrainingButton("runner.png");
         this.connectFourButton = new CustomTrainingButton("connect_four.png");
         this.cookieClickerButton = new CustomTrainingButton("cookie_clicker.png");
+        this.hangmanButton = new CustomTrainingButton("hangman.png");
+        this.fifteenVaincButton = new CustomTrainingButton("fifteen_vainc.png");
 
         this.title = new CustomLabel("Training");
         this.title.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_TITLE_LABEL));
@@ -37,7 +39,7 @@ public class TrainingMenuView extends CustomBackgroundPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 3;
         this.add(this.title, constraints);
         constraints.gridx = 0;
         constraints.gridy = 1;
@@ -55,9 +57,17 @@ public class TrainingMenuView extends CustomBackgroundPanel {
         constraints.gridy = 2;
         constraints.gridwidth = 1;
         this.add(this.runnerButton, constraints);
+        constraints.gridx = 2;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        this.add(this.hangmanButton, constraints);
+        constraints.gridx = 2;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        this.add(this.fifteenVaincButton,constraints);
         constraints.gridx = 0;
         constraints.gridy = 3;
-        constraints.gridwidth = 2;
+        constraints.gridwidth = 3;
         this.add(this.backButton, constraints);
     }
 
@@ -94,6 +104,20 @@ public class TrainingMenuView extends CustomBackgroundPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TrainingMenuView.this.observable.notifyObservers(ActionEnum.COOKIE_CLICKER);
+            }
+        });
+
+        this.hangmanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TrainingMenuView.this.observable.notifyObservers(ActionEnum.HANGMAN);
+            }
+        });
+
+        this.fifteenVaincButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TrainingMenuView.this.observable.notifyObservers(ActionEnum.FIFTEEN_VAINC);
             }
         });
     }

@@ -1,6 +1,7 @@
 package Game.Games.ConnectFour.ConnectFourView;
 
 import Game.Games.Coord;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

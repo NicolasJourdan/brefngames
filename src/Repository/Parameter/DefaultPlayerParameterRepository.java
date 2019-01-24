@@ -2,8 +2,8 @@ package Repository.Parameter;
 
 import Parameter.Factory.ColorFactory;
 import Parameter.Factory.IconFactory;
-import Parameter.Parameters.ColorParameter;
 import Parameter.Model.DefaultPlayerParameterEnum;
+import Parameter.Parameters.ColorParameter;
 import Parameter.Parameters.IconParameter;
 import Repository.ModifyFiles;
 import org.json.simple.JSONObject;

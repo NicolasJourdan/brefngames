@@ -13,7 +13,7 @@ import Structure.AbstractView;
 import java.util.Map;
 import java.util.Observable;
 
-public class ContestSettingsController extends AbstractController {
+public class ContestSettingsController extends AbstractController implements SettingsDataObjectGetterInterface {
 
     private ContestSettingsDataObject settingsDataObject;
 
@@ -25,7 +25,7 @@ public class ContestSettingsController extends AbstractController {
     }
 
     public ContestSettingsDataObject getSettingsDataObject() {
-        return settingsDataObject;
+        return this.settingsDataObject;
     }
 
     @Override

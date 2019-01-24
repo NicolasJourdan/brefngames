@@ -20,7 +20,7 @@ public class CustomSpinnerButton extends JButton {
     public final static int WIDTH = 36;
     public final static int HEIGHT = 36;
 
-    private final Image backgroundImage;
+    private Image backgroundImage;
 
     public CustomSpinnerButton(String text) {
         super(text);
@@ -40,6 +40,15 @@ public class CustomSpinnerButton extends JButton {
         });
     }
 
+    @Override
+    public void setEnabled(boolean b) {
+        super.setEnabled(b);
+        this.backgroundImage = b ? FileGetter.getImageIcon("_circle.png").getImage() :
+                FileGetter.getGreyImageIcon("_circle.png").getImage();
+        this.revalidate();
+        this.repaint();
+    }
+
     private void playSound() {
         SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
@@ -57,7 +66,7 @@ public class CustomSpinnerButton extends JButton {
 
         // text
         g2d.setFont(this.getFont());
-        g2d.setColor(this.getForeground());
+        g2d.setColor(this.isEnabled() ? this.getForeground() : Color.GRAY);
         FontMetrics fontMetrics = g.getFontMetrics(this.getFont());
         g2d.drawString(
                 this.getText(),

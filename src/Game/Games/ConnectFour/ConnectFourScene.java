@@ -1,20 +1,30 @@
 package Game.Games.ConnectFour;
 
 import Game.GameScene;
+import Game.Games.ConnectFour.ConnectFourController.ClientConnectFourController;
 import Game.Games.ConnectFour.ConnectFourController.ConnectFourController;
+import Game.Games.ConnectFour.ConnectFourController.ServerConnectFourController;
 import Game.Games.ConnectFour.ConnectFourModel.ConnectFourModel;
 import Game.Games.ConnectFour.ConnectFourView.ConnectFourView;
-import Map.Model.History;
+import Online.Socket.SocketCommunicatorService;
 import Player.Player;
 
 public class ConnectFourScene extends GameScene {
-    private final static int DEFAULT_ROW = 6;
-    private final static int DEFAULT_COLUMN = 7;
 
     public ConnectFourScene(Player[] listPlayers, boolean isTraining, int[] scores) {
-        this.model = new ConnectFourModel(listPlayers, DEFAULT_ROW, DEFAULT_COLUMN);
-        this.view = new ConnectFourView(DEFAULT_ROW, DEFAULT_COLUMN, listPlayers, scores);
-        this.controller = new ConnectFourController((ConnectFourModel) this.model, (ConnectFourView) this.view, DEFAULT_ROW, DEFAULT_COLUMN, isTraining);
+        this.model = new ConnectFourModel(listPlayers);
+        this.view = new ConnectFourView(listPlayers, scores);
+        this.controller = new ConnectFourController((ConnectFourModel) this.model, (ConnectFourView) this.view, isTraining);
+        this.controller.addObserver(this);
+    }
+
+    public ConnectFourScene(Player[] listPlayers, boolean isTraining, int[] scores, boolean isServer, SocketCommunicatorService socketCommunicatorService) {
+        this.model = new ConnectFourModel(listPlayers);
+        this.view = new ConnectFourView(listPlayers, scores);
+        this.controller = isServer ?
+                new ServerConnectFourController((ConnectFourModel) this.model, (ConnectFourView) this.view, isTraining, socketCommunicatorService) :
+                new ClientConnectFourController((ConnectFourModel) this.model, (ConnectFourView) this.view, isTraining, socketCommunicatorService)
+        ;
         this.controller.addObserver(this);
     }
 }

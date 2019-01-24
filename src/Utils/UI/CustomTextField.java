@@ -17,7 +17,7 @@ public class CustomTextField extends JTextField {
     // tested value so the text doesn't go outside the borders
     private final static int COLUMNS = 14;
 
-    private final Image backgroundImage;
+    private Image backgroundImage;
 
     /**
      * The number of columns is forced by the const COLUMNS in order to have a correct width
@@ -55,6 +55,15 @@ public class CustomTextField extends JTextField {
                 CustomTextField.this.playSound();
             }
         });
+    }
+
+    @Override
+    public void setEnabled(boolean b) {
+        super.setEnabled(b);
+        this.backgroundImage = b ? FileGetter.getImageIcon("_button13.png").getImage() :
+                FileGetter.getGreyImageIcon("_button13.png").getImage();
+        this.revalidate();
+        this.repaint();
     }
 
     @Override

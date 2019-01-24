@@ -30,6 +30,20 @@ public enum PlayerStatsEnum {
     COOKIE_CLICKER_WIN_RATE("COOKIE_CLICKER_WIN_RATE"),
 
     /*
+     * Fifteen Vainc
+     */
+    FIFTEEN_VAINC_NB_GAME("FIFTEEN_VAINC_NB_GAME"),
+    FIFTEEN_VAINC_NB_WIN("FIFTEEN_VAINC_NB_WIN"),
+    FIFTEEN_VAINC_WIN_RATE("FIFTEEN_VAINC_WIN_RATE"),
+
+    /*
+     * Hangman
+     */
+    HANGMAN_NB_GAME("HANGMAN_NB_GAME"),
+    HANGMAN_NB_WIN("HANGMAN_NB_WIN"),
+    HANGMAN_WIN_RATE("HANGMAN_WIN_RATE"),
+
+    /*
      * General stats
      */
     MOST_PLAYED_GAME("MOST_PLAYED_GAME"),
@@ -41,14 +55,12 @@ public enum PlayerStatsEnum {
 
     private String name = "";
 
-    PlayerStatsEnum(String s)
-    {
+    PlayerStatsEnum(String s) {
         this.name = s;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 }

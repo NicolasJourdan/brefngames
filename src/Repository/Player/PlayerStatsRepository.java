@@ -41,9 +41,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
     /**
      * Save a statistic
      *
-     * @param playerId The player on which the statistic will be saved
+     * @param playerId   The player on which the statistic will be saved
      * @param playerStat The statistics which will be saved
-     * @param value The value of the statistic
+     * @param value      The value of the statistic
      */
     public static void saveStat(String playerId, PlayerStatsEnum playerStat, String value) {
         JSONObject jsonPlayer = PlayerRepository.getJSONPlayerById(playerId);
@@ -65,7 +65,7 @@ public class PlayerStatsRepository extends AbstractDataRepository {
      * Save all the statistics present in the map
      *
      * @param playerId The player on which the statistics will be saved
-     * @param statMap The map with the statistics
+     * @param statMap  The map with the statistics
      */
     public static void saveAll(String playerId, Map<PlayerStatsEnum, String> statMap) {
         for (Map.Entry<PlayerStatsEnum, String> entry : statMap.entrySet()) {
@@ -82,6 +82,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, (String) jsonStats.get("TIC_TAC_TOE_NB_GAME"));
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, (String) jsonStats.get("TIC_TAC_TOE_NB_WIN"));
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE, (String) jsonStats.get("TIC_TAC_TOE_WIN_RATE"));
+        statsMap.put(PlayerStatsEnum.HANGMAN_NB_GAME, (String) jsonStats.get("HANGMAN_NB_GAME"));
+        statsMap.put(PlayerStatsEnum.HANGMAN_NB_WIN, (String) jsonStats.get("HANGMAN_NB_WIN"));
+        statsMap.put(PlayerStatsEnum.HANGMAN_WIN_RATE, (String) jsonStats.get("HANGMAN_WIN_RATE"));
         statsMap.put(PlayerStatsEnum.RUNNER_NB_GAME, (String) jsonStats.get("RUNNER_NB_GAME"));
         statsMap.put(PlayerStatsEnum.RUNNER_NB_WIN, (String) jsonStats.get("RUNNER_NB_WIN"));
         statsMap.put(PlayerStatsEnum.RUNNER_WIN_RATE, (String) jsonStats.get("RUNNER_WIN_RATE"));
@@ -91,6 +94,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME, (String) jsonStats.get("COOKIE_CLICKER_NB_GAME"));
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN, (String) jsonStats.get("COOKIE_CLICKER_NB_WIN"));
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE, (String) jsonStats.get("COOKIE_CLICKER_WIN_RATE"));
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME, (String) jsonStats.get("FIFTEEN_VAINC_NB_GAME"));
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE, (String) jsonStats.get("FIFTEEN_VAINC_WIN_RATE"));
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN, (String) jsonStats.get("FIFTEEN_VAINC_NB_WIN"));
         statsMap.put(PlayerStatsEnum.MOST_PLAYED_GAME, (String) jsonStats.get("MOST_PLAYED_GAME"));
         statsMap.put(PlayerStatsEnum.TOTAL_NB_GAME, (String) jsonStats.get("TOTAL_NB_GAME"));
         statsMap.put(PlayerStatsEnum.TOTAL_NB_WIN, (String) jsonStats.get("TOTAL_NB_WIN"));
@@ -109,6 +115,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         jsonStats.put("TIC_TAC_TOE_NB_GAME", statsMap.get(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME));
         jsonStats.put("TIC_TAC_TOE_NB_WIN", statsMap.get(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN));
         jsonStats.put("TIC_TAC_TOE_WIN_RATE", statsMap.get(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE));
+        jsonStats.put("HANGMAN_NB_GAME", statsMap.get(PlayerStatsEnum.HANGMAN_NB_GAME));
+        jsonStats.put("HANGMAN_NB_WIN", statsMap.get(PlayerStatsEnum.HANGMAN_NB_WIN));
+        jsonStats.put("HANGMAN_WIN_RATE", statsMap.get(PlayerStatsEnum.HANGMAN_WIN_RATE));
         jsonStats.put("RUNNER_NB_GAME", statsMap.get(PlayerStatsEnum.RUNNER_NB_GAME));
         jsonStats.put("RUNNER_NB_WIN", statsMap.get(PlayerStatsEnum.RUNNER_NB_WIN));
         jsonStats.put("RUNNER_WIN_RATE", statsMap.get(PlayerStatsEnum.RUNNER_WIN_RATE));
@@ -118,6 +127,9 @@ public class PlayerStatsRepository extends AbstractDataRepository {
         jsonStats.put("COOKIE_CLICKER_NB_GAME", statsMap.get(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME));
         jsonStats.put("COOKIE_CLICKER_NB_WIN", statsMap.get(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN));
         jsonStats.put("COOKIE_CLICKER_WIN_RATE", statsMap.get(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE));
+        jsonStats.put("FIFTEEN_VAINC_NB_GAME", statsMap.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME));
+        jsonStats.put("FIFTEEN_VAINC_NB_WIN", statsMap.get(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN));
+        jsonStats.put("FIFTEEN_VAINC_WIN_RATE", statsMap.get(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE));
         jsonStats.put("MOST_PLAYED_GAME", statsMap.get(PlayerStatsEnum.MOST_PLAYED_GAME));
         jsonStats.put("TOTAL_NB_GAME", statsMap.get(PlayerStatsEnum.TOTAL_NB_GAME));
         jsonStats.put("TOTAL_NB_WIN", statsMap.get(PlayerStatsEnum.TOTAL_NB_WIN));

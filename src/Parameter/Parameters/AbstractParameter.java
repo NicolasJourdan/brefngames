@@ -2,7 +2,9 @@ package Parameter.Parameters;
 
 import Structure.AbstractModel;
 
-public abstract class AbstractParameter extends AbstractModel implements Configurable {
+import java.io.Serializable;
+
+public abstract class AbstractParameter extends AbstractModel implements Configurable, Serializable {
 
     /**
      * The current value

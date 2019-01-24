@@ -10,7 +10,8 @@ import Map.View.MapView;
 
 public class MapController extends AbstractGameController {
 
-    private History history;
+    private static final String BACK_BUTTON_TEXT = "back";
+    protected History history;
 
     public MapController(AbstractGameModel model, AbstractGameView view, History history) {
         super(model, view, history.isTraining());
@@ -29,8 +30,12 @@ public class MapController extends AbstractGameController {
             ((MapView) this.view).addNextGame();
         }
 
+        this.setBackButton();
+    }
+
+    protected void setBackButton() {
         if (this.isTraining || ((MapModel) this.model).isFinish(this.history)) {
-            ((MapView) this.view).setBackButton();
+            ((MapView) this.view).setBackButton(MapController.BACK_BUTTON_TEXT);
         }
     }
 }

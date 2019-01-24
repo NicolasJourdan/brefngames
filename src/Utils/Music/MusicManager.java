@@ -48,6 +48,11 @@ public class MusicManager {
     }
 
     public void stop() {
+        // the music can't be stopped if no clip exist
+        if (null == this.clip) {
+            return;
+        }
+
         this.clip.removeLineListener(this.lineListener);
         this.clip.stop();
         System.out.println("MusicManager: stop playing");

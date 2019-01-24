@@ -17,6 +17,12 @@ public class PlayerStatisticFactory {
                 return "Connect Four number of wins";
             case CONNECT_FOUR_WIN_RATE:
                 return "Connect Four percent of wins";
+            case HANGMAN_NB_GAME:
+                return "Hangman number of games";
+            case HANGMAN_NB_WIN:
+                return "Hangman number of wins";
+            case HANGMAN_WIN_RATE:
+                return "Hangman percent of wins";
             case RUNNER_NB_GAME:
                 return "Runner number of games";
             case RUNNER_NB_WIN:
@@ -29,6 +35,12 @@ public class PlayerStatisticFactory {
                 return "Cookie Clicker number of wins";
             case COOKIE_CLICKER_WIN_RATE:
                 return "Cookie Clicker percent of wins";
+            case FIFTEEN_VAINC_NB_GAME:
+                return "Fifteen Vainc number of games";
+            case FIFTEEN_VAINC_NB_WIN:
+                return "Fifteen Vainc number of wins";
+            case FIFTEEN_VAINC_WIN_RATE:
+                return "Fifteen Vainc percent of wins";
             case MOST_PLAYED_GAME:
                 return "Most played game";
             case TOTAL_NB_GAME:

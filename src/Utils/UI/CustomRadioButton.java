@@ -14,6 +14,8 @@ public class CustomRadioButton extends JRadioButton {
 
         this.setIcon(FileGetter.getImageIcon("_circle.png"));
         this.setSelectedIcon(FileGetter.getImageIcon("_boxTick.png"));
+        this.setDisabledIcon(FileGetter.getGreyImageIcon("_circle.png"));
+        this.setDisabledSelectedIcon(FileGetter.getGreyImageIcon("_boxTick.png"));
 
         this.setForeground((Color) ThemeParameterRepository.getColor(ThemeEnum.SECOND_COLOR).getValue());
         this.setFont(FileGetter.getFont().deriveFont(Utils.DEFAULT_SIZE_BUTTON_TEXT));

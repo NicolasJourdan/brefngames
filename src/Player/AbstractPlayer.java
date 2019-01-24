@@ -4,6 +4,7 @@ import Repository.Player.PlayerStatsEnum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,6 +59,9 @@ public abstract class AbstractPlayer implements Player {
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_NB_WIN, "0");
         statsMap.put(PlayerStatsEnum.TIC_TAC_TOE_WIN_RATE, "0");
+        statsMap.put(PlayerStatsEnum.HANGMAN_NB_GAME, "0");
+        statsMap.put(PlayerStatsEnum.HANGMAN_NB_WIN, "0");
+        statsMap.put(PlayerStatsEnum.HANGMAN_WIN_RATE, "0");
         statsMap.put(PlayerStatsEnum.RUNNER_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.RUNNER_NB_WIN, "0");
         statsMap.put(PlayerStatsEnum.RUNNER_WIN_RATE, "0");
@@ -67,6 +71,9 @@ public abstract class AbstractPlayer implements Player {
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_NB_WIN, "0");
         statsMap.put(PlayerStatsEnum.COOKIE_CLICKER_WIN_RATE, "0");
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_GAME, "0");
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_NB_WIN, "0");
+        statsMap.put(PlayerStatsEnum.FIFTEEN_VAINC_WIN_RATE, "0");
         statsMap.put(PlayerStatsEnum.MOST_PLAYED_GAME, "NONE");
         statsMap.put(PlayerStatsEnum.TOTAL_NB_GAME, "0");
         statsMap.put(PlayerStatsEnum.TOTAL_NB_WIN, "0");

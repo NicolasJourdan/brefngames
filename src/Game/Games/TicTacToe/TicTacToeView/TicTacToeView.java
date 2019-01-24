@@ -13,17 +13,18 @@ import java.awt.*;
 public class TicTacToeView extends CustomGameBackgroundPanel {
 
     private static int INSET_SIZE = 10;
+    private static int DEFAULT_SIZE = 3;
     private DisplayPanel firstPlayerDisplay;
     private Board board;
     private DisplayPanel secondPlayerDisplay;
     private int size;
-    private DisplayPanel currentPlayer;
-    private DisplayPanel otherPlayer;
+    private DisplayPanel currentPlayerPanel;
+    private DisplayPanel otherPlayerPanel;
 
 
-    public TicTacToeView(int size, Player[] players, int[] scores) {
+    public TicTacToeView(Player[] players, int[] scores) {
         super(players, scores);
-        this.size = size;
+        this.size = TicTacToeView.DEFAULT_SIZE;
         this.setLayout(new GridBagLayout());
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
         this.board = new Board(this.size, this);
@@ -38,7 +39,7 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
         constraint.gridx = 0;
         constraint.gridwidth = 1;
         constraint.gridheight = 1;
-        constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
+        constraint.insets = new Insets(INSET_SIZE, INSET_SIZE, INSET_SIZE, INSET_SIZE);
         this.add(this.firstPlayerDisplay, constraint);
         constraint.gridy = 3;
         constraint.gridx = 1;
@@ -49,10 +50,10 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
         constraint.gridx = 4;
         constraint.gridwidth = 2;
         constraint.gridheight = 1;
-        constraint.insets = new Insets(INSET_SIZE,INSET_SIZE,INSET_SIZE,INSET_SIZE);
+        constraint.insets = new Insets(INSET_SIZE, INSET_SIZE, INSET_SIZE, INSET_SIZE);
         this.add(this.secondPlayerDisplay, constraint);
-        this.currentPlayer = this.firstPlayerDisplay;
-        this.otherPlayer = this.secondPlayerDisplay;
+        this.currentPlayerPanel = this.firstPlayerDisplay;
+        this.otherPlayerPanel = this.secondPlayerDisplay;
         this.revalidate();
         this.repaint();
     }
@@ -64,12 +65,18 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
         SoundPlayer.playSound(Utils.DEFAULT_CLICK_SOUND);
     }
 
-    public void changePlayer(){
-        DisplayPanel tmp = this.currentPlayer;
-        this.currentPlayer = this.otherPlayer;
-        this.otherPlayer = tmp;
-        this.currentPlayer.setFocus(true);
-        this.otherPlayer.setFocus(false);
+    public void updateCurrentPlayer(Player currentPlayer) {
+        if (!currentPlayer.getName().equals(this.currentPlayerPanel.getPlayer().getName())) {
+            this.changePlayer();
+        }
+    }
+
+    public void changePlayer() {
+        DisplayPanel tmp = this.currentPlayerPanel;
+        this.currentPlayerPanel = this.otherPlayerPanel;
+        this.otherPlayerPanel = tmp;
+        this.currentPlayerPanel.setFocus(true);
+        this.otherPlayerPanel.setFocus(false);
     }
 
     public ProxyObservable getObservable() {

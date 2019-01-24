@@ -1,5 +1,6 @@
 package Utils.UI;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Utils {
@@ -15,10 +16,15 @@ public class Utils {
     public final static float CREDIT_TITLE_LABEL = 22f;
     public final static float CREDIT_SIZE_LABEL = 17f;
 
+    public static final int PANEL_BORDER = 15;
+
     public final static int DEFAULT_BUTTON_PADDING_TOP = 5;
     public final static int DEFAULT_BUTTON_PADDING_BOTTOM = 5;
     public final static int DEFAULT_BUTTON_PADDING_LEFT = 2;
     public final static int DEFAULT_BUTTON_PADDING_RIGHT = 2;
+
+    public final static int DEFAULT_PADDING = 40;
+    public final static int DEFAULT_ICON_PADDING = 10;
 
     public final static int DEFAULT_COMPONENT_PADDING_TOP_MAP = 15;
     public final static int DEFAULT_COMPONENT_PADDING_BOTTOM_MAP = 15;
@@ -48,6 +54,8 @@ public class Utils {
     public final static String BREFNGAMES = "BREF'N'Games";
 
     public final static String DEFAULT_CLICK_SOUND = "click1.wav";
+    public static final ImageIcon CONTEST_ICON = new ImageIcon(Utils.class.getResource("/data/Images/server.png"));
+    public static final ImageIcon JOIN_ICON = new ImageIcon(Utils.class.getResource("/data/Images/join.png"));
 
     public static Insets getCustomTopInsets(int padding) {
         return new Insets(
