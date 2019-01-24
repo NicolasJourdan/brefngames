@@ -26,9 +26,26 @@ public class ServerHangmanController extends HangmanController implements Socket
                 MessageType.HANGMAN_SET_CURRENT_PLAYER,
                 ((HangmanModel) this.model).getCurrentPlayer()
         ));
+
+        HangmanDataObject hangmanDataObject = new HangmanDataObject(
+                INITIAL_STATUS,
+                ((HangmanModel) this.model).updateCurrentWord(),
+                ((HangmanModel) this.model).updateNumGuesses(),
+                ((HangmanModel) this.model).getNumGuessesLeft()
+        );
+        // Send current word
+        this.socketCommunicatorService.emit(
+                new MessageDataObject(MessageType.HANGMAN_MAKE_GUESS, hangmanDataObject)
+        );
     }
 
     private void play(Character arg, boolean isFirstPlayer) {
+        // Send current player to update player display panel
+        this.socketCommunicatorService.emit(new MessageDataObject(
+                MessageType.HANGMAN_SET_CURRENT_PLAYER,
+                ((HangmanModel) this.model).getCurrentPlayer()
+        ));
+
         if (!this.isAllowedToPlay(isFirstPlayer)) {
             return;
         }

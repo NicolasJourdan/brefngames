@@ -14,7 +14,7 @@ import java.util.Observable;
  */
 public class HangmanController extends AbstractGameController {
 
-    private final String INITIAL_STATUS = "click a letter to make a guess!";    //status displayed in the view before any guess has been made
+    protected final String INITIAL_STATUS = "click a letter to make a guess!";    //status displayed in the view before any guess has been made
     private final String ROOT_PICTURE = "/data/Images/hang";
     private final String EXTENSION_PICTURE = ".gif";
     private final int MAX_GUESSES = 7;
