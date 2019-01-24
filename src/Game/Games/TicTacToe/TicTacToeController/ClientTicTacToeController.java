@@ -12,7 +12,6 @@ import Online.Socket.Message.MessageDataObject;
 import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
 import Player.Player;
-import Scene.Model.ActionEnum;
 
 import java.util.Map;
 import java.util.Observable;

@@ -30,6 +30,12 @@ public class ServerTicTacToeController extends TicTacToeController implements So
     }
 
     private void play(Coord coord, boolean isFirstPlayer) {
+        // Send current player to update player display panel
+        this.socketCommunicatorService.emit(new MessageDataObject(
+                MessageType.TIC_TAC_TOE_SET_CURRENT_PLAYER,
+                ((TicTacToeModel) this.model).getCurrentPlayer()
+        ));
+
         if (!this.isAllowedToPlay(isFirstPlayer)) {
             return;
         }

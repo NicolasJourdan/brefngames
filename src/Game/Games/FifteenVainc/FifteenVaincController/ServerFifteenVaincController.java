@@ -31,6 +31,12 @@ public class ServerFifteenVaincController extends FifteenVaincController impleme
     }
 
     private void play(Coord coord, boolean isFirstPlayer) {
+        // Send current player to update player display panel
+        this.socketCommunicatorService.emit(new MessageDataObject(
+                MessageType.FIFTEEN_VAINC_SET_CURRENT_PLAYER,
+                ((FifteenVaincModel) this.model).getCurrentPlayer()
+        ));
+
         if (!this.isAllowedToPlay(isFirstPlayer)) {
             return;
         }

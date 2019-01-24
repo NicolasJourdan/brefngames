@@ -57,8 +57,8 @@ public class ConnectFourView extends CustomGameBackgroundPanel {
     }
 
     public void updateCurrentPlayer(Player currentPlayer) {
-        if (currentPlayer != this.currentPlayerPanel.getPlayer()) {
-            changePlayer();
+        if (!currentPlayer.getName().equals(this.currentPlayerPanel.getPlayer().getName())) {
+            this.changePlayer();
         }
     }
 
