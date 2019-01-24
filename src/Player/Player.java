@@ -4,9 +4,10 @@ import Repository.Player.PlayerStatsEnum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Map;
 
-public interface Player {
+public interface Player extends Serializable {
     public Color getColor();
 
     public String getName();

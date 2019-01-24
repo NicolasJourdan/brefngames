@@ -24,6 +24,8 @@ public class SocketEmissionRunnable implements Runnable {
             if (!this.stack.isEmpty()) {
                 Serializable message = this.stack.remove();
                 try {
+                    // reset so already serialized object are send with the updated values
+                    this.objectOutputStream.reset();
                     this.objectOutputStream.writeObject(message);
                     this.objectOutputStream.flush();
                 } catch (IOException e) {

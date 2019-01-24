@@ -1,5 +1,6 @@
 package Game.Games.ConnectFour.ConnectFourController;
 
+import Contest.Interface.SocketObserverController;
 import Contest.Model.ContestDataPersistor;
 import Game.Games.ConnectFour.ConnectFourModel.ConnectFourModel;
 import Game.Games.ConnectFour.ConnectFourStatsEnum;
@@ -16,20 +17,27 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ClientConnectFourController extends ConnectFourController {
+public class ClientConnectFourController extends ConnectFourController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ClientConnectFourController(ConnectFourModel m, ConnectFourView v, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(m, v, isTraining);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         this.socketCommunicatorService.emit(new MessageDataObject(MessageType.CONNECT_FOUR_COORDINATES, (Coord) arg));
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     /**

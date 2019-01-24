@@ -1,8 +1,10 @@
 package Contest.Controller;
 
+import Contest.Interface.SocketObserverController;
 import Contest.Model.AbstractContest;
 import Contest.Model.OnlineContest;
 import ContestSettings.ContestSettingsScene;
+import Game.GameSceneFactory;
 import Game.OnlineGameSceneFactory;
 import Map.Model.History;
 import Online.Client.ClientScene;
@@ -98,15 +100,44 @@ public class OnlineContestController extends AbstractSceneManagerController {
              * Quit
              */
             case END_ONLINE_CONTEST:
+                System.out.println("quit !");
                 this.setChanged();
                 this.notifyObservers(actionEnum);
                 return SceneEnum.END_SCENE;
+
+            /**
+             * Game finished
+             */
+            case FIRST_PLAYER_WON:
+            case SECOND_PLAYER_WON:
+            case DRAW:
+                if (this.isServer) {
+                    ((AbstractContest) this.model).setWinner(actionEnum);
+
+                    ((GameSceneFactory) this.sceneFactory).updateHistory(((AbstractContest) this.model).getHistory());
+
+                    this.socketCommunicatorService.emit(new MessageDataObject(
+                            MessageType.CONTEST_UPDATE_HISTORY,
+                            ((AbstractContest) this.model).getHistory()
+                    ));
+                }
 
             /**
              * Map
              */
             case END_MAP:
                 return this.loadNextScene();
+
+            /**
+             * Start new contest
+             */
+            case ONLINE_ENDING_START_NEW_CONTEST:
+                this.socketCommunicatorService.emit(new MessageDataObject(
+                        MessageType.CONTEST_NEXT_SCENE,
+                        SceneEnum.CONTEST_MENU
+                ));
+
+                return SceneEnum.CONTEST_MENU;
 
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);
@@ -146,6 +177,12 @@ public class OnlineContestController extends AbstractSceneManagerController {
                     // next scene received from the server, update current one
                     OnlineContestController.this.switchScene((SceneEnum) messageDataObject.getData());
                     break;
+                case CONTEST_UPDATE_HISTORY:
+                    // new history received from the server, it will be used when the map is displayed
+                    ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updateHistory(
+                            (History) messageDataObject.getData()
+                    );
+                    break;
                 case SETTINGS_PLAYERS_LIST:
                     ((OnlineGameSceneFactory) OnlineContestController.this.sceneFactory).updatePlayersList(
                             (Player[]) messageDataObject.getData()
@@ -161,5 +198,22 @@ public class OnlineContestController extends AbstractSceneManagerController {
                     break;
             }
         }
+    }
+
+    /**
+     * When changing the current scene, the old scene should stop observing the socket message receiver thread
+     *
+     * @param sceneEnum
+     */
+    @Override
+    protected void switchScene(SceneEnum sceneEnum) {
+        if (null != this.currentScene) {
+            Object currentController = this.currentScene.getController();
+            if (currentController instanceof SocketObserverController) {
+                ((SocketObserverController) currentController).stopObserver();
+            }
+        }
+
+        super.switchScene(sceneEnum);
     }
 }

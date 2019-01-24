@@ -1,5 +1,6 @@
 package Game.Games.Hangman.Controller;
 
+import Contest.Interface.SocketObserverController;
 import Contest.Model.ContestDataPersistor;
 import Game.Games.DataObject.HangmanDataObject;
 import Game.Games.DataObject.PlayerStatsDataObject;
@@ -16,19 +17,26 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ClientHangmanController extends HangmanController {
+public class ClientHangmanController extends HangmanController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ClientHangmanController(HangmanModel model, HangmanView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         this.socketCommunicatorService.emit(new MessageDataObject(MessageType.HANGMAN_CHARACTER, (Character) arg));
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     /**

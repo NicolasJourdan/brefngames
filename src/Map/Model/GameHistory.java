@@ -4,7 +4,9 @@ import Player.Player;
 import Scene.Model.ActionEnum;
 import Scene.Model.SceneEnum;
 
-public class GameHistory {
+import java.io.Serializable;
+
+public class GameHistory implements Serializable {
 
     private SceneEnum gameName;
 

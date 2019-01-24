@@ -1,5 +1,6 @@
 package Game.Games.TicTacToe.TicTacToeController;
 
+import Contest.Interface.SocketObserverController;
 import Contest.Model.ContestDataPersistor;
 import Game.Games.Coord;
 import Game.Games.DataObject.PawnDataObject;
@@ -17,20 +18,27 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ClientTicTacToeController extends TicTacToeController {
+public class ClientTicTacToeController extends TicTacToeController implements SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ClientTicTacToeController(TicTacToeModel model, TicTacToeView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
     }
 
     @Override
     public void update(Observable o, Object arg) {
         this.socketCommunicatorService.emit(new MessageDataObject(MessageType.TIC_TAC_TOE_COORDINATES, (Coord) arg));
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     /**
@@ -51,10 +59,6 @@ public class ClientTicTacToeController extends TicTacToeController {
                     break;
                 case TIC_TAC_TOE_CHANGE_PLAYER:
                     ((TicTacToeView) ClientTicTacToeController.this.view).changePlayer();
-                    break;
-                case TIC_TAC_TOE_WINNER:
-                    ClientTicTacToeController.this.setChanged();
-                    ClientTicTacToeController.this.notifyObservers((ActionEnum) messageDataObject.getData());
                     break;
                 case TIC_TAC_TOE_SEND_GLOBAL_STATS:
                     ContestDataPersistor.updateTicTacToe((Map<TicTacToeStatsEnum, String>) messageDataObject.getData());

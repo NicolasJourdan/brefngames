@@ -1,5 +1,6 @@
 package ContestSettings.Controller;
 
+import Contest.Interface.SocketObserverController;
 import ContestSettings.DataObject.ContestSettingsDataObject;
 import ContestSettings.Model.ContestSettingsModel;
 import ContestSettings.Model.OnlineContestSettingsModel;
@@ -18,16 +19,18 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerContestSettingsController extends AbstractController implements SettingsDataObjectGetterInterface {
+public class ServerContestSettingsController extends AbstractController implements SettingsDataObjectGetterInterface, SocketObserverController {
 
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
     private ContestSettingsDataObject settingsDataObject;
 
     public ServerContestSettingsController(AbstractModel model, AbstractView view, SocketCommunicatorService socketCommunicatorService) {
         super(model, view);
 
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
 
         Map<ParameterEnum, Configurable> defaultConfiguration = ((ContestSettingsModel) this.model).getDefaultConfiguration();
         ((ContestSettingsView) this.view).setDefaultConfiguration(defaultConfiguration);
@@ -61,6 +64,11 @@ public class ServerContestSettingsController extends AbstractController implemen
     @Override
     public ContestSettingsDataObject getSettingsDataObject() {
         return this.settingsDataObject;
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     private class SocketReceptionObserver implements Observer {

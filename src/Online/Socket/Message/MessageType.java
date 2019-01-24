@@ -5,6 +5,12 @@ public enum MessageType {
      * Contest
      */
     CONTEST_NEXT_SCENE,
+    CONTEST_UPDATE_HISTORY,
+
+    /**
+     * Contest ending
+     */
+    CONTEST_ENDING_NEXT,
 
     /**
      * Settings
@@ -28,7 +34,6 @@ public enum MessageType {
     TIC_TAC_TOE_COORDINATES,
     TIC_TAC_TOE_SET_PAWN,
     TIC_TAC_TOE_CHANGE_PLAYER,
-    TIC_TAC_TOE_WINNER,
     TIC_TAC_TOE_SEND_PLAYER_STATS,
     TIC_TAC_TOE_SEND_GLOBAL_STATS,
     TIC_TAC_TOE_SET_CURRENT_PLAYER,

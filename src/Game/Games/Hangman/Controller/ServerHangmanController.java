@@ -1,5 +1,6 @@
 package Game.Games.Hangman.Controller;
 
+import Contest.Interface.SocketObserverController;
 import Game.Games.DataObject.HangmanDataObject;
 import Game.Games.DataObject.PlayerStatsDataObject;
 import Game.Games.Hangman.Model.HangmanModel;
@@ -11,13 +12,15 @@ import Online.Socket.SocketCommunicatorService;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ServerHangmanController extends HangmanController {
+public class ServerHangmanController extends HangmanController implements SocketObserverController {
     private final SocketCommunicatorService socketCommunicatorService;
+    private final SocketReceptionObserver socketReceptionObserver;
 
     public ServerHangmanController(HangmanModel model, HangmanView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
         this.socketCommunicatorService = socketCommunicatorService;
-        this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
+        this.socketReceptionObserver = new SocketReceptionObserver();
+        this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
         // Send current player to update player display panel
         this.socketCommunicatorService.emit(new MessageDataObject(
                 MessageType.HANGMAN_SET_CURRENT_PLAYER,
@@ -100,6 +103,11 @@ public class ServerHangmanController extends HangmanController {
     public void update(Observable o, Object arg) {
         // The first player (server) played
         this.play((Character) arg, true);
+    }
+
+    @Override
+    public void stopObserver() {
+        this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionObserver);
     }
 
     private class SocketReceptionObserver implements Observer {
