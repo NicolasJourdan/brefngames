@@ -11,6 +11,7 @@ public enum MessageType {
      * Contest ending
      */
     CONTEST_ENDING_NEXT,
+    CONTEST_ENDING_QUIT,
 
     /**
      * Settings
