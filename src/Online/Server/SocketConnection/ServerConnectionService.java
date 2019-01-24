@@ -63,4 +63,12 @@ public class ServerConnectionService extends Observable implements Observer {
     public ServerSocket getServerSocket() {
         return this.serverSocket;
     }
+
+    public void closeServerSocket() {
+        try {
+            this.serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
