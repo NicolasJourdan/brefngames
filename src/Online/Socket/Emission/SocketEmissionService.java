@@ -26,4 +26,9 @@ public class SocketEmissionService {
     public void emit(Serializable message) {
         this.runnable.emit(message);
     }
+
+    public void end() {
+        this.runnable.end();
+        this.thread.interrupt();
+    }
 }

@@ -9,14 +9,18 @@ import java.util.Observable;
 public class SocketReceptionRunnable extends Observable implements Runnable {
 
     private final ObjectInputStream objectInputStream;
+    private boolean shouldContinue;
 
     public SocketReceptionRunnable(ObjectInputStream objectInputStream) {
         this.objectInputStream = objectInputStream;
+        this.shouldContinue = true;
     }
 
     @Override
     public void run() {
-        while(true) {
+        System.out.println("Reception starting");
+
+        while(this.shouldContinue) {
             try {
                 Serializable message = (Serializable) this.objectInputStream.readObject();
                 this.setChanged();
@@ -29,6 +33,17 @@ public class SocketReceptionRunnable extends Observable implements Runnable {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+
+        System.out.println("Reception stopping");
+    }
+
+    public void end() {
+        try {
+            this.shouldContinue = false;
+            this.objectInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

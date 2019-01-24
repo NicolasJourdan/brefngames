@@ -10,15 +10,19 @@ import java.util.Observer;
 
 public class SocketCommunicatorService {
 
+    private final Socket socket;
+
     private SocketEmissionService socketEmissionService;
     private SocketReceptionService socketReceptionService;
 
     public SocketCommunicatorService(Socket socket) {
+        this.socket = socket;
+
         try {
-            this.socketEmissionService = new SocketEmissionService(socket);
+            this.socketEmissionService = new SocketEmissionService(this.socket);
             this.socketEmissionService.start();
 
-            this.socketReceptionService = new SocketReceptionService(socket);
+            this.socketReceptionService = new SocketReceptionService(this.socket);
             this.socketReceptionService.start();
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,5 +39,14 @@ public class SocketCommunicatorService {
 
     public void emit(Serializable message) {
         this.socketEmissionService.emit(message);
+    }
+
+
+    /**
+     *
+     */
+    public void stopConnection() {
+        this.socketReceptionService.end();
+        this.socketEmissionService.end();
     }
 }

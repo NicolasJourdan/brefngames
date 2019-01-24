@@ -10,6 +10,7 @@ public class SocketReceptionService extends Observable implements Observer {
 
     private final Socket socket;
     private Thread thread;
+    private SocketReceptionRunnable runnable;
 
     public SocketReceptionService(Socket socket) {
         this.socket = socket;
@@ -18,9 +19,9 @@ public class SocketReceptionService extends Observable implements Observer {
     public void start() throws IOException {
         ObjectInputStream objectInputStream = new ObjectInputStream(this.socket.getInputStream());
 
-        SocketReceptionRunnable runnable = new SocketReceptionRunnable(objectInputStream);
-        runnable.addObserver(this);
-        this.thread = (new Thread(runnable));
+        this.runnable = new SocketReceptionRunnable(objectInputStream);
+        this.runnable.addObserver(this);
+        this.thread = (new Thread(this.runnable));
         this.thread.start();
     }
 
@@ -28,5 +29,10 @@ public class SocketReceptionService extends Observable implements Observer {
     public void update(Observable o, Object arg) {
         this.setChanged();
         this.notifyObservers(arg);
+    }
+
+    public void end() {
+        this.deleteObservers();
+        this.runnable.end();
     }
 }

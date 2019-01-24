@@ -100,7 +100,7 @@ public class OnlineContestController extends AbstractSceneManagerController {
              * Quit
              */
             case END_ONLINE_CONTEST:
-                System.out.println("quit !");
+                this.socketCommunicatorService.stopConnection();
                 this.setChanged();
                 this.notifyObservers(actionEnum);
                 return SceneEnum.END_SCENE;
