@@ -33,6 +33,7 @@ public class ServerController extends AbstractSceneController {
                 ((ServerView) this.view).toggleCreateContestButton();
                 break;
             case CLIENT_CONNECTED:
+                this.serverConnectionService.closeServerSocket();
                 this.socket = this.serverConnectionService.getSocket();
                 System.out.println("Server: client is " + this.socket.getInetAddress() + " " + this.socket.getPort());
 
