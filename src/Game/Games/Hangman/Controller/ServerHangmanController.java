@@ -79,7 +79,8 @@ public class ServerHangmanController extends HangmanController {
             this.socketCommunicatorService.emit(
                     new MessageDataObject(
                             MessageType.HANGMAN_CHANGE_PLAYER,
-                            ((HangmanModel) this.model).getCurrentPlayer())
+                            ((HangmanModel) this.model).getCurrentPlayer()
+                    )
             );
         }
     }
