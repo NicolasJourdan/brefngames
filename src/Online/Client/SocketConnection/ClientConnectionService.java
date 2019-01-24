@@ -18,8 +18,14 @@ public class ClientConnectionService extends Observable implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object socket) {
-        this.socket = (Socket) socket;
+    public void update(Observable o, Object arg) {
+        if (arg instanceof ActionEnum) {
+            this.setChanged();
+            this.notifyObservers(arg);
+            return;
+        }
+
+        this.socket = (Socket) arg;
         this.setChanged();
         this.notifyObservers(ActionEnum.CONNECTED_TO_SERVER);
     }
