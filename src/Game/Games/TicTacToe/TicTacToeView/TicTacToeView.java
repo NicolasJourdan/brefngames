@@ -66,7 +66,7 @@ public class TicTacToeView extends CustomGameBackgroundPanel {
     }
 
     public void updateCurrentPlayer(Player currentPlayer) {
-        if (currentPlayer != this.currentPlayerPanel.getPlayer()) {
+        if (!currentPlayer.getName().equals(this.currentPlayerPanel.getPlayer().getName())) {
             this.changePlayer();
         }
     }
