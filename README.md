@@ -57,7 +57,11 @@ It is possible to consult UML [here](https://nicolasjourdan.github.io/brefngames
 ## Git History
 Visual representation of the git repository history
 
-[![Git History](https://img.youtube.com/vi/6LCyB9z3E8c/0.jpg)](https://youtu.be/6LCyB9z3E8c)
+### First iteration
+[![Git History 1](https://img.youtube.com/vi/6LCyB9z3E8c/0.jpg)](https://youtu.be/6LCyB9z3E8c)
+
+### Second iteration
+[![Git History 2](https://img.youtube.com/vi/RKLHyhleYVQ/0.jpg)](https://youtu.be/RKLHyhleYVQ)
 
 ## Team Members 👨‍💻
 - Florian Merle
