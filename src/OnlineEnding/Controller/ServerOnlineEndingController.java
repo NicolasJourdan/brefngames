@@ -2,6 +2,7 @@ package OnlineEnding.Controller;
 
 import Contest.Interface.SocketObserverController;
 import Online.Socket.Message.MessageDataObject;
+import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
 import OnlineEnding.Model.ServerOnlineEndingModel;
 import OnlineEnding.View.OnlineEndingView;
@@ -30,11 +31,13 @@ public class ServerOnlineEndingController extends AbstractController implements 
     public void update(Observable o, Object action) {
         switch ((ActionEnum) action) {
             case ONLINE_ENDING_CONTINUE:
-                ((OnlineEndingView) this.view).setWaitingButton();
+                ((OnlineEndingView) this.view).setWaiting();
                 ((ServerOnlineEndingModel) this.model).localPlayerContinue();
+                this.socketCommunicatorService.emit(new MessageDataObject(MessageType.CONTEST_ENDING_NEXT));
                 this.next();
                 break;
             case END_CONTEST:
+                this.socketCommunicatorService.emit(new MessageDataObject(MessageType.CONTEST_ENDING_QUIT));
                 this.setChanged();
                 this.notifyObservers(ActionEnum.END_ONLINE_CONTEST);
                 break;
@@ -53,8 +56,12 @@ public class ServerOnlineEndingController extends AbstractController implements 
 
             switch (messageDataObject.getType()) {
                 case CONTEST_ENDING_NEXT:
+                    ((OnlineEndingView) ServerOnlineEndingController.this.view).setOtherPlayerPlayAgain();
                     ((ServerOnlineEndingModel) ServerOnlineEndingController.this.model).onlinePlayerContinue();
                     ServerOnlineEndingController.this.next();
+                    break;
+                case CONTEST_ENDING_QUIT:
+                    ((OnlineEndingView) ServerOnlineEndingController.this.view).setOtherPlayerQuit();
                     break;
             }
         }
