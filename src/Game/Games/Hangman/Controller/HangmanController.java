@@ -28,6 +28,7 @@ public class HangmanController extends AbstractGameController {
     public void update(Observable o, Object arg) {
         if (!((HangmanModel) this.model).isFinished()) {
             String result = ((HangmanModel) this.model).makeGuess((Character) arg);
+            ((HangmanView) this.view).setDisabled((Character) arg);
             this.updateGame(result);
         }
 

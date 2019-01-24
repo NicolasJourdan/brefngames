@@ -3,6 +3,7 @@ package Game;
 import ContestSettings.ContestSettingsScene;
 import Game.Games.ConnectFour.ConnectFourScene;
 import Game.Games.CookieClicker.CookieClickerScene;
+import Game.Games.Hangman.HangmanScene;
 import Game.Games.Runner.RunnerScene;
 import Game.Games.FifteenVainc.FifteenVaincScene;
 import Game.Games.TicTacToe.TicTacToeScene;
@@ -46,6 +47,8 @@ public class OnlineGameSceneFactory extends GameSceneFactory {
                 return new ConnectFourScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
             case COOKIE_CLICKER:
                 return new CookieClickerScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
+            case HANGMAN:
+                return new HangmanScene(this.playersList, this.isTraining, this.history.getCurrentScore(), this.isServer, this.socketCommunicatorService);
             default:
                 throw new RuntimeException("GameEnum (" + gameEnum + ") is unknown");
         }

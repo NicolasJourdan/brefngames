@@ -11,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * GUI for a Hangman Game
@@ -34,6 +36,7 @@ public class HangmanView extends CustomGameBackgroundPanel {
     private DisplayPanel secondPlayerDisplay;
     private DisplayPanel currentPlayerPanel;
     private DisplayPanel otherPlayerPanel;
+    private Map<Character, HangmanBox> map;
 
 
     //===============================================================================================
@@ -71,7 +74,7 @@ public class HangmanView extends CustomGameBackgroundPanel {
         //===============================================================================================
         //											NORTH JPANEL - HOLDS CURRENT WORD
         //===============================================================================================
-
+        this.map = new HashMap<Character, HangmanBox>();
         this.setLayout(new GridBagLayout());
         GridBagConstraints constraint = new GridBagConstraints();
         this.firstPlayerDisplay = new DisplayPanel(players[0], true);
@@ -129,106 +132,132 @@ public class HangmanView extends CustomGameBackgroundPanel {
 
         HangmanBox btnA = new HangmanBox("A", btnDimension);
         btnA.addActionListener(new HangmanBtnListener());
+        this.map.put("A".charAt(0),btnA);
         panInputs.add(btnA);
 
         HangmanBox btnB = new HangmanBox("B", btnDimension);
         btnB.addActionListener(new HangmanBtnListener());
+        this.map.put("B".charAt(0),btnB);
         panInputs.add(btnB);
 
         HangmanBox btnC = new HangmanBox("C", btnDimension);
         btnC.addActionListener(new HangmanBtnListener());
+        this.map.put("C".charAt(0),btnC);
         panInputs.add(btnC);
 
         HangmanBox btnD = new HangmanBox("D", btnDimension);
         btnD.addActionListener(new HangmanBtnListener());
+        this.map.put("D".charAt(0),btnD);
         panInputs.add(btnD);
 
         HangmanBox btnE = new HangmanBox("E", btnDimension);
         btnE.addActionListener(new HangmanBtnListener());
+        this.map.put("E".charAt(0),btnE);
         panInputs.add(btnE);
 
         HangmanBox btnF = new HangmanBox("F", btnDimension);
         btnF.addActionListener(new HangmanBtnListener());
+        this.map.put("F".charAt(0),btnF);
         panInputs.add(btnF);
 
         HangmanBox btnG = new HangmanBox("G", btnDimension);
         btnG.addActionListener(new HangmanBtnListener());
+        this.map.put("G".charAt(0),btnG);
         panInputs.add(btnG);
 
         HangmanBox btnH = new HangmanBox("H", btnDimension);
         btnH.addActionListener(new HangmanBtnListener());
+        this.map.put("H".charAt(0),btnH);
         panInputs.add(btnH);
 
         HangmanBox btnI = new HangmanBox("I", btnDimension);
         btnI.addActionListener(new HangmanBtnListener());
+        this.map.put("I".charAt(0),btnI);
         panInputs.add(btnI);
 
         HangmanBox btnJ = new HangmanBox("J", btnDimension);
         btnJ.addActionListener(new HangmanBtnListener());
+        this.map.put("J".charAt(0),btnJ);
         panInputs.add(btnJ);
 
         HangmanBox btnK = new HangmanBox("K", btnDimension);
         btnK.addActionListener(new HangmanBtnListener());
+        this.map.put("K".charAt(0),btnK);
         panInputs.add(btnK);
 
         HangmanBox btnL = new HangmanBox("L", btnDimension);
         btnL.addActionListener(new HangmanBtnListener());
+        this.map.put("L".charAt(0),btnL);
         panInputs.add(btnL);
 
         HangmanBox btnM = new HangmanBox("M", btnDimension);
         btnM.addActionListener(new HangmanBtnListener());
+        this.map.put("M".charAt(0),btnM);
         panInputs.add(btnM);
 
         HangmanBox btnN = new HangmanBox("N", btnDimension);
         btnN.addActionListener(new HangmanBtnListener());
+        this.map.put("N".charAt(0),btnN);
         panInputs.add(btnN);
 
         HangmanBox btnO = new HangmanBox("O", btnDimension);
         btnO.addActionListener(new HangmanBtnListener());
+        this.map.put("O".charAt(0),btnO);
         panInputs.add(btnO);
 
         HangmanBox btnP = new HangmanBox("P", btnDimension);
         btnP.addActionListener(new HangmanBtnListener());
+        this.map.put("P".charAt(0),btnP);
         panInputs.add(btnP);
 
         HangmanBox btnQ = new HangmanBox("Q", btnDimension);
         btnQ.addActionListener(new HangmanBtnListener());
+        this.map.put("Q".charAt(0),btnQ);
         panInputs.add(btnQ);
 
         HangmanBox btnR = new HangmanBox("R", btnDimension);
         btnR.addActionListener(new HangmanBtnListener());
+        this.map.put("R".charAt(0),btnR);
         panInputs.add(btnR);
 
         HangmanBox btnS = new HangmanBox("S", btnDimension);
         btnS.addActionListener(new HangmanBtnListener());
+        this.map.put("S".charAt(0),btnS);
         panInputs.add(btnS);
 
         HangmanBox btnT = new HangmanBox("T", btnDimension);
         btnT.addActionListener(new HangmanBtnListener());
+        this.map.put("T".charAt(0),btnT);
         panInputs.add(btnT);
 
         HangmanBox btnU = new HangmanBox("U", btnDimension);
         btnU.addActionListener(new HangmanBtnListener());
+        this.map.put("U".charAt(0),btnU);
         panInputs.add(btnU);
 
         HangmanBox btnV = new HangmanBox("V", btnDimension);
         btnV.addActionListener(new HangmanBtnListener());
+        this.map.put("V".charAt(0),btnV);
         panInputs.add(btnV);
 
         HangmanBox btnW = new HangmanBox("W", btnDimension);
         btnW.addActionListener(new HangmanBtnListener());
+        this.map.put("W".charAt(0),btnW);
         panInputs.add(btnW);
 
         HangmanBox btnX = new HangmanBox("X", btnDimension);
         btnX.addActionListener(new HangmanBtnListener());
+        this.map.put("X".charAt(0),btnX);
         panInputs.add(btnX);
 
         HangmanBox btnY = new HangmanBox("Y", btnDimension);
         btnY.addActionListener(new HangmanBtnListener());
+        this.map.put("Y".charAt(0),btnY);
         panInputs.add(btnY);
 
         HangmanBox btnZ = new HangmanBox("Z", btnDimension);
         btnZ.addActionListener(new HangmanBtnListener());
+        this.map.put("Z".charAt(0),btnZ);
         panInputs.add(btnZ);
 
         JPanel panStatus = new JPanel();
@@ -281,6 +310,10 @@ public class HangmanView extends CustomGameBackgroundPanel {
         lblStatusUpdate.setText(str);
     }
 
+    public void setDisabled(Character c){
+        map.get(c).setDisabled();
+    }
+
     /**
      * updates the icon image in the CENTER panel
      *
@@ -307,8 +340,6 @@ public class HangmanView extends CustomGameBackgroundPanel {
          */
         public void actionPerformed(ActionEvent e) {
             HangmanBox btnPressed = (HangmanBox) e.getSource();
-            btnPressed.setDisabled();
-
             String strBtnLbl = btnPressed.getText();
 
             HangmanView.this.observable.notifyObservers(strBtnLbl.charAt(0));

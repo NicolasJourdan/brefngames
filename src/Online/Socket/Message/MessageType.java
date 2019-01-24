@@ -42,6 +42,20 @@ public enum MessageType {
     RUNNER_SEND_PLAYER_STATS,
     RUNNER_SEND_GLOBAL_STATS,
 
+
+    /**
+     * Hangman
+     */
+    HANGMAN_CHARACTER,
+    HANGMAN_CHANGE_PLAYER,
+    HANGMAN_SET_DISABLED,
+    HANGMAN_SEND_PLAYER_STATS,
+    HANGMAN_MAKE_GUESS,
+    HANGMAN_WINNER,
+    HANGMAN_SEND_GLOBAL_STATS,
+    HANGMAN_SET_CURRENT_PLAYER,
+
+
     /**
      * Fifteen Vainc
      */
