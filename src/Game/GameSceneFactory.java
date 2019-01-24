@@ -29,7 +29,6 @@ public class GameSceneFactory implements SceneFactoryInterface {
      * Create a game associated to an game
      */
     public GameScene createScene(SceneEnum gameEnum) {
-        // TODO fill the switch when scenes will be created
         switch (gameEnum) {
             case MAP:
                 return new MapScene(this.history);
