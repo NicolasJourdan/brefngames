@@ -15,7 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ServerView extends CustomBackgroundPanel {
-    private static final int PANEL_BORDER = 15;
     private static final int ICON_SIZE = 150;
 
     private final CustomButton createButton;
@@ -52,10 +51,10 @@ public class ServerView extends CustomBackgroundPanel {
         JPanel createPanel = new CustomGreyPanel();
         createPanel.setBorder(
                 BorderFactory.createEmptyBorder(
-                        ServerView.PANEL_BORDER,
-                        ServerView.PANEL_BORDER,
-                        ServerView.PANEL_BORDER,
-                        ServerView.PANEL_BORDER
+                        Utils.PANEL_BORDER,
+                        Utils.PANEL_BORDER,
+                        Utils.PANEL_BORDER,
+                        Utils.PANEL_BORDER
                 )
         );
         createPanel.setLayout(new GridBagLayout());

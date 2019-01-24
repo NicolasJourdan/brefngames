@@ -25,15 +25,19 @@ public class ClientController extends AbstractSceneController {
             case JOIN_SERVER:
                 this.joinServer();
                 break;
-
             case CONNECTED_TO_SERVER:
                 this.socket = this.clientConnectionService.getSocket();
                 System.out.println("Client: server is " + this.socket.getInetAddress() + " " + this.socket.getPort());
-
                 this.setChanged();
                 this.notifyObservers(ActionEnum.CONNECTED_TO_SERVER);
                 break;
-
+            case ONLINE_CONTEST_MENU:
+                this.setChanged();
+                this.notifyObservers(action);
+                break;
+            case ERROR:
+                ((ClientView) this.view).setWarningLabel("An error occurred during the connection");
+                break;
             default:
                 throw new RuntimeException("Unable to find : " + action);
         }

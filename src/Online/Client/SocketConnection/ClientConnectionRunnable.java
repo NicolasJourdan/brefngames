@@ -1,5 +1,7 @@
 package Online.Client.SocketConnection;
 
+import Scene.Model.ActionEnum;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Observable;
@@ -20,9 +22,11 @@ public class ClientConnectionRunnable extends Observable implements Runnable {
 
             this.setChanged();
             this.notifyObservers(socket);
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Client: error");
             e.printStackTrace();
+            this.setChanged();
+            this.notifyObservers(ActionEnum.ERROR);
         }
     }
 }
