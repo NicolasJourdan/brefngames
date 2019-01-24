@@ -19,9 +19,12 @@ public class ServerRunnerController extends RunnerController implements SocketOb
 
     private final SocketCommunicatorService socketCommunicatorService;
     private final SocketReceptionObserver socketReceptionObserver;
+    private boolean isGameFinished;
 
     public ServerRunnerController(AbstractGameModel model, AbstractGameView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
+
+        this.isGameFinished = false;
 
         this.socketCommunicatorService = socketCommunicatorService;
         this.socketReceptionObserver = new SocketReceptionObserver();
@@ -32,12 +35,10 @@ public class ServerRunnerController extends RunnerController implements SocketOb
     public void update(Observable o, Object action) {
         switch ((ActionEnum) action) {
             case KEY_PRESS_A:
-                ((RunnerModel) this.model).keyPressed(ControlEnum.LEFT, PlayerEnum.FIRST_PLAYER);
-                this.keyPressedAction(PlayerEnum.FIRST_PLAYER);
+                this.keyPressedAction(ControlEnum.LEFT, PlayerEnum.FIRST_PLAYER);
                 break;
             case KEY_PRESS_Z:
-                ((RunnerModel) this.model).keyPressed(ControlEnum.RIGHT, PlayerEnum.FIRST_PLAYER);
-                this.keyPressedAction(PlayerEnum.FIRST_PLAYER);
+                this.keyPressedAction(ControlEnum.RIGHT, PlayerEnum.FIRST_PLAYER);
                 break;
             case KEY_PRESS_R:
             case KEY_PRESS_T:
@@ -61,18 +62,19 @@ public class ServerRunnerController extends RunnerController implements SocketOb
             switch (messageDataObject.getType()) {
                 case RUNNER_KEY_PRESSED:
                     // key received from the client
-                    ((RunnerModel) ServerRunnerController.this.model).keyPressed(
-                            (ControlEnum) messageDataObject.getData(),
-                            PlayerEnum.SECOND_PLAYER
-                    );
-
-                    ServerRunnerController.this.keyPressedAction(PlayerEnum.SECOND_PLAYER);
+                    ServerRunnerController.this.keyPressedAction((ControlEnum) messageDataObject.getData(), PlayerEnum.SECOND_PLAYER);
                     break;
             }
         }
     }
 
-    private void keyPressedAction(PlayerEnum playerEnum) {
+    private void keyPressedAction(ControlEnum controlEnum, PlayerEnum playerEnum) {
+        // update model
+        ((RunnerModel) this.model).keyPressed(
+                controlEnum,
+                playerEnum
+        );
+
         // Update view
         int position = ((RunnerModel) this.model).getRemainingSteps(playerEnum);
         boolean isNextKeyLeft = ((RunnerModel) this.model).isNextKeyLeft(playerEnum);
@@ -97,26 +99,38 @@ public class ServerRunnerController extends RunnerController implements SocketOb
 
         // check winner
         if (((RunnerModel) this.model).isGameFinished()) {
-            // save stats
-            if (!this.isTraining) {
-                ((ServerRunnerModel) this.model).saveLocalStatistics();
-
-                this.socketCommunicatorService.emit(new MessageDataObject(
-                        MessageType.RUNNER_SEND_PLAYER_STATS,
-                        ((ServerRunnerModel) this.model).getOnlinePlayerStatistics()
-                ));
-
-                this.socketCommunicatorService.emit(new MessageDataObject(
-                        MessageType.RUNNER_SEND_GLOBAL_STATS,
-                        ((ServerRunnerModel) this.model).getStatistics()
-                ));
-            }
-
-            // change scene
-            this.setChanged();
-            this.notifyObservers(
-                    ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.FIRST_PLAYER_WON : ActionEnum.SECOND_PLAYER_WON
-            );
+            this.endGame();
         }
+    }
+
+    private synchronized void endGame() {
+        // this function should not be run again otherwise the stats will be saved two times and a bug with
+        // the file reader will occur
+        if (this.isGameFinished) {
+            return;
+        }
+
+        this.isGameFinished = true;
+
+        // save stats
+        if (!this.isTraining) {
+            ((ServerRunnerModel) this.model).saveLocalStatistics();
+
+            this.socketCommunicatorService.emit(new MessageDataObject(
+                    MessageType.RUNNER_SEND_PLAYER_STATS,
+                    ((ServerRunnerModel) this.model).getOnlinePlayerStatistics()
+            ));
+
+            this.socketCommunicatorService.emit(new MessageDataObject(
+                    MessageType.RUNNER_SEND_GLOBAL_STATS,
+                    ((ServerRunnerModel) this.model).getStatistics()
+            ));
+        }
+
+        // change scene
+        this.setChanged();
+        this.notifyObservers(
+                ((RunnerModel) this.model).isFirstPlayerWinner() ? ActionEnum.FIRST_PLAYER_WON : ActionEnum.SECOND_PLAYER_WON
+        );
     }
 }
