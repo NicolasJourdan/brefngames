@@ -181,7 +181,10 @@ public class CustomButton extends JButton {
     @Override
     public void setEnabled(boolean b) {
         super.setEnabled(b);
-        if (!b) {
+    }
+
+    public void removeListener() {
+        if (!this.isEnabled()) {
             for (MouseListener current : this.getMouseListeners()) {
                 this.removeMouseListener(current);
             }
