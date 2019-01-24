@@ -16,7 +16,6 @@ public enum ActionEnum {
     COOKIE_CLICKER("COOKIE_CLICKER"),
     FIFTEEN_VAINC("FIFTEEN_VAINC"),
     HANGMAN("HANGMAN"),
-    TRAINING_MENU("TRAINING_MENU"),
 
     /*
      * Contest
@@ -39,6 +38,7 @@ public enum ActionEnum {
     LAUNCH_SERVER("LAUNCH_SERVER"),
     CLIENT_CONNECTED("CLIENT_CONNECTED"),
     CONNECTED_TO_SERVER("CONNECTED_TO_SERVER"),
+    ONLINE_CONTEST_MENU("ONLINE_CONTEST_MENU"),
 
     /*
      * Parameters

@@ -159,24 +159,35 @@ public class CustomButton extends JButton {
 
     private void setBackgroundNormal() {
         this.yOffset = 0;
-        this.backgroundImage = FileGetter.getImage("_button00.png");
+        this.backgroundImage = this.isEnabled() ?
+                FileGetter.getImage("_button00.png") :
+                FileGetter.getGreyImage("_button00.png");
     }
 
     private void setBackgroundOver() {
         this.yOffset = 0;
-        this.backgroundImage = FileGetter.getImage("_button02.png");
+        this.backgroundImage = this.isEnabled() ?
+                FileGetter.getImage("_button02.png") :
+                FileGetter.getGreyImage("_button02.png");
     }
 
     private void setBackgroundPressed() {
         this.yOffset = CustomButton.Y_OFFSET;
-        this.backgroundImage = FileGetter.getImage("_button01.png");
+        this.backgroundImage = this.isEnabled() ?
+                FileGetter.getImage("_button01.png") :
+                FileGetter.getGreyImage("_button01.png");
     }
 
-    public void setBackgroundGrey() {
-        for (MouseListener current : this.getMouseListeners()) {
-            this.removeMouseListener(current);
-        }
+    @Override
+    public void setEnabled(boolean b) {
+        super.setEnabled(b);
+    }
 
-        this.backgroundImage = FileGetter.getGreyImage("_button00.png");
+    public void removeListener() {
+        if (!this.isEnabled()) {
+            for (MouseListener current : this.getMouseListeners()) {
+                this.removeMouseListener(current);
+            }
+        }
     }
 }

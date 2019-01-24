@@ -83,7 +83,7 @@ public class MenuView extends CustomBackgroundPanel {
         List<Player> players = PlayerRepository.getAll();
         if (players.isEmpty()) {
             this.statisticsButton.setEnabled(false);
-            ((CustomButton) this.statisticsButton).setBackgroundGrey();
+            ((CustomButton) this.statisticsButton).removeListener();
         }
         this.add(this.statisticsButton, constraint);
         constraint.gridwidth = 1;
