@@ -23,6 +23,7 @@ public enum MessageType {
     SETTINGS_PLAYERS_LIST,
     SETTINGS_HISTORY,
     SETTINGS_SAVE_PLAYER,
+    SETTINGS_END,
 
     /**
      * Map
@@ -93,5 +94,7 @@ public enum MessageType {
     COOKIE_RELEASE_SECOND_PLAYER_KEY,
     COOKIE_ACTION,
     COOKIE_CLICKER_SEND_GOAL,
+
+    ERROR,
     ;
 }

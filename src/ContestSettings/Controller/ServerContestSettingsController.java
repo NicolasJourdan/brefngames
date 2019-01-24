@@ -45,7 +45,7 @@ public class ServerContestSettingsController extends AbstractController implemen
     public void update(Observable o, Object action) {
         switch ((ActionEnum) action) {
             case END_CONTEST:
-                // TODO
+                this.socketCommunicatorService.stop();
                 break;
             case SETTINGS_CHANGED:
                 this.socketCommunicatorService.emit(new MessageDataObject(

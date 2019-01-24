@@ -138,6 +138,7 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 ));
 
                 return SceneEnum.CONTEST_MENU;
+            case ERROR:
             case ONLINE_CONTEST_MENU:
                 return SceneEnum.ONLINE_CONTEST_MENU;
 
@@ -197,6 +198,10 @@ public class OnlineContestController extends AbstractSceneManagerController {
                     break;
                 case SETTINGS_SAVE_PLAYER:
                     ((OnlineContest) OnlineContestController.this.model).savePlayers((Player[]) messageDataObject.getData());
+                    break;
+                case ERROR:
+                case SETTINGS_END:
+                    OnlineContestController.this.switchScene(SceneEnum.ONLINE_CONTEST_MENU);
                     break;
             }
         }
