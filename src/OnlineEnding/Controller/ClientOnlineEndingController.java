@@ -34,9 +34,8 @@ public class ClientOnlineEndingController extends AbstractController implements 
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.CONTEST_ENDING_NEXT));
                 break;
             case END_CONTEST:
-                this.socketCommunicatorService.emit(new MessageDataObject(MessageType.CONTEST_ENDING_QUIT));
-                this.setChanged();
                 this.notifyObservers(ActionEnum.END_ONLINE_CONTEST);
+                this.socketCommunicatorService.stop();
                 break;
         }
     }

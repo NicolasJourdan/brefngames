@@ -1,5 +1,9 @@
 package Online.Socket.Reception;
 
+import Online.Socket.Message.MessageDataObject;
+import Online.Socket.Message.MessageType;
+import Scene.Model.ActionEnum;
+
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,13 +25,10 @@ public class SocketReceptionRunnable extends Observable implements Runnable {
                 Serializable message = (Serializable) this.objectInputStream.readObject();
                 this.setChanged();
                 this.notifyObservers(message);
-            } catch (EOFException e) {
+            } catch (Exception e) {
+                this.setChanged();
+                this.notifyObservers(new MessageDataObject(MessageType.ERROR));
                 break;
-            } catch (IOException e) {
-                e.printStackTrace();
-                break;
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
         }
     }
