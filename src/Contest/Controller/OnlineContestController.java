@@ -138,6 +138,8 @@ public class OnlineContestController extends AbstractSceneManagerController {
                 ));
 
                 return SceneEnum.CONTEST_MENU;
+            case ONLINE_CONTEST_MENU:
+                return SceneEnum.ONLINE_CONTEST_MENU;
 
             default:
                 throw new RuntimeException("Unable to find : " + actionEnum);

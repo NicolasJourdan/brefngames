@@ -2,6 +2,7 @@ package Online.Server.SocketConnection;
 
 import Scene.Model.ActionEnum;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Observable;
@@ -34,6 +35,20 @@ public class ServerConnectionService extends Observable implements Observer {
         (new Thread(runnable)).start();
     }
 
+    public void stopConnection() {
+        try {
+            if (null != this.serverSocket) {
+                this.serverSocket.close();
+            }
+            // TODO close here
+            if (null != this.socket) {
+                this.socket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void update(Observable o, Object socket) {
         this.socket = (Socket) socket;
@@ -43,5 +58,9 @@ public class ServerConnectionService extends Observable implements Observer {
 
     public Socket getSocket() {
         return this.socket;
+    }
+
+    public ServerSocket getServerSocket() {
+        return this.serverSocket;
     }
 }
