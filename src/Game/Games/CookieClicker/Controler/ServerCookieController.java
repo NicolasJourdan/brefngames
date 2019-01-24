@@ -16,6 +16,7 @@ public class ServerCookieController extends CookieController implements SocketOb
 
     private final SocketCommunicatorService socketCommunicatorService;
     private final SocketReceptionObserver socketReceptionObserver;
+    private boolean shouldCheck;
 
     public ServerCookieController(CookieModel model, CookieView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
@@ -25,6 +26,7 @@ public class ServerCookieController extends CookieController implements SocketOb
         this.socketCommunicatorService.addReceptionObserver(this.socketReceptionObserver);
 
         this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_CLICKER_SEND_GOAL, ((CookieModel) this.model).getGoal()));
+        this.shouldCheck = true;
     }
 
     public void play(ActionEnum actionEnum) {
@@ -52,33 +54,44 @@ public class ServerCookieController extends CookieController implements SocketOb
                 this.socketCommunicatorService.emit(new MessageDataObject(MessageType.COOKIE_RELEASE_SECOND_PLAYER_KEY));
                 break;
             case CHECK:
-                ((CookieModel) this.model).check();
-                if (!this.isTraining) {
-                    ((CookieModel) this.model).updateGlobalStats();
-                    ((CookieModel) this.model).updatePlayerStats();
-                    ((CookieModel) this.model).sendGlobalStats();
-                    ((CookieModel) this.model).sendFirstPlayerStats();
-                    this.socketCommunicatorService.emit(
-                            new MessageDataObject(
-                                    MessageType.COOKIE_CLICKER_SEND_GLOBAL_STATS,
-                                    ((CookieModel) this.model).getStatsMap()
-                            )
-                    );
-                    this.socketCommunicatorService.emit(
-                            new MessageDataObject(
-                                    MessageType.COOKIE_CLICKER_SEND_PLAYER_STATS,
-                                    new PlayerStatsDataObject(
-                                            ((CookieModel) this.model).getPlayers()[1].getName(),
-                                            ((CookieModel) this.model).getSecondPlayerStats()
-                                    )
-                            )
-                    );
-                }
-                //Notify the winner
-                this.setChanged();
-                this.notifyObservers(((CookieModel) this.model).getWinner());
+                this.endGame();
                 break;
         }
+    }
+
+    private synchronized void endGame() {
+        if (!this.shouldCheck) {
+            return;
+        }
+
+        this.shouldCheck = false;
+
+        ((CookieModel) this.model).check();
+        if (!this.isTraining) {
+            ((CookieModel) this.model).updateGlobalStats();
+            ((CookieModel) this.model).updatePlayerStats();
+            ((CookieModel) this.model).sendGlobalStats();
+            ((CookieModel) this.model).sendFirstPlayerStats();
+            this.socketCommunicatorService.emit(
+                    new MessageDataObject(
+                            MessageType.COOKIE_CLICKER_SEND_GLOBAL_STATS,
+                            ((CookieModel) this.model).getStatsMap()
+                    )
+            );
+            this.socketCommunicatorService.emit(
+                    new MessageDataObject(
+                            MessageType.COOKIE_CLICKER_SEND_PLAYER_STATS,
+                            new PlayerStatsDataObject(
+                                    ((CookieModel) this.model).getPlayers()[1].getName(),
+                                    ((CookieModel) this.model).getSecondPlayerStats()
+                            )
+                    )
+            );
+        }
+        //Notify the winner
+        this.setChanged();
+        this.notifyObservers(((CookieModel) this.model).getWinner());
+
     }
 
     @Override
