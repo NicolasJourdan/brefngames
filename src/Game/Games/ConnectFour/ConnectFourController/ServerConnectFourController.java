@@ -33,6 +33,12 @@ public class ServerConnectFourController extends ConnectFourController implement
     }
 
     private void play(Coord coord, boolean isFirstPlayer) {
+        // Send current player to update player display panel
+        this.socketCommunicatorService.emit(new MessageDataObject(
+                MessageType.CONNECT_FOUR_SET_CURRENT_PLAYER,
+                ((ConnectFourModel) this.model).getCurrentPlayer()
+        ));
+
         if (!this.isAllowedToPlay(isFirstPlayer)) {
             return;
         }
