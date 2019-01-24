@@ -17,6 +17,9 @@ import java.util.List;
 
 public class MenuView extends CustomBackgroundPanel {
 
+    private static final int INSETS_BUTTON_TOP = 5;
+    private static final int INSETS_BUTTON_SIDE = 5;
+
     private final JButton trainingButton;
     private final JButton contestButton;
     private final JButton onlineContestButton;
@@ -50,7 +53,7 @@ public class MenuView extends CustomBackgroundPanel {
         this.add(new JLabel(new ImageIcon(ImageIcon.class.getResource("/data/Images/logo.png"))), constraint);
         constraint.gridwidth = 1;
 
-        constraint.insets.top = 5;
+        constraint.insets.top = MenuView.INSETS_BUTTON_TOP;
 
         constraint.gridx = 0;
         constraint.gridy = 1;
@@ -58,10 +61,14 @@ public class MenuView extends CustomBackgroundPanel {
 
         constraint.gridx = 1;
         constraint.gridy = 1;
+        constraint.insets.left = MenuView.INSETS_BUTTON_SIDE;
+        constraint.insets.right = MenuView.INSETS_BUTTON_SIDE;
         this.add(this.contestButton, constraint);
 
         constraint.gridx = 2;
         constraint.gridy = 1;
+        constraint.insets.left = 0;
+        constraint.insets.right = 0;
         this.add(this.onlineContestButton, constraint);
 
         constraint.gridx = 0;
