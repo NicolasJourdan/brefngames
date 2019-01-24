@@ -3,6 +3,7 @@ package Utils.UI;
 import Parameter.Factory.ColorFactory;
 import Parameter.Model.ThemeEnum;
 import Repository.Parameter.ThemeParameterRepository;
+import Utils.UI.CustomPanel.CustomGreyPanel;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -16,6 +17,8 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 public class CustomButton extends JButton {
+
+    private static final String BACKGROUND_COLOR = "#EEEEEE";
 
     private final static int WIDTH = 190;
     private final static int HEIGHT = 49;
@@ -84,7 +87,7 @@ public class CustomButton extends JButton {
         Graphics2D g2d = (Graphics2D) g;
 
         // clear background
-        g2d.setColor(ColorFactory.getBackgroundColor((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue()));
+        g2d.setColor(this.getClearingBackgroundColor());
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         // background image
@@ -155,6 +158,15 @@ public class CustomButton extends JButton {
         );
 
         g2d.finalize();
+    }
+
+    private Color getClearingBackgroundColor() {
+        // (Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue()
+
+        return this.getParent() instanceof CustomGreyPanel ?
+            Color.decode(CustomButton.BACKGROUND_COLOR):
+            ColorFactory.getBackgroundColor((Color) ThemeParameterRepository.getColor(ThemeEnum.FIRST_COLOR).getValue())
+        ;
     }
 
     private void setBackgroundNormal() {
