@@ -7,6 +7,7 @@ import Map.Model.History;
 import Map.Model.OnlineMapModel;
 import Map.View.MapView;
 import Online.Socket.Message.MessageDataObject;
+import Online.Socket.Message.MessageType;
 import Online.Socket.SocketCommunicatorService;
 import Scene.Model.ActionEnum;
 
@@ -15,6 +16,7 @@ import java.util.Observer;
 
 public class ServerMapController extends MapController implements SocketObserverController {
 
+    public static final String BACK_BUTTON_TEXT = "next";
     private final SocketCommunicatorService socketCommunicatorService;
     private final SocketReceptionService socketReceptionService;
 
@@ -24,6 +26,9 @@ public class ServerMapController extends MapController implements SocketObserver
         this.socketCommunicatorService = socketCommunicatorService;
         this.socketReceptionService = new SocketReceptionService();
         this.socketCommunicatorService.addReceptionObserver(this.socketReceptionService);
+        if (this.isTraining || ((OnlineMapModel) this.model).isFinish(this.history)) {
+            this.socketCommunicatorService.emit(new MessageDataObject(MessageType.MAP_FINISH));
+        }
     }
 
     @Override
@@ -47,6 +52,13 @@ public class ServerMapController extends MapController implements SocketObserver
     @Override
     public void stopObserver() {
         this.socketCommunicatorService.deleteReceptionObserver(this.socketReceptionService);
+    }
+
+    @Override
+    protected void setBackButton() {
+        if (this.isTraining || ((OnlineMapModel) this.model).isFinish(this.history)) {
+            ((MapView) this.view).setBackButton(ServerMapController.BACK_BUTTON_TEXT);
+        }
     }
 
     private class SocketReceptionService implements Observer {

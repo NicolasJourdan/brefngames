@@ -28,6 +28,7 @@ public enum MessageType {
      * Map
      */
     MAP_NEXT,
+    MAP_FINISH,
 
     /**
      * Tic Tac Toe
