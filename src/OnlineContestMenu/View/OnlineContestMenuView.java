@@ -16,9 +16,6 @@ import java.awt.event.ActionListener;
 
 public class OnlineContestMenuView extends CustomBackgroundPanel {
 
-    private static final int PADDING = 40;
-    private static final ImageIcon CONTEST_ICON = new ImageIcon(OnlineContestMenuView.class.getResource("/data/Images/server.png"));
-    private static final ImageIcon JOIN_ICON = new ImageIcon(OnlineContestMenuView.class.getResource("/data/Images/join.png"));
     private static final int ICON_SIZE = 150;
     private static final int PANEL_BORDER = 15;
 
@@ -47,10 +44,10 @@ public class OnlineContestMenuView extends CustomBackgroundPanel {
         constraint.gridy = 1;
         constraint.gridwidth = 1;
         constraint.insets = new Insets(
-                PADDING,
-                PADDING,
-                PADDING,
-                PADDING
+                Utils.DEFAULT_PADDING,
+                Utils.DEFAULT_PADDING,
+                Utils.DEFAULT_PADDING,
+                Utils.DEFAULT_PADDING
         );
         this.add(this.createGreyPanel(true), constraint);
 
@@ -105,8 +102,9 @@ public class OnlineContestMenuView extends CustomBackgroundPanel {
         // Create icon
         JLabel createIcon = new JLabel(
                 ImageResizer.resizeImage(
-                        isCreateContest ? OnlineContestMenuView.CONTEST_ICON : OnlineContestMenuView.JOIN_ICON,
-                        OnlineContestMenuView.ICON_SIZE)
+                        isCreateContest ? Utils.CONTEST_ICON : Utils.JOIN_ICON,
+                        OnlineContestMenuView.ICON_SIZE
+                )
         );
         createIcon.setFocusable(false);
         createIcon.setOpaque(false);
