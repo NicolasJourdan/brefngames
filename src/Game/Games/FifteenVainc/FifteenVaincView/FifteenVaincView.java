@@ -73,7 +73,7 @@ public class FifteenVaincView extends CustomGameBackgroundPanel {
     }
 
     public void updateCurrentPlayer(Player currentPlayer) {
-        if (currentPlayer != this.currentPlayer.getPlayer()) {
+        if (!currentPlayer.getName().equals(this.currentPlayer.getPlayer().getName())) {
             this.changePlayer();
         }
     }
