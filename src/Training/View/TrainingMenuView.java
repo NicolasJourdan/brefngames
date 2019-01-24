@@ -29,7 +29,7 @@ public class TrainingMenuView extends CustomBackgroundPanel {
         this.runnerButton = new CustomTrainingButton("runner.png");
         this.connectFourButton = new CustomTrainingButton("connect_four.png");
         this.cookieClickerButton = new CustomTrainingButton("cookie_clicker.png");
-        this.hangmanButton = new CustomTrainingButton("hang0.gif");
+        this.hangmanButton = new CustomTrainingButton("hangman.png");
         this.fifteenVaincButton = new CustomTrainingButton("fifteen_vainc.png");
 
         this.title = new CustomLabel("Training");
