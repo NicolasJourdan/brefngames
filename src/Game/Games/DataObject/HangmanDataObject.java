@@ -20,18 +20,18 @@ public class HangmanDataObject implements Serializable {
     }
 
     public String getResult() {
-        return result;
+        return this.result;
     }
 
     public String getWord() {
-        return word;
+        return this.word;
     }
 
     public String getNbGuess() {
-        return nbGuess;
+        return this.nbGuess;
     }
 
     public int getGuessLeft() {
-        return guessLeft;
+        return this.guessLeft;
     }
 }

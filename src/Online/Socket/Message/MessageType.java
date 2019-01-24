@@ -42,7 +42,6 @@ public enum MessageType {
     RUNNER_SEND_PLAYER_STATS,
     RUNNER_SEND_GLOBAL_STATS,
 
-
     /**
      * Hangman
      */
@@ -54,7 +53,6 @@ public enum MessageType {
     HANGMAN_WINNER,
     HANGMAN_SEND_GLOBAL_STATS,
     HANGMAN_SET_CURRENT_PLAYER,
-
 
     /**
      * Fifteen Vainc

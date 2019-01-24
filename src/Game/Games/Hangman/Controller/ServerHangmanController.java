@@ -18,7 +18,6 @@ public class ServerHangmanController extends HangmanController {
         super(model, view, isTraining);
         this.socketCommunicatorService = socketCommunicatorService;
         this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
-
         // Send current player to update player display panel
         this.socketCommunicatorService.emit(new MessageDataObject(
                 MessageType.HANGMAN_SET_CURRENT_PLAYER,
@@ -30,22 +29,23 @@ public class ServerHangmanController extends HangmanController {
         if (!this.isAllowedToPlay(isFirstPlayer)) {
             return;
         }
-
         if (!((HangmanModel) this.model).isFinished()) {
             String result = ((HangmanModel) this.model).makeGuess((Character) arg);
             ((HangmanView) this.view).setDisabled((Character) arg);
-            this.socketCommunicatorService.emit(new MessageDataObject(MessageType.HANGMAN_SET_DISABLED, (Character) arg));
-            this.updateGame(result);
+            this.socketCommunicatorService.emit(
+                    new MessageDataObject(MessageType.HANGMAN_SET_DISABLED, (Character) arg)
+            );
             HangmanDataObject hangmanDataObject = new HangmanDataObject(
                     result,
                     ((HangmanModel) this.model).updateCurrentWord(),
                     ((HangmanModel) this.model).updateNumGuesses(),
                     ((HangmanModel) this.model).getNumGuessesLeft()
             );
-            this.socketCommunicatorService.emit(new MessageDataObject(MessageType.HANGMAN_MAKE_GUESS, hangmanDataObject));
-
+            ServerHangmanController.this.updateGame(hangmanDataObject);
+            this.socketCommunicatorService.emit(
+                    new MessageDataObject(MessageType.HANGMAN_MAKE_GUESS, hangmanDataObject)
+            );
         }
-
         if (((HangmanModel) this.model).isFinished()) {
             if (!this.isTraining) {
                 ((HangmanModel) this.model).updatePlayerStats();
@@ -68,67 +68,19 @@ public class ServerHangmanController extends HangmanController {
                                 )
                         )
                 );
-
             }
             this.setChanged();
             this.notifyObservers(((HangmanModel) this.model).getWinner());
-            this.socketCommunicatorService.emit(
-                    new MessageDataObject(
-                            MessageType.HANGMAN_WINNER,
-                            ((HangmanModel) this.model).getWinner()
-            ));
         } else {
             ((HangmanModel) this.model).changePlayer();
             ((HangmanView) this.view).updateCurrentPlayer(
                     ((HangmanModel) this.model).getCurrentPlayer()
             );
             this.socketCommunicatorService.emit(
-                    new MessageDataObject(MessageType.HANGMAN_CHANGE_PLAYER, ((HangmanModel) this.model).getCurrentPlayer()));
-        }
-    }
-
-    private void updateGame(String result) {
-        ((HangmanView) this.view).setNumGuesses(result);
-        ((HangmanView) this.view).setCurrentWord(((HangmanModel) this.model).updateCurrentWord());
-        ((HangmanView) this.view).setNumGuesses(((HangmanModel) this.model).updateNumGuesses());
-        this.updateHangmanImage();
-    }
-
-    private void updateHangmanImage() {
-
-        if (((HangmanModel) this.model).getNumGuessesLeft() > 7) {
-            ((HangmanView) this.view).setImageIcon("/hw3/hang7.gif");
-        } else {
-            switch (((HangmanModel) this.model).getNumGuessesLeft()) {
-
-                case 7:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang7.gif");
-                    break;
-                case 6:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang6.gif");
-                    break;
-                case 5:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang5.gif");
-                    break;
-                case 4:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang4.gif");
-                    break;
-                case 3:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang3.gif");
-                    break;
-                case 2:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang2.gif");
-                    break;
-                case 1:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang1.gif");
-                    break;
-                case 0:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang0.gif");
-                    break;
-                default:
-                    break;
-
-            }
+                    new MessageDataObject(
+                            MessageType.HANGMAN_CHANGE_PLAYER,
+                            ((HangmanModel) this.model).getCurrentPlayer())
+            );
         }
     }
 

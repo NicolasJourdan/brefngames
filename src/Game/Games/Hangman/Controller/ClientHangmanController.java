@@ -22,54 +22,8 @@ public class ClientHangmanController extends HangmanController {
 
     public ClientHangmanController(HangmanModel model, HangmanView view, boolean isTraining, SocketCommunicatorService socketCommunicatorService) {
         super(model, view, isTraining);
-
         this.socketCommunicatorService = socketCommunicatorService;
         this.socketCommunicatorService.addReceptionObserver(new SocketReceptionObserver());
-    }
-
-    private void updateGame(HangmanDataObject hangmanDataObject) {
-        ((HangmanView) this.view).setNumGuesses(hangmanDataObject.getResult());
-        ((HangmanView) this.view).setCurrentWord(hangmanDataObject.getWord());
-        ((HangmanView) this.view).setNumGuesses(hangmanDataObject.getNbGuess());
-        this.updateHangmanImage(hangmanDataObject.getGuessLeft());
-    }
-
-    private void updateHangmanImage(int guessLeft) {
-
-        if (guessLeft > 7) {
-            ((HangmanView) this.view).setImageIcon("/hw3/hang7.gif");
-        } else {
-            switch (guessLeft) {
-
-                case 7:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang7.gif");
-                    break;
-                case 6:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang6.gif");
-                    break;
-                case 5:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang5.gif");
-                    break;
-                case 4:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang4.gif");
-                    break;
-                case 3:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang3.gif");
-                    break;
-                case 2:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang2.gif");
-                    break;
-                case 1:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang1.gif");
-                    break;
-                case 0:
-                    ((HangmanView) this.view).setImageIcon("/data/Images/hang0.gif");
-                    break;
-                default:
-                    break;
-
-            }
-        }
     }
 
     @Override
@@ -101,10 +55,6 @@ public class ClientHangmanController extends HangmanController {
                     HangmanDataObject hangmanDataObject = (HangmanDataObject) messageDataObject.getData();
                     ClientHangmanController.this.updateGame(hangmanDataObject);
                     break;
-                case HANGMAN_WINNER:
-                    ClientHangmanController.this.setChanged();
-                    ClientHangmanController.this.notifyObservers((ActionEnum) messageDataObject.getData());
-                    break;
                 case HANGMAN_SEND_GLOBAL_STATS:
                     ContestDataPersistor.updateHangman((Map<HangmanStatsEnum, String>) messageDataObject.getData());
                     break;
@@ -116,5 +66,4 @@ public class ClientHangmanController extends HangmanController {
             }
         }
     }
-
 }
